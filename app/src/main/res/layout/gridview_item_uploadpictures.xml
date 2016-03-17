@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 上传图片 item -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/m20dip">
+
+    <RelativeLayout
+        android:id="@+id/item_layout"
+        android:layout_width="@dimen/w130dip"
+        android:layout_height="@dimen/h130dip"
+        android:layout_marginRight="@dimen/h10dip"
+        android:layout_marginTop="@dimen/h10dip"
+        android:background="@drawable/bg_rectangle_d2d2d2"
+        android:gravity="center" >
+
+        <RelativeLayout
+            android:id="@+id/item_def_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" >
+
+            <ImageView
+                android:id="@+id/iv_addpicture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/icon_add_uploadpicture" />
+
+            <TextView
+                android:id="@+id/tv_describe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_addpicture"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/h5dip"
+                android:text="@string/addpictures"
+                android:textColor="@color/color_666666"
+                android:textSize="@dimen/text_size_20" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_show"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/m3dip"/>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_delpicture"
+        android:layout_width="@dimen/h30dip"
+        android:layout_height="@dimen/h30dip"
+        android:layout_alignEnd="@+id/item_layout"
+        android:layout_marginRight="-5dp"
+        android:src="@mipmap/icon_del_uploadpicture" />
+
+</RelativeLayout>

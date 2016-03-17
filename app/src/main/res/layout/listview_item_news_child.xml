@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/h181dip"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/h20dip"
+        android:paddingTop="@dimen/h20dip">
+
+        <ImageView
+            android:id="@+id/iv_show"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_launcher" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/w20dip">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    style="@style/style_text_common"
+                    android:text="title"
+                    android:textSize="@dimen/text_size_26" />
+
+                <TextView
+                    android:id="@+id/tv_content"
+                    style="@style/style_text_common"
+                    android:gravity="center|left"
+                    android:layout_marginTop="@dimen/h20dip"
+                    android:lineSpacingExtra="@dimen/h5dip"
+                    android:singleLine="false"
+                    android:text="this is content this is content this is content this is content this is content this is content this is content "
+                    android:textColor="@color/color_8d8d8d"
+                    android:textSize="@dimen/text_size_26" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

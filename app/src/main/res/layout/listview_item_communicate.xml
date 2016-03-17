@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_show"
+            android:layout_width="49dp"
+            android:layout_height="49dp"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:src="@mipmap/ic_launcher" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="title"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/tv_subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:drawableLeft="@mipmap/ic_launcher"
+                    android:drawablePadding="@dimen/h5dip"
+                    android:gravity="center_vertical"
+                    android:text="subtitle"
+                    android:textColor="#585858"
+                    android:textSize="12sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_type_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/ic_launcher"
+                    android:text="type1"
+                    android:drawablePadding="@dimen/h5dip"
+                    android:gravity="center_vertical" />
+                <TextView
+                    android:id="@+id/tv_type_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/ic_launcher"
+                    android:text="type2"
+                    android:drawablePadding="@dimen/h5dip"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_content_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="11dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="2dp"
+        android:text="this is content title"
+        android:textColor="#8d8d8d"
+        android:textSize="18sp" />
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="2dp"
+        android:text="this is content this is content this is content this is content this is content this is content this is content "
+        android:textColor="#8d8d8d"
+        android:textSize="14sp" />
+
+    <LinearLayout
+        android:id="@+id/layout_imagelist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.frame.volleypackageframe.view.InnerGridView
+            android:id="@+id/igv_show"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="3" />
+    </LinearLayout>
+
+</LinearLayout>

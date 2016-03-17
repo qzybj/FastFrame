@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/w20dip"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/style_text_common"
+        android:text="this is title"
+        android:textSize="@dimen/text_size_26" />
+
+    <ImageView
+        android:id="@+id/iv_show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/w10dip"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tv_content"
+        style="@style/style_text_common"
+        android:lineSpacingExtra="@dimen/h2dip"
+        android:layout_marginTop="@dimen/w10dip"
+        android:singleLine="false"
+        android:gravity="center|left"
+        android:text="this is content this is content this is content this is content this is content this is content this is content "
+        android:textColor="#8d8d8d"
+        android:textSize="@dimen/text_size_22" />
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/w10dip">
+        <TextView
+            android:id="@+id/tv_type"
+            style="@style/style_text_common"
+            android:lineSpacingExtra="@dimen/h2dip"
+            android:layout_marginTop="@dimen/w10dip"
+            android:padding="@dimen/h5dip"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/bg_rectangle_dcdcdc"
+            android:text="type"
+            android:textColor="@color/color_ec3e51"
+            android:textSize="@dimen/text_size_22" />
+    </RelativeLayout>
+</LinearLayout>

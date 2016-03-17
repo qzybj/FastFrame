@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/w20dip"
+    android:paddingRight="@dimen/w20dip"
+    android:paddingTop="@dimen/h10dip"
+    android:paddingBottom="@dimen/h16dip"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h50dip"
+        android:layout_marginTop="@dimen/w10dip">
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/style_text_common"
+            android:layout_marginTop="@dimen/h10dip"
+            android:layout_alignParentLeft="true"
+            android:text="title"
+            android:textSize="@dimen/text_size_20" />
+        <TextView
+            style="@style/style_text_common"
+            android:lineSpacingExtra="@dimen/h2dip"
+            android:layout_marginTop="@dimen/w10dip"
+            android:padding="@dimen/h5dip"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/bg_rectangle_dcdcdc"
+            android:textColor="@color/color_ec3e51"
+            android:text="type"
+            android:textSize="@dimen/text_size_20" />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h1dip"
+        android:background="@color/color_e3e3e3"
+        />
+    <LinearLayout
+        android:id="@+id/layout_itemlist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.frame.volleypackageframe.view.InnerListView
+            android:id="@+id/ilv_show"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="3" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h1dip"
+            android:background="@color/color_e3e3e3"
+            />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/h50dip"
+        android:layout_marginTop="@dimen/w10dip">
+        <TextView
+            android:id="@+id/tv_type"
+            style="@style/style_text_common"
+            android:layout_marginTop="@dimen/h15dip"
+            android:layout_centerInParent="true"
+            android:drawableRight="@mipmap/ic_launcher"
+            android:drawablePadding="@dimen/w5dip"
+            android:text="type"
+            android:textSize="@dimen/text_size_20" />
+    </RelativeLayout>
+</LinearLayout>

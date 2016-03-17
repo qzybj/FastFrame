@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/bottom_popmenu_pop_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/bottom_popmenu_btn_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/w20dip"
+            android:layout_marginRight="@dimen/w20dip"
+            android:layout_marginTop="@dimen/h50dip"
+            android:background="@drawable/bg_rectangle_btn_commit"
+            android:gravity="center"
+            android:paddingBottom="@dimen/h20dip"
+            android:paddingTop="@dimen/h20dip"
+            android:textColor="@color/color_666666"
+            android:textSize="@dimen/text_size_34" />
+
+        <Button
+            android:id="@+id/bottom_popmenu_btn_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/w20dip"
+            android:layout_marginRight="@dimen/w20dip"
+            android:layout_marginTop="@dimen/h50dip"
+            android:background="@drawable/bg_rectangle_btn_commit"
+            android:gravity="center"
+            android:paddingBottom="@dimen/h20dip"
+            android:paddingTop="@dimen/h20dip"
+            android:textColor="@color/color_666666"
+            android:textSize="@dimen/text_size_34" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="@dimen/h50dip"
+            android:background="@color/color_d5d5d5" />
+
+        <Button
+            android:id="@+id/bottom_popmenu_btn_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/h90dip"
+            android:layout_marginLeft="@dimen/w20dip"
+            android:layout_marginRight="@dimen/w20dip"
+            android:background="@color/transparent"
+            android:gravity="center"
+            android:paddingBottom="@dimen/h20dip"
+            android:paddingTop="@dimen/h20dip"
+            android:textColor="@color/color_666666"
+            android:textSize="@dimen/text_size_34" />
+    </LinearLayout>
+
+</RelativeLayout>
