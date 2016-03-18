@@ -18,13 +18,12 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.PopupWindow;
 import com.frame.volleypackageframe.R;
-import com.frame.volleypackageframe.common.util.FileUtils;
+import com.frame.volleypackageframe.module.common.util.FileUtils;
 import com.frame.volleypackageframe.module.product.adapter.GridViewPictureAdapter;
 import com.frame.volleypackageframe.module.product.moduleview.bean.BaseModuleViewBean;
 import com.frame.volleypackageframe.ui.base.BaseActivity;
 import com.frame.volleypackageframe.utils.StringUtil;
 import com.frame.volleypackageframe.utils.TestDataBuilder;
-import com.frame.volleypackageframe.utils.ToastHelper;
 import com.frame.volleypackageframe.view.dialog.CustomDialog;
 import com.frame.volleypackageframe.view.dynamicgridview.DynamicGridView;
 import org.xutils.view.annotation.ViewInject;
@@ -211,7 +210,7 @@ public class PictureModuleView extends BaseModuleView {
 						activity.getWindowManager().getDefaultDisplay().getWidth(),
 						activity.getWindowManager().getDefaultDisplay().getHeight());
 			}
-			mPopupWindow.setAnimationStyle(R.style.style_popwindow_animation);
+			mPopupWindow.setAnimationStyle(R.style.style_animation_updown);
 			//实例化一个ColorDrawable颜色为半透明
 			ColorDrawable dw = new ColorDrawable(0x88000000);
 			//设置SelectPicPopupWindow弹出窗体的背景

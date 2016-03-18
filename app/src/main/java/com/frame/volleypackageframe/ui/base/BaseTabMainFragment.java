@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
 import com.frame.volleypackageframe.R;
-import com.frame.volleypackageframe.common.util.StringUtils;
+import com.frame.volleypackageframe.module.common.util.StringUtils;
 import com.frame.volleypackageframe.ui.simple.adapter.FragmentPagerAdapter;
 
 import org.xutils.view.annotation.ContentView;

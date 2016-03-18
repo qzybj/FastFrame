@@ -17,31 +17,6 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <!-- style_common -->
-    <style name="style_common">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-    <!-- style_text_common-->
-    <style name="style_text_common" parent="style_common">
-        <item name="android:textSize">@dimen/text_size_20</item>
-        <item name="android:textColor">@color/black</item>
-        <item name="android:gravity">center</item>
-        <item name="android:singleLine">true</item>
-    </style>
-
-    <!-- 统一弹框样式 -->
-    <style name="style_dialog_common" parent="android:style/Theme.Dialog">
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsFloating">true</item>
-    </style>
-
-    <!-- 购买弹出动画 -->
-    <style name="style_popwindow_animation" parent="android:Animation">
-        <item name="android:windowEnterAnimation">@anim/pop_up</item>
-        <item name="android:windowExitAnimation">@anim/pop_down</item>
-    </style>
 
     <!--  自定义样式部分-->
     <style name="tweetName">
@@ -61,8 +36,6 @@
         <item name="android:textSize">11sp</item>
         <item name="android:textColor">#FFAAAAAA</item>
     </style>
-
-
 
     <!-- news style -->
     <style name="NewsLayoutHeader_RLayout">

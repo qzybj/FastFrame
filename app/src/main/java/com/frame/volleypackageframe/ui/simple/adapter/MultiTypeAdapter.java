@@ -3,9 +3,9 @@ package com.frame.volleypackageframe.ui.simple.adapter;
 import android.content.Context;
 
 import com.frame.volleypackageframe.R;
-import com.frame.volleypackageframe.baseadapterhelper.BaseAdapterHelper;
-import com.frame.volleypackageframe.baseadapterhelper.MultiItemTypeSupport;
-import com.frame.volleypackageframe.baseadapterhelper.QuickAdapter;
+import com.frame.volleypackageframe.module.aosp.baseadapterhelper.BaseAdapterHelper;
+import com.frame.volleypackageframe.module.aosp.baseadapterhelper.MultiItemTypeSupport;
+import com.frame.volleypackageframe.module.aosp.baseadapterhelper.QuickAdapter;
 import com.frame.volleypackageframe.bean.MultiTypeBean;
 
 import java.util.ArrayList;

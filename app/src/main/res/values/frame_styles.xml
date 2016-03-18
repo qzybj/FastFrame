@@ -1,0 +1,105 @@
+<resources>
+
+    <!-- 统一弹框样式 -->
+    <style name="CDialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
+    <style name="style_divide">
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/color_d5d5d5</item>
+    </style>
+
+    <style name="style_divide_b2b2b2">
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/color_B2B2B2</item>
+    </style>
+    <!-- 自定义loading dialog -->
+    <style name="loading_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <!--<item name="android:windowBackground">@drawable/add_cbg</item>-->
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <!-- ShakeDialog -->
+    <style name="Theme.ShakeDialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">false</item>模糊 -->
+    </style>
+
+    <!-- 购买弹出动画 -->
+    <style name="style_animation_updown" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/pop_up</item>
+        <item name="android:windowExitAnimation">@anim/pop_down</item>
+    </style>
+
+    <!-- 筛选弹出动画 -->
+    <style name="PopupAnimationScreening" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/pop_screening_in</item>
+        <item name="android:windowExitAnimation">@anim/pop_screening_out</item>
+    </style>
+
+    <!-- 不设置动画 -->
+    <style name="noAnimation">
+        <item name="android:activityOpenEnterAnimation">@null</item>
+        <item name="android:activityOpenExitAnimation">@null</item>
+        <item name="android:activityCloseEnterAnimation">@null</item>
+        <item name="android:activityCloseExitAnimation">@null</item>
+        <item name="android:taskOpenEnterAnimation">@null</item>
+        <item name="android:taskOpenExitAnimation">@null</item>
+        <item name="android:taskCloseEnterAnimation">@null</item>
+        <item name="android:taskCloseExitAnimation">@null</item>
+        <item name="android:taskToFrontEnterAnimation">@null</item>
+        <item name="android:taskToFrontExitAnimation">@null</item>
+        <item name="android:taskToBackEnterAnimation">@null</item>
+        <item name="android:taskToBackExitAnimation">@null</item>
+    </style>
+
+    <!-- style_common -->
+    <style name="style_common">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <!-- style_common_matchparent -->
+    <style name="style_common_matchparent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <!-- style_text_common-->
+    <style name="style_text_common" parent="style_common">
+        <item name="android:textSize">@dimen/text_size_20</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:gravity">center</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <!-- style_text_common_multiline-->
+    <style name="style_text_common_multiline" parent="style_text_common">
+        <item name="android:gravity">center|left</item>
+        <item name="android:singleLine">false</item>
+    </style>
+    <!-- style_listview_common -->
+    <style name="style_common_listview" parent="style_common_matchparent">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:cacheColorHint">#00000000</item>
+        <item name="android:divider">@null</item>
+        <item name="android:fadingEdge">none</item>
+        <item name="android:listSelector">#00000000</item>
+        <item name="android:fastScrollEnabled">false</item>
+    </style>
+
+    <!-- 银联等支付，调用的时候返回有时是黑背景，可以以activity中调用该样式 -->
+    <style name="Theme.PayReturn" parent="@style/AppTheme">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+</resources>

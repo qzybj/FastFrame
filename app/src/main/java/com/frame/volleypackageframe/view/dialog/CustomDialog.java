@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.frame.volleypackageframe.R;
-import com.frame.volleypackageframe.common.util.DensityUtil;
+import com.frame.volleypackageframe.module.common.util.DensityUtil;
 import com.frame.volleypackageframe.utils.DeviceUtils;
 import com.frame.volleypackageframe.utils.StringUtil;
 

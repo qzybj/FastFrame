@@ -1,16 +1,11 @@
 package com.frame.volleypackageframe.module.home.adapter;
 
 import android.content.Context;
-import android.view.View;
 
 import com.frame.volleypackageframe.R;
-import com.frame.volleypackageframe.baseadapterhelper.BaseAdapterHelper;
-import com.frame.volleypackageframe.baseadapterhelper.MultiItemTypeSupport;
-import com.frame.volleypackageframe.baseadapterhelper.QuickAdapter;
-import com.frame.volleypackageframe.bean.SingleTypeBean;
-import com.frame.volleypackageframe.common.util.StringUtils;
-import com.frame.volleypackageframe.module.home.bean.ShowBean;
-import com.frame.volleypackageframe.view.InnerGridView;
+import com.frame.volleypackageframe.module.aosp.baseadapterhelper.BaseAdapterHelper;
+import com.frame.volleypackageframe.module.aosp.baseadapterhelper.QuickAdapter;
+import com.frame.volleypackageframe.module.common.util.StringUtils;
 
 import java.util.ArrayList;
 

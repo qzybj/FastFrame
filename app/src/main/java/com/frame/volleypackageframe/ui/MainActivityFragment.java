@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.frame.volleypackageframe.R;
-import com.frame.volleypackageframe.baseadapterhelper.BaseAdapterHelper;
-import com.frame.volleypackageframe.baseadapterhelper.QuickAdapter;
+import com.frame.volleypackageframe.module.aosp.baseadapterhelper.BaseAdapterHelper;
+import com.frame.volleypackageframe.module.aosp.baseadapterhelper.QuickAdapter;
 import com.frame.volleypackageframe.bean.TestBean;
 import com.frame.volleypackageframe.module.home.ui.HomeActivity;
 import com.frame.volleypackageframe.module.news.ui.NewsActivity;
