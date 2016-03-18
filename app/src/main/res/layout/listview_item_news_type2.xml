@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.frame.volleypackageframe.view.InnerListView
+        <com.frame.fastframe.view.InnerListView
             android:id="@+id/ilv_show"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

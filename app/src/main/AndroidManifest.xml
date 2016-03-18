@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.frame.volleypackageframe">
+    package="com.frame.fastframe">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-    <application android:name=".MyApplication"
+    <application android:name="com.frame.fastframe.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name="com.frame.fastframe.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -19,13 +19,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".module.home.ui.HomeActivity"/>
-        <activity android:name=".module.communicate.ui.CommunicateActivity"/>
-        <activity android:name=".module.news.ui.NewsActivity"/>
-        <activity android:name=".ui.simple.ui.SimpleBaseAdapterActivity"/>
-        <activity android:name=".ui.simple.ui.SimpleMultiBaseAdapterActivity"/>
+        <activity android:name="com.frame.fastframe.module.home.ui.HomeActivity"/>
+        <activity android:name="com.frame.fastframe.module.communicate.ui.CommunicateActivity"/>
+        <activity android:name="com.frame.fastframe.module.news.ui.NewsActivity"/>
+        <activity android:name="com.frame.fastframe.ui.simple.ui.SimpleBaseAdapterActivity"/>
+        <activity android:name="com.frame.fastframe.ui.simple.ui.SimpleMultiBaseAdapterActivity"/>
         <!--moduls-->
-        <activity android:name="com.frame.volleypackageframe.module.product.ui.ProductActivity"/>
+        <activity android:name="com.frame.fastframe.module.product.ui.ProductActivity"/>
     </application>
 
 </manifest>

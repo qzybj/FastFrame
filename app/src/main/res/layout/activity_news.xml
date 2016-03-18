@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.frame.volleypackageframe.MainActivity">
+    tools:context="com.frame.fastframe.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
                 android:orientation="vertical">
             <include layout="@layout/news_layout_head" />
 
-            <com.frame.volleypackageframe.view.InnerListView
+            <com.frame.fastframe.view.InnerListView
                 android:id="@+id/listView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
