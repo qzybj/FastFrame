@@ -11,8 +11,8 @@
         android:width="@dimen/h2dip"
         android:color="#ec3e51" />
     <corners
-        android:bottomLeftRadius="@dimen/m7dip"
-        android:bottomRightRadius="@dimen/m7dip"
-        android:topLeftRadius="@dimen/m7dip"
-        android:topRightRadius="@dimen/m7dip" />
+        android:bottomLeftRadius="@dimen/h7dip"
+        android:bottomRightRadius="@dimen/h7dip"
+        android:topLeftRadius="@dimen/h7dip"
+        android:topRightRadius="@dimen/h7dip" />
 </shape>

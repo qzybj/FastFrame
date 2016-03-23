@@ -17,6 +17,11 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <!--activity基本样式-->
+    <style name="style_activty_common" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="android:screenOrientation">portrait</item>
+        <item name="android:configChanges">keyboardHidden</item>
+    </style>
 
     <!--  自定义样式部分-->
     <style name="tweetName">

@@ -268,10 +268,7 @@ public class DateUtil {
         SimpleDateFormat df = new SimpleDateFormat(FORMAT_FULL);
         Calendar calendar = Calendar.getInstance();
         return df.format(calendar.getTime());
-
     }
-
-
 
     /**
      * 功能描述：返回月

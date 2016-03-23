@@ -79,8 +79,8 @@ public abstract class BaseModuleView implements ModuleViewInterface {
 	 * 跳转逻辑
 	 */
 	public void jumpToURI(String jumpUri){
-//		if (mContext instanceof BaseActivity) {
-//			JumpCtrler.doJump((BaseActivity)mContext,jumpUri);
+//		if (mContext instanceof UCropBaseActivity) {
+//			JumpCtrler.doJump((UCropBaseActivity)mContext,jumpUri);
 //		}else {
 //			LogUtil.d("context is not support");
 //		}

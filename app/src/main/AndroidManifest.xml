@@ -1,21 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.frame.fastframe">
 
+    <!-- Required  一些系统要求的权限，如访问网络等-->
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application android:name="com.frame.fastframe.MyApplication"
+        tools:replace="android:icon"
         android:allowBackup="true"
+        tools:overrideLibrary="android.support.v7.appcompat"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/style_activty_common">
         <activity
             android:name="com.frame.fastframe.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/style_activty_common">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -26,6 +35,16 @@
         <activity android:name="com.frame.fastframe.ui.simple.ui.SimpleMultiBaseAdapterActivity"/>
         <!--moduls-->
         <activity android:name="com.frame.fastframe.module.product.ui.ProductActivity"/>
+
+        <!--UCrop使用示例-->
+        <activity android:name="com.frame.fastframe.module.editimage.UCropSampleActivity"/>
+        <activity android:name="com.frame.fastframe.module.editimage.UCropResultActivity" />
+
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:configChanges="keyboardHidden"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
     </application>
 
 </manifest>

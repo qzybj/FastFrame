@@ -1,7 +1,7 @@
 <resources>
 
     <!-- 统一弹框样式 -->
-    <style name="CDialog" parent="android:style/Theme.Dialog">
+    <style name="style_dialog_common" parent="android:style/Theme.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">true</item>
