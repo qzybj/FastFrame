@@ -1,23 +1,6 @@
 <resources>
 
-    <!-- 统一弹框样式 -->
-    <style name="style_dialog_common" parent="android:style/Theme.Dialog">
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsFloating">true</item>
-    </style>
 
-    <style name="style_divide">
-        <item name="android:layout_height">0.5dp</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:background">@color/color_d5d5d5</item>
-    </style>
-
-    <style name="style_divide_b2b2b2">
-        <item name="android:layout_height">0.5dp</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:background">@color/color_B2B2B2</item>
-    </style>
     <!-- 自定义loading dialog -->
     <style name="loading_dialog" parent="android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>
@@ -34,18 +17,6 @@
         <item name="android:windowBackground">@color/transparent</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:backgroundDimEnabled">false</item>模糊 -->
-    </style>
-
-    <!-- 购买弹出动画 -->
-    <style name="style_animation_updown" parent="android:Animation">
-        <item name="android:windowEnterAnimation">@anim/pop_up</item>
-        <item name="android:windowExitAnimation">@anim/pop_down</item>
-    </style>
-
-    <!-- 筛选弹出动画 -->
-    <style name="PopupAnimationScreening" parent="android:Animation">
-        <item name="android:windowEnterAnimation">@anim/pop_screening_in</item>
-        <item name="android:windowExitAnimation">@anim/pop_screening_out</item>
     </style>
 
     <!-- 不设置动画 -->
@@ -78,7 +49,7 @@
     <!-- style_text_common-->
     <style name="style_text_common" parent="style_common">
         <item name="android:textSize">@dimen/text_size_20</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@android:color/black</item>
         <item name="android:gravity">center</item>
         <item name="android:singleLine">true</item>
     </style>
@@ -96,10 +67,4 @@
         <item name="android:listSelector">#00000000</item>
         <item name="android:fastScrollEnabled">false</item>
     </style>
-
-    <!-- 银联等支付，调用的时候返回有时是黑背景，可以以activity中调用该样式 -->
-    <style name="Theme.PayReturn" parent="@style/AppTheme">
-        <item name="android:windowIsTranslucent">true</item>
-    </style>
-
 </resources>

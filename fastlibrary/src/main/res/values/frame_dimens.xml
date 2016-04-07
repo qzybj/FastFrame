@@ -448,4 +448,5 @@
     <dimen name="h430dip">215.0dip</dimen>
     <dimen name="h460dip">230.0dip</dimen>
     <dimen name="h490dip">245.0dip</dimen>
+
 </resources>
