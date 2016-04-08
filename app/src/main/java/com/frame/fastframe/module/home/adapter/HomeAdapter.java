@@ -3,11 +3,11 @@ package com.frame.fastframe.module.home.adapter;
 import android.content.Context;
 import android.view.View;
 import com.frame.fastframe.R;
-import com.frame.fastframe.module.aosp.baseadapterhelper.BaseAdapterHelper;
-import com.frame.fastframe.module.aosp.baseadapterhelper.MultiItemTypeSupport;
-import com.frame.fastframe.module.aosp.baseadapterhelper.QuickAdapter;
 import com.frame.fastframe.module.home.bean.ShowBean;
-import com.frame.fastframe.view.InnerGridView;
+import com.frame.fastframelibrary.aosp.baseadapterhelper.BaseAdapterHelper;
+import com.frame.fastframelibrary.aosp.baseadapterhelper.MultiItemTypeSupport;
+import com.frame.fastframelibrary.aosp.baseadapterhelper.QuickAdapter;
+import com.frame.fastframelibrary.core.view.InnerGridView;
 import java.util.ArrayList;
 
 

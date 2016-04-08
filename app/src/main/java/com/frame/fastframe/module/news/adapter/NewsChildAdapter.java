@@ -1,11 +1,13 @@
-package com.frame.fastframe.module.communicate.adapter;
+package com.frame.fastframe.module.news.adapter;
 
 import android.content.Context;
+
+import com.frame.fastframe.module.news.bean.News;
 import com.frame.fastframe.R;
-import com.frame.fastframe.module.aosp.baseadapterhelper.BaseAdapterHelper;
-import com.frame.fastframe.module.aosp.baseadapterhelper.QuickAdapter;
-import com.frame.fastframe.module.common.util.StringUtils;
-import com.frame.fastframe.module.communicate.bean.News;
+import com.frame.fastframelibrary.aosp.baseadapterhelper.BaseAdapterHelper;
+import com.frame.fastframelibrary.aosp.baseadapterhelper.QuickAdapter;
+import com.frame.fastframelibrary.utils.StringUtils;
+
 import java.util.ArrayList;
 
 

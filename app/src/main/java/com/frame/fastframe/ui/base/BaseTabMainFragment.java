@@ -6,8 +6,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
 import com.frame.fastframe.R;
-import com.frame.fastframe.module.common.util.StringUtils;
 import com.frame.fastframe.ui.simple.adapter.FragmentPagerAdapter;
+import com.frame.fastframelibrary.utils.StringUtils;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -62,7 +62,7 @@ public class BaseTabMainFragment extends BaseFragment implements ViewPager.OnPag
     }
     /**初始化显示的Fragment*/
     protected void initFragment(){
-       // addFragment("全部",new MainActivityFragment());
+       // addFragment("全部",new MainActivityFragmentFrame());
 
     }
 

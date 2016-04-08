@@ -3,10 +3,10 @@ package com.frame.fastframe.ui.simple.adapter;
 import android.content.Context;
 
 import com.frame.fastframe.R;
-import com.frame.fastframe.module.aosp.baseadapterhelper.BaseAdapterHelper;
-import com.frame.fastframe.module.aosp.baseadapterhelper.MultiItemTypeSupport;
-import com.frame.fastframe.module.aosp.baseadapterhelper.QuickAdapter;
 import com.frame.fastframe.bean.MultiTypeBean;
+import com.frame.fastframelibrary.aosp.baseadapterhelper.BaseAdapterHelper;
+import com.frame.fastframelibrary.aosp.baseadapterhelper.MultiItemTypeSupport;
+import com.frame.fastframelibrary.aosp.baseadapterhelper.QuickAdapter;
 
 import java.util.ArrayList;
 

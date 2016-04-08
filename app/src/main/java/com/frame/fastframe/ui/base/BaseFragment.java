@@ -2,19 +2,13 @@ package com.frame.fastframe.ui.base;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import com.frame.fastframelibrary.ui.base.FrameBaseFragment;
 import org.xutils.x;
 
-/**
- * Created by wyouflf on 15/11/4.
- */
-public class BaseFragment extends Fragment {
-    public final static String KEY_TITLE = "title";
-
+public class BaseFragment extends FrameBaseFragment {
     protected boolean injected = false;
     protected Activity mParentActivity;
 

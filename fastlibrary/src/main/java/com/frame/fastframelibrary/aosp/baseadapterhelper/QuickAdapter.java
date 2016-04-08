@@ -13,16 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.frame.fastframelibrary.module.aosp.baseadapterhelper;
+package com.frame.fastframelibrary.aosp.baseadapterhelper;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.frame.fastframelibrary.module.aosp.baseadapterhelper.BaseAdapterHelper.get;
+import static com.frame.fastframelibrary.aosp.baseadapterhelper.BaseAdapterHelper.get;
 
 
 /**
@@ -65,16 +63,12 @@ public abstract class QuickAdapter<T> extends BaseQuickAdapter<T, BaseAdapterHel
 		super(context, layoutResId, data);
 	}
 
-	public QuickAdapter(Context context, ArrayList<T> data,
-			MultiItemTypeSupport<T> multiItemSupport)
-	{
+	public QuickAdapter(Context context, ArrayList<T> data,MultiItemTypeSupport<T> multiItemSupport){
 		super(context, data, multiItemSupport);
 	}
 
-	protected BaseAdapterHelper getAdapterHelper(int position,View convertView, ViewGroup parent)
-	{
-		if (mMultiItemSupport != null)
-		{
+	protected BaseAdapterHelper getAdapterHelper(int position, View convertView, ViewGroup parent){
+		if (mMultiItemSupport != null){
 			return get(
 					context,
 					convertView,

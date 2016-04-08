@@ -17,14 +17,14 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.PopupWindow;
-import com.frame.fastframe.R;
+
 import com.frame.fastframe.module.common.util.FileUtils;
 import com.frame.fastframe.module.product.adapter.GridViewPictureAdapter;
 import com.frame.fastframe.module.product.moduleview.bean.BaseModuleViewBean;
-import com.frame.fastframe.ui.base.BaseActivity;
-import com.frame.fastframe.utils.StringUtil;
-import com.frame.fastframe.utils.TestDataBuilder;
 import com.frame.fastframe.view.dialog.CustomDialog;
+import com.frame.fastframe.R;
+import com.frame.fastframelibrary.utils.StringUtils;
+import com.frame.fastframe.utils.TestDataBuilder;
 import com.frame.fastframe.view.dynamicgridview.DynamicGridView;
 import org.xutils.view.annotation.ViewInject;
 
@@ -87,12 +87,12 @@ public class PictureModuleView extends BaseModuleView {
 //						if(position == 0) { //点击图片位置为+ 0对应0张图片，(添加图片改为第一个显示)
 						if(position == (parent.getCount()-1)) { //点击图片位置为+ 0对应0张图片(添加图片改为最后一个显示)
 							if (parent.getCount()<6) {
-								if (getModuleViewContext() instanceof BaseActivity) {
+								if (getModuleViewContext() instanceof com.frame.fastframe.ui.base.BaseActivity) {
 									//选择图片
 									showBottomPopwindow(position);
 								}
 							}else {
-								//ToastHelper.showToast(getModuleViewContext(),"");
+								//ToastUtils.showToast(getModuleViewContext(),"");
 							}
 						}else {
 							delDialog(position);
@@ -167,8 +167,8 @@ public class PictureModuleView extends BaseModuleView {
 	/**显示底部弹出窗口
 	 * @param position */
 	private void showBottomPopwindow(final int position) {
-		if (getModuleViewContext() instanceof BaseActivity) {
-			BaseActivity activity = (BaseActivity)getModuleViewContext();
+		if (getModuleViewContext() instanceof com.frame.fastframe.ui.base.BaseActivity) {
+			com.frame.fastframe.ui.base.BaseActivity activity = (com.frame.fastframe.ui.base.BaseActivity)getModuleViewContext();
 			if (mPopupWindow == null) {
 				LayoutInflater mLayoutInflater = LayoutInflater.from(getModuleViewContext());
 				popwindowView = mLayoutInflater.inflate(R.layout.popwindow_menu_bottom, null);
@@ -210,7 +210,7 @@ public class PictureModuleView extends BaseModuleView {
 						activity.getWindowManager().getDefaultDisplay().getWidth(),
 						activity.getWindowManager().getDefaultDisplay().getHeight());
 			}
-			mPopupWindow.setAnimationStyle(R.style.style_animation_updown);
+			mPopupWindow.setAnimationStyle(R.style.style_popwindow_animation);
 			//实例化一个ColorDrawable颜色为半透明
 			ColorDrawable dw = new ColorDrawable(0x88000000);
 			//设置SelectPicPopupWindow弹出窗体的背景
@@ -226,7 +226,7 @@ public class PictureModuleView extends BaseModuleView {
 		cameraFile = new File(FileUtils.getDiskCacheDir(getModuleViewContext(), IMAGE_SAVE_PATH),
 				"camera"+ System.currentTimeMillis() + ".jpg");
 		cameraFile.getParentFile().mkdirs();
-		((BaseActivity)getModuleViewContext()).startActivityForResult(
+		((com.frame.fastframe.ui.base.BaseActivity)getModuleViewContext()).startActivityForResult(
 				new Intent(MediaStore.ACTION_IMAGE_CAPTURE).putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(cameraFile)),
 				REQUEST_CODE_CAMERA);
 	}
@@ -242,14 +242,14 @@ public class PictureModuleView extends BaseModuleView {
 					Intent.ACTION_PICK,
 					android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 		}
-		((BaseActivity)getModuleViewContext()).startActivityForResult(intent, REQUEST_CODE_LOCAL);
+		((com.frame.fastframe.ui.base.BaseActivity)getModuleViewContext()).startActivityForResult(intent, REQUEST_CODE_LOCAL);
 	}
 
 	/**上传图片请求*/
 	private void uploadImgData(String imgPath){
-		if (!StringUtil.isBlank(imgPath)) {
+		if (StringUtils.isNotEmpty(imgPath)) {
 //			String  compressBitmapPath = compressBitmap(imgPath);
-//			if (!StringUtil.isBlank(compressBitmapPath)) {
+//			if (!StringUtils.isEmpty(compressBitmapPath)) {
 //				byte[] bytes = SDCardUtils.File2byte(compressBitmapPath);
 //				if (bytes!=null) {
 //					tmpPathImage = null;

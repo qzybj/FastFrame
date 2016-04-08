@@ -6,7 +6,10 @@
     <color name="twitter">#ff1ab2e8</color>
 
     <!--标签TAB未选中的颜色-->
-    <color name="tab_color_unselected">@color/black</color>
+    <color name="tab_color_unselected">@android:color/black</color>
     <!--标签Tab选中的颜色-->
     <color name="tab_color_selected">@color/color_ff3636</color>
+    <color name="white">@android:color/white</color>
+    <color name="black">@android:color/black</color>
+    <color name="red">@android:color/holo_red_light</color>
 </resources>

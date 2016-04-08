@@ -35,7 +35,7 @@
                 android:orientation="vertical">
             <include layout="@layout/news_layout_head" />
 
-            <com.frame.fastframe.view.InnerListView
+            <com.frame.fastframelibrary.core.view.InnerListView
                 android:id="@+id/listView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />

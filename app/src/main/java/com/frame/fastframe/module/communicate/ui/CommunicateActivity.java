@@ -3,15 +3,12 @@ package com.frame.fastframe.module.communicate.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ListView;
-
-import com.frame.fastframe.R;
 import com.frame.fastframe.module.communicate.adapter.CommunicateAdapter;
 import com.frame.fastframe.module.communicate.bean.Communicate;
+import com.frame.fastframe.R;
 import com.frame.fastframe.utils.TestDataBuilder;
-
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
-
 import java.util.ArrayList;
 
 public class CommunicateActivity extends Activity

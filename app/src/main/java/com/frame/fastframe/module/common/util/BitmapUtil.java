@@ -970,7 +970,7 @@ final class BitmapUtil {
                     input.getType());
             final ScriptIntrinsicBlur script = ScriptIntrinsicBlur.create(rs,
                     Element.U8_4(rs));
-            script.setRadius(radius /* e.g. 3.f */);
+            script.setRadius(radius /* e.g. 3.format */);
             script.setInput(input);
             script.forEach(output);
             output.copyTo(bitmap);

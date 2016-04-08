@@ -1,9 +1,11 @@
 package com.frame.fastframelibrary.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 
@@ -98,4 +100,31 @@ public class ViewUtils {
         return null;
     }
 
+    /**
+     * 隐藏软键盘
+     * @param activity
+     */
+    public static void hideSoftInput(Activity activity) {
+        if (activity != null) {
+            try {
+                final View v = activity.getWindow().peekDecorView();
+                if (v != null && v.getWindowToken() != null) {
+                    InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
+            } catch (Exception e) {
+                LogUtils.e(e.toString());
+            }
+        }
+    }
+    /**
+     * View 当前是否为显示的
+     * @param view
+     */
+    public static boolean isVisibleView(View view) {
+        if(view!=null&&view.getVisibility()== View.VISIBLE){
+            return true;
+        }
+        return false;
+    }
 }

@@ -2,11 +2,11 @@ package com.frame.fastframe.module.product.ui;
 
 import android.os.Bundle;
 import android.view.View;
-import com.frame.fastframe.R;
 import com.frame.fastframe.module.product.moduleview.PictureModuleView;
+import com.frame.fastframe.R;
 import com.frame.fastframe.ui.base.BaseActivity;
 
-public class ProductActivity extends BaseActivity{
+public class ProductActivity extends BaseActivity {
 	private PictureModuleView mPictureModuleView;
 	@Override
 	public int getLayoutResouceId() {

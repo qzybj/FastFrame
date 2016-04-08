@@ -1,8 +1,8 @@
 package com.frame.fastframe.ui;
 
 import android.os.Bundle;
-import com.frame.fastframe.R;
 import com.frame.fastframe.ui.base.BaseTabMainFragment;
+import com.frame.fastframe.R;
 import org.xutils.view.annotation.ContentView;
 
 /**
@@ -15,14 +15,14 @@ public class TabMainFragment extends BaseTabMainFragment {
         super.initData(savedInstanceState);
     }
     protected void initFragment(){
-        addFragment("全部",new MainActivityFragment());
-        addFragment("热点",new MainActivityFragment());
-        addFragment("新闻",new MainActivityFragment());
-        addFragment("房产",new MainActivityFragment());
-        addFragment("经济",new MainActivityFragment());
-        addFragment("政策",new MainActivityFragment());
-        addFragment("游戏",new MainActivityFragment());
-        addFragment("体育",new MainActivityFragment());
+        addFragment("全部",new MainActivityFragmentFrame());
+        addFragment("热点",new MainActivityFragmentFrame());
+        addFragment("新闻",new MainActivityFragmentFrame());
+        addFragment("房产",new MainActivityFragmentFrame());
+        addFragment("经济",new MainActivityFragmentFrame());
+        addFragment("政策",new MainActivityFragmentFrame());
+        addFragment("游戏",new MainActivityFragmentFrame());
+        addFragment("体育",new MainActivityFragmentFrame());
     }
     //下面三个回调方法 分别是在ViewPager进行滑动的时候调用
     @Override

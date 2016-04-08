@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.frame.fastframelibrary.module.aosp.baseadapterhelper;
+package com.frame.fastframelibrary.aosp.baseadapterhelper;
 
 import android.content.Context;
 import android.view.Gravity;
@@ -22,6 +22,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
+
+import com.frame.fastframelibrary.aosp.baseadapterhelper.MultiItemTypeSupport;
 
 import java.util.ArrayList;
 import java.util.List;

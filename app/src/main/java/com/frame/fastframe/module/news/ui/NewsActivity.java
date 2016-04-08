@@ -3,9 +3,10 @@ package com.frame.fastframe.module.news.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ListView;
-import com.frame.fastframe.R;
+
 import com.frame.fastframe.module.news.adapter.NewsAdapter;
-import com.frame.fastframe.module.communicate.bean.News;
+import com.frame.fastframe.R;
+import com.frame.fastframe.module.news.bean.News;
 import com.frame.fastframe.utils.TestDataBuilder;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;

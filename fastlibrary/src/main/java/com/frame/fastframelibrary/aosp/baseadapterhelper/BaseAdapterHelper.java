@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.frame.fastframelibrary.module.aosp.baseadapterhelper;
+package com.frame.fastframelibrary.aosp.baseadapterhelper;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -88,15 +88,13 @@ public class BaseAdapterHelper
 	 *            The parent arg passed to the getRootView() method.
 	 * @return A BaseAdapterHelper instance.
 	 */
-	public static BaseAdapterHelper get(Context context, View convertView,
-			ViewGroup parent, int layoutId)
+	public static BaseAdapterHelper get(Context context, View convertView,ViewGroup parent, int layoutId)
 	{
 		return get(context, convertView, parent, layoutId, -1);
 	}
 
 	/** This method is package private and should only be used by QuickAdapter. */
-	static BaseAdapterHelper get(Context context, View convertView,
-			ViewGroup parent, int layoutId, int position)
+	static BaseAdapterHelper get(Context context, View convertView,ViewGroup parent, int layoutId, int position)
 	{
 		if (convertView == null)
 		{

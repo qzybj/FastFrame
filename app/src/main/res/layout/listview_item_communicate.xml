@@ -105,7 +105,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.frame.fastframe.view.InnerGridView
+        <com.frame.fastframelibrary.core.view.InnerGridView
             android:id="@+id/igv_show"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

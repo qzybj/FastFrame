@@ -12,6 +12,7 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
 import android.widget.Toast;
+import com.frame.fastframelibrary.utils.StringUtils;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -448,7 +449,7 @@ public class FileUtils {
      */
     public static String getFileExtension(String filePath) {
 
-        if (StringUtils.isBlank(filePath)) {
+        if (StringUtils.isEmpty(filePath)) {
             return filePath;
         }
 
@@ -497,7 +498,7 @@ public class FileUtils {
      * @return  是否存在这个文件
      */
     public static boolean isFileExist(String filePath) {
-        if (StringUtils.isBlank(filePath)) {
+        if (StringUtils.isEmpty(filePath)) {
             return false;
         }
 
@@ -514,7 +515,7 @@ public class FileUtils {
      */
     public static boolean isFolderExist(String directoryPath) {
 
-        if (StringUtils.isBlank(directoryPath)) {
+        if (StringUtils.isEmpty(directoryPath)) {
             return false;
         }
 
@@ -530,7 +531,7 @@ public class FileUtils {
      */
     public static boolean deleteFile(String path) {
 
-        if (StringUtils.isBlank(path)) {
+        if (StringUtils.isEmpty(path)) {
             return true;
         }
 
@@ -563,7 +564,7 @@ public class FileUtils {
      */
     public static long getFileSize(String path) {
 
-        if (StringUtils.isBlank(path)) {
+        if (StringUtils.isEmpty(path)) {
             return -1;
         }
 

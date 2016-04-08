@@ -1,4 +1,4 @@
-package com.frame.fastframelibrary.module.aosp.baseadapterhelper;
+package com.frame.fastframelibrary.aosp.baseadapterhelper;
 
 public interface MultiItemTypeSupport<T>
 {

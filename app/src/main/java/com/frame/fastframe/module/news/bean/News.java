@@ -1,4 +1,4 @@
-package com.frame.fastframe.module.communicate.bean;
+package com.frame.fastframe.module.news.bean;
 
 import java.util.ArrayList;
 

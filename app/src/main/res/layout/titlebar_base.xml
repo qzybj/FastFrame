@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/style_common"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/titlebar_layout"
+        style="@style/style_tiltebar_common">
+
+        <LinearLayout
+            android:id="@+id/titlebar_layout_left"
+            style="@style/style_tiltebar_layout_btn"
+            android:layout_alignParentLeft="true"
+            android:paddingRight="@dimen/w30dip">
+
+            <TextView
+                android:id="@+id/titlebar_tv_left"
+                style="@style/style_tiltebar_btn_back"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/back_selector"
+                android:text="" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/titlebar_tv_content"
+            style="@style/style_tiltebar_title_content"
+            android:gravity="center"
+            android:maxEms="16" />
+
+        <LinearLayout
+            android:id="@+id/titlebar_layout_right"
+            style="@style/style_tiltebar_layout_btn"
+            android:layout_alignParentRight="true"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/titlebar_tv_right"
+                style="@style/style_tiltebar_title_content"
+                android:textSize="@dimen/text_size_28" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View style="@style/style_tiltebar_bottomline" />
+</LinearLayout>

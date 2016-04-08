@@ -13,56 +13,71 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
     <!--activity基本样式-->
-    <style name="style_activty_common" parent="Theme.AppCompat.Light.NoActionBar" >
-        <item name="android:screenOrientation">portrait</item>
-        <item name="android:configChanges">keyboardHidden</item>
+    <style name="style_activty_custom" parent="style_activty_common">
+
     </style>
 
-    <!--  自定义样式部分-->
-    <style name="tweetName">
-        <item name="android:textColor">@color/twitter</item>
-        <item name="android:textSize">18sp</item>
-        <!--<item name="android:textStyle">bold</item>-->
-        <item name="android:shadowColor">#44000000</item>
-        <item name="android:shadowDx">1</item>
-        <item name="android:shadowDy">1</item>
-        <item name="android:shadowRadius">1</item>
-    </style>
-    <style name="tweetText">
-        <item name="android:textColorLink">#FF999999</item>
+    <!-- 购买弹出动画 -->
+    <style name="style_popwindow_animation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/pop_up</item>
+        <item name="android:windowExitAnimation">@anim/pop_down</item>
     </style>
 
-    <style name="tweetDate">
-        <item name="android:textSize">11sp</item>
-        <item name="android:textColor">#FFAAAAAA</item>
+    <!-- 统一弹框样式 -->
+    <style name="style_dialog_common" parent="android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
     </style>
 
-    <!-- news style -->
-    <style name="NewsLayoutHeader_RLayout">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:gravity">center</item>
-    </style>
-    <style name="NewsLayoutHeader_TextView">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:gravity">center_vertical</item>
-    </style>
-    <style name="NewsLayoutHeader_DrawableLeftTextView" parent="NewsLayoutHeader_TextView">
-        <item name="android:drawableLeft">@mipmap/ic_launcher</item>
-        <item name="android:drawablePadding">@dimen/h5dip</item>
-    </style>
-    <style name="NewsLayoutHeader_DrawableTopTextView" parent="NewsLayoutHeader_TextView">
-        <item name="android:drawableTop">@mipmap/ic_launcher</item>
-        <item name="android:drawablePadding">@dimen/h5dip</item>
-        <item name="android:text">"底部字"</item>
+    <!-- 自定义loading dialog -->
+    <style name="style_loading_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
     </style>
 
+    <!-- 不设置动画 -->
+    <style name="style_noanimation">
+        <item name="android:activityOpenEnterAnimation">@null</item>
+        <item name="android:activityOpenExitAnimation">@null</item>
+        <item name="android:activityCloseEnterAnimation">@null</item>
+        <item name="android:activityCloseExitAnimation">@null</item>
+        <item name="android:taskOpenEnterAnimation">@null</item>
+        <item name="android:taskOpenExitAnimation">@null</item>
+        <item name="android:taskCloseEnterAnimation">@null</item>
+        <item name="android:taskCloseExitAnimation">@null</item>
+        <item name="android:taskToFrontEnterAnimation">@null</item>
+        <item name="android:taskToFrontExitAnimation">@null</item>
+        <item name="android:taskToBackEnterAnimation">@null</item>
+        <item name="android:taskToBackExitAnimation">@null</item>
+    </style>
+
+
+    <!-- 进度条 -->
+    <style name="common_progressbar_horizontal" parent="@android:style/Widget.ProgressBar.Horizontal">
+        <item name="android:maxHeight">50dip</item>
+        <item name="android:minHeight">3dip</item>
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:indeterminateDrawable">@android:drawable/progress_indeterminate_horizontal</item>
+    </style>
+
+    <!-- iOS7 Style -->
+    <style name="ActionSheetStyleiOS7" parent="style_activty_custom">
+        <item name="actionSheetBackground">@android:color/transparent</item>
+        <item name="cancelButtonBackground">@drawable/slt_as_ios7_cancel_bt</item>
+        <item name="otherButtonTopBackground">@drawable/slt_as_ios7_other_bt_top</item>
+        <item name="otherButtonMiddleBackground">@drawable/slt_as_ios7_other_bt_middle</item>
+        <item name="otherButtonBottomBackground">@drawable/slt_as_ios7_other_bt_bottom</item>
+        <item name="otherButtonSingleBackground">@drawable/slt_as_ios7_other_bt_single</item>
+        <item name="cancelButtonTextColor">#1E82FF</item>
+        <item name="otherButtonTextColor">#1E82FF</item>
+        <item name="actionSheetPadding">10dp</item>
+        <item name="otherButtonSpacing">0dp</item>
+        <item name="cancelButtonMarginTop">10dp</item>
+        <item name="actionSheetTextSize">12sp</item>
+    </style>
 
 </resources>

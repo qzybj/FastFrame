@@ -1,15 +1,15 @@
 package com.frame.fastframe.utils;
 
-import com.frame.fastframe.R;
 import com.frame.fastframe.bean.MultiTypeBean;
 import com.frame.fastframe.bean.SingleTypeBean;
 import com.frame.fastframe.bean.TestBean;
-import com.frame.fastframe.module.communicate.bean.News;
-import com.frame.fastframe.module.home.adapter.HomeAdapter;
-import com.frame.fastframe.module.home.bean.ShowBean;
 import com.frame.fastframe.module.communicate.bean.Communicate;
 import com.frame.fastframe.module.news.adapter.NewsAdapter;
+import com.frame.fastframe.module.news.bean.News;
 import com.frame.fastframe.module.product.bean.ImageBean;
+import com.frame.fastframe.R;
+import com.frame.fastframe.module.home.adapter.HomeAdapter;
+import com.frame.fastframe.module.home.bean.ShowBean;
 
 import java.util.ArrayList;
 

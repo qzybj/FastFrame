@@ -13,10 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.frame.fastframelibrary.module.aosp.baseadapterhelper;
+package com.frame.fastframelibrary.aosp.baseadapterhelper;
 
 import android.content.Context;
-
 import java.util.List;
 
 /**

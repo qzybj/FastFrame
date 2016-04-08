@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.frame.fastframe.R;
 import com.frame.fastframe.module.home.ui.HomeActivity;
 import com.frame.fastframe.module.news.ui.NewsActivity;
 import com.frame.fastframe.ui.simple.ui.SimpleBaseAdapterActivity;

@@ -2,9 +2,10 @@ package com.frame.fastframe.module.product.moduleview;
 
 import android.content.Context;
 import android.view.View;
-import com.frame.fastframe.R;
+
 import com.frame.fastframe.module.product.moduleview.bean.BaseModuleViewBean;
 import com.frame.fastframe.module.product.moduleview.utils.LogUtils;
+import com.frame.fastframe.R;
 
 /**模块化View - 商品View*/
 public class ProductModuleView extends BaseModuleView {

@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ListView;
 
-import com.frame.fastframe.R;
 import com.frame.fastframe.bean.SingleTypeBean;
 import com.frame.fastframe.ui.simple.adapter.SingleTypeAdapter;
+import com.frame.fastframe.R;
 import com.frame.fastframe.utils.TestDataBuilder;
 
 import java.util.ArrayList;

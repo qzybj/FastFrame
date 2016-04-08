@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-import com.frame.fastframe.MyApplication;
+import com.frame.fastframelibrary.FastApplication;
 import com.frame.fastframe.R;
 
 import java.util.ArrayList;
@@ -88,7 +88,7 @@ public class FragmentPagerAdapter extends FragmentStatePagerAdapter {
      * @return
      */
     public View getTabView(int position){
-        mInflater=LayoutInflater.from(MyApplication.getInstance());
+        mInflater=LayoutInflater.from(FastApplication.getInstance());
         View view=mInflater.inflate(R.layout.tab_item_layout,null);
         TextView tv= (TextView) view.findViewById(R.id.textView);
         tv.setText(titles.get(position));

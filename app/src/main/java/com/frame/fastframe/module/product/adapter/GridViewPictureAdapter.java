@@ -14,9 +14,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.frame.fastframe.view.dynamicgridview.BaseDynamicGridAdapter;
 import com.frame.fastframe.R;
 import com.frame.fastframe.module.product.bean.ImageBean;
-import com.frame.fastframe.view.dynamicgridview.BaseDynamicGridAdapter;
 import com.squareup.picasso.Picasso;
 
 

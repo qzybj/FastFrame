@@ -7,8 +7,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.frame.fastframe.module.product.moduleview.interfaces.ModuleViewInterface;
 import com.frame.fastframe.module.product.moduleview.utils.LogUtils;
-import com.frame.fastframe.utils.ImageViewHelper;
-import com.frame.fastframe.utils.ViewUtils;
+import com.frame.fastframelibrary.utils.ImageViewUtils;
+import com.frame.fastframelibrary.utils.ViewUtils;
+
 import org.xutils.x;
 
 
@@ -92,7 +93,7 @@ public abstract class BaseModuleView implements ModuleViewInterface {
 	 * @param url
 	 */
 	public void loadingImg(ImageView imageView, String url){
-		ImageViewHelper.loadImageUrl(mContext,imageView,url);
+		ImageViewUtils.loadImageUrl(mContext,imageView,url);
 	}
 
     /**

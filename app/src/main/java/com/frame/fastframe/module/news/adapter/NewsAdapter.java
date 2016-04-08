@@ -3,14 +3,14 @@ package com.frame.fastframe.module.news.adapter;
 import android.content.Context;
 import android.view.View;
 import com.frame.fastframe.R;
-import com.frame.fastframe.module.aosp.baseadapterhelper.BaseAdapterHelper;
-import com.frame.fastframe.module.aosp.baseadapterhelper.MultiItemTypeSupport;
-import com.frame.fastframe.module.aosp.baseadapterhelper.QuickAdapter;
-import com.frame.fastframe.module.common.util.StringUtils;
-import com.frame.fastframe.module.communicate.adapter.NewsChildAdapter;
-import com.frame.fastframe.module.communicate.bean.News;
+import com.frame.fastframe.module.news.bean.News;
 import com.frame.fastframe.utils.TestDataBuilder;
-import com.frame.fastframe.view.InnerListView;
+import com.frame.fastframelibrary.aosp.baseadapterhelper.BaseAdapterHelper;
+import com.frame.fastframelibrary.aosp.baseadapterhelper.MultiItemTypeSupport;
+import com.frame.fastframelibrary.aosp.baseadapterhelper.QuickAdapter;
+import com.frame.fastframelibrary.core.view.InnerListView;
+import com.frame.fastframelibrary.utils.StringUtils;
+
 import java.util.ArrayList;
 
 

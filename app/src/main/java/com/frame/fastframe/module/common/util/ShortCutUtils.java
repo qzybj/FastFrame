@@ -21,7 +21,6 @@ import android.content.Intent;
 import android.content.Intent.ShortcutIconResource;
 import android.database.Cursor;
 import android.net.Uri;
-
 import com.frame.fastframe.R;
 
 /**

@@ -1,22 +1,14 @@
 package com.frame.fastframe;
 
-import android.app.Application;
-
+import com.frame.fastframelibrary.FastApplication;
 import org.xutils.x;
 
-/**
- * Created by ZhangYuanBo on 2016/1/29.
- */
-public class MyApplication extends Application {
-    private static MyApplication instance;
-    public  static MyApplication getInstance(){
-        return instance;
-    }
+public class MyApplication extends FastApplication {
+
     @Override
     public void onCreate() {
         x.Ext.init(this);
-        x.Ext.setDebug(true); // 是否输出debug日志
-        this.instance=this;
+        x.Ext.setDebug(true); //是否输出debug日志
         super.onCreate();
     }
 }

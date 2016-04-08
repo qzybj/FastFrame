@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
@@ -180,8 +181,7 @@ public class BadgeUtil {
      */
     private static void setBadgeOfHTC(Context context, int count) {
         Intent intentNotification = new Intent("com.htc.launcher.action.SET_NOTIFICATION");
-        ComponentName localComponentName = new ComponentName(context.getPackageName(),
-                AppInfoUtil.getLauncherClassName(context));
+        ComponentName localComponentName = new ComponentName(context.getPackageName(),AppInfoUtil.getLauncherClassName(context));
         intentNotification.putExtra("com.htc.launcher.extra.COMPONENT", localComponentName.flattenToShortString());
         intentNotification.putExtra("com.htc.launcher.extra.COUNT", count);
         context.sendBroadcast(intentNotification);
@@ -200,8 +200,7 @@ public class BadgeUtil {
      */
     private static void setBadgeOfNova(Context context, int count) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put("tag", context.getPackageName() + "/" +
-                AppInfoUtil.getLauncherClassName(context));
+        contentValues.put("tag", context.getPackageName() + "/" +AppInfoUtil.getLauncherClassName(context));
         contentValues.put("count", count);
         context.getContentResolver().insert(Uri.parse("content://com.teslacoilsw.notifier/unread_count"),
                 contentValues);
@@ -222,7 +221,6 @@ public class BadgeUtil {
      * @param icon    icon
      */
     public static void resetBadgeCount(Context context,int icon) {
-
         setBadgeCount(context, 0,icon);
     }
 }

@@ -12,7 +12,7 @@ public class SqliteUtils {
 
     private static volatile SqliteUtils instance;
 
-    private DbHelper                    dbHelper;
+    private DbHelper dbHelper;
     private SQLiteDatabase              db;
 
     private SqliteUtils(Context context) {

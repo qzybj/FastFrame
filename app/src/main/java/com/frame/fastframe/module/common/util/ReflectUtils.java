@@ -16,6 +16,8 @@
 
 package com.frame.fastframe.module.common.util;
 
+import com.frame.fastframelibrary.utils.StringUtils;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

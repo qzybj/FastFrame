@@ -4,18 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.frame.fastframe.R;
-import com.frame.fastframe.module.aosp.baseadapterhelper.BaseAdapterHelper;
-import com.frame.fastframe.module.aosp.baseadapterhelper.QuickAdapter;
 import com.frame.fastframe.bean.TestBean;
-import com.frame.fastframe.module.editimage.UCropSampleActivity;
 import com.frame.fastframe.module.home.ui.HomeActivity;
 import com.frame.fastframe.module.news.ui.NewsActivity;
 import com.frame.fastframe.module.product.ui.ProductActivity;
-import com.frame.fastframe.ui.base.BaseFragment;
 import com.frame.fastframe.ui.simple.ui.SimpleBaseAdapterActivity;
 import com.frame.fastframe.ui.simple.ui.SimpleMultiBaseAdapterActivity;
-import com.frame.fastframe.view.ExtendedListView;
+import com.frame.fastframe.R;
+import com.frame.fastframelibrary.aosp.baseadapterhelper.BaseAdapterHelper;
+import com.frame.fastframelibrary.aosp.baseadapterhelper.QuickAdapter;
+import com.frame.fastframelibrary.ui.base.FrameBaseFragment;
+import com.frame.fastframelibrary.view.ExtendedListView;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import java.text.DateFormat;
@@ -28,7 +27,7 @@ import static java.text.DateFormat.getDateInstance;
  * A placeholder fragment containing a simple view.
  */
 @ContentView(R.layout.fragment_one)
-public class MainActivityFragment extends BaseFragment implements ExtendedListView.OnEndOfListListener<TestBean> {
+public class MainActivityFragmentFrame extends FrameBaseFragment implements ExtendedListView.OnEndOfListListener<TestBean> {
     private static final DateFormat dateFormat = getDateInstance(SHORT);
 
     @ViewInject(R.id.listView)
@@ -36,7 +35,7 @@ public class MainActivityFragment extends BaseFragment implements ExtendedListVi
 
     protected QuickAdapter<TestBean> adapter;
 
-    public MainActivityFragment() {}
+    public MainActivityFragmentFrame() {}
 
     @Override
     protected void initView() {
@@ -104,7 +103,7 @@ public class MainActivityFragment extends BaseFragment implements ExtendedListVi
         list.add(getTestBean("样式1",HomeActivity.class.getName()));
         list.add(getTestBean("样式2",NewsActivity.class.getName()));
         list.add(getTestBean("添加信息通用样式",ProductActivity.class.getName()));
-        list.add(getTestBean("图片编辑",UCropSampleActivity.class.getName()));
+        //list.add(getTestBean("图片编辑",UCropSampleActivity.class.getName()));
         return list;
     }
     public  static TestBean getTestBean(String describe,String targetActivity) {

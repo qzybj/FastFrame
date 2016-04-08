@@ -18,10 +18,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.frame.fastframe.R;
+
 import com.frame.fastframe.module.common.util.DensityUtil;
-import com.frame.fastframe.utils.DeviceUtils;
-import com.frame.fastframe.utils.StringUtil;
+import com.frame.fastframe.R;
+import com.frame.fastframelibrary.utils.DeviceUtils;
+import com.frame.fastframelibrary.utils.StringUtils;
 
 public class CustomDialog extends Dialog {
 	protected CustomDialog(Context context) {
@@ -251,7 +252,7 @@ public class CustomDialog extends Dialog {
 			itemLv.setVisibility(View.GONE);
 			if(items!=null){
 				itemLv.setVisibility(View.VISIBLE);
-				if(!StringUtil.isEmpty(title)){
+				if(!StringUtils.isEmpty(title)){
 					titleTv.setText(title);
 				}
 				contentTv.setVisibility(View.GONE);
@@ -267,15 +268,15 @@ public class CustomDialog extends Dialog {
 						onClickListener.onClick(mDialog, position);
 					}
 				});
-				if(StringUtil.isEmpty(positiveButtonText) && StringUtil.isEmpty(negativeButtonText)){
+				if(StringUtils.isEmpty(positiveButtonText) && StringUtils.isEmpty(negativeButtonText)){
 					buttonView.setVisibility(View.GONE);
 					divideView.setVisibility(View.GONE);
 				}else{
-					if(!StringUtil.isEmpty(positiveButtonText)){
+					if(!StringUtils.isEmpty(positiveButtonText)){
 						buttonDivideView.setVisibility(View.GONE);
 						cancelTv.setVisibility(View.GONE);
 						sureTv.setText(positiveButtonText);
-					}else if(!StringUtil.isEmpty(negativeButtonText)){
+					}else if(!StringUtils.isEmpty(negativeButtonText)){
 						buttonDivideView.setVisibility(View.GONE);
 						sureTv.setVisibility(View.GONE);
 						cancelTv.setText(negativeButtonText);
@@ -294,17 +295,17 @@ public class CustomDialog extends Dialog {
 					cancelTv.setText(dialogConfig.negative);
 				}
 			}else{
-				if(!StringUtil.isEmpty(title)){
+				if(!StringUtils.isEmpty(title)){
 					titleTv.setText(title);
 				}
-				if(!StringUtil.isEmpty(message)){
+				if(!StringUtils.isEmpty(message)){
 					contentTv.setText(message);
 				}
-				if(StringUtil.isEmpty(positiveButtonText)){
+				if(StringUtils.isEmpty(positiveButtonText)){
 					buttonView.setVisibility(View.GONE);
 					divideView.setVisibility(View.GONE);
 					isAutoDismiss=true;
-				}else if(StringUtil.isEmpty(negativeButtonText)){
+				}else if(StringUtils.isEmpty(negativeButtonText)){
 					buttonDivideView.setVisibility(View.GONE);
 					cancelTv.setVisibility(View.GONE);
 					sureTv.setText(positiveButtonText);
@@ -354,16 +355,16 @@ public class CustomDialog extends Dialog {
 			lp.width = DeviceUtils.getScreenWidth(context)*3/4;
 			if(items==null){
 				int messageHeight=0;
-				if(!StringUtil.isEmpty(message)){
+				if(!StringUtils.isEmpty(message)){
 					int wordCount= (lp.width- DensityUtil.dip2px(context, MESSAGE_HORIZONTAL_PADDING)*2)/DensityUtil.dip2px(context,WORD_SIZE);
-					int extraCount=StringUtil.countString(message)-wordCount;
+					int extraCount= StringUtils.countString(message)-wordCount;
 					if(extraCount>=0){
 						messageHeight=(extraCount/wordCount+1)*DensityUtil.dip2px(context, WORD_SIZE+LINE_SPACE_EXTRA);
 					}
 				}
 				lp.height =  DeviceUtils.getScreenHeight(context)/4+messageHeight;
-				if(lp.height>DeviceUtils.getScreenHeight(context)*2/3){
-					lp.height=DeviceUtils.getScreenHeight(context)*2/3;
+				if(lp.height> DeviceUtils.getScreenHeight(context)*2/3){
+					lp.height= DeviceUtils.getScreenHeight(context)*2/3;
 				}
 
 			}else{

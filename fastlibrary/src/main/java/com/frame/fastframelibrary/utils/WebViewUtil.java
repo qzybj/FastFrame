@@ -1,4 +1,4 @@
-package com.yuelianjia.quan.utils;
+package com.frame.fastframelibrary.utils;
 
 import android.content.Context;
 import android.content.Intent;
