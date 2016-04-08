@@ -2,6 +2,7 @@ package com.frame.fastframelibrary.utils;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
@@ -62,6 +63,25 @@ public class TextViewUtils {
 			}
 		}
 		return "";
+	}
+	/**设置图片(默认为左边)*/
+	public static void setTextViewDrawable(TextView tv, Drawable drawable, int padding) {
+		if (tv!=null||tv.isShown()){
+			if (drawable != null) {
+				tv.setCompoundDrawablePadding(padding);
+				drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());// 这一步必须要做,否则不会显示.
+				tv.setCompoundDrawables(drawable,null,null,null);
+			}else{
+				tv.setPadding(padding,0,0,0);
+				tv.setCompoundDrawables(null,null,null,null);
+			}
+		}
+	}
+	public static String getText(TextView tv) {
+		if(tv!=null){
+			return tv.getText().toString().trim();
+		}
+		return null;
 	}
 
 }

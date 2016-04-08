@@ -5,19 +5,24 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.frame.fastframe.R;
 import com.frame.fastframe.module.common.constant.CommonConstants;
 import com.frame.fastframe.utils.AccountUtils;
 import com.frame.fastframelibrary.ui.base.FrameBaseActivity;
 import com.frame.fastframelibrary.utils.ActivityStack;
 import com.frame.fastframelibrary.utils.LogUtils;
+import com.frame.fastframelibrary.utils.StringUtils;
+import com.frame.fastframelibrary.utils.TextViewUtils;
 import com.frame.fastframelibrary.utils.ToastUtils;
 import com.frame.fastframelibrary.utils.ViewUtils;
 
@@ -62,7 +67,15 @@ public abstract class BaseActivity extends FrameBaseActivity{
 	}
 
 	protected void clickEvent(View v){
-
+		if (v == mTitlebar_layout_leftbtn) {
+			onClickTitleLeft(v);
+			return;
+		} else if (v == mTitlebar_layout_rightbtn) {
+			onClickTitleRight(v);
+			return;
+		} else{
+			clickEvent(v);
+		}
 	}
 
 	/**
@@ -72,7 +85,6 @@ public abstract class BaseActivity extends FrameBaseActivity{
 	protected void getNetworkDataComplete(Object obj) {
 
 	}
-
 	/**
 	 * 处理handle消息 <BR>
 	 * @param msg
@@ -81,16 +93,134 @@ public abstract class BaseActivity extends FrameBaseActivity{
 
 	}
 
-	/**改变界面标题*/
-	public void setTitleMsg(final String title) {
-		if (mTitleContent_tv != null) {
-			runOnUiThread(new Runnable() {
-				@Override
-				public void run() {
-					mTitleContent_tv.setText(title);
-				}
-			});
+	//------------- 标题栏修改实现 --------------
+	public LinearLayout mTitlebar_layout_leftbtn;
+	public LinearLayout mTitlebar_layout_rightbtn;
+	public TextView mTitlebar_tv_content;
+	public TextView mTitlebar_tv_left;
+	public TextView mTitlebar_tv_right;
+
+	public void initTitleBar(View mainView) {
+		mTitlebar_layout_leftbtn = (LinearLayout) mainView.findViewById(R.id.titlebar_layout_left);
+		mTitlebar_tv_left = (TextView) mainView.findViewById(R.id.titlebar_tv_left);
+		mTitlebar_layout_rightbtn = (LinearLayout) mainView.findViewById(R.id.titlebar_layout_right);
+		mTitlebar_tv_right = (TextView) mainView.findViewById(R.id.titlebar_tv_right);
+		mTitlebar_tv_content = (TextView) mainView.findViewById(R.id.titlebar_tv_content);
+		if (mTitlebar_layout_leftbtn != null) {
+			mTitlebar_layout_leftbtn.setOnClickListener(this);
 		}
+		if (mTitlebar_layout_rightbtn != null) {
+			mTitlebar_layout_rightbtn.setOnClickListener(this);
+		}
+
+	}
+
+	/**控制标题栏左边按钮显示或隐藏*/
+	public final void setTitlebarLeftVisibility(boolean isVisibility) {
+		if (mTitlebar_layout_leftbtn != null) {
+			mTitlebar_layout_leftbtn.setVisibility(isVisibility?View.VISIBLE:View.GONE);
+		}
+	}
+	/**
+	 * 设置title左边按钮的显示内容
+	 * @param titleResid
+	 */
+	public final void setTitlebarLeftText(int titleResid) {
+		if (titleResid>0) {
+			setTitlebarLeftText(getString(titleResid));
+		}
+	}
+	/**
+	 * 设置title左边按钮的显示内容
+	 * @param titleStr
+	 */
+	public final void setTitlebarLeftText(String titleStr) {
+		if (mTitlebar_tv_left != null&&StringUtils.isNotEmpty(titleStr)) {
+			//TextViewUtils.setTextViewDrawable(mTitlebar_tv_left,null);
+			mTitlebar_tv_left.setText(titleStr);
+		}
+	}
+
+	/**
+	 * 设置title左边按钮的显示图片
+	 * @param drawableResid
+	 */
+	public final void setTitlebarLeftDrawable(int drawableResid,int padding) {
+		if (mTitlebar_tv_left != null) {
+			if (drawableResid>0) {
+				Drawable drawable= getResources().getDrawable(drawableResid);
+				if (drawable != null) {
+					TextViewUtils.setTextViewDrawable(mTitlebar_tv_left,drawable,padding);
+				}
+			}else{
+				TextViewUtils.setTextViewDrawable(mTitlebar_tv_left,null,padding);
+			}
+		}
+	}
+
+	/**
+	 * 设置title内容
+	 * @param titleResid
+	 */
+	public final void setTitlebarContent(int titleResid) {
+		setTitlebarContent(getString(titleResid));
+	}
+	/**
+	 * 设置title内容
+	 * @param titleStr
+	 */
+	public final void setTitlebarContent(String titleStr) {
+		if (mTitlebar_tv_content != null &&StringUtils.isNotEmpty(titleStr)) {
+			mTitlebar_tv_content.setText(titleStr);
+		}
+	}
+
+	/**控制标题栏右边按钮显示或隐藏*/
+	public final void setTitlebarRightVisibility(boolean isVisibility) {
+		if (mTitlebar_layout_rightbtn != null) {
+			mTitlebar_layout_rightbtn.setVisibility(isVisibility?View.VISIBLE:View.GONE);
+		}
+	}
+
+	/**
+	 * 设置title右边按钮的显示内容
+	 * @param titleResid
+	 */
+	public final void setTitlebarRightText(int titleResid) {
+		if (titleResid>0) {
+			setTitlebarRightText(getString(titleResid));
+		}
+	}
+	/**
+	 * 设置title右边按钮的显示内容
+	 * @param titleStr
+	 */
+	public final void setTitlebarRightText(String titleStr) {
+		if (mTitlebar_tv_right != null&&StringUtils.isNotEmpty(titleStr)) {
+			//TextViewUtils.setTextViewDrawable(mTitlebar_tv_right,null);
+			mTitlebar_tv_right.setText(titleStr);
+		}
+	}
+
+	/**
+	 * 设置title右边按钮的显示图片
+	 * @param drawableResid
+	 */
+	public final void setTitlebarRightDrawable(int drawableResid,int padding) {
+		if (mTitlebar_tv_right != null&&drawableResid>0) {
+			Drawable drawable= getResources().getDrawable(drawableResid);
+			if (drawable != null) {
+				TextViewUtils.setTextViewDrawable(mTitlebar_tv_right,drawable,padding);
+			}
+		}
+	}
+	/**标题栏   -  左边按钮触发事件*/
+	public void onClickTitleLeft(View v) {
+		finish();
+	}
+	/**标题栏   -  右边按钮触发事件*/
+	protected void onClickTitleRight(View v) {
+
 	}
 
 //------------- 界面弹出框，提示信息等实现 --------------

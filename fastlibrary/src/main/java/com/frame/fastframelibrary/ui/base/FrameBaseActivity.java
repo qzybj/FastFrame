@@ -27,6 +27,7 @@ public abstract class FrameBaseActivity extends FragmentActivity implements View
 			if (mRootViewContainer != null) {
 				setContentView(mRootViewContainer);
 				x.view().inject(this);//view绑定
+				initTitleBar(mRootViewContainer);
 				initContentView(mRootViewContainer);
 			}
 		}
@@ -49,6 +50,12 @@ public abstract class FrameBaseActivity extends FragmentActivity implements View
 	 * @return int
 	 */
 	public abstract int getLayoutResouceId();
+
+	/**
+	 * 初始化标题栏
+	 * @param view
+     */
+	public abstract void initTitleBar(View view);
 
 	/**
 	 *

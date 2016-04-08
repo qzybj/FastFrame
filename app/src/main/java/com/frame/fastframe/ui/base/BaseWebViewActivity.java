@@ -48,7 +48,7 @@ public class BaseWebViewActivity extends BaseActivity {
     }
 
     @Override
-    public void initContentView() {
+    public void initContentView(View view) {
         mProgressBar.setMax(100);
         initWebView();
     }
@@ -59,7 +59,7 @@ public class BaseWebViewActivity extends BaseActivity {
         setTitlebarLeftText("取消");
         setTitlebarContent(R.string.app_name);
         setTitlebarRightVisibility(true);
-        setTitlebarRightDrawable(R.mipmap.icon_focus,0);
+        setTitlebarRightDrawable(R.mipmap.ic_launcher,0);
 
         String title = IntentUtils.getIntentStr(getIntent(), CommonConstants.KEY_TITLE);
         url = IntentUtils.getIntentStr(getIntent(), CommonConstants.KEY_URL);
@@ -71,7 +71,6 @@ public class BaseWebViewActivity extends BaseActivity {
         }
     }
 
-    @Override
     protected void onClickTitleRight(View v) {
         callJsMethod_shared("点击右上角，触发js的相关功能");
     }
