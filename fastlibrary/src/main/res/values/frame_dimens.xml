@@ -449,4 +449,9 @@
     <dimen name="h460dip">230.0dip</dimen>
     <dimen name="h490dip">245.0dip</dimen>
 
+    <!--标题栏高度-->
+    <dimen name="common_title_height">@dimen/h80dip</dimen>
+    <!--标题栏底部线高度-->
+    <dimen name="common_up_shadow_height">@dimen/h1dip</dimen>
+
 </resources>

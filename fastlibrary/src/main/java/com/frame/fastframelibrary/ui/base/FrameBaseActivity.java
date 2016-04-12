@@ -23,7 +23,7 @@ public abstract class FrameBaseActivity extends FragmentActivity implements View
 		mBaseActivity= this;
 		int layoutResouceId = getLayoutResouceId();
 		if (layoutResouceId>0) {
-			mRootViewContainer  = ViewUtils.inflateView(getmBaseActivity(),layoutResouceId);
+			mRootViewContainer  = ViewUtils.inflateView(getBaseActivity(),layoutResouceId);
 			if (mRootViewContainer != null) {
 				setContentView(mRootViewContainer);
 				x.view().inject(this);//view绑定
@@ -35,7 +35,7 @@ public abstract class FrameBaseActivity extends FragmentActivity implements View
 		initData(savedInstanceState);
 	}
 
-	protected Context getmBaseActivity(){
+	protected Activity getBaseActivity(){
 		return mBaseActivity;
 	}
 

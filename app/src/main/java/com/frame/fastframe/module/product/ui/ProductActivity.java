@@ -14,7 +14,7 @@ public class ProductActivity extends BaseActivity {
 	}
 
 	@Override
-	public void initContentView() {
+	public void initContentView(View view) {
 
 	}
 

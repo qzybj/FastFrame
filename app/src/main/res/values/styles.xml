@@ -13,6 +13,11 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
     <!--activity基本样式-->
     <style name="style_activty_custom" parent="style_activty_common">
 
@@ -79,5 +84,55 @@
         <item name="cancelButtonMarginTop">10dp</item>
         <item name="actionSheetTextSize">12sp</item>
     </style>
+
+    <!--  自定义样式部分-->
+    <style name="tweetName">
+        <item name="android:textColor">@color/twitter</item>
+        <item name="android:textSize">18sp</item>
+        <!--<item name="android:textStyle">bold</item>-->
+        <item name="android:shadowColor">#44000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
+    </style>
+    <style name="tweetText">
+        <item name="android:textColorLink">#FF999999</item>
+    </style>
+
+    <style name="tweetDate">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">#FFAAAAAA</item>
+    </style>
+
+    <!-- news style -->
+    <style name="NewsLayoutHeader_RLayout">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="NewsLayoutHeader_TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <style name="NewsLayoutHeader_DrawableLeftTextView" parent="NewsLayoutHeader_TextView">
+        <item name="android:drawableLeft">@mipmap/ic_launcher</item>
+        <item name="android:drawablePadding">@dimen/h5dip</item>
+    </style>
+    <style name="NewsLayoutHeader_DrawableTopTextView" parent="NewsLayoutHeader_TextView">
+        <item name="android:drawableTop">@mipmap/ic_launcher</item>
+        <item name="android:drawablePadding">@dimen/h5dip</item>
+        <item name="android:text">"底部字"</item>
+    </style>
+
+
+    <!--  titlebar - 底部线样式 -->
+    <style name="style_tiltebar_bottomline">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/common_up_shadow_height</item>
+        <item name="android:background">@color/color_b2b2b2</item>
+    </style>
+
 
 </resources>

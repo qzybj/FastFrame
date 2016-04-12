@@ -17,31 +17,41 @@ android {
         }
     }
 
-    useLibrary 'org.apache.http.legacy'
     packagingOptions {
-        //exclude 'META-INF/DEPENDENCIES.txt'打包时排除文件
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
     }
 }
+
+
 repositories {
-    dependencies {
-        compile fileTree(include: ['*.jar'], dir: 'libs')
-        testCompile 'junit:junit:4.12'
-        compile 'com.android.support:appcompat-v7:23.1.0'
-        compile 'com.android.support:design:23.1.0'
-        compile 'com.github.lzyzsd:jsbridge:1.0.4'//H5与Native交互的封装
-        compile 'com.baoyz.actionsheet:library:1.1.4'//底部弹出窗
-        //compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'//图片加载
-        //compile 'com.nineoldandroids:library:2.4.0'//向下兼容UI库
-        //compile 'com.daimajia.slider:library:1.1.5@aar'//轮播图
-        //compile 'jp.wasabeef:richeditor-android:1.2.0'//富文本编辑
-        //compile 'com.umeng.analytics:analytics:latest.integration'//友盟统计
-        //compile 'cn.pedant.sweetalert:library:1.3'//dialog弹窗
-
-        //compile 'com.yalantis:ucrop:1.3.2'  //图片裁剪，只有裁剪功能
-        //compile 'cn.finalteam:galleryfinal:1.4.8.7'//图片裁剪，包含图片选择及照相等功能
-
-        //compile project(':social_sdk_example')//放入第三方项目
-        compile project(':fastlibrary')
-    }
     maven { url "https://jitpack.io" }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.1.0'
+    compile 'com.android.support:design:23.1.0'
+    compile 'com.github.lzyzsd:jsbridge:1.0.4'//H5与Native交互的封装
+    compile 'com.baoyz.actionsheet:library:1.1.4'//底部弹出窗
+    //compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'//图片加载
+    //compile 'com.nineoldandroids:library:2.4.0'//向下兼容UI库
+    //compile 'com.daimajia.slider:library:1.1.5@aar'//轮播图
+    //compile 'jp.wasabeef:richeditor-android:1.2.0'//富文本编辑
+    //compile 'com.umeng.analytics:analytics:latest.integration'//友盟统计
+    //compile 'cn.pedant.sweetalert:library:1.3'//dialog弹窗
+
+    //compile 'com.yalantis:ucrop:1.3.2'  //图片裁剪，只有裁剪功能
+    //compile 'cn.finalteam:galleryfinal:1.4.8.7'//图片裁剪，包含图片选择及照相等功能
+    //compile project(':social_sdk_example')//放入第三方项目
+    compile project(':fastlibrary')
 }

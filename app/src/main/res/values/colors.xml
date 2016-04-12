@@ -12,4 +12,9 @@
     <color name="white">@android:color/white</color>
     <color name="black">@android:color/black</color>
     <color name="red">@android:color/holo_red_light</color>
+
+
+    <!--通用popwin用-->
+    <color name="comment_popup_bg">#292929</color>
+    <color name="comment_popup_tx_bg">#c7c7c7</color>
 </resources>

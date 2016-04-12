@@ -101,23 +101,6 @@ public class ViewUtils {
     }
 
     /**
-     * 隐藏软键盘
-     * @param activity
-     */
-    public static void hideSoftInput(Activity activity) {
-        if (activity != null) {
-            try {
-                final View v = activity.getWindow().peekDecorView();
-                if (v != null && v.getWindowToken() != null) {
-                    InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                }
-            } catch (Exception e) {
-                LogUtils.e(e.toString());
-            }
-        }
-    }
-    /**
      * View 当前是否为显示的
      * @param view
      */

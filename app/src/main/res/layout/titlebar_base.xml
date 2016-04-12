@@ -24,7 +24,7 @@
 
         <TextView
             android:id="@+id/titlebar_tv_content"
-            style="@style/style_tiltebar_title_content"
+            style="@style/style_tiltebar_title"
             android:gravity="center"
             android:maxEms="16" />
 
@@ -36,7 +36,7 @@
 
             <TextView
                 android:id="@+id/titlebar_tv_right"
-                style="@style/style_tiltebar_title_content"
+                style="@style/style_tiltebar_title"
                 android:textSize="@dimen/text_size_28" />
         </LinearLayout>
     </RelativeLayout>

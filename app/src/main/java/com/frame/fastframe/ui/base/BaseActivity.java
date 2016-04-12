@@ -1,17 +1,13 @@
 package com.frame.fastframe.ui.base;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -20,7 +16,6 @@ import com.frame.fastframe.module.common.constant.CommonConstants;
 import com.frame.fastframe.utils.AccountUtils;
 import com.frame.fastframelibrary.ui.base.FrameBaseActivity;
 import com.frame.fastframelibrary.utils.ActivityStack;
-import com.frame.fastframelibrary.utils.LogUtils;
 import com.frame.fastframelibrary.utils.StringUtils;
 import com.frame.fastframelibrary.utils.TextViewUtils;
 import com.frame.fastframelibrary.utils.ToastUtils;

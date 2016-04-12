@@ -14,7 +14,7 @@ package com.frame.fastframe.module.common;
  DatabaseExportUtils	应用数据库导出工具类
  DateUtil	日期操作工具类
  DbHelper	数据库帮助类
- DensityUtil	屏幕信息获取数值的转换
+ DimensUtil	屏幕信息获取数值的转换
  DeviceStatusUtils	手机状态工具类 主要包括网络、蓝牙、屏幕亮度、飞行模式、音量等
  DigestUtils	DigestUtils
  FileUtils	文件操作

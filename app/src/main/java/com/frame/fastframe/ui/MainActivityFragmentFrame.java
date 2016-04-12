@@ -11,6 +11,7 @@ import com.frame.fastframe.module.product.ui.ProductActivity;
 import com.frame.fastframe.ui.simple.ui.SimpleBaseAdapterActivity;
 import com.frame.fastframe.ui.simple.ui.SimpleMultiBaseAdapterActivity;
 import com.frame.fastframe.R;
+import com.frame.fastframe.ui.simple.ui.SimplePopwinActivity;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.BaseAdapterHelper;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.QuickAdapter;
 import com.frame.fastframelibrary.ui.base.FrameBaseFragment;
@@ -69,7 +70,7 @@ public class MainActivityFragmentFrame extends FrameBaseFragment implements Exte
     @Override
     protected void initData(Bundle savedInstanceState) {
         super.initData(savedInstanceState);
-        loadData(getTestBeanList());
+        loadData(getShowBeanList());
     }
 
     /***/
@@ -96,13 +97,14 @@ public class MainActivityFragmentFrame extends FrameBaseFragment implements Exte
         startActivity(intent);
     }
 
-    public  static ArrayList<TestBean> getTestBeanList() {
+    public  static ArrayList<TestBean> getShowBeanList() {
         ArrayList<TestBean> list = new ArrayList<TestBean>();
         list.add(getTestBean("单个item展示",SimpleBaseAdapterActivity.class.getName()));
         list.add(getTestBean("多个item展示",SimpleMultiBaseAdapterActivity.class.getName()));
         list.add(getTestBean("样式1",HomeActivity.class.getName()));
         list.add(getTestBean("样式2",NewsActivity.class.getName()));
         list.add(getTestBean("添加信息通用样式",ProductActivity.class.getName()));
+        list.add(getTestBean("PopWin使用示例",SimplePopwinActivity.class.getName()));
         //list.add(getTestBean("图片编辑",UCropSampleActivity.class.getName()));
         return list;
     }

@@ -39,13 +39,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.frame.fastframe.module.home.ui.HomeActivity" />
-        <activity android:name="com.frame.fastframe.module.communicate.ui.CommunicateActivity" />
-        <activity android:name="com.frame.fastframe.module.news.ui.NewsActivity" />
-        <activity android:name="com.frame.fastframe.ui.simple.ui.SimpleBaseAdapterActivity" />
-        <activity android:name="com.frame.fastframe.ui.simple.ui.SimpleMultiBaseAdapterActivity" />
+        <activity
+            android:name="com.frame.fastframe.module.home.ui.HomeActivity"
+            android:theme="@style/style_activty_custom" />
+        <activity
+            android:name="com.frame.fastframe.module.communicate.ui.CommunicateActivity"
+            android:theme="@style/style_activty_custom" />
+        <activity
+            android:name="com.frame.fastframe.module.news.ui.NewsActivity"
+            android:theme="@style/style_activty_custom" />
         <!--moduls-->
-        <activity android:name="com.frame.fastframe.module.product.ui.ProductActivity" />
+        <activity
+            android:name="com.frame.fastframe.module.product.ui.ProductActivity"
+            android:theme="@style/style_activty_custom" />
+
+        <activity
+            android:name="com.frame.fastframe.ui.simple.ui.SimpleBaseAdapterActivity"
+            android:theme="@style/style_activty_custom" />
+        <activity
+            android:name="com.frame.fastframe.ui.simple.ui.SimpleMultiBaseAdapterActivity"
+            android:theme="@style/style_activty_custom" />
+        <activity
+            android:name="com.frame.fastframe.ui.simple.ui.SimplePopwinActivity"
+            android:theme="@style/style_activty_custom" />
 
 
         <!--图片裁剪处理-->
