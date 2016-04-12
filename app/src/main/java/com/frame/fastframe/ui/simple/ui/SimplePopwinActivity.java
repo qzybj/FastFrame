@@ -22,7 +22,7 @@ public class SimplePopwinActivity extends BaseActivity {
 
     @Event(value = R.id.btn_popwin1, type = View.OnClickListener.class)
     private void clickBtn1(View view) {
-
+        popList();
     }
     @Event(value = R.id.btn_popwin2, type = View.OnClickListener.class)
     private void clickBtn2(View view) {
@@ -58,7 +58,7 @@ public class SimplePopwinActivity extends BaseActivity {
 
     }
 
-    public void bindEvent() {
+    public void popList() {
         PopWin4List.Builder builder=new PopWin4List.Builder(getBaseActivity());
         builder.addItem(TAG_CREATE,"Create-01");
         builder.addItem(TAG_MODIFY,"Modify-01");
@@ -92,6 +92,7 @@ public class SimplePopwinActivity extends BaseActivity {
                 }
             }
         });
+        mListPopup.showPopupWindow();
 
     }
 
