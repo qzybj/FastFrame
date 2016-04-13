@@ -4,7 +4,17 @@
  */
 package com.frame.fastframelibrary.utils;
 
+import com.google.gson.JsonObject;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.net.URLEncoder;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -437,5 +447,50 @@ public class StringUtils {
     		return false;
     	}
     	return true;
+    }
+
+    /**
+     * md5加密
+     * @param source
+     * @return
+     */
+    public static String md5(String source) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("MD5");
+            digest.update(source.getBytes());
+            byte[] result = digest.digest();
+
+            StringBuffer hexString = new StringBuffer();
+            for (int i = 0; i < result.length; i++) {
+                String h = Integer.toHexString(0xFF & result[i]);
+                while (h.length() < 2)
+                    h = "0" + h;
+                hexString.append(h);
+            }
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+    /**
+     * 把json字符串转化成Map对象
+     * @param strJson
+     * @return
+     */
+    public static Map getMapFromJson(String strJson) {
+        try {
+            JSONObject jsonObj = new JSONObject(strJson);
+            Iterator<String> nameItr = jsonObj.keys();
+            String name;
+            Map<String, String> outMap = new HashMap<String, String>();
+            while (nameItr.hasNext()) {
+                name = nameItr.next();
+                outMap.put(name, jsonObj.getString(name));
+            }
+            return outMap;
+        }catch (JSONException ex) {
+            return null;
+        }
     }
 }

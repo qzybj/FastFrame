@@ -1,8 +1,6 @@
 package com.frame.fastframelibrary.utils;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.text.Html;
 import android.text.TextUtils;
 import android.util.Base64;
@@ -12,9 +10,6 @@ import android.webkit.CookieSyncManager;
 import android.webkit.WebSettings;
 import android.webkit.WebSettings.RenderPriority;
 import android.webkit.WebView;
-
-import com.frame.fastframelibrary.utils.LogUtils;
-
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.regex.Matcher;
@@ -28,6 +23,9 @@ public class WebViewUtil {
 	public final String TAG = getClass().getSimpleName();
 	private final static String ENCODE_TYPE = "UTF_8";//"gb2312"
 	private final static String MIME_TYPE  = "text/html; charset=UTF-8";
+
+	public final static  String KEY_URL = "url";// 显示网址
+	public final static String KEY_TITLE = "title";// title显示
 
 	/** 初始化webview */
 	public  static void initWebView(WebView webView) {

@@ -10,13 +10,13 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
 import com.frame.fastframe.R;
-import com.frame.fastframe.module.common.constant.CommonConstants;
+import com.frame.fastframe.utils.WebViewUtilPlus;
+import com.frame.fastframe.view.ProgressWebView;
 import com.frame.fastframelibrary.utils.IntentUtils;
 import com.frame.fastframelibrary.utils.LogUtils;
 import com.frame.fastframelibrary.utils.StringUtils;
 import com.frame.fastframelibrary.utils.WebViewUtil;
 import com.github.lzyzsd.jsbridge.BridgeHandler;
-import com.github.lzyzsd.jsbridge.BridgeWebView;
 import com.github.lzyzsd.jsbridge.CallBackFunction;
 import org.xutils.view.annotation.ViewInject;
 
@@ -37,7 +37,7 @@ public class BaseWebViewActivity extends BaseActivity {
     ValueCallback<Uri> mUploadMessage;
 
     @ViewInject(R.id.webview)
-    protected BridgeWebView mWebView;
+    protected ProgressWebView mWebView;
 
     @ViewInject(R.id.progressbar)
     protected ProgressBar mProgressBar;
@@ -61,12 +61,29 @@ public class BaseWebViewActivity extends BaseActivity {
         setTitlebarRightVisibility(true);
         setTitlebarRightDrawable(R.mipmap.ic_launcher,0);
 
-        String title = IntentUtils.getIntentStr(getIntent(), CommonConstants.KEY_TITLE);
-        url = IntentUtils.getIntentStr(getIntent(), CommonConstants.KEY_URL);
-        if (!StringUtils.isEmpty(title)) {
+
+        mWebView.getSettings().setJavaScriptEnabled(true);
+        mWebView.initJsHandler(getBaseActivity());
+        if (mWebView != null && StringUtils.isNotEmpty(url)) {
+            mWebView.loadUrl(url);
+        }
+        //设置title
+        String title = IntentUtils.getIntentStr(getIntent(), WebViewUtilPlus.KEY_TITLE);
+        if (StringUtils.isNotEmpty(title)) {
             setTitlebarContent(title);
         }
-        if (!StringUtils.isEmpty(url)) {
+
+        //设置展示特殊类型UI
+        String type = IntentUtils.getIntentStr(getIntent(), WebViewUtilPlus.KEY_TYPE);
+        if (StringUtils.isNotEmpty(type)) {
+
+        }
+        //设置加载Url
+        url = IntentUtils.getIntentStr(getIntent(), WebViewUtilPlus.KEY_URL);
+        if(StringUtils.isEmpty(url)) {
+            url = WebViewUtilPlus.COMMON_LOADURL;
+        }
+        if (StringUtils.isNotEmpty(url)) {
             loadUrl(url);
         }
     }
