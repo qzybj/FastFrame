@@ -105,7 +105,7 @@ public class StringUtils {
      * @return 如果为空, 则返回<code>true</code>
      */
     public static boolean isEmpty(String str) {
-        return ((str == null) || (str.length() == 0)||format(str).equals(""));
+        return ((str == null) || (str.length() == 0)||str.trim().equals(""));
     }
 
     /**
