@@ -4,8 +4,6 @@
  */
 package com.frame.fastframelibrary.utils;
 
-import com.google.gson.JsonObject;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -51,7 +49,6 @@ public class StringUtils {
         if (str1 == null) {
             return str2 == null;
         }
-
         return str1.equals(str2);
     }
     
@@ -86,7 +83,6 @@ public class StringUtils {
         if (str1 == null) {
             return str2 == null;
         }
-
         return str1.equalsIgnoreCase(str2);
     }
 
@@ -147,7 +143,6 @@ public class StringUtils {
         if ((str == null) || (searchStr == null)) {
             return -1;
         }
-
         return str.indexOf(searchStr);
     }
 
@@ -214,31 +209,24 @@ public class StringUtils {
         if (str == null) {
             return null;
         }
-
         if (end < 0) {
             end = str.length() + end;
         }
-
         if (start < 0) {
             start = str.length() + start;
         }
-
         if (end > str.length()) {
             end = str.length();
         }
-
         if (start > end) {
             return EMPTY_STRING;
         }
-
         if (start < 0) {
             start = 0;
         }
-
         if (end < 0) {
             end = 0;
         }
-
         return str.substring(start, end);
     }
 
@@ -305,10 +293,8 @@ public class StringUtils {
      * @param str
      * @return
      */
-    public static boolean isDecimal(String str)
-    {
-    	if(isEmpty(str))
-    	{
+    public static boolean isDecimal(String str){
+    	if(isEmpty(str)){
     		return false;
     	}
     	return Pattern.compile("([1-9]+[0-9]*|0)(\\.[\\d]+)?").matcher(str).matches();
