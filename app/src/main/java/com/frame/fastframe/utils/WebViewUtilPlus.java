@@ -3,6 +3,7 @@ package com.frame.fastframe.utils;
 import android.content.Context;
 import android.content.Intent;
 
+import com.frame.fastframe.R;
 import com.frame.fastframe.module.common.constant.CommonConstants;
 import com.frame.fastframe.ui.base.BaseWebViewActivity;
 import com.frame.fastframelibrary.utils.StringUtils;
@@ -30,7 +31,7 @@ public class WebViewUtilPlus extends WebViewUtil {
         if (con != null) {
             Intent intent = new Intent(con, BaseWebViewActivity.class);
             if(StringUtils.isEmpty(title)) {
-                title = con.getString(com.frame.fastframelibrary.R.string.app_name);
+                title = con.getString(R.string.app_name);
             }
             intent.putExtra(WebViewUtilPlus.KEY_TITLE,title);
             if(StringUtils.isNotEmpty(loadUrl)) {

@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import org.xutils.x;
 
 /**
- * 框架Activity的base基类
+ * 框架Fragment的base基类
  */
 public class FrameBaseFragment extends Fragment {
     public final static String KEY_TITLE = "title";

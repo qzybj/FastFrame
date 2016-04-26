@@ -1,19 +1,16 @@
 package com.frame.fastframelibrary.ui.base;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-
 import com.frame.fastframelibrary.utils.ViewUtils;
-
 import org.xutils.x;
 
 /**
  * 框架Activity的base基类
  */
-public abstract class FrameBaseActivity extends FragmentActivity implements View.OnClickListener{
+public abstract class FrameBaseActivity extends AppCompatActivity implements View.OnClickListener{
 	protected Activity mBaseActivity;
 	protected View mRootViewContainer ;
 

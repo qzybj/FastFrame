@@ -2,6 +2,7 @@ package com.frame.fastframe.ui.simple.ui;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.frame.fastframe.R;
@@ -12,6 +13,7 @@ import com.frame.fastframe.view.popwinimpl.PopWin4List;
 import com.frame.fastframelibrary.utils.ToastUtils;
 
 import org.xutils.view.annotation.Event;
+import org.xutils.view.annotation.ViewInject;
 
 import java.util.ArrayList;
 
@@ -19,6 +21,10 @@ public class SimplePopwinActivity extends BaseActivity {
     public static final int TAG_CREATE=0x01;
     public static final int TAG_DELETE=0x02;
     public static final int TAG_MODIFY=0x03;
+
+
+    @ViewInject(R.id.et_1)
+    EditText et_1;
 
     @Event(value = R.id.btn_popwin1, type = View.OnClickListener.class)
     private void clickBtn1(View view) {
