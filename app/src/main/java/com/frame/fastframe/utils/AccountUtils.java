@@ -1,14 +1,15 @@
 package com.frame.fastframe.utils;
 
+import com.frame.fastframe.module.loign.bean.UserInfoBean;
+import com.frame.fastframelibrary.module.login.AbsAccountUtils;
 import com.frame.fastframelibrary.utils.SharedPreferencesUtils;
-import com.google.gson.annotations.SerializedName;
 
 
 /**
  * 用户管理辅助类
  * Created by ZhangYuanBo on 2016/4/8.
  */
-public class AccountUtils {
+public class AccountUtils extends AbsAccountUtils {
 
     private static UserInfoBean userInfoBean = null;
 
@@ -110,54 +111,4 @@ public class AccountUtils {
         }
     }
 
-    public static class UserInfoBean {
-        @SerializedName("uid")
-        private String uid="";
-        @SerializedName("user_token")
-        private String userToken="";
-        @SerializedName("user_type")
-        private int userType=-1;
-        @SerializedName("username")
-        private String userName="";
-        @SerializedName("head_img")
-        private String headImg="";
-        private String getUid() {
-            return uid;
-        }
-
-        public void setUid(String uid) {
-            this.uid = uid;
-        }
-
-        public String getUserToken() {
-            return userToken;
-        }
-
-        public void setUserToken(String userToken) {
-            this.userToken = userToken;
-        }
-
-        public int getUserType() {
-            return userType;
-        }
-
-        public void setUserType(int userType) {
-            this.userType = userType;
-        }
-
-        public String getUserName() {
-            return userName;
-        }
-
-        public void setUserName(String userName) {
-            this.userName = userName;
-        }
-
-        public String getHeadImg() {
-            return headImg;
-        }
-        public void setHeadImg(String headImg) {
-            this.headImg = headImg;
-        }
-    }
 }
