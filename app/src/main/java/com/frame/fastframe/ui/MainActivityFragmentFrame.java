@@ -11,6 +11,7 @@ import com.frame.fastframe.module.product.ui.ProductActivity;
 import com.frame.fastframe.ui.simple.ui.SimpleBaseAdapterActivity;
 import com.frame.fastframe.ui.simple.ui.SimpleMultiBaseAdapterActivity;
 import com.frame.fastframe.R;
+import com.frame.fastframe.ui.simple.ui.SimplePassWordViewActivity;
 import com.frame.fastframe.ui.simple.ui.SimplePopwinActivity;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.BaseAdapterHelper;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.QuickAdapter;
@@ -105,6 +106,7 @@ public class MainActivityFragmentFrame extends FrameBaseFragment implements Exte
         list.add(getTestBean("样式2",NewsActivity.class.getName()));
         list.add(getTestBean("添加信息通用样式",ProductActivity.class.getName()));
         list.add(getTestBean("PopWin使用示例",SimplePopwinActivity.class.getName()));
+        list.add(getTestBean("PassWordView使用示例",SimplePassWordViewActivity.class.getName()));
         //list.add(getTestBean("图片编辑",UCropSampleActivity.class.getName()));
         return list;
     }
