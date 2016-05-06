@@ -2,18 +2,20 @@ package com.frame.fastframe.ui.simple.ui;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ListView;
-
 import com.frame.fastframe.R;
 import com.frame.fastframe.bean.SingleTypeBean;
 import com.frame.fastframe.ui.base.BaseActivity;
 import com.frame.fastframe.ui.simple.adapter.SingleTypeAdapter;
+import com.frame.fastframe.ui.simple.bean.GroupChildModel;
+import com.frame.fastframe.ui.simple.bean.GroupModel;
 import com.frame.fastframe.view.popwinimpl.PopWin4List;
+import com.frame.fastframe.view.popwinimpl.PopWin4SlideFromBottom;
+import com.frame.fastframe.view.popwinimpl.PopWin4SlideFromBottomPlus;
+import com.frame.fastframe.view.popwinimpl.adapter.GroupAdapter;
+import com.frame.fastframelibrary.utils.LogUtils;
 import com.frame.fastframelibrary.utils.ToastUtils;
-
 import org.xutils.view.annotation.Event;
-import org.xutils.view.annotation.ViewInject;
 
 import java.util.ArrayList;
 
@@ -23,24 +25,22 @@ public class SimplePopwinActivity extends BaseActivity {
     public static final int TAG_MODIFY=0x03;
 
 
-    @ViewInject(R.id.et_1)
-    EditText et_1;
 
     @Event(value = R.id.btn_popwin1, type = View.OnClickListener.class)
     private void clickBtn1(View view) {
-        popList();
+        popStyle4List();
     }
     @Event(value = R.id.btn_popwin2, type = View.OnClickListener.class)
     private void clickBtn2(View view) {
-
+        popStyle4BottomMenu();
     }
     @Event(value = R.id.btn_popwin3, type = View.OnClickListener.class)
     private void clickBtn3(View view) {
-
+        popStyle4BottomMenu();
     }
     @Event(value = R.id.btn_popwin4, type = View.OnClickListener.class)
     private void clickBtn4(View view) {
-
+        popStyle4BottomMenuPlus();
     }
 
     private ListView mListView;
@@ -64,7 +64,7 @@ public class SimplePopwinActivity extends BaseActivity {
 
     }
 
-    public void popList() {
+    public void popStyle4List() {
         PopWin4List.Builder builder=new PopWin4List.Builder(getBaseActivity());
         builder.addItem(TAG_CREATE,"Create-01");
         builder.addItem(TAG_MODIFY,"Modify-01");
@@ -99,10 +99,36 @@ public class SimplePopwinActivity extends BaseActivity {
             }
         });
         mListPopup.showPopupWindow();
-
     }
 
+    public void popStyle4BottomMenu() {
+        PopWin4SlideFromBottom popwin = new PopWin4SlideFromBottom(getBaseActivity());
+        popwin.showPopupWindow();
+    }
 
-
-
+    public void popStyle4BottomMenuPlus() {
+        PopWin4SlideFromBottomPlus popwin = new PopWin4SlideFromBottomPlus(getBaseActivity());
+        ArrayList<GroupAdapter.IGroupModel> groups = new ArrayList<GroupAdapter.IGroupModel>();
+        for (int i = 0; i <3 ; i++) {
+            GroupModel group = new GroupModel();
+            group.setId(i+"");
+            group.setName(i+"groupname");
+            ArrayList<GroupAdapter.IGroupChildModel> childs = new ArrayList<GroupAdapter.IGroupChildModel>();
+            for (int j = 0; j < 3; j++) {
+                GroupChildModel child = new GroupChildModel();
+                child.setId(j+"");
+                child.setId("name"+j);
+                childs.add(child);
+            }
+            group.setChilds(childs);
+            groups.add(group);
+        }
+        popwin.initListView(groups, new PopWin4SlideFromBottomPlus.OnPopupItemClickListener() {
+            @Override
+            public void onItemClick(GroupAdapter.IGroupChildModel child, int postion) {
+                LogUtils.d(child.getId()+child.getName());
+            }
+        });
+        popwin.showPopupWindow();
+    }
 }

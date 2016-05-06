@@ -13,6 +13,7 @@ import android.view.WindowManager;
 
 import com.frame.fastframelibrary.FastApplication;
 
+import java.io.File;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -21,10 +22,24 @@ import java.util.Date;
 import java.util.Enumeration;
 import java.util.Locale;
 
+/** Android系统工具类*/
 public class DeviceUtils {
 	private static String packageName = null ;
 	
 	private static String imei = null ;
+
+	/**
+	 * 根据/system/bin/或/system/xbin目录下是否存在su文件判断是否已ROOT
+	 * @return true：已ROOT
+	 */
+	public static boolean isRoot() {
+		try {
+			return new File("/system/bin/su").exists() || new File("/system/xbin/su").exists();
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
 	public static int getScreenWidth( Context context) {
 		DisplayMetrics dm = new DisplayMetrics(  );
 		WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);

@@ -32,12 +32,12 @@
         <Button
             android:id="@+id/btn_popwin1"
             style="@style/style_common"
-            android:text="btn_popwin1"
+            android:text="btn_popwinlist"
             />
         <Button
             android:id="@+id/btn_popwin2"
             style="@style/style_common"
-            android:text="btn_popwin2"
+            android:text="btn_popwinBottomMenu"
             />
         <Button
             android:id="@+id/btn_popwin3"
@@ -49,18 +49,7 @@
             style="@style/style_common"
             android:text="btn_popwin4"
             />
-        <EditText
-            android:id="@+id/et_1"
-            style="@style/style_common"
-            android:maxLength="10"
-            android:minEms="5"
-            />
-        <EditText
-            android:id="@+id/et_2"
-            style="@style/style_common"
-            android:maxLength="10"
-            android:ems="5"
-            />
+
     </LinearLayout>
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

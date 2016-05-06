@@ -1,19 +1,16 @@
 package com.frame.fastframelibrary.utils;
 
+import android.app.Activity;
+import java.util.Vector;
+
 /**
  * 自定义activity管理栈<br>
  */
-
-import android.app.Activity;
-
-import java.util.Vector;
-
 public class ActivityStack {
 	private Vector<Activity> activityStack;
 	private static ActivityStack instance;
 
-	private ActivityStack() {
-	}
+	private ActivityStack() {}
 
 	public static ActivityStack getInstance() {
 		if (instance == null) {
@@ -39,7 +36,6 @@ public class ActivityStack {
 
 		for (int i = 0; i < activityStack.size(); i++) {
 			Activity activity = activityStack.elementAt(i);
-
 			if ((classes != null) && (classes.length > 0)) {
 				boolean hasActiviy = false;
 				for (Class<?> cls : classes) {
@@ -48,7 +44,6 @@ public class ActivityStack {
 						break;
 					}
 				}
-
 				if (hasActiviy) {
 					continue;
 				}
@@ -59,7 +54,6 @@ public class ActivityStack {
 			removeActivity(activity);
 		}
 	}
-
 	public void addActivity(Activity activity) {
 		if (activityStack == null) {
 			activityStack = new Vector<Activity>();
@@ -74,4 +68,5 @@ public class ActivityStack {
 	public Activity getTopActivity() {
 		return activityStack.get(activityStack.size() - 1);
 	}
+
 }

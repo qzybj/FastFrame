@@ -15,6 +15,8 @@
 
 
     <!--通用popwin用-->
-    <color name="comment_popup_bg">#292929</color>
-    <color name="comment_popup_tx_bg">#c7c7c7</color>
+    <color name="popup_comment_bg">#292929</color>
+    <color name="popup_comment_tx_bg">#c7c7c7</color>
+    <color name="popup_translucent_bg">#8f000000</color>
+
 </resources>

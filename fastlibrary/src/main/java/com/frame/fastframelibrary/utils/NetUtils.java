@@ -9,26 +9,28 @@ import android.telephony.TelephonyManager;
 /**
  * 网络相关工具类
  */
-public class NetUtils {	
-	
-	/**当前无网络*/
-    public static final int NETWORK_TYPE_UNKNOWN = 0;
+public class NetUtils {
+
+	public static final int NETWORK_TYPE_BASE = 0x010100;
+	/**未知类型网络*/
+    public static final int NETWORK_TYPE_UNKNOWN = NETWORK_TYPE_BASE+1;
     /**WIFI网络开启*/
-    public static final int NETWORK_TYPE_WIFI = 1;
+    public static final int NETWORK_TYPE_WIFI = NETWORK_TYPE_BASE+2;
     /**mobile网络开启：2G、2.5G、3G、3.5G等*/
-    public static final int NETWORK_TYPE_MOBILE = 2;
-    /**wifi和mobile网络都已开启*/
-    public static final int NETWORK_TYPE_ALL = 3;
+    public static final int NETWORK_TYPE_MOBILE = NETWORK_TYPE_BASE+3;
+    /** wifi和mobile网络都已开启*/
+    public static final int NETWORK_TYPE_ALL = NETWORK_TYPE_BASE+4;
     
-    /**当前网络为3G网络*/
-    public static final int NETWORK_TYPE_MOBILE_3G = 10;
-    /**当前网络为4G网络*/
-    public static final int NETWORK_TYPE_MOBILE_4G = 11;
-    /**当前网络为2G或者其他网络*/
-    public static final int NETWORK_TYPE_MOBILE_OTHER = 12;	
+    /**网络类型 - 当前网络为3G网络*/
+    public static final int NETWORK_TYPE_MOBILE_3G = NETWORK_TYPE_BASE+10;
+    /**网络类型 - 当前网络为4G网络*/
+    public static final int NETWORK_TYPE_MOBILE_4G = NETWORK_TYPE_BASE+11;
+    /**网络类型 - 当前网络为2G或者其他网络*/
+    public static final int NETWORK_TYPE_MOBILE_OTHER = NETWORK_TYPE_BASE+12;
+	/**网络类型 - 无连接*/
+	public static final int NETWORK_TYPE_NO_CONNECTION = -1231545315;
     
-	
-	
+
 	/**
 	 * 获取当然有效的网络类型，该函数只区分WIFI和MOBILE。详细区分
 	 * wifi、2g、3g、4g请查看函数：<BR>
@@ -36,28 +38,22 @@ public class NetUtils {
 	 * @return int 网络类型
 	 */
 	public static int getNetConnectType(Context context) {
-		int res = 0;
-        final ConnectivityManager connMgr = (ConnectivityManager) context
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
+		int res = NETWORK_TYPE_UNKNOWN;
+        final ConnectivityManager connMgr =
+				(ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         final NetworkInfo wifi = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         final NetworkInfo mobile = connMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-
         if (((wifi != null) && wifi.isAvailable() && wifi.isConnectedOrConnecting())
                 && ((mobile != null) && mobile.isAvailable() && mobile.isConnectedOrConnecting())) {
         	res = NETWORK_TYPE_ALL;
-        	LogUtils.log("getNetConnectType:----- ConnectType = ------"+"NETWORK_TYPE_ALL");
         } else if ((wifi != null) && wifi.isAvailable() && wifi.isConnectedOrConnecting()) {
         	res = NETWORK_TYPE_WIFI;
-        	LogUtils.log("getNetConnectType:----- ConnectType = ------"+"NETWORK_TYPE_WIFI");
         } else if ((mobile != null) && mobile.isAvailable() && mobile.isConnectedOrConnecting()) {
         	res = NETWORK_TYPE_MOBILE;
-        	LogUtils.log("getNetConnectType:----- ConnectType = ------"+"NETWORK_TYPE_MOBILE");
         } else {
         	res = NETWORK_TYPE_UNKNOWN;
-        	LogUtils.log("getNetConnectType:----- ConnectType = ------"+"NETWORK_TYPE_UNKNOWN");
-        }        
-        LogUtils.log("getNetConnectType:----- end ------");
-        return res;       
+        }
+        return res;
     }
 	
 	
@@ -124,5 +120,62 @@ public class NetUtils {
 	 */
 	public static boolean isNetConnected(Context context) {
 		return getNetConnectType(context)!=NETWORK_TYPE_UNKNOWN;
+	}
+
+	/**
+	 * 判断当前网络的类型是否是移动网络
+	 *
+	 * @param context 上下文
+	 * @return 当前网络的类型是否是移动网络。false：当前没有网络连接或者网络类型不是移动网络
+	 */
+	public static boolean isMobileByType(Context context) {
+		return getCurrentNetworkType(context) ==
+				ConnectivityManager.TYPE_MOBILE;
+	}
+
+
+	/**
+	 * 获取当前网络的类型
+	 *
+	 * @param context 上下文
+	 * @return 当前网络的类型。具体类型可参照ConnectivityManager中的TYPE_BLUETOOTH、TYPE_MOBILE、TYPE_WIFI等字段。当前没有网络连接时返回NetworkUtils.NETWORK_TYPE_NO_CONNECTION
+	 */
+	public static int getCurrentNetworkType(Context context) {
+		NetworkInfo networkInfo
+				= ((ConnectivityManager) context.getSystemService(
+				Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
+		return networkInfo != null
+				? networkInfo.getType()
+				: NETWORK_TYPE_NO_CONNECTION;
+	}
+
+	/**
+	 * 获取当前网络的状态
+	 *
+	 * @param context 上下文
+	 * @return 当前网络的状态。具体类型可参照NetworkInfo.State.CONNECTED、NetworkInfo.State.CONNECTED.DISCONNECTED等字段。当前没有网络连接时返回null
+	 */
+	public static NetworkInfo.State getCurrentNetworkState(Context context) {
+		NetworkInfo networkInfo
+				= ((ConnectivityManager) context.getSystemService(
+				Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
+		return networkInfo != null ? networkInfo.getState() : null;
+	}
+
+	/**
+	 * 判断是否连接WIFI
+	 * @param context  上下文
+	 * @return  boolean
+	 */
+	public static boolean isWifiConnected(Context context) {
+		ConnectivityManager connectivityManager
+				= (ConnectivityManager) context.getSystemService(
+				Context.CONNECTIVITY_SERVICE);
+		NetworkInfo wifiNetworkInfo = connectivityManager.getNetworkInfo(
+				ConnectivityManager.TYPE_WIFI);
+		if (wifiNetworkInfo.isConnected()) {
+			return true;
+		}
+		return false;
 	}
 }

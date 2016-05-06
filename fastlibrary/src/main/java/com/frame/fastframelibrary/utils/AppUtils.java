@@ -13,10 +13,8 @@ import android.os.Parcelable;
 import com.frame.fastframelibrary.FastApplication;
 import java.io.File;
 
-
+/** App相关工具类*/
 public class AppUtils {
-
-
     /**
      * 获取包名
      * @return
@@ -94,7 +92,6 @@ public class AppUtils {
 		return applicationName;
     }
 
-    
     /**
      * 获取应用缓存路径
      * @return
@@ -106,25 +103,23 @@ public class AppUtils {
 		} else {
 			File esd = Environment.getExternalStorageDirectory();
 			if (esd != null) {
-				return new File(esd, "/Android/data/" + getPackageName()
-						+ "/cache");
+				return new File(esd, "/Android/data/" + getPackageName()+ "/cache");
 			} else {
 				return null;
 			}
 		}
 	}
-    
-    
+
     /**
      * 
      * 判断桌面是否已添加快捷方式
      * @return
      */
-    public static boolean hasShortcut() {
+    public static boolean shortcut4Exist() {
         boolean result = false;
         String title = null;
         try {
-            final PackageManager pm = FastApplication.getInstance().getPackageManager();
+            PackageManager pm = FastApplication.getInstance().getPackageManager();
             title = pm.getApplicationLabel(pm.getApplicationInfo(getPackageName(),PackageManager.GET_META_DATA)).toString();
         } catch (Exception e) {
             LogUtils.e(e);
@@ -143,25 +138,21 @@ public class AppUtils {
         }
         return result;
     }
-
-
     /**
      *
      * 为当前应用添加桌面快捷方式
      * @param iconResId 图片资源id
      */
-    public static void addShortcut(int iconResId) {
+    public static void shortcut4Add(int iconResId) {
         if (iconResId>0){
             try {
-
                 Intent shortcut = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
-
-                Intent shortcutIntent = FastApplication.getInstance().getPackageManager()
-                        .getLaunchIntentForPackage(getPackageName());
+                Intent shortcutIntent =
+                        FastApplication.getInstance().getPackageManager().getLaunchIntentForPackage(getPackageName());
                 shortcut.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
                 String title = null;
                 try {
-                    final PackageManager pm = FastApplication.getInstance().getPackageManager();
+                    PackageManager pm = FastApplication.getInstance().getPackageManager();
                     title = pm.getApplicationLabel(pm.getApplicationInfo(getPackageName(),PackageManager.GET_META_DATA)).toString();
                 } catch (Exception e) {
                     LogUtils.e(e);
@@ -183,12 +174,12 @@ public class AppUtils {
     /**
      * 删除当前应用的桌面快捷方式
      */
-    public static void delShortcut() {
+    public static void shortcut4Del() {
         Intent shortcut = new Intent("com.android.launcher.action.UNINSTALL_SHORTCUT");
         // 获取当前应用名称
         String title = null;
         try {
-            final PackageManager pm = FastApplication.getInstance().getPackageManager();
+            PackageManager pm = FastApplication.getInstance().getPackageManager();
             title = pm.getApplicationLabel(pm.getApplicationInfo(getPackageName(),PackageManager.GET_META_DATA)).toString();
         } catch (Exception e) {
             LogUtils.e(e);
@@ -198,6 +189,5 @@ public class AppUtils {
         Intent shortcutIntent = FastApplication.getInstance().getPackageManager().getLaunchIntentForPackage(getPackageName());
         shortcut.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
         FastApplication.getInstance().sendBroadcast(shortcut);
-    }    
-
+    }
 }

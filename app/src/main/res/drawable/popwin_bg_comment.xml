@@ -2,6 +2,6 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle"
     >
-    <solid android:color="@color/comment_popup_bg"/>
+    <solid android:color="@color/popup_comment_bg"/>
     <corners android:radius="4dp"/>
 </shape>

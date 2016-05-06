@@ -12,9 +12,20 @@ public class ToastUtils {
 		showToast(context, strgResouceId,false);
 	}
 	public static void showToast(Context context, String msg, boolean isLongTime){
-		Toast.makeText(context, msg, isLongTime? Toast.LENGTH_LONG: Toast.LENGTH_SHORT).show();
+		if(context!=null&&StringUtils.isNotEmpty(msg)){
+			Toast.makeText(context, msg, isLongTime? Toast.LENGTH_LONG: Toast.LENGTH_SHORT).show();
+		}
 	}
 	public static void showToast(Context context, int strgResouceId, boolean isLongTime){
-		Toast.makeText(context, context.getString(strgResouceId), isLongTime? Toast.LENGTH_LONG: Toast.LENGTH_SHORT).show();
+		if(context!=null&&strgResouceId>0){
+			String msg =null;
+			try {
+				msg = context.getString(strgResouceId);
+			} catch (Exception e) {
+			}
+			if(StringUtils.isNotEmpty(msg)){
+				Toast.makeText(context, context.getString(strgResouceId), isLongTime? Toast.LENGTH_LONG: Toast.LENGTH_SHORT).show();
+			}
+		}
 	}
 }

@@ -7,9 +7,7 @@ import android.view.animation.Animation;
 import com.frame.fastframe.R;
 import com.frame.fastframelibrary.aosp.basepopwindow.BasePopupWindow;
 
-/**
- * 从底部滑上来的popup
- */
+/** 从底部滑上来的popup */
 public class PopWin4SlideFromBottom extends BasePopupWindow implements View.OnClickListener{
 
     private View popupView;
@@ -69,6 +67,5 @@ public class PopWin4SlideFromBottom extends BasePopupWindow implements View.OnCl
             default:
                 break;
         }
-
     }
 }

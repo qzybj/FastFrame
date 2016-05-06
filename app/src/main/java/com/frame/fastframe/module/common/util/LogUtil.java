@@ -444,8 +444,7 @@ public class LogUtil {
             else {
                 int b = ste.getClassName().lastIndexOf(".") + 1;
                 String TAG = ste.getClassName().substring(b);
-                detailMessage = TAG + "->" + ste.getMethodName() + "():" + ste.getLineNumber()
-                        + "->" + message;
+                detailMessage = TAG + "->" + ste.getMethodName() + "():" + ste.getLineNumber()+ "->" + message;
                 break;
             }
         }

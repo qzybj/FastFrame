@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:text="赞  "
                 android:layout_centerInParent="true"
-                android:textColor="@color/comment_popup_tx_bg"
+                android:textColor="@color/popup_comment_tx_bg"
                 android:textSize="12sp"
                 android:drawablePadding="5dp"
                 />
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:text="评论"
                 android:drawableLeft="@mipmap/ic_launcher"
-                android:textColor="@color/comment_popup_tx_bg"
+                android:textColor="@color/popup_comment_tx_bg"
                 android:textSize="12sp"
                 android:drawablePadding="5dp"
                 android:layout_centerInParent="true"

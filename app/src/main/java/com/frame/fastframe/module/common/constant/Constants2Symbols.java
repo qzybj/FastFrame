@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package com.frame.fastframe.module.common.util;
+package com.frame.fastframe.module.common.constant;
 
 /**
  * 常用符号
  */
-public class Symbols {
+public class Constants2Symbols {
 	/**
 	 * 冒号
 	 */

@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.frame.fastframe.module.product.moduleview.interfaces.ModuleViewInterface;
-import com.frame.fastframe.module.product.moduleview.utils.LogUtils;
 import com.frame.fastframelibrary.utils.ImageViewUtils;
+import com.frame.fastframelibrary.utils.LogUtils;
 import com.frame.fastframelibrary.utils.ViewUtils;
 
 import org.xutils.x;
