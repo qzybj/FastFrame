@@ -2,6 +2,7 @@ package com.frame.fastframe.view.popwinimpl.adapter;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.PopupWindow;
 
 import com.frame.fastframe.R;
 import com.frame.fastframe.ui.simple.bean.GroupChildModel;
@@ -14,8 +15,10 @@ import java.util.ArrayList;
 /**Popwin - 用于分组展示数据*/
 public class GroupAdapter extends QuickAdapter<GroupAdapter.IGroupModel> {
     private PopWin4SlideFromBottomPlus.OnPopupItemClickListener mListener;
-    public GroupAdapter(Context context, int layoutResId, ArrayList<IGroupModel> data){
+    private PopupWindow mPopupWindow;
+    public GroupAdapter(Context context, PopupWindow popupView, int layoutResId, ArrayList<IGroupModel> data){
         super(context,layoutResId,data);
+        this.mPopupWindow = popupView;
     }
     @Override
     protected void convert(BaseAdapterHelper helper, IGroupModel item){
@@ -49,6 +52,9 @@ public class GroupAdapter extends QuickAdapter<GroupAdapter.IGroupModel> {
                 public void onClick(View v) {
                     if(mListener!=null){
                         mListener.onItemClick( getItem(helper.getPosition()),helper.getPosition());
+                        if(mPopupWindow!=null){
+                            mPopupWindow.dismiss();
+                        }
                     }
                 }
             });

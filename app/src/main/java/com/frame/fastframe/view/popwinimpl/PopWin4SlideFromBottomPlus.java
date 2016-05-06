@@ -59,7 +59,7 @@ public class PopWin4SlideFromBottomPlus extends BasePopupWindow{
 
     public void initListView(ArrayList<GroupAdapter.IGroupModel> data, OnPopupItemClickListener listener) {
         if(popup_list!=null){
-            GroupAdapter adapter = new GroupAdapter(mContext,R.layout.popwin_bottomplus_gridview_item,data);
+            GroupAdapter adapter = new GroupAdapter(mContext,mPopupWindow,R.layout.popwin_bottomplus_gridview_item,data);
             adapter.setChildClickItemListen(listener);
             popup_list.setAdapter(adapter);
         }

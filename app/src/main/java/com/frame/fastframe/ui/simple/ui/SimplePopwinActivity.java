@@ -105,7 +105,7 @@ public class SimplePopwinActivity extends BaseActivity {
         PopWin4SlideFromBottom popwin = new PopWin4SlideFromBottom(getBaseActivity());
         popwin.showPopupWindow();
     }
-
+    PopWin4SlideFromBottomPlus popwin;
     public void popStyle4BottomMenuPlus() {
         PopWin4SlideFromBottomPlus popwin = new PopWin4SlideFromBottomPlus(getBaseActivity());
         ArrayList<GroupAdapter.IGroupModel> groups = new ArrayList<GroupAdapter.IGroupModel>();
@@ -117,7 +117,7 @@ public class SimplePopwinActivity extends BaseActivity {
             for (int j = 0; j < 3; j++) {
                 GroupChildModel child = new GroupChildModel();
                 child.setId(j+"");
-                child.setId("name"+j);
+                child.setName("name"+j);
                 childs.add(child);
             }
             group.setChilds(childs);

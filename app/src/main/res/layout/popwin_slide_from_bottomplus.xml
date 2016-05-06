@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    style="@style/style_common_matchparent">
 
     <LinearLayout
         android:id="@+id/click_to_dismiss"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        style="@style/style_common_matchparent"
         android:background="@color/popup_translucent_bg"
+        android:orientation="vertical"
         android:weightSum="5">
 
         <View
             style="@style/style_line_common"
-            android:layout_weight="2" />
+            android:layout_weight="2"
+            android:background="@android:color/transparent" />
 
         <ListView
             android:id="@+id/popup_list"
-            style="@style/style_common_matchparent"
+            style="@style/style_listview_common"
             android:layout_height="0dp"
             android:layout_weight="3"
+            android:background="@color/white"
             android:divider="@color/color_dcdcdc"
             android:dividerHeight="0.5dp"
             android:scrollbars="none" />
