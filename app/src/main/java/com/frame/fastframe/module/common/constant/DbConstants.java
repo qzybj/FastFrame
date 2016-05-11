@@ -18,7 +18,7 @@ public class DbConstants {
     public static final String       IMAGE_SDCARD_CACHE_TABLE_TABLE_NAME           = "image_sdcard_cache";
     public static final String       IMAGE_SDCARD_CACHE_TABLE_ID                   = android.provider.BaseColumns._ID;
     public static final String       IMAGE_SDCARD_CACHE_TABLE_TAG                  = "tag";
-    public static final String       IMAGE_SDCARD_CACHE_TABLE_URL                  = "url";
+    public static final String       IMAGE_SDCARD_CACHE_TABLE_URL                  = "loadUrl";
     public static final String       IMAGE_SDCARD_CACHE_TABLE_PATH                 = "path";
     public static final String       IMAGE_SDCARD_CACHE_TABLE_ENTER_TIME           = "enter_time";
     public static final String       IMAGE_SDCARD_CACHE_TABLE_LAST_USED_TIME       = "last_used_time";
@@ -47,7 +47,7 @@ public class DbConstants {
     public static final StringBuffer CREATE_HTTP_CACHE_TABLE_UNIQUE_INDEX          = new StringBuffer();
     public static final String       HTTP_CACHE_TABLE_TABLE_NAME                   = "http_cache";
     public static final String       HTTP_CACHE_TABLE_ID                           = android.provider.BaseColumns._ID;
-    public static final String       HTTP_CACHE_TABLE_URL                          = "url";
+    public static final String       HTTP_CACHE_TABLE_URL                          = "loadUrl";
     public static final String       HTTP_CACHE_TABLE_RESPONSE                     = "response";
     public static final String       HTTP_CACHE_TABLE_EXPIRES                      = "expires";
     public static final String       HTTP_CACHE_TABLE_CREATE_TIME                  = "gmt_create";

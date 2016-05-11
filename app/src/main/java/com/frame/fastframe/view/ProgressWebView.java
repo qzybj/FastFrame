@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 import com.frame.fastframe.R;
 import com.frame.fastframe.ui.base.BaseWebViewActivity;
 import com.frame.fastframelibrary.utils.GsonUtils;
+import com.frame.fastframelibrary.utils.LogUtils;
 import com.frame.fastframelibrary.utils.WebViewUtil;
 import com.github.lzyzsd.jsbridge.BridgeHandler;
 import com.github.lzyzsd.jsbridge.BridgeWebView;
@@ -17,6 +18,11 @@ import com.github.lzyzsd.jsbridge.CallBackFunction;
 import com.google.gson.JsonObject;
 
 public class ProgressWebView extends BridgeWebView {
+    private final String TAG = ProgressWebView.this.getClass().getName();
+    /**JSBRIDGE供H5调用的原生方法名*/
+    public final static String JSBRIDGE_METHOD4NATIVE="jsbridge_method4native";
+    /**JSBRIDGE供原生调用的H5方法名*/
+    public final static String JSBRIDGE_METHOD4H5="jsbridge_method4h5";
     private ProgressBar progressbar;
     public ProgressWebView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -35,18 +41,47 @@ public class ProgressWebView extends BridgeWebView {
      * 初始化Js调用的句柄
      */
     public void initJsHandler(final Context context) {
+        //注册被H5调用事件 - 通用支持事件(在html页面里 需要注册)
+        this.registerHandler(JSBRIDGE_METHOD4NATIVE, new BridgeHandler() {
+            @Override
+            public void handler(String jsonStr, CallBackFunction function) {
+                //进行跳转
+                JsonObject jsonObj = GsonUtils.toJsonObject(jsonStr);
+                String returnStr ="";
+                if(jsonObj!=null&&jsonObj.isJsonNull()){
+                    if (jsonObj.has(WebViewUtil.KEY_URL)) {
+                        //打开支持分享的页面
+
+                    }
+                }
+                function.onCallBack(returnStr);
+            }
+        });
+        //注册被H5调用事件 - (在html页面里 需要注册)
         this.registerHandler("goUrlWithShare", new BridgeHandler() {
             @Override
-            public void handler(String strData, CallBackFunction function) {
+            public void handler(String jsonStr, CallBackFunction function) {
                 //进行跳转
-                JsonObject jsonObj=  GsonUtils.toJsonObject(strData);
+                JsonObject jsonObj=  GsonUtils.toJsonObject(jsonStr);
                 if (jsonObj.has(WebViewUtil.KEY_URL)) {
                     Intent intent = new Intent(context, BaseWebViewActivity.class);
-                    intent.putExtra("url", jsonObj.get(WebViewUtil.KEY_URL).getAsString());
+                    intent.putExtra("loadUrl", jsonObj.get(WebViewUtil.KEY_URL).getAsString());
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 }
                 function.onCallBack("");
+            }
+        });
+    }
+
+    /**调用js方法
+     * @param jsonCommand  json String 格式
+     */
+    public void callJsMethod(String jsonCommand){
+        this.callHandler(JSBRIDGE_METHOD4H5,jsonCommand, new CallBackFunction() {
+            @Override
+            public void onCallBack(String jsonStr) {
+
             }
         });
     }

@@ -21,8 +21,7 @@ import com.github.lzyzsd.jsbridge.CallBackFunction;
 import org.xutils.view.annotation.ViewInject;
 
 /**
- * 用于普通的Url展示
- * WebViewUtil.goInnerWebView(con,"title","file:///android_asset/jsbridgedemo.html");
+ * BaseWebView基类,继承该类需要给 mWebView赋值
  */
 public class BaseWebViewActivity extends BaseActivity {
     private final String TAG = BaseWebViewActivity.this.getClass().getName();
@@ -32,7 +31,7 @@ public class BaseWebViewActivity extends BaseActivity {
     /**是否清除缓存*/
     public static boolean isCleanWebViewCache = false;
 
-    protected String url = "";
+    protected String loadUrl = WebViewUtilPlus.COMMON_LOADURL;
 
     ValueCallback<Uri> mUploadMessage;
 
@@ -49,123 +48,75 @@ public class BaseWebViewActivity extends BaseActivity {
 
     @Override
     public void initContentView(View view) {
-        mProgressBar.setMax(100);
-        initWebView();
-    }
-
-    @Override
-    public void initData(Bundle savedInstanceState) {
         setTitlebarLeftDrawable(0,0);
         setTitlebarLeftText("取消");
         setTitlebarContent(R.string.app_name);
         setTitlebarRightVisibility(true);
         setTitlebarRightDrawable(R.mipmap.ic_launcher,0);
-
-
-        mWebView.getSettings().setJavaScriptEnabled(true);
-        mWebView.initJsHandler(getBaseActivity());
-        if (mWebView != null && StringUtils.isNotEmpty(url)) {
-            mWebView.loadUrl(url);
-        }
-        //设置title
-        String title = IntentUtils.getIntentStr(getIntent(), WebViewUtilPlus.KEY_TITLE);
-        if (StringUtils.isNotEmpty(title)) {
-            setTitlebarContent(title);
-        }
-
-        //设置展示特殊类型UI
-        String type = IntentUtils.getIntentStr(getIntent(), WebViewUtilPlus.KEY_TYPE);
-        if (StringUtils.isNotEmpty(type)) {
-
-        }
-        //设置加载Url
-        url = IntentUtils.getIntentStr(getIntent(), WebViewUtilPlus.KEY_URL);
-        if(StringUtils.isEmpty(url)) {
-            url = WebViewUtilPlus.COMMON_LOADURL;
-        }
-        if (StringUtils.isNotEmpty(url)) {
-            loadUrl(url);
+        initWebView();
+        if(mProgressBar!=null){
+            mProgressBar.setMax(100);
         }
     }
 
+    @Override
+    public void initData(Bundle savedInstanceState) {
+        setTitlebarContent(IntentUtils.getIntentStr(getIntent(), WebViewUtilPlus.KEY_TITLE));//设置title
+        initCustomUI(IntentUtils.getIntentStr(getIntent(), WebViewUtilPlus.KEY_TYPE)); //设置展示特殊类型UI
+        loadUrl(IntentUtils.getIntentStr(getIntent(), WebViewUtilPlus.KEY_URL)); //设置加载Url
+    }
+
+    /**
+     * 根据不同的类型key，来初始化不同的UI
+     * @param typeKey 类型定义key
+     */
+    private void initCustomUI(String typeKey) {
+
+    }
+
     protected void onClickTitleRight(View v) {
-        callJsMethod_shared("点击右上角，触发js的相关功能");
+        mWebView.callJsMethod("点击右上角，触发js的相关功能");
     }
 
     @Override
     protected void clickEvent(View v) {
 
     }
-
     public WebView getWebView() {
         return mWebView;
     }
     public void loadUrl(String url) {
         LogUtils.log(url);
-        if (mWebView != null) {
+        if (mWebView != null && StringUtils.isNotEmpty(url)) {
             mWebView.loadUrl(url);
         }
     }
 
     public void initWebView() {
-        WebViewUtil.initWebView(mWebView);
-        mWebView.setWebChromeClient(new WebChromeClient() {
-            @SuppressWarnings("unused")
-            public void openFileChooser(ValueCallback<Uri> uploadMsg, String AcceptType, String capture) {
-                this.openFileChooser(uploadMsg);
-            }
+        if(mWebView!=null){
+            WebViewUtil.initWebView(mWebView);
+            mWebView.initJsHandler(getBaseActivity());
+            mWebView.setWebChromeClient(new WebChromeClient() {
+                @SuppressWarnings("unused")
+                public void openFileChooser(ValueCallback<Uri> uploadMsg, String AcceptType, String capture) {
+                    this.openFileChooser(uploadMsg);
+                }
 
-            @SuppressWarnings("unused")
-            public void openFileChooser(ValueCallback<Uri> uploadMsg, String AcceptType) {
-                this.openFileChooser(uploadMsg);
-            }
+                @SuppressWarnings("unused")
+                public void openFileChooser(ValueCallback<Uri> uploadMsg, String AcceptType) {
+                    this.openFileChooser(uploadMsg);
+                }
 
-            public void openFileChooser(ValueCallback<Uri> uploadMsg) {
-                mUploadMessage = uploadMsg;
-                pickFile();
+                public void openFileChooser(ValueCallback<Uri> uploadMsg) {
+                    mUploadMessage = uploadMsg;
+                    pickFile();
+                }
+            });
+            //mWebView.setWebViewClient(new BasicWebViewClient(this));//自定义WebView内部已经实现，不用再处理
+            if (isCleanWebViewCache) {
+                WebViewUtil.clearCache(mWebView);
             }
-        });
-
-        //在html页面里 需要注册 jsBridgeFromH5方法
-        mWebView.registerHandler("jsBridgeFromH5", new BridgeHandler() {
-            @Override
-            public void handler(String data, CallBackFunction function) {
-                LogUtils.i(TAG, "handler = jsBridge, receive " + data);
-                function.onCallBack("jsBridge is call");
-            }
-        });
-        //在html页面里 需要注册 jsBridgeFromH5方法
-        mWebView.registerHandler("callNativeShared", new BridgeHandler() {
-            @Override
-            public void handler(String data, CallBackFunction function) {
-                LogUtils.i(TAG, "handler = callNativeShared, receive " + data);
-                //调用分享操作
-                function.onCallBack("callNativeShared is call");
-            }
-        });
-        //mWebView.setWebViewClient(new BasicWebViewClient(this));//自定义WebView内部已经实现，不用再处理
-        if (isCleanWebViewCache) {
-            WebViewUtil.clearCache(mWebView);
         }
-    }
-
-    /**调用js方法*/
-    private void callJsMethod(String command){
-        mWebView.callHandler("callJsMethod", command, new CallBackFunction() {
-            @Override
-            public void onCallBack(String data) {
-
-            }
-        });
-    }
-    /**调用js方法*/
-    private void callJsMethod_shared(String command){
-        mWebView.callHandler("callJsMethod_shared", command, new CallBackFunction() {
-            @Override
-            public void onCallBack(String data) {
-
-            }
-        });
     }
 
     public void pickFile() {

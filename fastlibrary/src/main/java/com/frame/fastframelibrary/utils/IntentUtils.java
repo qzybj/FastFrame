@@ -4,12 +4,20 @@ import android.content.Intent;
 import android.os.Bundle;
 
 public class IntentUtils {
-	
+
+
+	public static boolean isNotEmpty(Intent intent){
+		return !isEmpty(intent);
+	}
 	public static boolean isEmpty(Intent intent){
 		if (intent!=null&&intent.getExtras()!=null&&!intent.getExtras().isEmpty()) {
 			return false;
 		}
 		return true;
+	}
+
+	public static boolean isNotEmpty(Bundle extras){
+		return !isEmpty(extras);
 	}
 	public static boolean isEmpty(Bundle extras){
 		if (extras!=null&&!extras.isEmpty()) {
@@ -17,6 +25,7 @@ public class IntentUtils {
 		}
 		return true;
 	}
+
 	
 	
 	public static Bundle getBundle(Intent intent){
@@ -25,14 +34,15 @@ public class IntentUtils {
 		}
 		return null;
 	}
-	
-	public static Bundle setIntentStr(Intent intent,String key,String value){
+
+	public static Intent setIntentStr(Intent intent,String key,String value){
 		if(intent==null){
 			intent = new Intent();
 		}
-		return setBundleStr(intent.getExtras(), key,value);
+		intent.putExtras(setBundleStr(intent.getExtras(), key,value));
+		return intent;
 	}
-	
+
 	public static Bundle setBundleStr(Bundle extras, String key, String value){
 		if (extras==null) {
 			extras = new Bundle();
@@ -94,7 +104,7 @@ public class IntentUtils {
 	}
 	
 	public static boolean containsKey(Bundle extras,String key){
-		if (extras!=null&&!extras.isEmpty()&&extras.containsKey(key)) {
+		if (isNotEmpty(extras)&&extras.containsKey(key)) {
 			return true;
 		}
 		return false;

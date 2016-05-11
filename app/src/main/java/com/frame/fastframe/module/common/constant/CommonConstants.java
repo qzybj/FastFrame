@@ -9,7 +9,7 @@ public class CommonConstants {
     /**显示网址*/
     public static final String TAG = AppUtils.getApplicationName();
     /**显示网址*/
-    public static final String KEY_URL = "url";
+    public static final String KEY_URL = "loadUrl";
     /**title显示*/
     public static final String KEY_TITLE = "title";
 
