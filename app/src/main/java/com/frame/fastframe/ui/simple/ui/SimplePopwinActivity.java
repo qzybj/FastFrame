@@ -43,12 +43,6 @@ public class SimplePopwinActivity extends BaseActivity {
         popStyle4BottomMenuPlus();
     }
 
-    private ListView mListView;
-    private ArrayList<SingleTypeBean> mDatas = new ArrayList<SingleTypeBean>();
-
-    private SingleTypeAdapter mAdapter;
-
-
     @Override
     public int getLayoutResouceId() {
         return R.layout.activity_simple_popwin;
