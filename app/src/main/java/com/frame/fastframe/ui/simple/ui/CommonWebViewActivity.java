@@ -9,4 +9,5 @@ import com.frame.fastframe.ui.base.BaseWebViewActivity;
  */
 public class CommonWebViewActivity extends BaseWebViewActivity {
 
+
 }

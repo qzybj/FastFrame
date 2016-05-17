@@ -65,6 +65,12 @@
         <activity
             android:name="com.frame.fastframe.ui.simple.ui.SimplePassWordViewActivity"
             android:theme="@style/style_activty_custom" />
+        <activity
+            android:name="com.frame.fastframe.ui.simple.ui.SimpleCameraActivity"
+            android:theme="@style/style_activty_custom" />
+        <activity
+            android:name="com.frame.fastframe.ui.simple.ui.SimpleGalleryActivity"
+            android:theme="@style/style_activty_custom" />
 
 
         <!--图片裁剪处理-->

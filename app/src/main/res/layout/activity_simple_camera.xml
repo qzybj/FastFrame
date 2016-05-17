@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.frame.fastframe.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        style="@style/style_common_matchparent"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/btn_popwin1"
+            style="@style/style_common"
+            android:text="btn_popwinlist"
+            />
+        <Button
+            android:id="@+id/btn_popwin2"
+            style="@style/style_common"
+            android:text="btn_popwinBottomMenu"
+            />
+        <Button
+            android:id="@+id/btn_popwin3"
+            style="@style/style_common"
+            android:text="btn_popwin3"
+            />
+        <Button
+            android:id="@+id/btn_popwin4"
+            style="@style/style_common"
+            android:text="btn_popwin4"
+            />
+
+    </LinearLayout>
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
