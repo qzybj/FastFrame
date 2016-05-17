@@ -25,7 +25,6 @@ public class InfinityUrlAdapter extends BasePagerAdapter {
         FIRST_PAGE = TOTAL_PAGES * MIN_LOOPS / 2;
     }
 
-
     @Override
     public void setPrimaryItem(ViewGroup container, int position, Object object) {
         super.setPrimaryItem(container, FIRST_PAGE/*position*/, object);
@@ -57,4 +56,4 @@ public class InfinityUrlAdapter extends BasePagerAdapter {
     public int getCount() {
         return TOTAL_PAGES * MIN_LOOPS;
     }
-};
+}

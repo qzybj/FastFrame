@@ -26,6 +26,8 @@ import android.widget.ImageView.ScaleType;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import com.frame.fastframe.R;
+import com.squareup.picasso.Picasso;
+
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
@@ -70,9 +72,9 @@ public class UrlTouchImageView extends RelativeLayout {
         this.addView(mProgressBar);
     }
 
-    public void setUrl(String imageUrl)
-    {
-        new ImageLoadTask().execute(imageUrl);
+    public void setUrl(String imageUrl){
+        Picasso.with(mContext).load(imageUrl).into(mImageView);
+        //new ImageLoadTask().execute(imageUrl);
     }
     
     public void setScaleType(ScaleType scaleType) {
@@ -80,8 +82,7 @@ public class UrlTouchImageView extends RelativeLayout {
     }
     
     //No caching load
-    public class ImageLoadTask extends AsyncTask<String, Integer, Bitmap>
-    {
+    public class ImageLoadTask extends AsyncTask<String, Integer, Bitmap>{
         @Override
         protected Bitmap doInBackground(String... strings) {
             String url = strings[0];
