@@ -7,6 +7,7 @@ import android.view.View;
 import com.frame.fastframe.bean.TestBean;
 import com.frame.fastframe.module.home.ui.HomeActivity;
 import com.frame.fastframe.module.news.ui.NewsActivity;
+import com.frame.fastframe.module.previewimage.ui.PreviewImageActivity;
 import com.frame.fastframe.module.product.ui.ProductActivity;
 import com.frame.fastframe.ui.simple.ui.SimpleBaseAdapterActivity;
 import com.frame.fastframe.ui.simple.ui.SimpleCameraActivity;
@@ -109,8 +110,9 @@ public class MainActivityFragmentFrame extends FrameBaseFragment implements Exte
         list.add(getTestBean("添加信息通用样式",ProductActivity.class.getName()));
         list.add(getTestBean("PopWin使用示例",SimplePopwinActivity.class.getName()));
         list.add(getTestBean("PassWordView使用示例",SimplePassWordViewActivity.class.getName()));
-        list.add(getTestBean("Camera使用示例",SimpleCameraActivity.class.getName()));
-        list.add(getTestBean("Gallery使用示例",SimpleGalleryActivity.class.getName()));
+//        list.add(getTestBean("Camera使用示例",SimpleCameraActivity.class.getName()));
+//        list.add(getTestBean("Gallery使用示例",SimpleGalleryActivity.class.getName()));
+        list.add(getTestBean("Gallery使用示例",PreviewImageActivity.class.getName()));
         //list.add(getTestBean("图片编辑",UCropSampleActivity.class.getName()));
         return list;
     }

@@ -7,6 +7,7 @@ import com.frame.fastframe.R;
 import com.frame.fastframe.ui.base.BaseActivity;
 
 public class ProductActivity extends BaseActivity {
+
 	private PictureModuleView mPictureModuleView;
 	@Override
 	public int getLayoutResouceId() {
