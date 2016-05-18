@@ -17,7 +17,7 @@ import java.util.List;
 
 public class PreviewImageActivity extends BaseActivity {
 
-    private static final ArrayList<String> images = new ArrayList<String>(Arrays.asList(
+    public static final ArrayList<String> images = new ArrayList<String>(Arrays.asList(
             "http://img1.goodfon.ru/original/1920x1080/d/f5/aircraft-jet-su-47-berkut.jpg",
             "http://www.dishmodels.ru/picture/glr/13/13312/g13312_7657277.jpg",
             "http://img2.goodfon.ru/original/1920x1080/b/c9/su-47-berkut-c-37-firkin.jpg"

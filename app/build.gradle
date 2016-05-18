@@ -44,8 +44,8 @@ dependencies {
     compile 'com.github.lzyzsd:jsbridge:1.0.4'
     //H5与Native交互的封装
     compile 'com.baoyz.actionsheet:library:1.1.4'
-    compile 'com.bm.photoview:library:1.4.0'
     compile 'com.veinhorn.scrollgalleryview:library:1.0.5'
+    compile 'com.github.chrisbanes:PhotoView:1.2.6'
     //底部弹出窗
     //compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'//图片加载
     //compile 'com.nineoldandroids:library:2.4.0'//向下兼容UI库

@@ -4,29 +4,29 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.frame.fastframe.R;
 import com.frame.fastframe.bean.TestBean;
 import com.frame.fastframe.module.home.ui.HomeActivity;
 import com.frame.fastframe.module.news.ui.NewsActivity;
 import com.frame.fastframe.module.previewimage.ui.DisplayImageActivity;
-import com.frame.fastframe.module.previewimage.ui.PreviewImage1Activity;
 import com.frame.fastframe.module.previewimage.ui.PreviewImageActivity;
 import com.frame.fastframe.module.product.ui.ProductActivity;
 import com.frame.fastframe.ui.simple.ui.SimpleBaseAdapterActivity;
-import com.frame.fastframe.ui.simple.ui.SimpleCameraActivity;
-import com.frame.fastframe.ui.simple.ui.SimpleGalleryActivity;
 import com.frame.fastframe.ui.simple.ui.SimpleMultiBaseAdapterActivity;
-import com.frame.fastframe.R;
 import com.frame.fastframe.ui.simple.ui.SimplePassWordViewActivity;
 import com.frame.fastframe.ui.simple.ui.SimplePopwinActivity;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.BaseAdapterHelper;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.QuickAdapter;
 import com.frame.fastframelibrary.ui.base.FrameBaseFragment;
 import com.frame.fastframelibrary.view.ExtendedListView;
+
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
+
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.List;
+
 import static java.text.DateFormat.SHORT;
 import static java.text.DateFormat.getDateInstance;
 
@@ -101,7 +101,7 @@ public class MainActivityFragmentFrame extends FrameBaseFragment implements Exte
         Intent intent = new Intent();
         intent.setClassName(mParentActivity,className);
         if(DisplayImageActivity.class.getName().equals(className)){
-            intent.putStringArrayListExtra(DisplayImageActivity.INTENT_KEY_IMG, PreviewImage1Activity.images);
+            intent.putStringArrayListExtra(DisplayImageActivity.INTENT_KEY_IMG, PreviewImageActivity.images);
             intent.putExtra(DisplayImageActivity.INTENT_KEY_IMG_INDEX,0);
         }
         startActivity(intent);

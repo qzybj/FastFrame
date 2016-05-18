@@ -1,25 +1,19 @@
 
 package com.frame.fastframe.module.previewimage.ui;
-import android.annotation.SuppressLint;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.BaseAdapter;
-import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-
 import com.frame.fastframe.R;
 import com.frame.fastframe.module.common.util.DensityUtil;
-import com.frame.fastframe.module.previewimage.view.PicGallery;
-import com.frame.fastframe.module.previewimage.view.ZoomImageView;
+import com.frame.fastframe.module.previewimage.view.HackyViewPager;
 import com.frame.fastframe.ui.base.BaseActivity;
 import com.frame.fastframelibrary.utils.DeviceUtils;
 import com.frame.fastframelibrary.utils.NetUtils;
@@ -27,7 +21,8 @@ import com.squareup.picasso.Picasso;
 import org.xutils.view.annotation.ViewInject;
 import java.util.ArrayList;
 
-import uk.co.senab.photoview.PhotoViewAttacher;
+import uk.co.senab.photoview.PhotoView;
+
 
 /**
  * 描述：大图页面
@@ -46,7 +41,7 @@ public class DisplayImageActivity extends BaseActivity {
     /** 图片数据集合 */
     private ArrayList<String> mBigUrlList=null;
     /** 画廊适配器 */
-    private CloImageAdapter mCloImageAdapter=null;
+    private ViewPagerAdapter mImageAdapter =null;
 
     /** 屏幕宽度 */
     public static int screenWidth;
@@ -56,8 +51,8 @@ public class DisplayImageActivity extends BaseActivity {
     private int docRes = - 1;
 
     /** 画廊 */
-    @ViewInject(R.id.cloDisplay)
-    private PicGallery mGallery;
+    @ViewInject(R.id.hv_pager)
+    private HackyViewPager mViewPager;
 
     /** 底部提示点 布局 */
     @ViewInject(R.id.banner_dotlayout)
@@ -84,46 +79,34 @@ public class DisplayImageActivity extends BaseActivity {
             mItemIndex = extras.getInt(INTENT_KEY_IMG_INDEX);
         }
         initPointToDo();
-        refreshGalleryUI();
-        setGallerListener();
+        initViewPager();
     }
 
     /**
      * 刷新GalleryUI
      */
-    private void refreshGalleryUI(){
+    private void initViewPager(){
         if(!NetUtils.isNetConnected(this)){
             return ;
         }
-        mCloImageAdapter = new CloImageAdapter(this);
-        mGallery.setAdapter(mCloImageAdapter);
-        mGallery.setSelection(mItemIndex);
-        mGallery.setAnimationDuration(300);
-    }
-
-    /**
-     * 设置Gallery子项 监听事件
-     *
-     */
-    private void setGallerListener(){
-        mGallery.setOnItemSelectedListener(new OnItemSelectedListener() {
+        mImageAdapter = new ViewPagerAdapter(this);
+        mViewPager.setAdapter(mImageAdapter);
+        mViewPager.setCurrentItem(mItemIndex);
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, final int position, long id) {
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+
+            @Override
+            public void onPageSelected(int position) {
                 mItemIndex = position;
                 showSelectDot(position);
             }
+
             @Override
-            public void onNothingSelected(AdapterView<?> parent) { }
+            public void onPageScrollStateChanged(int state) {}
         });
-        mGallery.setOnItemClickListener(new OnItemClickListener() {
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//				if(ProductDetailActivity.class.getName().equals(extras.getString(INTENT_KEY_FROM))){
-					finish();
-//		        }
-			}
-		});
     }
+
 
     /**
      * 给提示布局里 添加白点
@@ -169,56 +152,36 @@ public class DisplayImageActivity extends BaseActivity {
 		return iv;
 	}
 
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-	}
 
-    public class CloImageAdapter extends BaseAdapter {
-    	private Context context;
-        PhotoViewAttacher mAttacher;
-    	public CloImageAdapter(Context context) {
-    		this.context = context;
-    	}
+    static class ViewPagerAdapter extends PagerAdapter {
+        private Context context;
+        private ArrayList<String> mImgList;
+        public ViewPagerAdapter(Context context) {
+            this.context = context;
+        }
 
-    	@Override
-    	public int getCount() {
-    		return mBigUrlList != null ? mBigUrlList.size() : 0;
-    	}
+        @Override
+        public int getCount() {
+            return mImgList.size();
+        }
 
+        @Override
+        public View instantiateItem(ViewGroup container, int position) {
+            PhotoView photoView = new PhotoView(container.getContext());
+            Picasso.with(context).load(mImgList.get(position)).into(photoView);
+            // Now just add PhotoView to ViewPager and return it
+            container.addView(photoView, LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+            return photoView;
+        }
 
-    	@Override
-    	public Object getItem(int position) {
-    		return mBigUrlList.get(position);
-    	}
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            container.removeView((View) object);
+        }
 
-    	@Override
-    	public long getItemId(int position) {
-    		return position;
-    	}
-
-    	@SuppressLint("InflateParams")
-		@Override
-    	public View getView(int position, View convertView, ViewGroup parent) {
-    		ImageView mImageView = null;
-    		if(null==convertView){
-                RelativeLayout layout = new RelativeLayout(context);
-                RelativeLayout.LayoutParams layoutParam=new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-                layout.setLayoutParams(layoutParam);
-                mImageView = new ImageView(context);
-                RelativeLayout.LayoutParams imgParam=new RelativeLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-                imgParam.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
-                mImageView.setLayoutParams(layoutParam);
-                mAttacher = new PhotoViewAttacher(mImageView);
-                layout.addView(mImageView);
-                convertView = layout;
-    			convertView.setTag(mImageView);
-    		}else{
-    			mImageView=(ImageView) convertView.getTag();
-    		}
-            Picasso.with(context).load(mBigUrlList.get(position)).into(mImageView);
-            mAttacher.update();
-    		return mImageView;
-    	}
+        @Override
+        public boolean isViewFromObject(View view, Object object) {
+            return view == object;
+        }
     }
 }
