@@ -7,6 +7,8 @@ import android.view.View;
 import com.frame.fastframe.bean.TestBean;
 import com.frame.fastframe.module.home.ui.HomeActivity;
 import com.frame.fastframe.module.news.ui.NewsActivity;
+import com.frame.fastframe.module.previewimage.ui.DisplayImageActivity;
+import com.frame.fastframe.module.previewimage.ui.PreviewImage1Activity;
 import com.frame.fastframe.module.previewimage.ui.PreviewImageActivity;
 import com.frame.fastframe.module.product.ui.ProductActivity;
 import com.frame.fastframe.ui.simple.ui.SimpleBaseAdapterActivity;
@@ -98,6 +100,10 @@ public class MainActivityFragmentFrame extends FrameBaseFragment implements Exte
     private void  goActivity(String className){
         Intent intent = new Intent();
         intent.setClassName(mParentActivity,className);
+        if(DisplayImageActivity.class.getName().equals(className)){
+            intent.putStringArrayListExtra(DisplayImageActivity.INTENT_KEY_IMG, PreviewImage1Activity.images);
+            intent.putExtra(DisplayImageActivity.INTENT_KEY_IMG_INDEX,0);
+        }
         startActivity(intent);
     }
 
@@ -112,7 +118,8 @@ public class MainActivityFragmentFrame extends FrameBaseFragment implements Exte
         list.add(getTestBean("PassWordView使用示例",SimplePassWordViewActivity.class.getName()));
 //        list.add(getTestBean("Camera使用示例",SimpleCameraActivity.class.getName()));
 //        list.add(getTestBean("Gallery使用示例",SimpleGalleryActivity.class.getName()));
-        list.add(getTestBean("Gallery使用示例",PreviewImageActivity.class.getName()));
+        //list.add(getTestBean("Gallery使用示例",PreviewImageActivity.class.getName()));
+        list.add(getTestBean("Gallery使用示例",DisplayImageActivity.class.getName()));
         //list.add(getTestBean("图片编辑",UCropSampleActivity.class.getName()));
         return list;
     }

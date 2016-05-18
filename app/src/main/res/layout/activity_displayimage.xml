@@ -1,0 +1,24 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+    <com.frame.fastframe.module.previewimage.view.PicGallery
+        android:id="@+id/cloDisplay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdgeLength="0dip"
+        android:spacing="20dip" />
+
+    <!-- 底部点 -->
+    <LinearLayout
+        android:id="@+id/banner_dotlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="5dip"
+        android:orientation="horizontal" >
+    </LinearLayout>
+
+</RelativeLayout>

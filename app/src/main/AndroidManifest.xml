@@ -77,6 +77,9 @@
         <activity
             android:name="com.frame.fastframe.module.previewimage.ui.PreviewImageActivity"
             android:theme="@style/style_activty_custom" />
+        <activity
+            android:name="com.frame.fastframe.module.previewimage.ui.DisplayImageActivity"
+            android:theme="@style/style_activty_custom" />
 
 
         <!--图片裁剪处理-->
