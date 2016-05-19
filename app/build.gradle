@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion '23.0.1'
+    buildToolsVersion '23.0.2'
     defaultConfig {
         applicationId "com.frame.fastframe"
         minSdkVersion 15
@@ -39,13 +39,12 @@ repositories {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.0'
-    compile 'com.android.support:design:23.1.0'
+    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.android.support:design:23.2.1'
     compile 'com.github.lzyzsd:jsbridge:1.0.4'
     //H5与Native交互的封装
     compile 'com.baoyz.actionsheet:library:1.1.4'
-    compile 'com.veinhorn.scrollgalleryview:library:1.0.5'
-    compile 'com.github.chrisbanes:PhotoView:1.2.6'
+    compile 'com.bm.photoview:library:1.4.0'
     //底部弹出窗
     //compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'//图片加载
     //compile 'com.nineoldandroids:library:2.4.0'//向下兼容UI库

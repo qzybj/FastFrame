@@ -19,15 +19,12 @@ import android.view.MotionEvent;
  * @author Chris Banes
  */
 public class HackyViewPager extends ViewPager {
-
     public HackyViewPager(Context context) {
         super(context);
     }
-
     public HackyViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
-
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         try {

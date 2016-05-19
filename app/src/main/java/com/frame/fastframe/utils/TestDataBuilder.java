@@ -12,8 +12,27 @@ import com.frame.fastframe.module.home.adapter.HomeAdapter;
 import com.frame.fastframe.module.home.bean.ShowBean;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class TestDataBuilder {
+
+    public static final String[] imgs =new String[]{
+            "http://i1.mopimg.cn/img/tt/2015-06/961/20150601172100739.jpg790x600.jpg",
+            "http://i1.17173.itc.cn/2011/news/2011/02/10/11_02101740_08s.jpg",
+            "http://www.hers.cn/uploadfile/2011/0213/20110213035902611.jpg",
+            "http://i1.mopimg.cn/img/tt-admin-xuan/2014-09/800/20140905142547893.jpg190x140.jpg",
+            "http://i1.mopimg.cn/img/tt/2015-06/931/20150602104850579.jpg790x600.jpg",
+            "http://yrs.yintai.com/rs/img/AppCMS/images/38852454-7e89-49c4-8196-03b5cbae8c9d.jpg",
+            "http://yrs.yintai.com/rs/img/AppCMS/images/3ed1d80b-8d73-404f-8fd7-2006f5ebcfb9.jpg",
+            "http://yrs.yintai.com/rs/img/AppCMS/images/5848d0ce-ee6c-41af-b7fb-723e9b1cd573.jpg",
+            "http://yrs.yintai.com/rs/img/AppCMS/images/c130b95f-20da-4bfb-9c81-73ba6d87f832.jpg",
+            "http://yrs.yintai.com/rs/img/AppCMS/images/8b4b30bc-466c-4a0d-9e14-cd081c863189.jpg",
+            "http://10.32.11.74:8018/rs/img/AppCMS/images/15acd1e5-60a0-4c41-a8e9-5433b6ecabd1.jpg",
+            "http://10.32.11.74:8018/rs/img/AppCMS/images/1986b5dd-239b-45b4-922b-c3f7b154ec16.jpg",
+            "http://10.32.11.74:8018/rs/img/AppCMS/images/35017bb9-fd0b-41ac-a8cb-d2d93cd5bba1.jpg"
+    };
+
+    public static final ArrayList<String> imageList = new ArrayList<String>(Arrays.asList(imgs));
 
     public static final String[] testDataStr = {
             "Abbaye de Belloc", "Abbaye du Mont des Cats", "Abertam", "Abondance", "Ackawi",
