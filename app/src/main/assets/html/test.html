@@ -1,0 +1,544 @@
+
+<!-- saved from url=(0038)http://10.32.11.74:8021/Event/h5ToApp/ -->
+<html xmlns="http://www.w3.org/1999/html"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>html To App</title>
+    <meta charset="utf-8">
+    <meta content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <script src="./js_files/jquery-1.7.1.min.js"></script>
+
+    <!-- JavaScript脚本，主要包括了按钮要执行的函数，显示对话框等 -->
+    <script type="text/javascript">
+        //JavaScript方法，弹出对话框显示信息
+        function myFunction() {
+            alert("Hello World!");
+        }
+        function onAlert() {
+            console.log("onAlert method");//显示调试信息
+            alert("This is a alert sample from html");
+        }
+        function onConfirm() {
+            console.log("onConfirm method");
+            var b = confirm("are you sure to login?");
+            alert("your choice is " + b);
+        }
+        function onPrompt() {
+            console.log("onPrompt method");
+            var b = prompt("please input your password", "aaa");
+            alert("your input is " + b);
+        }
+
+        var callClientMethod = "callYintaiMobileMethod";
+
+        //判断对象和方法是否存在
+        function objOrMethodIsExsit(obj, isNotAlert) {
+            if (!window[obj]) {
+                if (!isNotAlert) {
+                    alert(obj + " is not define");
+                }
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+
+        function showAndroidToast() {
+
+        }
+
+        //调用绑定的Java对象的方法，即调用Android代码显示对话框
+        //获取用户信息：
+        function getUserInfo() {
+            if (objOrMethodIsExsit(callClientMethod)) {
+                alert(window[callClientMethod].getuserinfo());
+            }
+        }
+
+        //打开加载层：
+        function pageloadopen() {
+            if (objOrMethodIsExsit(callClientMethod)) {
+                window[callClientMethod].pageloadopen();
+            }
+        }
+
+        //关闭加载层：
+        function pageloadclose() {
+            if (objOrMethodIsExsit(callClientMethod)) {
+                window[callClientMethod].pageloadclose();
+            }
+        }
+
+        //跳转到app页面(跳转另一页)：
+        function jump() {
+            if (objOrMethodIsExsit(callClientMethod)) {
+                var txtjump = document.getElementById("txtjump").value;
+                window[callClientMethod].jump(txtjump);
+            }
+        }
+
+        //跳转到app页面(当前页)：
+        function jumpself() {
+            if (objOrMethodIsExsit(callClientMethod)) {
+                var txtjumpself = document.getElementById("txtjumpself").value;
+                var txtId = document.getElementById("txtId").value;
+                window[callClientMethod].jumpself(txtId, txtjumpself);
+            }
+        }
+
+        //存储CPS信息到客户端
+        function saveCPSinfoToClient() {
+            var paramsObj = {};
+            if (objOrMethodIsExsit(callClientMethod)) {
+                var txtCpssource = document.getElementById("txtCpssource").value;
+                var txtSubcpssource = document.getElementById("txtSubcpssource").value;
+                var txtThkey = document.getElementById("txtThkey").value;
+                paramsObj.cpssource = txtCpssource;
+                paramsObj.subcpssource = txtSubcpssource;
+                paramsObj.thkey = txtThkey;
+                window[callClientMethod].setCpsInfo(JSON.stringify(paramsObj));
+            }
+        }
+
+   
+        //对接JS功能
+        function clickTitleBar(setTitleBarParams) {
+               if (objOrMethodIsExsit(callClientMethod)) {
+                window[callClientMethod].setTitleBar(setTitleBarParams);
+            }
+        }
+        
+		 //标题栏相关：
+        function setTitleBar(setTitleBarParams) {
+            if (objOrMethodIsExsit(callClientMethod)) {
+                window[callClientMethod].setTitleBar(setTitleBarParams);
+            }
+        }
+		 //标题栏相关：
+        function setPull2Refreshable(setTitleBarParams) {
+            if (objOrMethodIsExsit(callClientMethod)) {
+                window[callClientMethod].setPull2Refreshable(setTitleBarParams);
+            }
+        }
+
+		//告诉客户端关闭当前页面：
+        function closeCurrentPage() {
+            if (objOrMethodIsExsit(callClientMethod)) {
+                window[callClientMethod].closeCurrentPage();
+            }
+        }
+
+ 		//跳转到提交成功页面
+        function jumpsubmit() {
+            if (objOrMethodIsExsit(callClientMethod)) {
+                window[callClientMethod].jump("yintaimobile://OrderSubmitInfo?orderId=524155&payModeCode=3&payTypeName=支付宝&amount=88.8&isShowPayBtn=true&creditPeriodTip=测试页面，这只是一个测试");
+            }
+        }
+
+		//立即支付：
+        function startPayNow() {
+            if (objOrMethodIsExsit(callClientMethod)) {
+                window[callClientMethod].startPayNow("yintaimobile://PayNow?orderId=125544&orderSource=1");
+            }
+        }
+		//弹出确认框dialog：
+        function showDialog() {
+            if (objOrMethodIsExsit(callClientMethod)) {
+                window[callClientMethod].showDialog("yintaimobile://ShowDialog?msg=商品删除成功！");
+            }
+        }
+		//H5是否响应标题栏点击返回操作（和响应返回按钮组合使用）
+        function isResponseClickBack() {
+            if (objOrMethodIsExsit(callClientMethod)) {
+                window[callClientMethod].isResponseClickBack();
+            }
+        }
+		//测试登录功能
+        function login() {
+            if (objOrMethodIsExsit(callClientMethod)) {
+                window[callClientMethod].jump("yintaimobile://Login");
+            }
+        }
+		//测试回调功能
+        function operateCallback() {
+                alert("operateCallback is call!");
+        }
+		//测试带参数回调功能
+        function operateCallback(params) {
+                alert(params);
+        }
+
+         //对接Android客户端功能
+        function doJump4Command(jumpUrl) {
+               if (objOrMethodIsExsit(callClientMethod)) {
+                window[callClientMethod].jump(jumpUrl);
+            }
+        }
+
+		//测试分享功能
+        function share() {
+            if (objOrMethodIsExsit(callClientMethod)) {
+                //window[callClientMethod].jump("yintaimobile://Msg_Share?url=http://m.yintai.com/Sales/ProductDetail?itemCode=20-834-5792&content=Betu/百图  通勤OL荷叶领套头雪纺衫女蝴蝶结上衣新款1509T11&title=我在银泰网发现了这个宝贝，只售“158.00元”快来抢吧！&iconUrl=http://p10.ytrss.com/product/20/834/5790/BigImage/yintai_37fbab9e-7a91-42c9-bfd5-8b9ff94ae183.jpg");
+                //window[callClientMethod].jump("yintaimobile://Msg_Share?url=http%3A%2F%2Fm.yintai.com%2FSales%2FProductDetail%3FitemCode%3D20-834-5792&content=Betu%2F%E7%99%BE%E5%9B%BE++%E9%80%9A%E5%8B%A4OL%E8%8D%B7%E5%8F%B6%E9%A2%86%E5%A5%97%E5%A4%B4%E9%9B%AA%E7%BA%BA%E8%A1%AB%E5%A5%B3%E8%9D%B4%E8%9D%B6%E7%BB%93%E4%B8%8A%E8%A1%A3%E6%96%B0%E6%AC%BE1509T11&title=%E6%88%91%E5%9C%A8%E9%93%B6%E6%B3%B0%E7%BD%91%E5%8F%91%E7%8E%B0%E4%BA%86%E8%BF%99%E4%B8%AA%E5%AE%9D%E8%B4%9D%EF%BC%8C%E5%8F%AA%E5%94%AE%E2%80%9C158.00%E5%85%83%E2%80%9D%E5%BF%AB%E6%9D%A5%E6%8A%A2%E5%90%A7%EF%BC%81");
+                //原来有问题的
+                //window[callClientMethod].jump("yintaimobile://Msg_Share?url=http%3A%2F%2Fm.yintai.com%2FSales%2FProductDetail%3FitemCode%3D20-834-5792&content=Betu%2F%E7%99%BE%E5%9B%BE++%E9%80%9A%E5%8B%A4OL%E8%8D%B7%E5%8F%B6%E9%A2%86%E5%A5%97%E5%A4%B4%E9%9B%AA%E7%BA%BA%E8%A1%AB%E5%A5%B3%E8%9D%B4%E8%9D%B6%E7%BB%93%E4%B8%8A%E8%A1%A3%E6%96%B0%E6%AC%BE1509T11&title=%E6%88%91%E5%9C%A8%E9%93%B6%E6%B3%B0%E7%BD%91%E5%8F%91%E7%8E%B0%E4%BA%86%E8%BF%99%E4%B8%AA%E5%AE%9D%E8%B4%9D%EF%BC%8C%E5%8F%AA%E5%94%AE%E2%80%9C158.00%E5%85%83%E2%80%9D%E5%BF%AB%E6%9D%A5%E6%8A%A2%E5%90%A7%EF%BC%81&iconUrl=http%3A%2F%2Fp10.ytrss.com%2Fproduct%2F20%2F834%2F5790%2FBigImage%2Fyintai_37fbab9e-7a91-42c9-bfd5-8b9ff94ae183.jpg");
+                //正式
+                window[callClientMethod].jump("yintaimobile://Msg_Share?url=http%3A%2F%2Fm.yintai.com%2FSales%2FProductDetail%3FitemCode%3D20-813-0870%26pageid%3D30000304&content=betu%E7%99%BE%E5%9B%BE2015%E7%A7%8B%E8%A3%85%E6%96%B0%E6%AC%BE%E7%BB%A3%E8%8A%B1%E7%9F%AD%E6%AC%BE%E5%A5%B3%E5%BC%8F%E5%A4%96%E5%A5%97%E5%AE%BD%E6%9D%BE%E6%A3%92%E7%90%83%E6%9C%8D%E5%A4%96%E5%A5%97&title=%E6%88%91%E5%9C%A8%E9%93%B6%E6%B3%B0%E7%BD%91%E5%8F%91%E7%8E%B0%E4%BA%86%E8%BF%99%E4%B8%AA%E5%AE%9D%E8%B4%9D%EF%BC%8C%E5%8F%AA%E5%94%AE%E2%80%9C188.00%E5%85%83%E2%80%9D%E5%BF%AB%E6%9D%A5%E6%8A%A2%E5%90%A7%EF%BC%81&iconUrl=http%3A%2F%2Fp10.ytrss.com%2Fproduct%2F20%2F813%2F0868%2FLargeImage%2Fyintai_9ae581db-6be3-4cc7-a187-e0e090d005c7.jpg");
+                
+            }
+        }
+        
+        
+        $(function () {
+            var jumpUrlElem = document.getElementById("jumpUrl");
+            var showResultElem = document.getElementById("showResult");
+            var transFormElem = document.getElementById("transForm");
+            EventUtil.addHandler(transFormElem, "click", function () {
+                eventFun(jumpUrlElem.value);
+            });
+
+            EventUtil.addHandler(jumpUrlElem, "keypress", function (event) {
+                if (event.keyCode === 13) {
+                    eventFun(jumpUrlElem.value);
+                }
+            });
+
+
+            function eventFun(val) {
+                jumpUrlElem.value = val;
+                if (!objOrMethodIsExsit(callClientMethod, true)) {
+                    window.location.href = val;
+                }
+            }
+
+            bindSelect();
+
+            $("#jumpUrlSelect").die("change").live("change", function () {
+                jumpUrlElem.value = $(this).val();
+            });
+
+            //$("#transForm")[0].click();
+        })
+
+        //事件处理方法
+        var EventUtil = {
+            addHandler: function (element, type, handler) {
+                if (element.addEventListener) {
+                    element.addEventListener(type, handler, false);
+                } else if (element.attachEvent) {
+                    element.attachEvent("on" + type, handler);
+                } else {
+                    element["on" + type] = handler;
+                }
+            },
+
+            removeHandler: function (element, type, handler) {
+                if (element.removeEventListener) {
+                    element.removeEventListener(type, handler, false);
+                } else if (element.detachEvent) {
+                    element.detachEvent("on" + type, handler);
+                } else {
+                    element["on" + type] = null;
+                }
+            }
+        }
+
+        //绑定select
+        function bindSelect() {
+            var selectStr = "";
+            for (var item in eventTypeObj) {
+                selectStr += "<option value='" + eventTypeObj[item].split("|")[0] + "'>" + eventTypeObj[item].split("|")[1] + "</option>";
+            }
+            document.getElementById("jumpUrlSelect").innerHTML = selectStr;
+        }
+
+        var eventTypeObj = {
+            //用户相关页面
+            myPromotionTicket: "yintaimobile://MyPromotionTicket|我的优惠券",//我的优惠券
+            myOrderList: "yintaimobile://MyOrderList|我的订单列表",//我的订单列表
+            orderDetial: "yintaimobile://OrderDetial?orderid=343434|订单详情",//订单详情
+            messageCenter: "yintaimobile://MessageCenter|消息页面",//消息页面
+            messageDetial: "yintaimobile://MessageDetial?messageid=343434&messagetype=23|消息详情",//消息详情
+            myFavorite: "yintaimobile://MyFavorite|我的收藏",//我的收藏
+            myYintai: "yintaimobile://MyYintai|我的银泰",//我的银泰
+            logisticsView: "yintaimobile://LogisticsView|物流查询",//物流查询
+            login: "yintaimobile://Login|登录",//登录
+
+            //商品详情页
+            secKillDetial: "yintaimobile://SecKillDetial?sku=34344&method=test.jpg&seckillid=12323|秒杀商品详情页",//秒杀商品详情页
+            generalProductDetial: "yintaimobile://GeneralProductDetial?sku=343434&method=test.jpg|普通商品详情页",//普通商品详情页
+
+            //常规频道
+            homePage: "yintaimobile://HomePage?templateid=34344|首页",//首页
+            secKillChannel: "yintaimobile://SecKillChannel|秒杀频道",//秒杀频道
+            none: "yintaimobile://None|无操作(h5)",//无操作
+            currentPage: "yintaimobile://CurrentPage?CurrentPage=34343|跳转到当前页某模板(h5)",//跳转到当前页某模板
+            backTop: "yintaimobile://BackTop|返回页面顶部(h5)",//返回页面顶部
+            specialSell: "yintaimobile://SpecialSell|特卖尊抢频道",//特卖尊抢频道
+            category: "yintaimobile://Category|分类列表",//分类列表
+            shopCart: "yintaimobile://ShopCart|购物袋页面",//购物袋页面
+            searchPage: "yintaimobile://SearchPage|搜索页面",//搜索页面
+            //wulinIntime: "yintaimobile://WulinIntime|武林银泰",//武林银泰
+            //newEveryDay: "yintaimobile://NewEveryDay|每日上新",//每日上新
+            //overseasShop: "yintaimobile://OverSeasShop|海淘频道",//海淘频道
+            scan: "yintaimobile://Scan|扫一扫",//扫一扫
+            shake: "yintaimobile://Shake|摇一摇",//摇一摇
+
+            //活动页面
+            actionSpecialNew: "yintaimobile://ActionSpecialNew|新活动专题页",//新活动专题页
+            //actionSpecial030: "yintaimobile://ActionSpecial030|活动专题页030",//活动专题页030
+            //actionSpecial027: "yintaimobile://ActionSpecial027|活动专题页027",//活动专题页027
+            innerH5: "yintaimobile://InnerH5?url=http://www.yintai.com&title=titles|内嵌h5页面",//内嵌h5页面         ，m站 当前窗口打开
+            outLinkH5: "yintaimobile://OutLinkH5?url=http://www.yintai.com|外链h5页面",//外链h5页面     ,m站 新窗口打开
+            //商品列表类
+            customProductList: "yintaimobile://CustomProductList?keyword=dfdsff&title=titles&showtype=3&Customlistid=34343|自定义商品列",//自定义商品列
+            autoProductList: "yintaimobile://AutoProductList?searchCondition=434344&title=titles&showtype=34|自动商品列表",//自动商品列表
+            searchResult: "yintaimobile://SearchResult?keyword=shousuo&title=titles&searchCondition=343df&showtype=12|搜索结果页",//搜索结果页
+            promotionProductList: "yintaimobile://PromotionProductList?searchcondition=324324&title=titles|促销列表",//促销列表
+
+
+            //功能性事件
+            msg_GetPromotionTicket: "yintaimobile://Msg_GetPromotionTicket?promotionactiveid=343434|领取优惠券",//领取优惠券
+            msg_FavoriteProduct: "yintaimobile://Msg_FavoriteProduct?sku=343434|收藏商品",//收藏商品
+            msg_AddToShopCart: "yintaimobile://Msg_AddToShopCart?sku=343434|加入购物袋",//加入购物袋
+            msg_BuyNowGeniral: "yintaimobile://Msg_BuyNowGeniral?sku=343434&quantity=34343|立即购买普通商品",//立即购买普通商品
+            msg_BuyNowSecKill: "yintaimobile://Msg_BuyNowSecKill?sku=343434&quantity=34343&seckillid=234324|立即购买秒杀商品",//立即购买秒杀商品
+            msg_BuyNowHaitao: "yintaimobile://Msg_BuyNowHaitao?sku=34342&quantity=23|立即购买海淘商品",//立即购买海淘商品
+
+            //PromotionPage: "PromotionPage",//活动页面(已取消)
+
+            limitBuyProductList: "yintaimobile://LimitBuyProductList?bargainid=32432|特卖商品列表（补充）"    //特卖商品列表（补充）
+
+
+			//ShopCarCount: "yintaimobile://ShopCarCount?count=3"									//购物车数量更改
+			//SetTitleBar: "yintaimobile://SetTitleBar?position=left&isShow=true&value=''"		//更改标题栏左侧按钮文字
+			//SetTitleBar: "yintaimobile://SetTitleBar?position=right&isShow=true&value=编辑"		//显示或隐藏标题栏右侧按钮
+			//SetTitleBar: "yintaimobile://SetTitleBar?position=middle&isShow=true&value=标题"    //更改标题
+			//ShieldTopBottom: "yintaimobile://ShieldTopBottom?state=true"							//是否屏蔽顶部和底部的点击事件
+
+        }
+
+        $(function () {
+            $(".p_title").die("click").live("click", function () {
+                if ($(this).find("b").html() == " - ") {
+                    $(this).find("b").html(" + ");
+                    $(this).next("p").slideUp();
+                } else {
+                    $(".p_title").find("b").html(" + ").end().next("p").slideUp();
+
+                    $(this).find("b").html(" - ");
+                    $(this).next("p").slideDown();
+                }
+            });
+
+            $(".p_title").next("p").hide().find("b").html(" + ");
+
+        });
+    </script>
+    <style>
+        body {
+            padding: 10px;
+            margin: 0px;
+            font-size: 13px;
+        }
+
+        input[type='text'] {
+            width: 400px;
+            height: 30px;
+        }
+
+        p {
+            margin-top: 0px;
+        }
+
+        p.p_title {
+            cursor: pointer;
+            font-weight: bolder;
+        }
+
+        p b {
+            color: red;
+        }
+
+        input[type='text'] {
+            width: 98%;
+            padding: 5px 1%;
+            margin: 5px 0;
+            letter-spacing: 0.3px;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+        }
+
+        input[type='button'] {
+            padding: 5px;
+            border: 1px solid yellowgreen;
+            border-radius: 5px;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        input[type='button']:hover {
+            background-color: yellowgreen;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<h1>
+    H5、APP交互测试页面
+</h1>
+
+<p class="p_title">
+    <!-- 前四个按钮调用JS函数 -->
+    0、JavaScript函数调用原生方法 <b> + </b>:
+</p>
+
+<p style="display: none;">
+    <input type="button" value="点击这里!" onclick="myFunction()">
+    <input type="button" value="alert" onclick="onAlert()">
+    <input type="button" value="confirm" onclick="onConfirm()">
+    <input type="button" value="prompt" onclick="onPrompt()">
+    <!-- 上面用了两种定义按钮的方式，效果一样的 -->
+</p>
+
+<p style="color:red;">
+    <!-- 这个Say hello 按钮调用Android代码中的方法 -->
+    以下是用JavaScript按钮调用Android代码
+    <!--<input type="button"-->
+    <!--value="Say hello" onClick="showAndroidToast('Hello Android!')"/>-->
+</p>
+
+<!--<p>-->
+<!--&lt;!&ndash; 这个Say hello 按钮调用Android代码中的方法 &ndash;&gt;-->
+<!--<input id="txtshow" value="Hello Android" type="text">-->
+<!--<input type="button"-->
+<!--value="Say hello" onClick="showAndroidToast()"/>-->
+<!--</p>-->
+
+<p class="p_title">
+    <!-- pageloadopen 按钮调用Android代码中的方法 -->
+    一、打开加载层:<b> + </b>:
+</p>
+
+<p style="display: none;">
+    <input type="button" value="pageloadopen" onclick="pageloadopen()">
+</p>
+
+<p class="p_title">
+    <!-- pageloadclose 按钮调用Android代码中的方法 -->
+    二、关闭加载层:<b> + </b>:
+</p>
+
+<p style="display: none;">
+    <input type="button" value="pageloadclose" onclick="pageloadclose()">
+</p>
+
+<p class="p_title">
+    <!-- 这个getuserinfo 按钮调用Android代码中的方法 -->
+    三、跳转到app页面(跳转另一页)<b> + </b>:
+</p>
+
+<p style="display: none;">
+    params:<input id="txtjump" value="yintaimobile://MessageDetial?messageid=234333&amp;messagetype=0" type="text">
+    <input type="button" value="Jump" onclick="jump()">
+</p>
+
+<p class="p_title">
+    <!-- 这个getuserinfo 按钮调用Android代码中的方法 -->
+    四、跳转到app页面(当前页)<b> + </b>:
+</p>
+
+<p style="display: none;">
+    id:<input id="txtId" type="text" value="MessageDetial"><br>
+    params:<input id="txtjumpself" value="yintaimobile://MessageDetial?messageid=234333&amp;messagetype=0" type="text">
+    <input type="button" value="jumpself" onclick="jumpself()">
+</p>
+
+<p class="p_title">
+    <!-- 这个getuserinfo 按钮调用Android代码中的方法 -->
+    五、获取用户信息：<b> + </b>:
+</p>
+
+<p style="display: none;">
+    <input type="button" value="Get UserInfo" onclick="getUserInfo()">
+</p>
+
+<p class="p_title">
+    <!-- 这个setCpsInfo 按钮调用Android代码中的方法 -->
+    六、存储CPS信息到客户端<b> + </b>:
+</p>
+
+<p style="display: none;">
+    cpssource:<input id="txtCpssource" type="text" value="cpssource"><br>
+    subcpssource:<input id="txtSubcpssource" type="text" value="subcpssource"><br>
+    thkey:<input id="txtThkey" value="thkey" type="text">
+    <input type="button" value="setCpsInfo" onclick="saveCPSinfoToClient()">
+</p>
+
+<p class="p_title">
+    七、h5启动app <b> + </b>:
+</p>
+
+<p style="display: none;">
+    <label>选择地址：</label>
+    <select id="jumpUrlSelect"><option value="yintaimobile://MyPromotionTicket">我的优惠券</option><option value="yintaimobile://MyOrderList">我的订单列表</option><option value="yintaimobile://OrderDetial?orderid=343434">订单详情</option><option value="yintaimobile://MessageCenter">消息页面</option><option value="yintaimobile://MessageDetial?messageid=343434&amp;messagetype=23">消息详情</option><option value="yintaimobile://MyFavorite">我的收藏</option><option value="yintaimobile://MyYintai">我的银泰</option><option value="yintaimobile://LogisticsView">物流查询</option><option value="yintaimobile://Login">登录</option><option value="yintaimobile://SecKillDetial?sku=34344&amp;method=test.jpg&amp;seckillid=12323">秒杀商品详情页</option><option value="yintaimobile://GeneralProductDetial?sku=343434&amp;method=test.jpg">普通商品详情页</option><option value="yintaimobile://HomePage?templateid=34344">首页</option><option value="yintaimobile://SecKillChannel">秒杀频道</option><option value="yintaimobile://None">无操作(h5)</option><option value="yintaimobile://CurrentPage?CurrentPage=34343">跳转到当前页某模板(h5)</option><option value="yintaimobile://BackTop">返回页面顶部(h5)</option><option value="yintaimobile://SpecialSell">特卖尊抢频道</option><option value="yintaimobile://Category">分类列表</option><option value="yintaimobile://ShopCart">购物袋页面</option><option value="yintaimobile://SearchPage">搜索页面</option><option value="yintaimobile://Scan">扫一扫</option><option value="yintaimobile://Shake">摇一摇</option><option value="yintaimobile://ActionSpecialNew">新活动专题页</option><option value="yintaimobile://InnerH5?url=http://www.yintai.com&amp;title=titles">内嵌h5页面</option><option value="yintaimobile://OutLinkH5?url=http://www.yintai.com">外链h5页面</option><option value="yintaimobile://CustomProductList?keyword=dfdsff&amp;title=titles&amp;showtype=3&amp;Customlistid=34343">自定义商品列</option><option value="yintaimobile://AutoProductList?searchCondition=434344&amp;title=titles&amp;showtype=34">自动商品列表</option><option value="yintaimobile://SearchResult?keyword=shousuo&amp;title=titles&amp;searchCondition=343df&amp;showtype=12">搜索结果页</option><option value="yintaimobile://PromotionProductList?searchcondition=324324&amp;title=titles">促销列表</option><option value="yintaimobile://Msg_GetPromotionTicket?promotionactiveid=343434">领取优惠券</option><option value="yintaimobile://Msg_FavoriteProduct?sku=343434">收藏商品</option><option value="yintaimobile://Msg_AddToShopCart?sku=343434">加入购物袋</option><option value="yintaimobile://Msg_BuyNowGeniral?sku=343434&amp;quantity=34343">立即购买普通商品</option><option value="yintaimobile://Msg_BuyNowSecKill?sku=343434&amp;quantity=34343&amp;seckillid=234324">立即购买秒杀商品</option><option value="yintaimobile://Msg_BuyNowHaitao?sku=34342&amp;quantity=23">立即购买海淘商品</option><option value="yintaimobile://LimitBuyProductList?bargainid=32432">特卖商品列表（补充）</option></select>
+    <br>
+    <label>跳转地址：</label><input id="jumpUrl" style="width:100%;" type="text" value="yintaimobile://MyPromotionTicket">
+    <br>
+    <input id="transForm" type="button" value="跳  转">
+    <!--<a href="yintaimobile://MessageDetial?messageid=234333&messagetype=0">启动应用程序</a>-->
+</p>
+
+<p class="p_title">
+    八、setTitleBar <b> + </b>:
+</p>
+
+<p style="display: none;">
+    <input type="button" value="购物车数量更改" onclick="setTitleBar('yintaimobile://ShopCarCount?count=3')" ><br>
+
+    <input type="button" value="显示标题栏左侧按钮" onclick="setTitleBar('yintaimobile://SetTitleBar?position=left&isShow=true&value=')" ><br>
+    
+    <input type="button" value="隐藏标题栏左侧按钮" onclick="setTitleBar('yintaimobile://SetTitleBar?position=left&isShow=false&value=')" ><br>
+
+    <input type="button" value="显示标题栏右侧按钮" onclick="setTitleBar('yintaimobile://SetTitleBar?position=right&isShow=true&value=编辑')" ><br>
+    
+    <input type="button" value="隐藏标题栏右侧按钮" onclick="setTitleBar('yintaimobile://SetTitleBar?position=right&isShow=false&value=编辑')" ><br>
+
+    <input type="button" value="更改标题" onclick="setTitleBar('yintaimobile://SetTitleBar?position=middle&isShow=true&value=标题')" ><br>
+    
+    <input type="button" value="显示标题" onclick="setTitleBar('yintaimobile://SetTitleBar?position=middle&isShow=true&value=')" ><br>
+    <input type="button" value="隐藏标题" onclick="setTitleBar('yintaimobile://SetTitleBar?position=middle&isShow=false&value=')" ><br>
+
+    <input type="button" value="是否屏蔽顶部和底部的点击事件true" onclick="setTitleBar('yintaimobile://ShieldTopBottom?state=true')" ><br>
+    
+    <input type="button" value="是否屏蔽顶部和底部的点击事件false" onclick="setTitleBar('yintaimobile://ShieldTopBottom?state=false')" ><br>
+    
+   <input type="button" value="显示标题栏右侧 分享 按钮" onclick="setTitleBar('yintaimobile://SetTitleBar?position=right&isShow=true&value=yintaiappsharebtn')" ><br>
+</p>
+
+<p class="p_title">
+    九、新增功能 <b> + </b>:
+</p>
+<p style="display: none;">
+  <input type="button" value="JumpSubmit" onclick="jumpsubmit()"><br>
+  <input type="button" value="closeCurrentPage" onclick="closeCurrentPage()"><br>
+  <input type="button" value="startPayNow" onclick="startPayNow()"><br>
+  <input type="button" value="showDialog" onclick="showDialog()"><br>
+  <input type="button" value="pageloadopen" onclick="pageloadopen()"><br>
+  <input type="button" value="isResponseClickBack" onclick="isResponseClickBack()"><br>
+  <input type="button" value="login" onclick="login()"><br>
+  <input type="button" value="share" onclick="share()"><br>
+  <input type="button" value="setPull2Refreshable_true" onclick="setPull2Refreshable('true')"><br>
+  <input type="button" value="setPull2Refreshable_false" onclick="setPull2Refreshable('false')"><br>
+</p>
+<p class="p_title">
+    10、二维码相关 <b> + </b>:
+</p>
+<p style="display: none;">
+    <input type="button" value="正常去扫一扫页面" onclick="doJump4Command('yintaimobile://Scan')"><br>
+    <input type="button" value="扫条形码页面" onclick="doJump4Command('yintaimobile://Scan?barcodetype=1D')"><br>
+    <input type="button" value="扫二维码页面" onclick="doJump4Command('yintaimobile://Scan?barcodetype=QR')"><br>
+</p>
+</body></html>

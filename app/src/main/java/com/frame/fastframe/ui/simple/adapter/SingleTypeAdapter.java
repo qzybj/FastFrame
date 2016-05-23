@@ -21,7 +21,7 @@ public class SingleTypeAdapter extends QuickAdapter<SingleTypeBean> {
         helper.setVisible(R.id.tweetRT, false);
         helper.setText(R.id.tweetName, item.getTitle());
         helper.setText(R.id.tweetDate, item.getTime());
-        //helper.setImageUrl(R.id.tweetAvatar, data.getImageurl());
+        //helper.setMethod(R.id.tweetAvatar, data.getImageurl());
         helper.linkify(R.id.tweetText);
     }
 

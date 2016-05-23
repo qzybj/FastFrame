@@ -1,13 +1,16 @@
 package com.frame.fastframelibrary.utils;
 
 import android.net.Uri;
-
-import com.frame.fastframelibrary.utils.LogUtils;
-import com.frame.fastframelibrary.utils.StringUtils;
-
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
+import static android.util.Patterns.GOOD_IRI_CHAR;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 
 /**URL辅助工具类*/
@@ -62,5 +65,33 @@ public class WebUrlUtils {
 			LogUtils.e(TAG, e.getMessage());
 		}
 		return map ;
+	}
+	public static URI convert2URI(String webUrl){
+		try {
+			URI uri = new URI(StringUtils.format(webUrl));
+			return uri;
+		} catch (URISyntaxException e) {
+			LogUtils.e(e);
+		}
+		return null;
+	}
+
+	public static String getScheme(String webUrl){
+		if(StringUtils.isNotEmpty(webUrl)){
+			URI uri = convert2URI(webUrl);
+			if(uri!=null&&StringUtils.isNotEmpty(uri.getScheme())){
+				return uri.getScheme();
+			}
+		}
+		return "";
+	}
+	public static String getCallCommand(String webUrl){
+		if(StringUtils.isNotEmpty(webUrl)){
+			URI uri = convert2URI(webUrl);
+			if(uri!=null&&StringUtils.isNotEmpty(uri.getHost())){
+				return uri.getHost();
+			}
+		}
+		return "";
 	}
 }

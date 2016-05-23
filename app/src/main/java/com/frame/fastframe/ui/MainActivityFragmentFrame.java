@@ -65,7 +65,7 @@ public class MainActivityFragmentFrame extends FrameBaseFragment implements Exte
                     helper.setVisible(R.id.tweetRT,false);
                     //helper.setRootVisible(R.id.tweetRT, data.isShowFlag());
                     //helper.setText(R.id.tweetDate, data.getDate());
-                    //helper.setImageUrl(R.id.tweetAvatar, data.getImageurl());
+                    //helper.setMethod(R.id.tweetAvatar, data.getImageurl());
                     //helper.linkify(R.id.tweetText);
                 }
             };

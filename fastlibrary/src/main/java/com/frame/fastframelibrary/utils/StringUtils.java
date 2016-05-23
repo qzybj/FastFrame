@@ -504,4 +504,28 @@ public class StringUtils {
         }
         return "";
     }
+    public static JSONObject str2JsonObj(String JsonStr){
+        if(isNotEmpty(JsonStr)){
+            try {
+                JSONObject json = new JSONObject(JsonStr);
+                return json;
+            } catch (JSONException e) {
+                LogUtils.e(e);
+            }
+        }
+        return null;
+    }
+    public static String getJsonValue(String jsonStr,String key){
+        if(StringUtils.isNotEmpty(jsonStr)&&StringUtils.isNotEmpty(key)){
+            JSONObject json = StringUtils.str2JsonObj(jsonStr);
+            if (json!=null&&json.has(key)) {
+                try {
+                    String keyValue = json.getString(key);
+                    return keyValue;
+                } catch (JSONException e) {
+                }
+            }
+        }
+        return "";
+    }
 }
