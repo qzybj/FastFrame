@@ -11,19 +11,24 @@ import android.webkit.WebView;
 import android.widget.ProgressBar;
 import com.frame.fastframe.R;
 import com.frame.fastframe.utils.WebViewUtilPlus;
-import com.frame.fastframe.view.ProgressWebView;
+import com.frame.fastframe.view.bridgewebView.JSBridgeConstants;
+import com.frame.fastframe.view.bridgewebView.ProgressWebView;
+import com.frame.fastframe.view.bridgewebView.bean.JSBridgeBean;
+import com.frame.fastframe.view.bridgewebView.interfaces.IJSBridgeBean;
+import com.frame.fastframe.view.bridgewebView.interfaces.IBridgeCallBack;
 import com.frame.fastframelibrary.utils.IntentUtils;
 import com.frame.fastframelibrary.utils.LogUtils;
 import com.frame.fastframelibrary.utils.StringUtils;
 import com.frame.fastframelibrary.utils.WebViewUtil;
-import com.github.lzyzsd.jsbridge.BridgeHandler;
-import com.github.lzyzsd.jsbridge.CallBackFunction;
+
 import org.xutils.view.annotation.ViewInject;
+
+import java.util.LinkedHashMap;
 
 /**
  * BaseWebView基类,继承该类需要给 mWebView赋值
  */
-public class BaseWebViewActivity extends BaseActivity {
+public class BaseWebViewActivity extends BaseActivity implements IBridgeCallBack {
     private final String TAG = BaseWebViewActivity.this.getClass().getName();
 
     public final static int RESULT_CODE_UPIMAGE = 0x00101;
@@ -75,7 +80,7 @@ public class BaseWebViewActivity extends BaseActivity {
     }
 
     protected void onClickTitleRight(View v) {
-        mWebView.callJsMethod("点击右上角，触发js的相关功能");
+        callJsMethod("test",null);
     }
 
     @Override
@@ -95,7 +100,7 @@ public class BaseWebViewActivity extends BaseActivity {
     public void initWebView() {
         if(mWebView!=null){
             WebViewUtil.initWebView(mWebView);
-            mWebView.initJsHandler(getBaseActivity());
+            mWebView.setJSBridgeCallBackListener(this);
             mWebView.setWebChromeClient(new WebChromeClient() {
                 @SuppressWarnings("unused")
                 public void openFileChooser(ValueCallback<Uri> uploadMsg, String AcceptType, String capture) {
@@ -116,6 +121,8 @@ public class BaseWebViewActivity extends BaseActivity {
             if (isCleanWebViewCache) {
                 WebViewUtil.clearCache(mWebView);
             }
+
+
         }
     }
 
@@ -181,5 +188,25 @@ public class BaseWebViewActivity extends BaseActivity {
             mUploadMessage.onReceiveValue(result);
             mUploadMessage = null;
         }
+    }
+
+    public void callJsMethod(String methodName,LinkedHashMap<String ,String> argsMap) {
+        if(mWebView!=null&&mWebView.getJSBridgeManager()!=null){
+            JSBridgeBean bean = new JSBridgeBean();
+            bean.setHandlerName(JSBridgeConstants.JSBRIDGE_HANDLERNAME_NATIVEJS);
+            bean.setMethodName(methodName);
+            bean.setArgsMap(argsMap);
+            mWebView.getJSBridgeManager().callJsMethod(bean);
+        }
+    }
+
+    @Override
+    public void paserJsCallApp(IJSBridgeBean bean) {
+
+    }
+
+    @Override
+    public void paserCallJsCallback(String bean) {
+
     }
 }

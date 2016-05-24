@@ -3,9 +3,9 @@ package com.frame.fastframe.view.bridgewebView;
 /**
  *  定义常量：
  */
-public class BridgeConstants {
+public class JSBridgeConstants {
     /**模块TAG*/
-    public static final String TAG = BridgeConstants.class.getName();
+    public static final String TAG = JSBridgeConstants.class.getName();
 
     /**基本值*/
     private static final int BASECODE = 0x13001;
@@ -19,15 +19,13 @@ public class BridgeConstants {
 
 
     /**JSBRIDGE供H5调用的原生方法名*/
-    public final static String JSBRIDGE_METHOD_JS2APP ="jsbridge_method_js2native";
+    public final static String JSBRIDGE_HANDLERNAME_JS2NATIVE ="jsbridge_handlername_js2native";
     /**JSBRIDGE供原生调用的H5方法名*/
-    public final static String JSBRIDGE_METHOD_APP2JS ="jsbridge_method_native2js";
+    public final static String JSBRIDGE_HANDLERNAME_NATIVEJS ="jsbridge_handlername_native2js";
 
 
     /**JSBRIDGE供原生调用的H5方法名*/
     public final static String KEY_JSBRIDGE_METHOD ="jsbridge_method";
-
-
 
 
 }

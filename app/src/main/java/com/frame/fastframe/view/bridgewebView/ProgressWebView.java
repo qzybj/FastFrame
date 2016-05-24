@@ -8,8 +8,9 @@ import android.util.AttributeSet;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
 import com.frame.fastframe.R;
-import com.frame.fastframe.view.bridgewebView.bridgeimpl.BindBridgeListener;
-import com.frame.fastframe.view.bridgewebView.interfaces.IBridgeBean;
+import com.frame.fastframe.view.bridgewebView.bridgeimpl.JSBridgeManager;
+import com.frame.fastframe.view.bridgewebView.interfaces.IJSBridgeBean;
+import com.frame.fastframe.view.bridgewebView.interfaces.IBridgeCallBack;
 import com.github.lzyzsd.jsbridge.BridgeWebView;
 
 /**
@@ -19,8 +20,10 @@ import com.github.lzyzsd.jsbridge.BridgeWebView;
 public class ProgressWebView extends BridgeWebView {
 
     private ProgressBar progressbar;
-    private BindBridgeListener mBindBridgeListener;
-    public Handler bridgeHandler = new BridgeHandler();
+    private JSBridgeManager mJSBridgeManager;
+
+    private Handler bridgeHandler = new JSBridgeHandler();
+    private IBridgeCallBack mIBridgeCallBack;
 
     public ProgressWebView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -37,7 +40,7 @@ public class ProgressWebView extends BridgeWebView {
     }
 
     private void initJsBridge(Context context) {
-        mBindBridgeListener = new BindBridgeListener(this,bridgeHandler);
+        mJSBridgeManager = new JSBridgeManager(this,bridgeHandler);
     }
 
     public class WebChromeClient extends android.webkit.WebChromeClient {
@@ -64,17 +67,37 @@ public class ProgressWebView extends BridgeWebView {
         super.onScrollChanged(l, t, oldl, oldt);
     }
 
-    /**解析处理JS调用客户端方法,发送过来的message*/
-    private void paserJsCallApp(IBridgeBean bean) {
+    /**
+     * 返回JSBridge的管理器
+     * @return
+     */
+    public JSBridgeManager getJSBridgeManager(){
+        return mJSBridgeManager;
+    }
 
+    /**
+     * 设置JSBridge的接口回调
+     * @param callBack
+     */
+    public void setJSBridgeCallBackListener(IBridgeCallBack callBack) {
+        this.mIBridgeCallBack = callBack;
+    }
+
+    /**解析处理JS调用客户端方法,发送过来的message*/
+    private void paserJsCallApp(IJSBridgeBean bean) {
+        if(mIBridgeCallBack!=null){
+            mIBridgeCallBack.paserJsCallApp(bean);
+        }
     }
     /**解析处理调用JS方法之后回调客户端的message*/
-    private void paserCallJsCallback(Message msg) {
-
+    private void paserCallJsCallback(String bean) {
+        if(mIBridgeCallBack!=null){
+            mIBridgeCallBack.paserCallJsCallback(bean);
+        }
     }
 
     /**与JsBridge交互用Handler */
-    private class BridgeHandler extends Handler {
+    private class JSBridgeHandler extends Handler {
         @Override
         public void dispatchMessage(Message msg) {
             super.dispatchMessage(msg);
@@ -82,16 +105,16 @@ public class ProgressWebView extends BridgeWebView {
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {
-                case BridgeConstants.HANDLE_MSGCODE_JSCALLAPP://JS调用客户端方法
-                    if(msg.obj instanceof IBridgeBean){
-                        IBridgeBean bean = (IBridgeBean) msg.obj;
+                case JSBridgeConstants.HANDLE_MSGCODE_JSCALLAPP://JS调用客户端方法
+                    if(msg.obj instanceof IJSBridgeBean){
+                        IJSBridgeBean bean = (IJSBridgeBean) msg.obj;
                         paserJsCallApp(bean);
                     }
                     break;
-                case BridgeConstants.HANDLE_MSGCODE_CALLBACK_CALLJS://调用JS方法之后回调客户端
+                case JSBridgeConstants.HANDLE_MSGCODE_CALLBACK_CALLJS://调用JS方法之后回调客户端
                     if(msg.obj instanceof String){
                         String bean = (String) msg.obj;
-                        paserCallJsCallback(msg);
+                        paserCallJsCallback(bean);
                     }
                     break;
                 default:
