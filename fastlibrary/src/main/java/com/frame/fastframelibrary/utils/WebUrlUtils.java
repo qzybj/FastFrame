@@ -1,6 +1,10 @@
 package com.frame.fastframelibrary.utils;
 
 import android.net.Uri;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.HashMap;
@@ -90,6 +94,19 @@ public class WebUrlUtils {
 			URI uri = convert2URI(webUrl);
 			if(uri!=null&&StringUtils.isNotEmpty(uri.getHost())){
 				return uri.getHost();
+			}
+		}
+		return "";
+	}
+	public static String getJsonValue(String jsonStr,String key){
+		if(StringUtils.isNotEmpty(jsonStr)&&StringUtils.isNotEmpty(key)){
+			JSONObject json = StringUtils.str2JsonObj(jsonStr);
+			if (json!=null&&json.has(key)) {
+				try {
+					String keyValue = json.getString(key);
+					return keyValue;
+				} catch (JSONException e) {
+				}
 			}
 		}
 		return "";

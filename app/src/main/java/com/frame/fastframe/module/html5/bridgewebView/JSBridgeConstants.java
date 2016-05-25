@@ -1,4 +1,4 @@
-package com.frame.fastframe.view.bridgewebView;
+package com.frame.fastframe.module.html5.bridgewebView;
 
 /**
  *  定义常量：

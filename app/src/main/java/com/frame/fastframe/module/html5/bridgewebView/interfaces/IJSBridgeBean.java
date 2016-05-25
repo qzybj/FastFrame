@@ -1,4 +1,4 @@
-package com.frame.fastframe.view.bridgewebView.interfaces;
+package com.frame.fastframe.module.html5.bridgewebView.interfaces;
 
 import java.util.LinkedHashMap;
 

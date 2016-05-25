@@ -4,8 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.frame.fastframe.R;
-import com.frame.fastframe.module.common.constant.CommonConstants;
-import com.frame.fastframe.ui.base.BaseWebViewActivity;
+import com.frame.fastframe.module.html5.ui.BaseWebViewActivity;
 import com.frame.fastframelibrary.utils.StringUtils;
 import com.frame.fastframelibrary.utils.WebViewUtil;
 
@@ -46,4 +45,6 @@ public class WebViewUtilPlus extends WebViewUtil {
     public  static void goInnerWebViewSimple(Context con) {
         goInnerWebView(con,"测试页面","file:///android_asset/jsbridgedemo.html");
     }
+
+
 }

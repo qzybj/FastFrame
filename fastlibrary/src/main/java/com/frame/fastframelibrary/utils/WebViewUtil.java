@@ -34,8 +34,7 @@ public class WebViewUtil {
 		//webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
 		webSettings.setRenderPriority(RenderPriority.HIGH);// 提高渲染的优先级
 		webSettings.setDomStorageEnabled(true);// 设置可以使用localStorage
-
-		//webSettings.setUseWideViewPort(true);//设置适应屏幕
+		//webSettings.setBlockNetworkImage(true);//把图片加载放在最后来加载渲染
 		webSettings.setLoadWithOverviewMode(true);
 
 		webSettings.setAllowFileAccess(true);// 设置允许访问文件数据
@@ -43,6 +42,12 @@ public class WebViewUtil {
 		webSettings.setSupportZoom(false); // 设置是否支持缩放
 		webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
 		webSettings.setDatabaseEnabled(true);
+
+
+		//H5页面视频播放相关
+//		webSettings.setPluginState(WebSettings.PluginState.ON);
+//		webSettings.setLoadWithOverviewMode(true);
+//		webSettings.setUseWideViewPort(true);//设置适应屏幕
 
 		webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);// 去掉滚动条占位
 		webView.requestFocus();// 支持网页内部操作，比如点击按钮

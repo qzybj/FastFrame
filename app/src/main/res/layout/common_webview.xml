@@ -14,7 +14,7 @@
         android:layout_centerInParent="true"
         android:visibility="gone" />
 
-    <com.frame.fastframe.view.bridgewebView.ProgressWebView
+    <com.frame.fastframe.module.html5.bridgewebView.ProgressWebView
         android:id="@+id/webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

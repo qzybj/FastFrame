@@ -1,6 +1,6 @@
 package com.frame.fastframe.ui.simple.ui;
 
-import com.frame.fastframe.ui.base.BaseWebViewActivity;
+import com.frame.fastframe.module.html5.ui.BaseWebViewActivity;
 
 /**
  * Created by ZhangYuanBo on 2016/5/11.<BR/>

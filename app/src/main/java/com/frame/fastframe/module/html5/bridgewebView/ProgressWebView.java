@@ -1,4 +1,4 @@
-package com.frame.fastframe.view.bridgewebView;
+package com.frame.fastframe.module.html5.bridgewebView;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -8,16 +8,16 @@ import android.util.AttributeSet;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
 import com.frame.fastframe.R;
-import com.frame.fastframe.view.bridgewebView.bridgeimpl.JSBridgeManager;
-import com.frame.fastframe.view.bridgewebView.interfaces.IJSBridgeBean;
-import com.frame.fastframe.view.bridgewebView.interfaces.IBridgeCallBack;
+import com.frame.fastframe.module.html5.bridgewebView.interfaces.IJSBridgeBean;
+import com.frame.fastframe.module.html5.bridgewebView.bridgeimpl.JSBridgeManager;
+import com.frame.fastframe.module.html5.bridgewebView.interfaces.IBridgeCallBack;
 import com.github.lzyzsd.jsbridge.BridgeWebView;
 
 /**
  * 一个带progressBar进度样式的webview，<br/>
  * 实现和jsbridge交互实现方法在BindBridgeListener里添加对应方法
  * */
-public class ProgressWebView extends BridgeWebView {
+public class ProgressWebView extends BridgeWebView{
 
     private ProgressBar progressbar;
     private JSBridgeManager mJSBridgeManager;
@@ -95,13 +95,15 @@ public class ProgressWebView extends BridgeWebView {
             mIBridgeCallBack.paserCallJsCallback(bean);
         }
     }
+    /**解析处理未知的数据传递*/
+    private void paserOtherCallback(Object bean) {
+        if(mIBridgeCallBack!=null){
+            mIBridgeCallBack.paserOtherCallback(bean);
+        }
+    }
 
     /**与JsBridge交互用Handler */
     private class JSBridgeHandler extends Handler {
-        @Override
-        public void dispatchMessage(Message msg) {
-            super.dispatchMessage(msg);
-        }
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {
@@ -118,6 +120,7 @@ public class ProgressWebView extends BridgeWebView {
                     }
                     break;
                 default:
+                    paserOtherCallback(msg.obj);
                     break;
             }
         }

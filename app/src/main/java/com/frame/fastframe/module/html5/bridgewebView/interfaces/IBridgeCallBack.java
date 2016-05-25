@@ -1,4 +1,6 @@
-package com.frame.fastframe.view.bridgewebView.interfaces;
+package com.frame.fastframe.module.html5.bridgewebView.interfaces;
+
+import java.util.Objects;
 
 /**
  * Created by ZhangYuanBo on 2016/5/23.
@@ -14,8 +16,15 @@ public interface IBridgeCallBack {
 
     /**
      * 解析处理调用JS方法之后回调客户端的message
-     * @param msg
+     * @param bean
      */
      void paserCallJsCallback(String bean);
+
+    /**
+     * 解析处理未知的数据传递
+     * @param bean
+     */
+     void paserOtherCallback(Object bean);
+
 
 }

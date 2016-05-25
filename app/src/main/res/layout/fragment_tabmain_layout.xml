@@ -10,6 +10,8 @@
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:tabMinWidth="@dimen/w180dip"
+        app:tabMaxWidth="@dimen/w180dip"
         app:tabIndicatorColor="@color/tab_color_selected"
         app:tabSelectedTextColor="@color/tab_color_selected"
         app:tabTextColor="@color/tab_color_unselected"
