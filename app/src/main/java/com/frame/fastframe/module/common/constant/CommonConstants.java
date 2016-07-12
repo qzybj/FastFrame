@@ -13,6 +13,12 @@ public class CommonConstants {
     /**title显示*/
     public static final String KEY_TITLE = "title";
 
+    /**客户端平台*/
+    public static final String PLATFORM = "android";
+
+    /**产品线  */
+    public static  String PRODUCT_LINE = "1";
+
     /**基本值*/
     private static final int BASECODE = 0x021001;
 

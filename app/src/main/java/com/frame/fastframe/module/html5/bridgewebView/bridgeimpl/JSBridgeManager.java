@@ -15,7 +15,8 @@ import com.github.lzyzsd.jsbridge.CallBackFunction;
 
 /**
  * Created by ZhangYuanBo on 2016/5/20.
- * Bind  Bridge  Method
+ * Bind  Bridge  Method</br>
+ * 绑定H5与app的调用及回调方法都在该类中实现
  */
 public class JSBridgeManager {
     /**用于事件注册Bind的webview*/
@@ -33,10 +34,10 @@ public class JSBridgeManager {
     }
 
     /**
-     * 初始化Js调用Native的句柄(注册被调用方法)
+     * 初始化Js调用Native的句柄(注册被调用通用方法)
      */
     private void registerJsBridge() {
-        if(mWebView!=null){
+        if(isSupportWebview()){
             //注册被H5调用事件 - 通用支持事件(在html页面里 需要对应注册)
             mWebView.registerHandler(JSBridgeConstants.JSBRIDGE_HANDLERNAME_JS2NATIVE,mBridgeHandler);
         }
@@ -47,8 +48,7 @@ public class JSBridgeManager {
      * @param bridge
      */
     public void registerJsBridge(IJSBridgeBean bridge) {
-        if(mWebView!=null&&
-                bridge!=null&&StringUtils.isNotEmpty(bridge.getHandlerName())){
+        if(isSupportWebview(bridge)&&StringUtils.isNotEmpty(bridge.getHandlerName())){
             //单独注册指定handlerName的事件
             mWebView.registerHandler(bridge.getHandlerName(),mBridgeHandler);
         }
@@ -59,7 +59,7 @@ public class JSBridgeManager {
      * @param bridge
      */
     public void callJsMethod(IJSBridgeBean bridge){
-        if(mWebView!=null&& bridge!=null){
+        if(isSupportWebview(bridge)){
             String jsonCommand ="";
             try {
                 jsonCommand = GsonUtils.toJson(bridge);
@@ -80,6 +80,30 @@ public class JSBridgeManager {
         }
     }
 
+    /**JS调用客户端方法*/
+    private void sendMsgJsCallApp(IJSBridgeBean bridge){
+        sendHandlerMsg4Bridge(JSBridgeConstants.HANDLE_MSGCODE_JSCALLAPP,bridge);
+    }
+    /**调用JS方法之后回调客户端*/
+    private void sendMsgCallbackCallJs(Object obj){
+        sendHandlerMsg4Bridge(JSBridgeConstants.HANDLE_MSGCODE_CALLBACK_CALLJS,obj);
+    }
+
+    /**
+     * 发送封装过的message消息
+     * @param type  1.JSBridgeConstants.HANDLE_MSGCODE_JSCALLAPP
+     *              2. JSBridgeConstants.HANDLE_MSGCODE_CALLBACK_CALLJS
+     * @param obj
+     */
+    private void sendHandlerMsg4Bridge(int type,Object obj){
+        if(obj!=null&&mWebViewHandler!=null){
+            Message msg = mWebViewHandler.obtainMessage();
+            msg.what = type;
+            msg.obj = obj;
+            mWebViewHandler.sendMessage(msg);
+        }
+    }
+
     /**与JsBridge交互用Handler */
     private class BaseJSBridgeHandler implements com.github.lzyzsd.jsbridge.BridgeHandler{
         public Handler mWebViewPassHandler;
@@ -97,26 +121,16 @@ public class JSBridgeManager {
         }
     }
 
-    /**JS调用客户端方法*/
-    private void sendMsgJsCallApp(IJSBridgeBean bridge){
-        sendHandlerMsg4Bridge(JSBridgeConstants.HANDLE_MSGCODE_JSCALLAPP,bridge);
-    }
-    /**调用JS方法之后回调客户端*/
-    private void sendMsgCallbackCallJs(Object obj){
-        sendHandlerMsg4Bridge(JSBridgeConstants.HANDLE_MSGCODE_CALLBACK_CALLJS,obj);
-    }
-
-    /**
-     * 发送封装过的message消息
-     * @param type  1.JSBridgeConstants.HANDLE_MSGCODE_JSCALLAPP  2. HANDLE_MSGCODE_CALLBACK_CALLJS
-     * @param obj
-     */
-    private void sendHandlerMsg4Bridge(int type,Object obj){
-        if(obj!=null&&mWebViewHandler!=null){
-            Message msg = mWebViewHandler.obtainMessage();
-            msg.what = type;
-            msg.obj = obj;
-            mWebViewHandler.sendMessage(msg);
+    private boolean isSupportWebview(){
+        if(mWebView!=null){
+            return true;
         }
+        return false;
+    }
+    private boolean isSupportWebview(IJSBridgeBean bridge){
+        if(isSupportWebview()&&bridge!=null){
+            return true;
+        }
+        return false;
     }
 }

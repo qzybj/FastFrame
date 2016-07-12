@@ -3,7 +3,7 @@ package com.frame.fastframe.module.html5.bridgewebView.interfaces;
 import java.util.LinkedHashMap;
 
 /**
- * Created by ZhangYuanBo on 2016/5/23.
+ * Created by ZhangYuanBo on 2016/5/23.<br/>
  * 定义数据传递必须要传递一些值的获取方法
  */
 public interface IJSBridgeBean {

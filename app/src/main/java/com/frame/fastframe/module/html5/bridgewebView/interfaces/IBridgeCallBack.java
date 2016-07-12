@@ -1,6 +1,5 @@
 package com.frame.fastframe.module.html5.bridgewebView.interfaces;
 
-import java.util.Objects;
 
 /**
  * Created by ZhangYuanBo on 2016/5/23.

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.frame.fastframe.R;
-import com.frame.fastframe.module.html5.ui.BaseWebViewActivity;
+import com.frame.fastframe.module.html5.ui.base.BaseWebViewActivity;
 import com.frame.fastframelibrary.utils.StringUtils;
 import com.frame.fastframelibrary.utils.WebViewUtil;
 

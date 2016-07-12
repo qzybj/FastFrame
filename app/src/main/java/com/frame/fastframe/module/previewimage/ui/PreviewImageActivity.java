@@ -128,7 +128,7 @@ public class PreviewImageActivity extends BaseActivity {
 	 */
 	private ImageView createDotIV() {
 		ImageView iv = new ImageView(this);
-		iv.setImageResource(R.drawable.previewImage_dot_selector);//轮播图原点的资源图片,通过ImageView的selected状态来显示不同的图片
+		iv.setImageResource(R.drawable.previewimage_dot_selector);//轮播图原点的资源图片,通过ImageView的selected状态来显示不同的图片
 		iv.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 		return iv;
 	}

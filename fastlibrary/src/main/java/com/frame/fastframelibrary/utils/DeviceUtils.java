@@ -150,14 +150,12 @@ public class DeviceUtils {
     }
     /**
      * 读取手机串号  IMEI
-     * 
-     * @param context 上下文
      * @return String 手机串号
      */
-    public static String readTelephoneSerialNum(Context context) {
+    public static String getIMEI() {
     	if( StringUtils.isEmpty(imei)){
     		//改成只取一次
-    		TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+    		TelephonyManager telephonyManager = (TelephonyManager) FastApplication.getInstance().getSystemService(Context.TELEPHONY_SERVICE);
     		imei = telephonyManager.getDeviceId();
     	}
 		return imei ;

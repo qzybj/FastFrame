@@ -23,9 +23,6 @@ public class JSBridgeConstants {
     /**JSBRIDGE供原生调用的H5方法名*/
     public final static String JSBRIDGE_HANDLERNAME_NATIVEJS ="jsbridge_handlername_native2js";
 
-
     /**JSBRIDGE供原生调用的H5方法名*/
     public final static String KEY_JSBRIDGE_METHOD ="jsbridge_method";
-
-
 }

@@ -1,4 +1,4 @@
-package com.frame.fastframelibrary.aosp.fileupload;
+package com.frame.fastframe.module.aosp.fileupload;
 
 
 import java.io.File;

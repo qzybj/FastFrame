@@ -1,5 +1,6 @@
 package com.frame.fastframe.module.html5.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -31,7 +32,8 @@ import java.util.Objects;
 
 /**
  * Created by ZhangYuanBo on 2016/5/24.
- * 通用的web界面
+ * 通用WebView界面,用于普通的Url展示<BR/>
+ * WebViewUtil.goInnerWebView(con,"title","file:///android_asset/jsbridgedemo.html");<BR/>
  */
 public class CommonWebViewActivity extends BaseWebViewActivity{
 
@@ -102,6 +104,16 @@ public class CommonWebViewActivity extends BaseWebViewActivity{
                 WebViewUtil.clearCache(mWebView);
             }
         }
+    }
+
+    @Override
+    public Activity getActivity() {
+        return this;
+    }
+
+    @Override
+    public void sendMessage(int what, String json) {
+
     }
 
     public void pickFile() {

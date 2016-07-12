@@ -67,8 +67,8 @@
 }
 
  # 保持 Parcelable 不被混淆
--keep class * implements android.os.Parcelable {
-  public static final android.os.Parcelable$Creator *;
+-keep class * implements android.platform.Parcelable {
+  public static final android.platform.Parcelable$Creator *;
 }
  # 这个主要是在layout中写的onclick方法android:onclick="onClick"，不进行混淆
  -keepclassmembers class * extends android.app.Activity {

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.frame.fastframelibrary.aosp.fileupload;
+package com.frame.fastframe.module.aosp.fileupload;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
@@ -26,6 +26,7 @@ import com.android.volley.Response;
 import com.android.volley.Response.ErrorListener;
 import com.android.volley.Response.Listener;
 import com.android.volley.toolbox.HttpHeaderParser;
+import com.frame.fastframe.module.aosp.fileupload.IMultiPartRequest;
 
 /**
  * MultipartRequest - To handle the large file uploads.

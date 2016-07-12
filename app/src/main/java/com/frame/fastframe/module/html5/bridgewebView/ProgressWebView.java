@@ -18,7 +18,6 @@ import com.github.lzyzsd.jsbridge.BridgeWebView;
  * 实现和jsbridge交互实现方法在BindBridgeListener里添加对应方法
  * */
 public class ProgressWebView extends BridgeWebView{
-
     private ProgressBar progressbar;
     private JSBridgeManager mJSBridgeManager;
 
