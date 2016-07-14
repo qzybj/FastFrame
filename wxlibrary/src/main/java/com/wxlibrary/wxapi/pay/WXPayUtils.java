@@ -1,7 +1,6 @@
 package com.wxlibrary.wxapi.pay;
 
 import android.content.Context;
-import android.widget.Toast;
 import com.tencent.mm.sdk.constants.Build;
 import com.tencent.mm.sdk.modelbase.BaseReq;
 import com.tencent.mm.sdk.modelbase.BaseResp;
@@ -13,7 +12,6 @@ import com.wxlibrary.wxapi.config.WXConstant;
 import com.wxlibrary.wxapi.pay.bean.WXPayBean;
 import com.wxlibrary.wxapi.utils.WXLogUtils;
 import com.wxlibrary.wxapi.utils.WXToastUtils;
-
 
 /**
  * 微信支付工具类
