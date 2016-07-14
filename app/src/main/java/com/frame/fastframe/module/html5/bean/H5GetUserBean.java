@@ -1,6 +1,6 @@
 package com.frame.fastframe.module.html5.bean;
 
-import com.frame.fastframe.module.html5.config.ModuleConstant_H5;
+import com.frame.fastframe.module.html5.config.H5Constant;
 import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
@@ -8,33 +8,33 @@ import java.io.Serializable;
  * h5页面调用原生的用户信息Bean类
  */
 public class H5GetUserBean implements Serializable {
-	@SerializedName(ModuleConstant_H5.H5_KEY_PLATFORM)
+	@SerializedName(H5Constant.H5_KEY_PLATFORM)
 	private String platform;// "android"
-	@SerializedName(ModuleConstant_H5.H5_KEY_PRODUCTLINE)
+	@SerializedName(H5Constant.H5_KEY_PRODUCTLINE)
 	private String apptype;// "1"
-	@SerializedName(ModuleConstant_H5.H5_KEY_APPVERSION)
+	@SerializedName(H5Constant.H5_KEY_APPVERSION)
 	private String appversion;// "4.0.7"
-	@SerializedName(ModuleConstant_H5.H5_KEY_IMEI)
+	@SerializedName(H5Constant.H5_KEY_IMEI)
 	private String imei;// "864601028630895"
-	@SerializedName(ModuleConstant_H5.H5_KEY_MACID)
+	@SerializedName(H5Constant.H5_KEY_MACID)
 	private String macid;// "f4:e3:fb:65:e2:77"
-	@SerializedName(ModuleConstant_H5.H5_KEY_UID)
+	@SerializedName(H5Constant.H5_KEY_UID)
 	private String userid;// "y0trFoU59\/jRHgUgDDTqXPWoudVQSQcMKUduJ9B08EsZUv5+SAEJufLOXQvDHLPG8SwUtR+cI2CX7RjNikjTbg=="
-	@SerializedName(ModuleConstant_H5.H5_KEY_GPS_LATITUDE)
+	@SerializedName(H5Constant.H5_KEY_GPS_LATITUDE)
 	private String gpsx;// "39.90458600000000188856574823148548603057861328125"
-	@SerializedName(ModuleConstant_H5.H5_KEY_GPS_LONGITUDE)
+	@SerializedName(H5Constant.H5_KEY_GPS_LONGITUDE)
 	private String gpsy;// "116.507938999999993257006281055510044097900390625"
-	@SerializedName(ModuleConstant_H5.H5_KEY_SYSTEMVERSION)
+	@SerializedName(H5Constant.H5_KEY_SYSTEMVERSION)
 	private String osversion;// "4.4.2"
-	@SerializedName(ModuleConstant_H5.H5_KEY_SCREENWIDTH)
+	@SerializedName(H5Constant.H5_KEY_SCREENWIDTH)
 	private String screenWidth;// "1080"
-	@SerializedName(ModuleConstant_H5.H5_KEY_SCREENHEIGH)
+	@SerializedName(H5Constant.H5_KEY_SCREENHEIGH)
 	private String screenHeigh;// "1776"
-	@SerializedName(ModuleConstant_H5.H5_KEY_CARRIER)
+	@SerializedName(H5Constant.H5_KEY_CARRIER)
 	private String carrier;// ""
-	@SerializedName(ModuleConstant_H5.H5_KEY_MOBILEMODEL)
+	@SerializedName(H5Constant.H5_KEY_MOBILEMODEL)
 	private String devicename;// "PE-TL10"
-	@SerializedName(ModuleConstant_H5.H5_KEY_ISLOGIN)
+	@SerializedName(H5Constant.H5_KEY_ISLOGIN)
 	private boolean userstate;// "true"
 
 	public String getMacid() {

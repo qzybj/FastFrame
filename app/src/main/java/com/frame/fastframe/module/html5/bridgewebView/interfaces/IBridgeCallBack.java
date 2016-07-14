@@ -15,15 +15,15 @@ public interface IBridgeCallBack {
 
     /**
      * 解析处理调用JS方法之后回调客户端的message
-     * @param bean
+     * @param json
      */
-     void paserCallJsCallback(String bean);
+     void paserCallJsCallback(String json);
 
     /**
      * 解析处理未知的数据传递
-     * @param bean
+     * @param json
      */
-     void paserOtherCallback(Object bean);
+     void paserOtherCallback(Object json);
 
 
 }

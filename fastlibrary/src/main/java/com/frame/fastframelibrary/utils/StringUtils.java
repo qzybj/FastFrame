@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -527,5 +528,37 @@ public class StringUtils {
             }
         }
         return "";
+    }
+
+    public static String[] str2Array(String content,String separator){
+        String[] returnArray=null;
+        if(isNotEmpty(content)){
+            returnArray = content.split(separator);
+        }
+        return returnArray;
+    }
+
+    public static ArrayList<String> str2ArrayList(String content,String separator,boolean removeEmpty){
+        ArrayList<String> returnList = null;
+        if(isNotEmpty(content)){
+            String[] returnArray = content.split(separator);
+            returnList=new ArrayList<String>(returnArray.length);
+            for(String str:returnArray){
+                if(removeEmpty&&StringUtils.isEmpty(str)){
+                    continue;
+                }
+                returnList.add(str);
+            }
+        }
+        return returnList;
+    }
+    public static int str2Int(String str,int defValue){
+        int i;
+        try {
+            i= Integer.valueOf(str);
+        } catch (Exception e) {
+            i=defValue;
+        }
+        return i;
     }
 }

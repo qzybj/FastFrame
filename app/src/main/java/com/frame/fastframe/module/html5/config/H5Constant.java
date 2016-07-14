@@ -4,7 +4,12 @@ package com.frame.fastframe.module.html5.config;
 
 
 /**H5调用Native的常量定义*/
-public class ModuleConstant_H5 {
+public class H5Constant {
+
+	/**WebView中添加的JS交互接口关键字*/
+	public static final String H5_CALL_NATIVE_JSINTERFACE = "callYintaiMobileMethod";
+
+	/*与H5对接数据传递用的key值*/
 	public static final String H5_KEY_UID ="userid";
 	public static final String H5_KEY_ISLOGIN ="userstate";
 
@@ -28,9 +33,6 @@ public class ModuleConstant_H5 {
 	public static final String H5_KEY_CARRIER ="carrier";
 
 
-	/**WebView中添加的JS交互接口关键字*/
-	public static final String H5_CALL_NATIVE_JSINTERFACE = "callYintaiMobileMethod";
-
 	/**base值，根据传递不同Int值来触发对应事件*/
 	private static final int H5CALLNATIVE_BASE_MSGID =1400;
 	/**启动activity*/
@@ -43,11 +45,8 @@ public class ModuleConstant_H5 {
 	public static final int H5CALLNATIVE_DISSPROGRESSDLG_MSGID =H5CALLNATIVE_BASE_MSGID+4;
 	
 	public static final int H5CALLNATIVE_SETTITLEBAR_MSGID =H5CALLNATIVE_BASE_MSGID+5;
-	/** 刷新上衣页面 */
+	/** 刷新上一页面 */
 	public static final int H5CALLNATIVE_REFRESH_PREVIOUS_PAGE_MSGID =H5CALLNATIVE_BASE_MSGID+6;
 
-	public static final String H5_2_ANDROID_HOMEHOME = "H5_2_Android_home"; // 首页
-	public static final String H5_2_Android_login = "H5_2_Android_login"; // 登录
-	public static final String H5_2_Android_webview = "H5_2_Android_webview"; // h5展示
-	public static final String H5_2_Android_browser = "H5_2_Android_browser"; // 浏览器显示
+
 }

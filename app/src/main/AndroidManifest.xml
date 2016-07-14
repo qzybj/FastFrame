@@ -71,7 +71,7 @@
 
 
         <activity
-            android:name=".module.previewimage.ui.PreviewImageActivity"
+            android:name=".module.previewimage.ui.PreviewImagesActivity"
             android:theme="@style/style_activty_custom" />
 
 

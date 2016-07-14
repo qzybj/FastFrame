@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.frame.fastframe.R;
-import com.frame.fastframe.module.common.constant.CommonConstants;
+import com.frame.fastframe.module.common.constant.AppConstants;
 import com.frame.fastframe.utils.AccountUtils;
 import com.frame.fastframelibrary.ui.base.FrameBaseActivity;
 import com.frame.fastframelibrary.utils.ActivityStack;
@@ -61,17 +61,6 @@ public abstract class BaseActivity extends FrameBaseActivity{
 		ActivityStack.getInstance().addActivity(this);
 	}
 
-	protected void clickEvent(View v){
-		if (v == mTitlebar_layout_leftbtn) {
-			onClickTitleLeft(v);
-			return;
-		} else if (v == mTitlebar_layout_rightbtn) {
-			onClickTitleRight(v);
-			return;
-		} else{
-			clickEvent(v);
-		}
-	}
 
 	/**
 	 * 当调用了网络请求后返回的数据会执行该方法，在该方法内可以把数据设置到view上。<BR>
@@ -209,6 +198,26 @@ public abstract class BaseActivity extends FrameBaseActivity{
 			}
 		}
 	}
+
+	/**
+	 * 点击事件处理<BR>
+	 * @param v
+	 */
+	protected void customClickEvent(View v){}
+
+	@Override
+	final public void onClick(View v) {
+		if (v == mTitlebar_layout_leftbtn) {
+			onClickTitleLeft(v);
+			return;
+		} else if (v == mTitlebar_layout_rightbtn) {
+			onClickTitleRight(v);
+			return;
+		} else{
+			customClickEvent(v);
+		}
+	}
+
 	/**标题栏   -  左边按钮触发事件*/
 	public void onClickTitleLeft(View v) {
 		finish();
@@ -321,23 +330,23 @@ public abstract class BaseActivity extends FrameBaseActivity{
 		}
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
-				case CommonConstants.MSG_WHAT_DATA_START:
+				case AppConstants.MSG_WHAT_DATA_START:
 					if (isLoadProgress) {
 						showProgress();
 					}
 					break;
-				case CommonConstants.MSG_WHAT_DATA_CANCEL:
+				case AppConstants.MSG_WHAT_DATA_CANCEL:
 					if (isLoadProgress) {
 						dismissProgress();
 					}
 					break;
-				case CommonConstants.MSG_WHAT_DATA_DONE:
+				case AppConstants.MSG_WHAT_DATA_DONE:
 					if (isLoadProgress) {
 						dismissProgress();
 					}
 					dispatchData(msg.obj);
 					break;
-				case CommonConstants.MSG_WHAT_SHOWTOAST:
+				case AppConstants.MSG_WHAT_SHOWTOAST:
 					showToast((String)msg.obj);
 				default:
 					baseHandleMessage(msg);

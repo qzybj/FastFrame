@@ -9,6 +9,6 @@ public enum LocalErrorCode {
     ERR_AUTH_DENIED,
     /**用户取消授权*/
     ERR_USER_CANCEL,
-    /**其它错误*/
+    /**其它未知错误*/
     ERR_OTHER
 }

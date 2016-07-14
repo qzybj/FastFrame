@@ -5,7 +5,16 @@ import com.frame.fastframelibrary.utils.AppUtils;
 /**
  *  定义常量：界面传递key相关，及 requestcode,resultcode 值等
  */
-public class CommonConstants {
+public class AppConstants {
+    /**秒*/
+    public static final long KEY_SECOND = 1000L;
+    /**分钟*/
+    public static final long KEY_MINUTE = 60L*KEY_SECOND;
+    /**小时*/
+    public static final long KEY_HOUR = 60L* KEY_MINUTE;
+    /**天*/
+    public static final long KEY_DAY = 24L* KEY_HOUR;
+
     /**显示网址*/
     public static final String TAG = AppUtils.getApplicationName();
     /**显示网址*/

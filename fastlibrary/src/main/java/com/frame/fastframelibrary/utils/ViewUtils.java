@@ -9,6 +9,7 @@ import android.widget.ListAdapter;
 
 
 public class ViewUtils {
+
     /**
      * 调整view根据指定的宽度以及图片的宽高，按照比例计算view的高度，并设置值
      * @param adjustView  目标view

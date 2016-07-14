@@ -1,4 +1,4 @@
-package webviewjavascriptbridge.earlll.com.fastlibrary;
+package com.frame.fastframelibrary;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

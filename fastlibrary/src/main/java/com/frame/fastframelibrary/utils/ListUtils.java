@@ -1,6 +1,7 @@
 package com.frame.fastframelibrary.utils;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -34,5 +35,26 @@ public class ListUtils {
 			}
 		}
 		return null;
+	}
+	/**
+	 * 判断是否为空
+	 * @param objList
+	 * @return
+	 */
+	public static boolean isEmpty(Object... objList){
+		if(objList == null ||
+				objList.length == 0){
+			return true ;
+		}
+		return false;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public static boolean isEmptySet(HashSet target){
+		if( target == null ||
+				target.size() == 0 ){
+			return true ;
+		}
+		return false ;
 	}
 }

@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.bm.library.PhotoView;
 import com.frame.fastframe.R;
+import com.frame.fastframe.module.common.constant.ConstantsCommonKey;
 import com.frame.fastframe.module.common.util.DensityUtil;
 import com.frame.fastframe.module.previewimage.view.HackyViewPager;
 import com.frame.fastframe.ui.base.BaseActivity;
@@ -22,13 +23,13 @@ import java.util.ArrayList;
 
 
 /** 图片浏览加大图缩放*/
-public class PreviewImageActivity extends BaseActivity {
+public class PreviewImagesActivity extends BaseActivity {
     private final int MARGIN_DOT_DP = 6 ;
 
-    /** Intent传递数据Key 图片集合 */
-    public static final String KEY_INTENT_IMG ="KEY_INTENT_IMG";
-    /** Intent传递数据Key 当前图片索引 */
-    public static final String KEY_INTENT_IMG_INDEX ="KEY_INTENT_IMG_INDEX";
+    /** 图片集合 */
+    public static final String KEY_IMGURLS = ConstantsCommonKey.KEY_IMGURLS;
+    /** 当前图片索引 */
+    public static final String KEY_IMG_INDEX = ConstantsCommonKey.KEY_IMG_INDEX;
 
 	/** 当前显示的图片索引值 */
 	private int mItemIndex=0;
@@ -52,7 +53,7 @@ public class PreviewImageActivity extends BaseActivity {
 
     @Override
     public void initContentView(View view) {
-        //设置标题为"图片浏览"
+        setTitle("图片浏览");
     }
 
     @Override
@@ -60,8 +61,8 @@ public class PreviewImageActivity extends BaseActivity {
         if(getIntent()!=null&&getIntent().getExtras()!=null){
             Bundle extras = getIntent().getExtras();
             if (extras != null) {
-                mBigUrlList = extras.getStringArrayList(KEY_INTENT_IMG);
-                mItemIndex = extras.getInt(KEY_INTENT_IMG_INDEX);
+                mBigUrlList = extras.getStringArrayList(KEY_IMGURLS);
+                mItemIndex = extras.getInt(KEY_IMG_INDEX);
             }
         }
         mBigUrlList = TestDataBuilder.imageList;//测试数据

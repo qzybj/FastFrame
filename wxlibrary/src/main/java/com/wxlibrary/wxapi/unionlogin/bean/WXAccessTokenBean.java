@@ -3,10 +3,6 @@ package com.wxlibrary.wxapi.unionlogin.bean;
 import com.google.gson.annotations.SerializedName;
 import com.wxlibrary.wxapi.config.LocalReturnCode;
 import com.wxlibrary.wxapi.config.WXConstant;
-import com.wxlibrary.wxapi.utils.WXLogUtils;
-
-import org.json.JSONObject;
-
 
 public class WXAccessTokenBean {
     public static final String TAG = WXConstant.TAG;
@@ -95,30 +91,4 @@ public class WXAccessTokenBean {
         this.errMsg = errMsg;
     }
 
-
-    public void parseFrom(String content) {
-        if (content == null || content.length() <= 0) {
-            WXLogUtils.e(TAG, "parseFrom fail, content is null");
-            localRetCode = LocalReturnCode.ERR_JSON;
-            return;
-        }
-        try {
-            JSONObject json = new JSONObject(content);
-            if (json.has("access_token")) { // success case
-                accessToken = json.getString("access_token");
-                expiresIn = json.getInt("expires_in");
-
-                refresh_token = json.getString("refresh_token");
-                openid = json.getString("openid");
-                scope = json.getString("scope");
-                localRetCode = LocalReturnCode.ERR_OK;
-            } else {
-                errCode = json.getInt("errcode");
-                errMsg = json.getString("errmsg");
-                localRetCode = LocalReturnCode.ERR_JSON;
-            }
-        } catch (Exception e) {
-            localRetCode = LocalReturnCode.ERR_JSON;
-        }
-    }
 }

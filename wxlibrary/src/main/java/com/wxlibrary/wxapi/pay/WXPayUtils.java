@@ -2,7 +2,6 @@ package com.wxlibrary.wxapi.pay;
 
 import android.content.Context;
 import android.widget.Toast;
-
 import com.tencent.mm.sdk.constants.Build;
 import com.tencent.mm.sdk.modelbase.BaseReq;
 import com.tencent.mm.sdk.modelbase.BaseResp;
@@ -10,47 +9,39 @@ import com.tencent.mm.sdk.modelpay.PayReq;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.IWXAPIEventHandler;
 import com.wxlibrary.wxapi.WXApiManager;
-import com.wxlibrary.wxapi.pay.bean.WeiXinPayInfo;
+import com.wxlibrary.wxapi.config.WXConstant;
+import com.wxlibrary.wxapi.pay.bean.WXPayBean;
 import com.wxlibrary.wxapi.utils.WXLogUtils;
+import com.wxlibrary.wxapi.utils.WXToastUtils;
 
 
 /**
  * 微信支付工具类
  */
-public class WeixinPayUtils implements IWXAPIEventHandler{
-	public static final String TAG = "WXpay";
+public class WXPayUtils implements IWXAPIEventHandler{
+	public static final String TAG = WXConstant.TAG;
+
 	private static Context mContext;
-	private static WeixinPayUtils instance ;
+	private static WXPayUtils instance ;
 	
 	public static final String TAG_SUCCESS = "SUCCESS";
 	public static final String TAG_FAIL = "FAIL";
 	public static final String TAG_CANCEL = "CANCEL";
-	
-	/**应用从官方网站申请到的合法appId*/
-	public static final String APP_ID ="";
-	/** 微信开放平台和商户约定的密钥 */
-	//public static final String APP_SECRET = "";
-	/** 微信开放平台和商户约定的支付密钥 */
-	//public static final String APP_KEY = "";
-	/** 商家向财付通申请的商家id */
-	//public static final String PARTNER_ID = "";
-	/** 微信公众平台商户模块和商户约定的密钥 */
-	//public static final String PARTNER_KEY = "";
-	
+
 	/** 获取微信支付返回结果key值 */
 	public static final String TAG_PAY_RESULT = "pay_result";
 	public PayEventHandler mResultEventHandler = null;
 	
 	private IWXAPI wxApi;
 
-	private WeixinPayUtils(Context con) {
+	private WXPayUtils() {
 		super();
 	}
 
-	public static synchronized WeixinPayUtils getInstance(Context con) {
+	public static synchronized WXPayUtils getInstance(Context con) {
 		mContext =con;
 		if (instance == null) {
-			instance = new WeixinPayUtils(con);
+			instance = new WXPayUtils();
 		}
 		return instance;
 	}
@@ -73,7 +64,7 @@ public class WeixinPayUtils implements IWXAPIEventHandler{
 		}
 	}
 	
-	public void startWeixinPaySDK(WeiXinPayInfo response, PayEventHandler resultEventHandler) {
+	public void startWeixinPaySDK(WXPayBean response, PayEventHandler resultEventHandler) {
 		this.mResultEventHandler=resultEventHandler;
 		if(response!=null&&isSupportWeiXinPay()){
 			if (isNotEmpty(response.getAppId())) {//特殊需求，用来处理WXAppId是服务器回传
@@ -94,7 +85,7 @@ public class WeixinPayUtils implements IWXAPIEventHandler{
 			if (mResultEventHandler!=null) {
 				mResultEventHandler.beforeWxCall(null);
 			}
-			WeixinPayUtils.getInstance(mContext).getWXAPI().sendReq(req);
+			WXPayUtils.getInstance(mContext).getWXAPI().sendReq(req);
 		}else {//不支持微信支付
 			if (mResultEventHandler!=null) {
 				mResultEventHandler.beforeWxCall(null);
@@ -108,23 +99,17 @@ public class WeixinPayUtils implements IWXAPIEventHandler{
 	public boolean isSupportWeiXinPay() {
 		if (!getWXAPI().isWXAppInstalled()) {
 			WXLogUtils.i(TAG, "未安装微信");
-			showToast("未安装微信", false);
+			WXToastUtils.showToast(mContext,"未安装微信", false);
 			return false;
 		}
 		if (getWXAPI().getWXAppSupportAPI() < Build.PAY_SUPPORTED_SDK_INT) {
-			showToast("不支持微信支付", false);
+			WXToastUtils.showToast(mContext,"不支持微信支付", false);
 			return false;
 		}
 		return true;
 	}
 
-	private void showToast(String showMsg, boolean isLong){
-		showToast(mContext, showMsg, isLong);
-	}
-	private void showToast(Context con, String showMsg, boolean isLong){
-		Toast.makeText(con, showMsg,isLong? Toast.LENGTH_LONG: Toast.LENGTH_SHORT).show();
-	}
-	
+
 	public void setIImageViewOnclicKCallBack(PayEventHandler resultEventHandler){
 		this.mResultEventHandler = resultEventHandler;
 	}

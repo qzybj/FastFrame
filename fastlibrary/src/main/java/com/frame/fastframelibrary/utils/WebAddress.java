@@ -2,7 +2,6 @@ package com.frame.fastframelibrary.utils;
 
 
 import static android.util.Patterns.GOOD_IRI_CHAR;
-
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

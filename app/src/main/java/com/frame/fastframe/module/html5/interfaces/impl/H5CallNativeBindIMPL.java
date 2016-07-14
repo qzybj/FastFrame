@@ -5,11 +5,9 @@ import android.content.Intent;
 import android.webkit.WebView;
 import com.frame.fastframe.R;
 import com.frame.fastframe.module.html5.bridgewebView.bean.JSBridgeBean;
-import com.frame.fastframe.module.html5.config.ModuleConstant_H5;
+import com.frame.fastframe.module.html5.config.H5Constant;
 import com.frame.fastframe.module.html5.interfaces.IWebView4Activity;
-import com.frame.fastframe.module.html5.ui.CommonWebViewActivity;
-import com.frame.fastframe.module.html5.ui.base.BaseWebViewActivity;
-import com.frame.fastframe.module.html5.utils.H5OperateNativeUtils;
+import com.frame.fastframe.module.html5.utils.H52NativeUtils;
 import com.frame.fastframe.module.html5.utils.TransfersLog;
 import com.frame.fastframelibrary.utils.GsonUtils;
 import com.frame.fastframelibrary.utils.LogUtils;
@@ -95,7 +93,7 @@ public class H5CallNativeBindIMPL {
 	 * @return
      */
 	public String getUserInfo() {
-		return H5OperateNativeUtils.getUserInfo(mActivity);
+		return H52NativeUtils.getUserInfo(mActivity);
 	}
 
 	/**
@@ -126,7 +124,7 @@ public class H5CallNativeBindIMPL {
 	 */
 	public void showMsg(String msg) {
 		TransfersLog.d(TAG, "showMsg-->msg=" + msg);
-		mIWebView4Activity.sendMessage(ModuleConstant_H5.H5CALLNATIVE_SHOWDIG_MSGID,msg);
+		mIWebView4Activity.sendMessage(H5Constant.H5CALLNATIVE_SHOWDIG_MSGID,msg);
 	}
 
 	/**
@@ -135,7 +133,7 @@ public class H5CallNativeBindIMPL {
 	
 	public void showProgress() {
 		TransfersLog.d(TAG, "showProgress");
-		mIWebView4Activity.sendMessage(ModuleConstant_H5.H5CALLNATIVE_SHOWPROGRESSDLG_MSGID);
+		mIWebView4Activity.sendMessage(H5Constant.H5CALLNATIVE_SHOWPROGRESSDLG_MSGID);
 	}
 
 	/**
@@ -144,14 +142,14 @@ public class H5CallNativeBindIMPL {
 	
 	public void disProgress() {
 		TransfersLog.d(TAG, "disProgress");
-		mIWebView4Activity.sendMessage(ModuleConstant_H5.H5CALLNATIVE_DISSPROGRESSDLG_MSGID);
+		mIWebView4Activity.sendMessage(H5Constant.H5CALLNATIVE_DISSPROGRESSDLG_MSGID);
 	}
 
 	/**Native支持method - 刷新上一页面*/
 	
 	public void refreshPreviousPage(){
 		TransfersLog.d(TAG, "disProgress");
-		mIWebView4Activity.sendMessage(ModuleConstant_H5.H5CALLNATIVE_REFRESH_PREVIOUS_PAGE_MSGID);
+		mIWebView4Activity.sendMessage(H5Constant.H5CALLNATIVE_REFRESH_PREVIOUS_PAGE_MSGID);
 	}
 
 	/**关闭当前界面*/
@@ -177,7 +175,7 @@ public class H5CallNativeBindIMPL {
 	public void jumpProtocol(String protocolStr) {
 		TransfersLog.d(TAG, "jumpProtocol " + protocolStr);
 		if (!StringUtils.isEmpty(protocolStr)) {
-			mIWebView4Activity.sendMessage(ModuleConstant_H5.H5CALLNATIVE_STARTACTIVITY_MSGID,protocolStr);
+			mIWebView4Activity.sendMessage(H5Constant.H5CALLNATIVE_STARTACTIVITY_MSGID,protocolStr);
 		}
 	}
 	
@@ -191,19 +189,19 @@ public class H5CallNativeBindIMPL {
 	 */
 	
 	public void showDialog(String params) {
-		JumpURI uri = SchemeParser.parseJumpParams(params);
-		if( uri == null ){
-			//不支持的类型
-			YTLog.e("not support type");
-			return ;
-		}
-		HashMap<String,String> paramMap = uri.getParamMap();
-		JumpType jumpType = uri.getJumpType();
-		if (JumpType.ShowDialog==jumpType) {
-			if (paramMap.containsKey("msg")) {
-				mActivity.showErrorDialog(paramMap.get("msg"));
-			}
-		}
+//		JumpURI uri = SchemeParser.parseJumpParams(params);
+//		if( uri == null ){
+//			//不支持的类型
+//			YTLog.e("not support type");
+//			return ;
+//		}
+//		HashMap<String,String> paramMap = uri.getParamMap();
+//		JumpType jumpType = uri.getJumpType();
+//		if (JumpType.ShowDialog==jumpType) {
+//			if (paramMap.containsKey("msg")) {
+//				mActivity.showErrorDialog(paramMap.get("msg"));
+//			}
+//		}
 	}
 	
 	/** 
@@ -216,7 +214,7 @@ public class H5CallNativeBindIMPL {
 	 */
 	
 	public void setTitleBar(String params) {
-		sendHandlerMessage(ModuleConstant_H5.H5CALLNATIVE_SETTITLEBAR_MSGID, params);
+		sendHandlerMessage(H5Constant.H5CALLNATIVE_SETTITLEBAR_MSGID, params);
 	}
 
 	/**
@@ -232,34 +230,20 @@ public class H5CallNativeBindIMPL {
 	/**H5是否响应标题栏点击返回操作（和响应返回按钮组合使用）*/
 	
 	public void isResponseClickBack() {
-		mActivity.isResponseClickBack();
+		//mIWebView4Activity.isClickBack();
 	}
 
-
-	/**设置界面是否开启下拉刷新
-	 * @param param  true 开启  false 关闭
-     */
-	
-	public void setPull2Refreshable(String param) {
-		if(mActivity!=null){
-			boolean flag =false;
-			if ("true".equalsIgnoreCase(param)) {
-				flag = true;
-			}
-			mActivity.setPull2Refreshable(flag);
-		}
-	}
 
 	public boolean isLogin() {
-		//需要先跳登录页面,判断是否已登录
-		if (mActivity!=null&& StringUtils.isEmpty(mActivity.getUserID())) {
-			//未登录，需要跳转到登录页，并且给出提示
-			Intent intent = new Intent(mActivity, LoginActivity.class);
-			intent.setClass(mActivity, LoginActivity.class);
-			ToastUtils.showToast(mActivity, R.string.template_jump_needlogin);
-			mActivity.startActivity(intent);
-			return false;
-		}
+//		//需要先跳登录页面,判断是否已登录
+//		if (mActivity!=null&& StringUtils.isEmpty(mActivity.getUserID())) {
+//			//未登录，需要跳转到登录页，并且给出提示
+//			Intent intent = new Intent(mActivity, LoginActivity.class);
+//			intent.setClass(mActivity, LoginActivity.class);
+//			ToastUtils.showToast(mActivity, R.string.template_jump_needlogin);
+//			mActivity.startActivity(intent);
+//			return false;
+//		}
 		return true;
 	}
 

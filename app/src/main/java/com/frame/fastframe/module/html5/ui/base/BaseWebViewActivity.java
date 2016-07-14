@@ -21,7 +21,6 @@ import java.util.LinkedHashMap;
 public abstract class BaseWebViewActivity extends BaseActivity implements IBridgeCallBack,IWebView4Activity{
 
     private final String TAG = this.getClass().getName();
-
     private ProgressWebView mWebView;
 
     public WebView getWebView() {
@@ -90,12 +89,12 @@ public abstract class BaseWebViewActivity extends BaseActivity implements IBridg
     }
 
     @Override
-    public void paserCallJsCallback(String bean) {
+    public void paserCallJsCallback(String json) {
 
     }
 
     @Override
-    public void paserOtherCallback(Object bean) {
+    public void paserOtherCallback(Object json) {
 
     }
 }

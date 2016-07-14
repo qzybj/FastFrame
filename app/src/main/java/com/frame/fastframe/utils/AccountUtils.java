@@ -110,5 +110,4 @@ public class AccountUtils extends AbsAccountUtils {
             this.password = password;
         }
     }
-
 }

@@ -10,7 +10,7 @@ import com.tencent.mm.sdk.modelbase.BaseResp;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.IWXAPIEventHandler;
 import com.wxlibrary.wxapi.config.WXConstant;
-import com.wxlibrary.wxapi.pay.WeixinPayUtils;
+import com.wxlibrary.wxapi.pay.WXPayUtils;
 import com.wxlibrary.wxapi.unionlogin.OAuthUtils;
 import com.wxlibrary.wxapi.utils.WXLogUtils;
 
@@ -55,12 +55,12 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
 		case ConstantsAPI.COMMAND_LAUNCH_BY_WX :
 			break;
 		case ConstantsAPI.COMMAND_PAY_BY_WX://微信支付
-			if (WeixinPayUtils.getInstance(this).mResultEventHandler!=null) {
-				WeixinPayUtils.getInstance(this).onReq(req);
+			if (WXPayUtils.getInstance(this).mResultEventHandler!=null) {
+				WXPayUtils.getInstance(this).onReq(req);
 			}
 			break;
 		case ConstantsAPI.COMMAND_SENDAUTH:{
-			if (OAuthUtils.getInstance(this).isNotNullAuthCallBack()) {
+			if (OAuthUtils.getInstance(this).isSupportAuthCallBack()) {
 				OAuthUtils.getInstance(this).onReq(req);
 			}
 		}
@@ -77,16 +77,16 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
 		switch (resp.getType()) {
 			case ConstantsAPI.COMMAND_PAY_BY_WX://微信支付
 				WXLogUtils.i(TAG, "call ConstantsAPI.COMMAND_PAY_BY_WX");
-				if (WeixinPayUtils.getInstance(this).mResultEventHandler!=null) {
+				if (WXPayUtils.getInstance(this).mResultEventHandler!=null) {
 					WXLogUtils.i(TAG, "call mResultEventHandler");
-					WeixinPayUtils.getInstance(this).onResp(resp);
+					WXPayUtils.getInstance(this).onResp(resp);
 				}
 				WXLogUtils.i(TAG, "onPayFinish, errCode = " + resp.errCode+" : "+resultStr);
 				break;
 
 			case ConstantsAPI.COMMAND_SENDAUTH:
 				WXLogUtils.i(TAG,"call ConstantsAPI.COMMAND_SENDAUTH");
-				if (OAuthUtils.getInstance(this).isNotNullAuthCallBack()) {
+				if (OAuthUtils.getInstance(this).isSupportAuthCallBack()) {
 					WXLogUtils.i(TAG, "call mAuthEventListener");
 					OAuthUtils.getInstance(this).onResp(resp);
 				}

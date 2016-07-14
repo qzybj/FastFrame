@@ -4,31 +4,18 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
-import android.webkit.WebView;
-import android.widget.ProgressBar;
-
 import com.frame.fastframe.R;
-import com.frame.fastframe.module.html5.bridgewebView.JSBridgeConstants;
+import com.frame.fastframe.module.common.constant.ConstantsCommonKey;
 import com.frame.fastframe.module.html5.bridgewebView.ProgressWebView;
-import com.frame.fastframe.module.html5.bridgewebView.bean.JSBridgeBean;
-import com.frame.fastframe.module.html5.bridgewebView.interfaces.IBridgeCallBack;
 import com.frame.fastframe.module.html5.bridgewebView.interfaces.IJSBridgeBean;
-import com.frame.fastframe.module.html5.interfaces.IWebView4Activity;
 import com.frame.fastframe.module.html5.ui.base.BaseWebViewActivity;
 import com.frame.fastframe.utils.WebViewUtilPlus;
 import com.frame.fastframelibrary.utils.IntentUtils;
-import com.frame.fastframelibrary.utils.LogUtils;
-import com.frame.fastframelibrary.utils.StringUtils;
 import com.frame.fastframelibrary.utils.WebViewUtil;
-
 import org.xutils.view.annotation.ViewInject;
-
-import java.util.LinkedHashMap;
-import java.util.Objects;
 
 /**
  * Created by ZhangYuanBo on 2016/5/24.
@@ -69,9 +56,9 @@ public class CommonWebViewActivity extends BaseWebViewActivity{
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        setTitlebarContent(IntentUtils.getIntentStr(getIntent(), WebViewUtilPlus.KEY_TITLE));//设置title
-        initCustomUI(IntentUtils.getIntentStr(getIntent(), WebViewUtilPlus.KEY_TYPE)); //设置展示特殊类型UI
-        loadUrl(IntentUtils.getIntentStr(getIntent(), WebViewUtilPlus.KEY_URL)); //设置加载Url
+        setTitlebarContent(IntentUtils.getIntentStr(getIntent(), ConstantsCommonKey.KEY_TITLE));//设置title
+        initCustomUI(IntentUtils.getIntentStr(getIntent(), ConstantsCommonKey.KEY_TYPE)); //设置展示特殊类型UI
+        loadUrl(IntentUtils.getIntentStr(getIntent(), ConstantsCommonKey.KEY_URL)); //设置加载Url
     }
 
     /**
@@ -140,12 +127,12 @@ public class CommonWebViewActivity extends BaseWebViewActivity{
     }
 
     @Override
-    public void paserCallJsCallback(String bean) {
+    public void paserCallJsCallback(String json) {
 
     }
 
     @Override
-    public void paserOtherCallback(Object bean) {
+    public void paserOtherCallback(Object json) {
 
     }
 }

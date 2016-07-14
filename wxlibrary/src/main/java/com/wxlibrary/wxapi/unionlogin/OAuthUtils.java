@@ -1,7 +1,6 @@
 package com.wxlibrary.wxapi.unionlogin;
 
 import android.content.Context;
-
 import com.tencent.mm.sdk.modelbase.BaseReq;
 import com.tencent.mm.sdk.modelbase.BaseResp;
 import com.tencent.mm.sdk.modelmsg.SendAuth;
@@ -18,7 +17,6 @@ public class OAuthUtils implements IWXAPIEventHandler {
 	private static Context mContext;
 	private static OAuthUtils instance ;
 	public static AuthEventListener mAuthEventListener = null;
-
 
 	private OAuthUtils() {
 		super();
@@ -37,11 +35,10 @@ public class OAuthUtils implements IWXAPIEventHandler {
 	 */
 	public void startAuthLogin(AuthEventListener listener) {
 		this.mAuthEventListener = listener;
-		// send oauth request 
 		SendAuth.Req req = new SendAuth.Req();
         req.scope = WXConstant.WEIXIN_SCOPE;
         req.state = WXConstant.WEIXIN_STATE;
-		if (isNotNullAuthCallBack()) {
+		if (isSupportAuthCallBack()) {
 			mAuthEventListener.beforeCallApi(null);
 		}
         WXApiManager.getInstance(mContext).getWXAPI().sendReq(req);
@@ -55,20 +52,20 @@ public class OAuthUtils implements IWXAPIEventHandler {
 		getAccessTokenTask.execute();
 	}
 
-	public boolean isNotNullAuthCallBack() {
+	public boolean isSupportAuthCallBack() {
 		return mAuthEventListener!=null;
 	}
 
 	@Override
 	public void onReq(BaseReq arg0) {
-//		if (isNotNullAuthCallBack()) {
+//		if (isSupportAuthCallBack()) {
 //			mAuthEventListener.beforeCallApi(null);
 //		}
 	}
 
 	@Override
 	public void onResp(BaseResp resp) {
-		if (isNotNullAuthCallBack()) {
+		if (isSupportAuthCallBack()) {
 			switch (resp.errCode) {
 				case BaseResp.ErrCode.ERR_OK:
 					if (resp instanceof SendAuth.Resp) {

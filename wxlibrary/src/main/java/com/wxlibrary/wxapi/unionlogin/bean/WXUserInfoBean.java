@@ -3,11 +3,6 @@ package com.wxlibrary.wxapi.unionlogin.bean;
 import com.google.gson.annotations.SerializedName;
 import com.wxlibrary.wxapi.config.LocalReturnCode;
 import com.wxlibrary.wxapi.config.WXConstant;
-import com.wxlibrary.wxapi.utils.WXLogUtils;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 
 public class WXUserInfoBean {
@@ -149,56 +144,5 @@ public class WXUserInfoBean {
 
     public void setAccess_token(String access_token) {
         this.access_token = access_token;
-    }
-
-
-    public void parseFrom(String content) {
-
-        if (content == null || content.length() <= 0) {
-            WXLogUtils.e(TAG, "parseFrom fail, content is null");
-            localRetCode = LocalReturnCode.ERR_JSON;
-            return;
-        }
-
-        try {
-            JSONObject json = new JSONObject(content);
-            if (json.has("openid")) { // success case
-                openid = json.getString("openid");
-                nickname = json.getString("nickname");
-                sex = json.getInt("sex");
-                province = json.getString("province");
-                city = json.getString("city");
-                country = json.getString("country");
-                JSONArray jsonArray = json.getJSONArray("privilege");
-                privilege = new ArrayList<String>();
-                if (jsonArray!=null&&jsonArray.length()>0) {
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        privilege.add(jsonArray.getString(i));
-                    }
-                }
-                headimgurl = json.getString("headimgurl");
-                unionid = json.getString("unionid");
-
-                localRetCode = LocalReturnCode.ERR_OK;
-            } else {
-                errCode = json.getInt("errcode");
-                errMsg = json.getString("errmsg");
-                localRetCode = LocalReturnCode.ERR_JSON;
-            }
-        } catch (Exception e) {
-            WXLogUtils.d(TAG, e.toString());
-            localRetCode = LocalReturnCode.ERR_JSON;
-        }
-    }
-
-    @Override
-    public String toString() {
-        return "GetUserInfoResult [localRetCode=" + localRetCode
-                + ", openId=" + openid + ", nickname=" + nickname
-                + ", sex=" + sex + ", province=" + province + ", city="
-                + city + ", country=" + country + ", privilege="
-                + privilege + ", headImgUrl=" + headimgurl + ", unionID="
-                + unionid + ", errCode=" + errCode + ", errMsg=" + errMsg
-                + "]";
     }
 }

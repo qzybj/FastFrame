@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">WXLibrary</string>
+    <string name="wxapp_no_Installed_warn">尚未安装微信客户端或当前版本不支持，请先安装最新版后再尝试</string>
+
 </resources>

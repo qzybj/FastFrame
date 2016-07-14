@@ -24,9 +24,6 @@ public class WebViewUtil {
 	private final static String ENCODE_TYPE = "UTF_8";//"gb2312"
 	private final static String MIME_TYPE  = "text/html; charset=UTF-8";
 
-	public final static  String KEY_URL = "url";// 显示网址
-	public final static String KEY_TITLE = "title";// title显示
-
 	/** 初始化webview */
 	public  static void initWebView(WebView webView) {
 		WebSettings webSettings = webView.getSettings();

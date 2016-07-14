@@ -1,10 +1,10 @@
 package com.wxlibrary.wxapi.pay.bean;
+
 /**
  * 微信支付服务器 响应
- * @author LangShaoPeng
  *
  */
-public class WeiXinPayInfo {
+public class WXPayBean {
 
 	/** 公众账号ID */
 	private String appId;

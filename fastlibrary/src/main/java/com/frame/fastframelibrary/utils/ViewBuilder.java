@@ -8,6 +8,9 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 
+/**
+ * 获取一些常用的View控件
+ */
 public class ViewBuilder {
 
 	public static LinearLayout getLinearLayout(Context con) {

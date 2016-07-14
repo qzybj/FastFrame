@@ -66,15 +66,4 @@ public abstract class FrameBaseActivity extends AppCompatActivity implements Vie
 	 */
 	public abstract void initData(Bundle savedInstanceState);
 
-	/**
-	 * 点击事件处理<BR>
-	 * @param v
-	 */
-	protected abstract void clickEvent(View v);
-
-	@Override
-	public void onClick(View v) {
-		clickEvent(v);
-	}
-
 }

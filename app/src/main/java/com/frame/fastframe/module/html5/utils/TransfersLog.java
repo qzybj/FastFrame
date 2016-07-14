@@ -53,11 +53,4 @@ public class TransfersLog {
 			LogUtils.e(tag,e.getMessage());
     	}
     }
-    public static void logformat(String format, Object... args) {
-    	String msg = String.format(format, args);
-    	 String callclassname = new Exception().getStackTrace()[1].getClassName();
-         String callmethodname = new Exception().getStackTrace()[1].getMethodName();
-         msg = callclassname + " -> " + callmethodname + ": " + msg;
-         d(TAG,msg);
-    }
 }

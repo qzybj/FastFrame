@@ -156,7 +156,7 @@ public class PopWin4Comment extends BasePopupWindow implements View.OnClickListe
         mOnCommentPopupClickListener = onCommentPopupClickListener;
     }
 
-    //=============================================================clickEvent
+    //=============================================================customClickEvent
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
