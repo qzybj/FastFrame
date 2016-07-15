@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/style_common_matchparent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <View
+        style="@style/style_common_matchparent"
+        android:layout_height="2px"
+        android:background="@color/color_00c2f2" />
+
+    <LinearLayout
+        style="@style/style_common_matchparent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/tab_bottom_layout_home"
+            style="@style/style_tabbar_item_layout">
+
+            <ImageView
+                style="@style/style_common"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                style="@style/style_common"
+                android:text="@string/home" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tab_bottom_layout_biz"
+            style="@style/style_tabbar_item_layout">
+
+            <ImageView
+                style="@style/style_common"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                style="@style/style_common"
+                android:text="@string/bar_biz" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tab_bottom_layout_bbs"
+            style="@style/style_tabbar_item_layout">
+
+            <ImageView
+                style="@style/style_common"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                style="@style/style_common"
+                android:text="@string/bar_bbs" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tab_bottom_layout_article"
+            style="@style/style_tabbar_item_layout">
+
+            <ImageView
+                style="@style/style_common"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                style="@style/style_common"
+                android:text="@string/bar_article" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tab_bottom_layout_more"
+            style="@style/style_tabbar_item_layout">
+
+            <ImageView
+                style="@style/style_common"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                style="@style/style_common"
+                android:text="@string/more" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

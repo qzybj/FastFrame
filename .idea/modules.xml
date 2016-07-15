@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FastFrame.iml" filepath="$PROJECT_DIR$/FastFrame.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo/demo.iml" filepath="$PROJECT_DIR$/demo/demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/fastlibrary/fastlibrary.iml" filepath="$PROJECT_DIR$/fastlibrary/fastlibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/wxlibrary/wxlibrary.iml" filepath="$PROJECT_DIR$/wxlibrary/wxlibrary.iml" />
     </modules>

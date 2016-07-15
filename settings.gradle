@@ -1,1 +1,1 @@
-include ':app', ':fastlibrary', ':wxlibrary'
+include ':app', ':fastlibrary', ':wxlibrary', ':demo'

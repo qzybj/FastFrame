@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tab_item_layout"
+    style="@style/style_tabbar_item_layout">
+
+    <ImageView
+        android:id="@+id/tab_item_iv"
+        style="@style/style_common"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tab_item_tv"
+        style="@style/style_common"
+        android:text="@string/home" />
+</LinearLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/style_common_matchparent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_fragment_content"
+        style="@style/style_common"
+        android:gravity="center"
+        android:text="使用Fragment做主面板"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btn_inputdialog"
+        style="@style/style_common"
+        android:text="inputdialog" />
+
+    <Button
+        android:id="@+id/btn_logindialog"
+        style="@style/style_common"
+        android:text="logindialog" />
+
+
+</LinearLayout>

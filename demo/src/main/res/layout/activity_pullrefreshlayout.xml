@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/style_common_matchparent"
+    android:background="@color/color_ffffff"
+    android:orientation="vertical">
+
+    <include layout="@layout/titlebar_base" />
+
+    <FrameLayout style="@style/style_common_matchparent">
+
+        <RelativeLayout
+            style="@style/style_common_matchparent"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <ProgressBar
+                android:id="@+id/progressbar"
+                style="@style/common_progressbar_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="gone" />
+
+            <com.baoyz.widget.PullRefreshLayout
+                android:id="@+id/prlayout_refresh"
+                style="@style/style_common_matchparent">
+
+                <ListView
+                    android:id="@+id/lv_show"
+                    style="@style/style_common_matchparent" />
+
+            </com.baoyz.widget.PullRefreshLayout>
+
+        </RelativeLayout>
+    </FrameLayout>
+</LinearLayout>

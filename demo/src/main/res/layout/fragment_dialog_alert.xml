@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/style_common"
+    android:background="@drawable/bg_alertdialog_ffffff">
+
+    <TextView
+        android:id="@android:id/title"
+        style="@style/style_text_common"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:text="@string/reminder"
+        android:textColor="@color/color_333333"
+        android:textSize="@dimen/text_size_32"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/layout_text"
+        style="@style/style_common_matchparent"
+        android:layout_height="wrap_content"
+        android:layout_below="@android:id/title"
+        android:layout_marginTop="@dimen/h5dip"
+        android:minHeight="@dimen/h100dip"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@android:id/content"
+            style="@style/style_text_common"
+            android:layout_centerInParent="true"
+            android:lineSpacingExtra="3dp"
+            android:paddingLeft="@dimen/w66dip"
+            android:paddingRight="@dimen/w66dip"
+            android:textColor="@color/color_666666"
+            android:textSize="@dimen/text_size_30" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/layout_text"
+        android:background="@color/color_e6e6e6" />
+
+    <LinearLayout
+        style="@style/style_common_matchparent"
+        android:layout_height="@dimen/h86dip"
+        android:layout_below="@id/line"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp">
+
+        <Button
+            android:id="@android:id/button1"
+            style="@style/common_btn_weight"
+            android:text="@string/sure" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/color_e6e6e6" />
+
+        <Button
+            android:id="@android:id/button2"
+            style="@style/common_btn_weight"
+            android:text="@string/cancel" />
+    </LinearLayout>
+</RelativeLayout>
+
+
+
