@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/style_common_matchparent"
+    android:orientation="vertical"
+    android:background="@color/color_ffffff">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_list"
+        style="@style/style_common_matchparent" />
+
+</RelativeLayout>

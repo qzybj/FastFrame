@@ -1,32 +1,26 @@
 package earlll.com.testdemoall.ui;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.frame.fastframelibrary.utils.IntentUtils;
+
 import com.frame.fastframelibrary.utils.StringUtils;
 import com.frame.fastframelibrary.utils.TextViewUtils;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import earlll.com.testdemoall.R;
-import earlll.com.testdemoall.bean.TestBean;
-import earlll.com.testdemoall.module.eventbus.bean.MessageEvent;
+import earlll.com.testdemoall.aosp.eventbus.bean.MessageEvent;
 
 /** 获取传感器的值 使用示例*/
 public class SimpleSensorActivity extends Activity {

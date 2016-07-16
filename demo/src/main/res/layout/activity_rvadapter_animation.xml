@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/style_common_matchparent"
+    android:background="@color/color_c2c2c2"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:id="@+id/spinner"
+            style="@style/style_common_matchparent"
+            android:layout_weight="1"
+            android:background="@color/color_ff3b30"
+            app:ms_background_color="@color/color_ff3b7f"
+            app:ms_hide_arrow="true"
+            app:ms_text_color="#00ddb6" />
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/color_000000" />
+
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:id="@+id/spinner_first_only"
+            style="@style/style_common_matchparent"
+            android:layout_weight="1"
+            app:ms_background_color="@color/color_ff3b7f"
+            app:ms_hide_arrow="true"
+            app:ms_text_color="#00ddb6" />
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_list"
+        style="@style/style_common_matchparent"
+        android:fadingEdge="none" />
+
+</LinearLayout>

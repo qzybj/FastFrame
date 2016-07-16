@@ -10,77 +10,114 @@
         android:theme="@style/style_activty_custom">
         <activity
             android:name="earlll.com.testdemoall.MainActivity"
+            android:configChanges="keyboard|keyboardHidden"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"
-            android:configChanges="keyboard|keyboardHidden"
-            android:theme="@style/style_activty_custom">
+            android:theme="@style/style_activty_custom"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="earlll.com.testdemoall.ui.SimpleBaseAdapterActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"
+            android:name=".aosp.baseadapterhelper.ui.SimpleBaseAdapterActivity"
             android:configChanges="keyboard|keyboardHidden"
-            android:theme="@style/style_activty_custom" />
+            android:screenOrientation="portrait"
+            android:theme="@style/style_activty_custom"
+            android:windowSoftInputMode="adjustPan" />
 
         <activity
-            android:name="earlll.com.testdemoall.ui.TestApplicationActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"
+            android:name=".aosp.pullrefreshlayout.ui.SimpleSwipeRefreshLayoutActivity"
             android:configChanges="keyboard|keyboardHidden"
-            android:theme="@style/style_activty_custom" />
+            android:screenOrientation="portrait"
+            android:theme="@style/style_activty_custom"
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="earlll.com.testdemoall.ui.SimpleSwipeRefreshLayoutActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"
+            android:name=".aosp.pullrefreshlayout.ui.SimplePullRefreshLayoutActivity"
             android:configChanges="keyboard|keyboardHidden"
-            android:theme="@style/style_activty_custom" />
+            android:screenOrientation="portrait"
+            android:theme="@style/style_activty_custom"
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="earlll.com.testdemoall.ui.SimpleWebViewPullrefreshActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"
+            android:name=".aosp.baseadapterhelper.ui.SimpleHorizontalListViewActivity"
             android:configChanges="keyboard|keyboardHidden"
-            android:theme="@style/style_activty_custom" />
-        <activity
-            android:name="earlll.com.testdemoall.ui.SimplePullRefreshLayoutActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"
-            android:configChanges="keyboard|keyboardHidden"
-            android:theme="@style/style_activty_custom" />
-        <activity
-            android:name="earlll.com.testdemoall.ui.SimpleHorizontalListViewActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"
-            android:configChanges="keyboard|keyboardHidden"
-            android:theme="@style/style_activty_custom" />
+            android:theme="@style/style_activty_custom"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="earlll.com.testdemoall.ui.SimpleFragmentActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"
             android:configChanges="keyboard|keyboardHidden"
-            android:theme="@style/style_activty_custom" />
+            android:screenOrientation="portrait"
+            android:theme="@style/style_activty_custom"
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".ui.EventBusReciveActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"
+            android:name=".aosp.eventbus.ui.EventBusReciveActivity"
             android:configChanges="keyboard|keyboardHidden"
-            android:theme="@style/style_activty_custom" />
+            android:screenOrientation="portrait"
+            android:theme="@style/style_activty_custom"
+            android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".ui.EventBusSendActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"
+            android:name=".aosp.eventbus.ui.EventBusSendActivity"
             android:configChanges="keyboard|keyboardHidden"
-            android:theme="@style/style_activty_custom" />
+            android:screenOrientation="portrait"
+            android:theme="@style/style_activty_custom"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.SimpleSensorActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"
             android:configChanges="keyboard|keyboardHidden"
-            android:theme="@style/style_activty_custom" />
+            android:screenOrientation="portrait"
+            android:theme="@style/style_activty_custom"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".aosp.xrecyclerview.ui.CollapsingToolbarActivity"
+            android:configChanges="keyboard|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/style_activty_custom"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".aosp.xrecyclerview.ui.MultiHeaderActivity"
+            android:configChanges="keyboard|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/style_activty_custom"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".aosp.xrecyclerview.ui.StaggeredGridActivity"
+            android:configChanges="keyboard|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/style_activty_custom"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".aosp.baserecyclerviewadapterhelper.ui.AnimationAdatperActivity"
+            android:configChanges="keyboard|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/style_activty_custom"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".aosp.baserecyclerviewadapterhelper.ui.GroupStyleAdapterActivity"
+            android:configChanges="keyboard|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/style_activty_custom"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".aosp.baserecyclerviewadapterhelper.ui.ItemDragAndSwipeUseActivity"
+            android:configChanges="keyboard|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/style_activty_custom"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".aosp.baserecyclerviewadapterhelper.ui.MultipleTypeAdapterActivity"
+            android:configChanges="keyboard|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/style_activty_custom"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".aosp.baserecyclerviewadapterhelper.ui.PullToRefreshAdapterActivity"
+            android:configChanges="keyboard|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/style_activty_custom"
+            android:windowSoftInputMode="adjustPan" />
+
     </application>
 
 </manifest>

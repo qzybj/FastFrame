@@ -9,7 +9,7 @@ import org.greenrobot.eventbus.Subscribe;
 import butterknife.ButterKnife;
 import earlll.com.testdemoall.R;
 import earlll.com.testdemoall.bean.LoginBean;
-import earlll.com.testdemoall.module.eventbus.bean.MessageEvent;
+import earlll.com.testdemoall.aosp.eventbus.bean.MessageEvent;
 import earlll.com.testdemoall.ui.base.BaseFragmentActivity;
 import earlll.com.testdemoall.ui.fragment.FriendFragment;
 import earlll.com.testdemoall.ui.fragment.HomeFragment;
