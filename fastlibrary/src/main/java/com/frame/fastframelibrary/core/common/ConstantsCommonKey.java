@@ -1,4 +1,4 @@
-package com.frame.fastframe.module.common.constant;
+package com.frame.fastframelibrary.core.common;
 
 
 /**
