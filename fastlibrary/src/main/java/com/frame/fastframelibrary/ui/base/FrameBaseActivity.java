@@ -7,6 +7,8 @@ import android.view.View;
 import com.frame.fastframelibrary.utils.ViewUtils;
 import org.xutils.x;
 
+import butterknife.ButterKnife;
+
 /**
  * 框架Activity的base基类
  */
@@ -24,6 +26,7 @@ public abstract class FrameBaseActivity extends AppCompatActivity implements Vie
 			if (mRootViewContainer != null) {
 				setContentView(mRootViewContainer);
 				x.view().inject(this);//view绑定
+				ButterKnife.bind(this);//view绑定
 				initTitleBar(mRootViewContainer);
 				initContentView(mRootViewContainer);
 			}

@@ -21,7 +21,7 @@ import earlll.com.testdemoall.ui.fragment.interfaces.ITitleBarClickListener;
 
 /**
  * Created by ZhangYuanBo on 2016/5/27.
- * titlebar 模块：项部页面选择栏的实现
+ * titlebar 模块：页面项部标题栏的实现
  */
 public class TitleBarFragment extends Fragment {
     @BindView(R.id.titlebar_layout_left)

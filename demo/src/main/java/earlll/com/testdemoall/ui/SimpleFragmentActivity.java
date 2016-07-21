@@ -21,7 +21,8 @@ import earlll.com.testdemoall.ui.fragment.interfaces.ITabBottomBarClickListener;
 import earlll.com.testdemoall.ui.fragment.utils.TabBottomBarUtils;
 
 /**
- * Fragment 使用示例
+ * Fragment 使用示例:<br>
+ *  包含底部动态栏的使用
  */
 public class SimpleFragmentActivity extends BaseFragmentActivity implements IFragmentDataPass,ITabBottomBarClickListener,IDialogCallBack {
 

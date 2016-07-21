@@ -27,6 +27,7 @@ public class MultipleTypeAdapterActivity extends Activity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         MultipleItemQuickAdapter multipleItemAdapter = new MultipleItemQuickAdapter(this, DataServer.getMultipleItemData());
         multipleItemAdapter.addHeaderView(getHeaderView());
+        multipleItemAdapter.addHeaderView(getHeaderView());
         multipleItemAdapter.addFooterView(getHeaderView());
         mRecyclerView.setAdapter(multipleItemAdapter);
     }

@@ -27,12 +27,12 @@ repositories {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    apt 'com.jakewharton:butterknife-compiler:8.0.1'
-    compile 'com.android.support:appcompat-v7:23.2.1'
-    compile 'com.android.support:cardview-v7:23.3.0'
-    compile 'com.android.support:design:23.2.1'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:cardview-v7:23.4.0'
+    compile 'com.android.support:design:23.4.0'
+    compile 'com.jakewharton:butterknife:8.2.1'
+    apt 'com.jakewharton:butterknife-compiler:8.2.1'
     compile 'org.greenrobot:eventbus:3.0.0'
-    compile 'com.jakewharton:butterknife:8.0.1'
     compile 'com.baoyz.pullrefreshlayout:library:1.2.0'
     compile(name:'xrecyclerview-release1.2.8', ext:'aar')//compile 'com.jcodecraeer:xrecyclerview:1.2.7'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.9.2'

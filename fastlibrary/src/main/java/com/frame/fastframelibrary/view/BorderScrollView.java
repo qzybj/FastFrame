@@ -11,13 +11,13 @@ import android.widget.ScrollView;
  * <li>onTop and onBottom response ScrollView</li>
  * <li>you can {@link #setOnBorderListener(OnBorderListener)} to set your top and bottom response</li>
  * </ul>
- * 
+ *
  * @author trinea@trinea.cn 2013-5-21
  */
 public class BorderScrollView extends ScrollView {
 
     private OnBorderListener onBorderListener;
-    private View             contentView;
+    private View contentView;
 
     public BorderScrollView(Context context) {
         super(context);
@@ -50,7 +50,7 @@ public class BorderScrollView extends ScrollView {
 
     /**
      * OnBorderListener, Called when scroll to top or bottom
-     * 
+     *
      * @author <a href="http://www.trinea.cn" target="_blank">Trinea</a> 2013-5-22
      */
     public static interface OnBorderListener {

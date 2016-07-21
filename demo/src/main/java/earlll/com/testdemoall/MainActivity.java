@@ -120,6 +120,8 @@ public class MainActivity extends BaseActivity {
         list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - 多类型",MultipleTypeAdapterActivity.class.getName()));
         list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - 下拉刷新",PullToRefreshAdapterActivity.class.getName()));
 
+        list.add(TestDataBuilder.getTestBean("示例 - BaseListViewActivity - 展示示例", earlll.com.testdemoall.ui.SimpleBaseAdapterActivity.class.getName()));
+
         return list;
     }
 }
