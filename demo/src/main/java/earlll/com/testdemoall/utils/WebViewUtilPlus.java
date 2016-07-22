@@ -3,7 +3,7 @@ package earlll.com.testdemoall.utils;
 import android.content.Context;
 import android.content.Intent;
 
-import com.frame.fastframelibrary.core.common.ConstantsCommonKey;
+import com.frame.fastframelibrary.core.config.ConstantsCommonKey;
 import com.frame.fastframelibrary.utils.StringUtils;
 import com.frame.fastframelibrary.utils.WebViewUtil;
 

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.ui.AnimationAdatperActivity;
+import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.ui.CollapsingAdapterActivity;
 import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.ui.GroupStyleAdapterActivity;
 import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.ui.ItemDragAndSwipeUseActivity;
 import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.ui.MultipleTypeAdapterActivity;
@@ -119,6 +120,7 @@ public class MainActivity extends BaseActivity {
         list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - 拖拽ItemView",ItemDragAndSwipeUseActivity.class.getName()));
         list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - 多类型",MultipleTypeAdapterActivity.class.getName()));
         list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - 下拉刷新",PullToRefreshAdapterActivity.class.getName()));
+        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - 项部收缩",CollapsingAdapterActivity.class.getName()));
 
         list.add(TestDataBuilder.getTestBean("示例 - BaseListViewActivity - 展示示例", earlll.com.testdemoall.ui.SimpleBaseAdapterActivity.class.getName()));
 

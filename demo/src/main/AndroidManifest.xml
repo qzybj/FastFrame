@@ -118,6 +118,12 @@
             android:theme="@style/style_activty_custom"
             android:windowSoftInputMode="adjustPan" />
         <activity
+            android:name=".aosp.baserecyclerviewadapterhelper.ui.CollapsingAdapterActivity"
+            android:configChanges="keyboard|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/style_activty_custom"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name=".ui.SimpleBaseAdapterActivity"
             android:configChanges="keyboard|keyboardHidden"
             android:screenOrientation="portrait"
