@@ -91,4 +91,19 @@ public class LogUtils {
             Log.e(tag, msg, tr);
         }
     }
+    public static void log4Obj(Object obj) {
+        String msg;
+        if (obj instanceof Throwable) {
+            StringWriter sw = new StringWriter();
+            ((Throwable) obj).printStackTrace(new PrintWriter(sw));
+            msg = sw.toString();
+        } else {
+            msg = String.valueOf(obj);
+        }
+        String callclassname = new Exception().getStackTrace()[1].getClassName();
+        String callmethodname = new Exception().getStackTrace()[1].getMethodName();
+        msg = callclassname + " -> " + callmethodname + ": " + msg;
+
+        d(TAG,msg);
+    }
 }

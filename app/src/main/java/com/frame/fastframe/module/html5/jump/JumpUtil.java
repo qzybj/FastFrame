@@ -52,7 +52,7 @@ public class JumpUtil {
 	 * @return
 	 */
 	public static boolean paramExist(HashMap<String,String> params,String... keys){
-		if( ListUtils.isEmpty(keys) ){
+		if( ListUtils.isEmptyArray(keys) ){
 			return true;
 		}
 		int size = keys.length;

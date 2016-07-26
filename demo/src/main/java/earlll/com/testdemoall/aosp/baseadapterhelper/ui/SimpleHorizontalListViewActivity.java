@@ -11,10 +11,10 @@ import org.xutils.view.annotation.ViewInject;
 import java.util.ArrayList;
 import java.util.List;
 import earlll.com.testdemoall.R;
-import earlll.com.testdemoall.bean.TestBean;
-import earlll.com.testdemoall.ui.base.BaseActivity;
+import earlll.com.testdemoall.module.demo.bean.TestBean;
+import earlll.com.testdemoall.core.ui.base.BaseActivity;
 import earlll.com.testdemoall.aosp.pullrefreshlayout.ui.SimpleSwipeRefreshLayoutActivity;
-import earlll.com.testdemoall.utils.TestDataBuilder;
+import earlll.com.testdemoall.core.utils.TestDataBuilder;
 
 public class SimpleHorizontalListViewActivity extends BaseActivity {
 

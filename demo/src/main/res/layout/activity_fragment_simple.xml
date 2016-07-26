@@ -5,14 +5,14 @@
 
     <fragment
         android:id="@+id/fragment_title"
-        android:name="earlll.com.testdemoall.ui.fragment.bar.TitleBarFragment"
+        android:name="earlll.com.testdemoall.core.ui.fragment.bar.TitleBarFragment"
         style="@style/style_common_matchparent"
         android:layout_height="45dp"
         android:layout_alignParentTop="true" />
 
     <fragment
         android:id="@+id/fragment_bottombar"
-        android:name="earlll.com.testdemoall.ui.fragment.bar.DynamicTabBottomBarFragment"
+        android:name="earlll.com.testdemoall.core.ui.fragment.bar.DynamicTabBottomBarFragment"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_alignParentBottom="true" />

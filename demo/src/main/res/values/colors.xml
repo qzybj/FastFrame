@@ -10,4 +10,9 @@
 
     <color name="item_bg">#e0e4e7</color>
 
+    <!-- home  -->
+    <color name="home_divider_bg_color">#ececec</color>
+    <color name="home_divider_color">#e0e0df</color>
+
+    <color name="divider_color">#d3d3d3</color>
 </resources>

@@ -95,4 +95,15 @@
         <item name="android:singleLine">true</item>
     </style>
 
+    <!--首页- tab按钮-->
+    <style name="style_home_tabbutton" parent="style_common">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">@dimen/h34dip</item>
+        <item name="android:layout_marginBottom">@dimen/h21dip</item>
+        <item name="android:drawablePadding">@dimen/h21dip</item>
+    </style>
+
+
 </resources>

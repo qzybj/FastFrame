@@ -46,7 +46,7 @@
             android:theme="@style/style_activty_custom"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="earlll.com.testdemoall.ui.SimpleFragmentActivity"
+            android:name=".module.demo.ui.SimpleFragmentActivity"
             android:configChanges="keyboard|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@style/style_activty_custom"
@@ -64,7 +64,7 @@
             android:theme="@style/style_activty_custom"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".ui.SimpleSensorActivity"
+            android:name=".module.sensordemo.ui.SimpleSensorActivity"
             android:configChanges="keyboard|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@style/style_activty_custom"
@@ -124,7 +124,25 @@
             android:theme="@style/style_activty_custom"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".ui.SimpleBaseAdapterActivity"
+            android:name=".module.demo.ui.MultiFragmentActivity"
+            android:configChanges="keyboard|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/style_activty_custom"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".module.demo.ui.SimpleBaseAdapterActivity"
+            android:configChanges="keyboard|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/style_activty_custom"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".module.annotationdemo.ui.SimpleAnnotationActivity"
+            android:configChanges="keyboard|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/style_activty_custom"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".module.viewdemo.ui.SimpleLayoutActivity"
             android:configChanges="keyboard|keyboardHidden"
             android:screenOrientation="portrait"
             android:theme="@style/style_activty_custom"

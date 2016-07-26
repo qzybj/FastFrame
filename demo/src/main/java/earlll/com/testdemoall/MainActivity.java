@@ -8,30 +8,21 @@ import android.view.View;
 import android.widget.ListView;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.BaseAdapterHelper;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.QuickAdapter;
-import com.frame.fastframelibrary.core.config.ConstantsCommonKey;
-import com.frame.fastframelibrary.utils.IntentUtils;
+
 import org.xutils.view.annotation.ViewInject;
 import java.util.ArrayList;
 import java.util.List;
 
-import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.ui.AnimationAdatperActivity;
-import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.ui.CollapsingAdapterActivity;
-import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.ui.GroupStyleAdapterActivity;
-import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.ui.ItemDragAndSwipeUseActivity;
-import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.ui.MultipleTypeAdapterActivity;
-import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.ui.PullToRefreshAdapterActivity;
-import earlll.com.testdemoall.aosp.eventbus.ui.EventBusReciveActivity;
-import earlll.com.testdemoall.aosp.pullrefreshlayout.ui.SimplePullRefreshLayoutActivity;
-import earlll.com.testdemoall.aosp.pullrefreshlayout.ui.SimpleSwipeRefreshLayoutActivity;
+import earlll.com.testdemoall.module.annotationdemo.ui.SimpleAnnotationActivity;
+import earlll.com.testdemoall.module.demo.ui.SimpleBaseAdapterActivity;
+import earlll.com.testdemoall.module.demo.ui.MultiFragmentActivity;
 import earlll.com.testdemoall.aosp.xrecyclerview.ui.CollapsingToolbarActivity;
 import earlll.com.testdemoall.aosp.xrecyclerview.ui.MultiHeaderActivity;
 import earlll.com.testdemoall.aosp.xrecyclerview.ui.StaggeredGridActivity;
-import earlll.com.testdemoall.bean.TestBean;
-import earlll.com.testdemoall.aosp.baseadapterhelper.ui.SimpleBaseAdapterActivity;
-import earlll.com.testdemoall.ui.SimpleFragmentActivity;
-import earlll.com.testdemoall.aosp.baseadapterhelper.ui.SimpleHorizontalListViewActivity;
-import earlll.com.testdemoall.ui.base.BaseActivity;
-import earlll.com.testdemoall.utils.TestDataBuilder;
+import earlll.com.testdemoall.module.demo.bean.TestBean;
+import earlll.com.testdemoall.core.ui.base.BaseActivity;
+import earlll.com.testdemoall.core.utils.TestDataBuilder;
+import earlll.com.testdemoall.module.viewdemo.ui.SimpleLayoutActivity;
 
 public class MainActivity extends BaseActivity {
 
@@ -103,26 +94,29 @@ public class MainActivity extends BaseActivity {
 
     public static ArrayList<TestBean> getShowBeanList() {
         ArrayList<TestBean> list = new ArrayList<>();
-        list.add(TestDataBuilder.getTestBean("示例 - 单个item展示",SimpleBaseAdapterActivity.class.getName()));
-        list.add(TestDataBuilder.getTestBean("示例 - 横向ListView",SimpleHorizontalListViewActivity.class.getName()));
-        list.add(TestDataBuilder.getTestBean("示例 - fragment使用示例",SimpleFragmentActivity.class.getName()));
-        list.add(TestDataBuilder.getTestBean("示例 - eventBus使用示例",EventBusReciveActivity.class.getName()));
-        list.add(TestDataBuilder.getTestBean("示例 - 下拉刷新SwipeRefreshLayout中放置WebView展示",SimpleSwipeRefreshLayoutActivity.class.getName(),
-                IntentUtils.setBundleStr(null, ConstantsCommonKey.KEY_URL,"http://m.yintai.com/category/miaoindex?")));
-        list.add(TestDataBuilder.getTestBean("示例 - 下拉刷新 PullRefreshLayout",SimplePullRefreshLayoutActivity.class.getName()));
+//        list.add(TestDataBuilder.getTestBean("示例 - 单个item展示",SimpleBaseAdapterActivity.class.getName()));
+//        list.add(TestDataBuilder.getTestBean("示例 - 横向ListView",SimpleHorizontalListViewActivity.class.getName()));
+//        list.add(TestDataBuilder.getTestBean("示例 - fragment使用示例",SimpleFragmentActivity.class.getName()));
+//        list.add(TestDataBuilder.getTestBean("示例 - eventBus使用示例",EventBusReciveActivity.class.getName()));
+//        list.add(TestDataBuilder.getTestBean("示例 - 下拉刷新SwipeRefreshLayout中放置WebView展示",SimpleSwipeRefreshLayoutActivity.class.getName(),
+//                IntentUtils.setBundleStr(null, ConstantsCommonKey.KEY_URL,"http://m.yintai.com/category/miaoindex?")));
+//        list.add(TestDataBuilder.getTestBean("示例 - 下拉刷新 PullRefreshLayout",SimplePullRefreshLayoutActivity.class.getName()));
 
         list.add(TestDataBuilder.getTestBean("示例 - xrecyclerview - 收缩项部ToolBar",CollapsingToolbarActivity.class.getName()));
         list.add(TestDataBuilder.getTestBean("示例 - xrecyclerview - 多Hearder",MultiHeaderActivity.class.getName()));
         list.add(TestDataBuilder.getTestBean("示例 - xrecyclerview - 交错",StaggeredGridActivity.class.getName()));
 
-        list.add(TestDataBuilder.getTestBean("示例 - recyclerviewAdatper - 动画",AnimationAdatperActivity.class.getName()));
-        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - group分组",GroupStyleAdapterActivity.class.getName()));
-        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - 拖拽ItemView",ItemDragAndSwipeUseActivity.class.getName()));
-        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - 多类型",MultipleTypeAdapterActivity.class.getName()));
-        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - 下拉刷新",PullToRefreshAdapterActivity.class.getName()));
-        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - 项部收缩",CollapsingAdapterActivity.class.getName()));
+//        list.add(TestDataBuilder.getTestBean("示例 - recyclerviewAdatper - 动画",AnimationAdatperActivity.class.getName()));
+//        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - group分组",GroupStyleAdapterActivity.class.getName()));
+//        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - 拖拽ItemView",ItemDragAndSwipeUseActivity.class.getName()));
+//        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - 多类型",MultipleTypeAdapterActivity.class.getName()));
+//        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - 下拉刷新",PullToRefreshAdapterActivity.class.getName()));
+//        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - 项部收缩",CollapsingAdapterActivity.class.getName()));
 
-        list.add(TestDataBuilder.getTestBean("示例 - BaseListViewActivity - 展示示例", earlll.com.testdemoall.ui.SimpleBaseAdapterActivity.class.getName()));
+        list.add(TestDataBuilder.getTestBean("示例 - BaseListViewActivity - 展示示例", SimpleBaseAdapterActivity.class.getName()));
+        list.add(TestDataBuilder.getTestBean("示例 - MultiFragmentActivity - 多个Fragment界面的展示示例", MultiFragmentActivity.class.getName()));
+        list.add(TestDataBuilder.getTestBean("示例 - SimpleAnnotationActivity - 注解使用示例", SimpleAnnotationActivity.class.getName()));
+        list.add(TestDataBuilder.getTestBean("示例 - SimpleAnnotationActivity - 各种布局 ViewStub，merge，include 使用示例", SimpleLayoutActivity.class.getName()));
 
         return list;
     }

@@ -2,7 +2,7 @@ package earlll.com.testdemoall;
 
 import com.frame.fastframelibrary.FastApplication;
 
-import earlll.com.testdemoall.bean.AccountBean;
+import earlll.com.testdemoall.module.demo.bean.AccountBean;
 
 public class MyApplication extends FastApplication {
 	/** 用户信息 add by 4.1.0*/

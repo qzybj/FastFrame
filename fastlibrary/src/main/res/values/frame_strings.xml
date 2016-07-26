@@ -1,5 +1,7 @@
 <resources>
 
     <!-- 公用字符串 -->
-
+    <string name="parse_json_err">JSON解析错误</string>
+    <string name="not_net_connect_err">网络连接错误</string>
+    <string name="request_net_err">请求网络错误</string>
 </resources>

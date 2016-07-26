@@ -19,7 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import earlll.com.testdemoall.R;
-import earlll.com.testdemoall.bean.TestBean;
+import earlll.com.testdemoall.module.demo.bean.TestBean;
 import earlll.com.testdemoall.aosp.eventbus.bean.MessageEvent;
 
 /**EventBus 、ButterKnife 使用示例*/

@@ -36,14 +36,19 @@ public class ListUtils {
 		}
 		return null;
 	}
+	public static boolean isEmptyArray(Object[] objs){
+		if(objs == null ||objs.length == 0){
+			return true ;
+		}
+		return false;
+	}
 	/**
 	 * 判断是否为空
 	 * @param objList
 	 * @return
 	 */
 	public static boolean isEmpty(Object... objList){
-		if(objList == null ||
-				objList.length == 0){
+		if(objList == null ||objList.length == 0){
 			return true ;
 		}
 		return false;
@@ -57,4 +62,15 @@ public class ListUtils {
 		}
 		return false ;
 	}
+	public static  <T> ArrayList<T> buildList(T... objList){
+		if (objList!=null&&objList.length>0) {
+				ArrayList<T> list = new ArrayList<T>();
+				for (int i = 0; i <objList.length; i++) {
+					list.add(objList[i]);
+				}
+				return list;
+		}
+		return null;
+	}
+
 }

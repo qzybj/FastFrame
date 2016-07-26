@@ -19,10 +19,10 @@ import com.frame.fastframelibrary.utils.WebViewUtil;
 import org.xutils.view.annotation.ViewInject;
 
 import earlll.com.testdemoall.R;
-import earlll.com.testdemoall.ui.base.BaseActivity;
-import earlll.com.testdemoall.utils.WebViewUtilPlus;
-import earlll.com.testdemoall.view.ObservableWebView;
-import earlll.com.testdemoall.view.ScrollSwipeRefreshLayout;
+import earlll.com.testdemoall.core.ui.base.BaseActivity;
+import earlll.com.testdemoall.core.utils.WebViewUtilPlus;
+import earlll.com.testdemoall.core.view.ObservableWebView;
+import earlll.com.testdemoall.core.view.ScrollSwipeRefreshLayout;
 
 /**
  * 用于普通的Url展示

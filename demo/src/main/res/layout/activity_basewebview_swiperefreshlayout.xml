@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <earlll.com.testdemoall.view.ScrollSwipeRefreshLayout
+    <earlll.com.testdemoall.core.view.ScrollSwipeRefreshLayout
         android:id="@+id/srlayout_show"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -17,5 +17,5 @@
             layout="@layout/common_webview"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-    </earlll.com.testdemoall.view.ScrollSwipeRefreshLayout>
+    </earlll.com.testdemoall.core.view.ScrollSwipeRefreshLayout>
 </LinearLayout>

@@ -2,6 +2,7 @@ package earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.ui;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -41,17 +42,18 @@ public class CollapsingAdapterActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rvadapter_collapsingtoolbar);
-        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        collapsingToolbar.setTitleEnabled(false);
+
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeLayout);
+        //mSwipeRefreshLayout.setOnRefreshListener(this);
+        mSwipeRefreshLayout.setEnabled(false);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeLayout);
-        mSwipeRefreshLayout.setOnRefreshListener(this);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        initAdapter();
-        addHeadView();
-        mRecyclerView.setAdapter(mQuickAdapter);
+        initAdapter(mRecyclerView);
     }
 
     private void addHeadView() {
@@ -88,8 +90,6 @@ public class CollapsingAdapterActivity extends AppCompatActivity implements
                     }, delayMillis);
                 }
             }
-
-
         });
     }
 
@@ -107,14 +107,15 @@ public class CollapsingAdapterActivity extends AppCompatActivity implements
         }, delayMillis);
     }
 
-    private void initAdapter() {
+    private void initAdapter(RecyclerView view) {
+        view.setLayoutManager(new LinearLayoutManager(this));
         mQuickAdapter = new QuickAdapter(PAGE_SIZE);
         mQuickAdapter.openLoadAnimation();
-        mRecyclerView.setAdapter(mQuickAdapter);
+        view.setAdapter(mQuickAdapter);
         mCurrentCounter = mQuickAdapter.getData().size();
         mQuickAdapter.setOnLoadMoreListener(this);
         mQuickAdapter.openLoadMore(PAGE_SIZE, true);//or call mQuickAdapter.setPageSize(PAGE_SIZE);  mQuickAdapter.openLoadMore(true);
-        addHeadView();
+        //addHeadView();
         mQuickAdapter.setOnRecyclerViewItemClickListener(new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {

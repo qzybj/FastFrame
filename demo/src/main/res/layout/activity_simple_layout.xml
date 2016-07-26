@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
+    style="@style/style_common_matchparent">
+
+    <LinearLayout
+        style="@style/style_common"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_show"
+            style="@style/style_common"
+            android:text="SendMessage" />
+
+        <TextView
+            android:id="@+id/tv_show"
+            style="@style/style_common"
+            android:layout_width="match_parent"
+            android:layout_below="@id/btn_show"
+            android:layout_marginTop="20px"
+            android:text="初始默认值1" />
+
+        <Button
+            android:id="@+id/btn_show_viewstub"
+            style="@style/style_common"
+            android:text="show ViewStub" />
+        <Button
+            android:id="@+id/btn_progress"
+            style="@style/style_common"
+            android:text="load progress" />
+
+        <include layout="@layout/merge_text" />
+        <include layout="@layout/merge_progressbar" />
+    </LinearLayout>
+
+    <ViewStub
+        android:id="@+id/vs_show"
+        style="@style/style_common_matchparent"
+        android:layout="@layout/viewstub_empty" />
+
+</RelativeLayout>

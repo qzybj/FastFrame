@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/style_common_matchparent"
+    android:layout_height="wrap_content"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout_funcarea"
+        style="@style/style_common"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <include layout="@layout/home_divider_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <RelativeLayout
+                android:id="@+id/layout_funcarea_consult"
+                style="@style/style_home_tabbutton"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="0dp">
+
+                <TextView
+                    android:id="@+id/tv_funcarea_consult"
+                    style="@style/style_home_tabbutton"
+                    android:layout_width="wrap_content"
+                    android:drawableTop="@drawable/btn_area_consult_selector"
+                    android:text="consult" />
+
+                <TextView
+                    android:id="@+id/tv_funcarea_consult_msgcount"
+                    style="@style/style_text_common"
+                    android:layout_alignRight="@id/tv_funcarea_consult"
+                    android:layout_alignTop="@id/tv_funcarea_consult"
+                    android:layout_marginRight="-10dip"
+                    android:text="0"
+                    android:visibility="invisible" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_funcarea_marketing"
+                style="@style/style_home_tabbutton"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="0dp">
+
+                <TextView
+                    android:id="@+id/tv_funcarea_marketing"
+                    style="@style/style_home_tabbutton"
+                    android:layout_width="wrap_content"
+                    android:drawableTop="@drawable/btn_area_consult_selector"
+                    android:text="marketing" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_funcarea_manageshop"
+                style="@style/style_home_tabbutton"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="0dp">
+
+                <TextView
+                    android:id="@+id/tv_funcarea_manageshop"
+                    style="@style/style_home_tabbutton"
+                    android:layout_width="wrap_content"
+                    android:drawableTop="@drawable/btn_area_consult_selector"
+                    android:text="store" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_funcarea_managegoods"
+                style="@style/style_home_tabbutton"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="0dp">
+
+                <TextView
+                    android:id="@+id/tv_funcarea_managegoods"
+                    style="@style/style_home_tabbutton"
+                    android:layout_width="wrap_content"
+                    android:drawableTop="@drawable/btn_area_consult_selector"
+                    android:text="goods" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <include layout="@layout/home_divider_line" />
+</LinearLayout>

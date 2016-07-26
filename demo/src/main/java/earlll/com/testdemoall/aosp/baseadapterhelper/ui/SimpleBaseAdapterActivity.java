@@ -7,10 +7,10 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import earlll.com.testdemoall.R;
-import earlll.com.testdemoall.adapter.SingleTypeAdapter;
-import earlll.com.testdemoall.bean.SingleTypeBean;
-import earlll.com.testdemoall.ui.base.BaseActivity;
-import earlll.com.testdemoall.utils.TestDataBuilder;
+import earlll.com.testdemoall.module.demo.adapter.SingleTypeAdapter;
+import earlll.com.testdemoall.module.demo.bean.SingleTypeBean;
+import earlll.com.testdemoall.core.ui.base.BaseActivity;
+import earlll.com.testdemoall.core.utils.TestDataBuilder;
 
 public class SimpleBaseAdapterActivity extends BaseActivity {
 
