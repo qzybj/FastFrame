@@ -1,6 +1,6 @@
 package earlll.com.testdemoall.core.config;
 
-import com.frame.fastframelibrary.utils.AppUtils;
+import com.frame.fastframelibrary.utils.app.AppUtils;
 
 /**
  *  定义常量：界面传递key相关，及 requestcode,resultcode 值等

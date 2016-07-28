@@ -6,7 +6,7 @@ import com.frame.fastframe.module.news.bean.News;
 import com.frame.fastframe.R;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.BaseAdapterHelper;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.QuickAdapter;
-import com.frame.fastframelibrary.utils.StringUtils;
+import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 
 import java.util.ArrayList;
 

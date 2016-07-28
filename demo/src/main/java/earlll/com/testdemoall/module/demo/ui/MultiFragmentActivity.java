@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.frame.fastframelibrary.utils.ListUtils;
+import com.frame.fastframelibrary.utils.dataprocess.ListUtils;
 import butterknife.BindView;
 import earlll.com.testdemoall.R;
 import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.adapter.QuickAdapter;

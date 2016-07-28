@@ -3,7 +3,7 @@ package earlll.com.testdemoall.core.utils;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import com.frame.fastframelibrary.utils.IntentUtils;
+import com.frame.fastframelibrary.utils.dataprocess.IntentUtils;
 
 /**
  * Created by ZhangYuanBo on 2016/6/2.

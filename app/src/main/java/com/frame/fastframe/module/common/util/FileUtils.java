@@ -12,7 +12,7 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
 import android.widget.Toast;
-import com.frame.fastframelibrary.utils.StringUtils;
+import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;

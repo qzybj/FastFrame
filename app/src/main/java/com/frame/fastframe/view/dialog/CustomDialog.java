@@ -21,8 +21,8 @@ import android.widget.TextView;
 
 import com.frame.fastframe.module.common.util.DensityUtil;
 import com.frame.fastframe.R;
-import com.frame.fastframelibrary.utils.DeviceUtils;
-import com.frame.fastframelibrary.utils.StringUtils;
+import com.frame.fastframelibrary.utils.device.DeviceUtils;
+import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 
 public class CustomDialog extends Dialog {
 	protected CustomDialog(Context context) {

@@ -16,7 +16,7 @@ import com.frame.fastframe.module.common.util.DensityUtil;
 import com.frame.fastframe.module.previewimage.view.HackyViewPager;
 import com.frame.fastframe.ui.base.BaseActivity;
 import com.frame.fastframe.utils.TestDataBuilder;
-import com.frame.fastframelibrary.utils.NetUtils;
+import com.frame.fastframelibrary.utils.device.NetUtils;
 import com.squareup.picasso.Picasso;
 import org.xutils.view.annotation.ViewInject;
 import java.util.ArrayList;

@@ -23,6 +23,7 @@ import earlll.com.testdemoall.module.demo.bean.TestBean;
 import earlll.com.testdemoall.core.ui.base.BaseActivity;
 import earlll.com.testdemoall.core.utils.TestDataBuilder;
 import earlll.com.testdemoall.module.viewdemo.ui.SimpleLayoutActivity;
+import earlll.com.testdemoall.module.webviewdemo.ui.InterceptUrlActivity;
 
 public class MainActivity extends BaseActivity {
 
@@ -117,6 +118,7 @@ public class MainActivity extends BaseActivity {
         list.add(TestDataBuilder.getTestBean("示例 - MultiFragmentActivity - 多个Fragment界面的展示示例", MultiFragmentActivity.class.getName()));
         list.add(TestDataBuilder.getTestBean("示例 - SimpleAnnotationActivity - 注解使用示例", SimpleAnnotationActivity.class.getName()));
         list.add(TestDataBuilder.getTestBean("示例 - SimpleAnnotationActivity - 各种布局 ViewStub，merge，include 使用示例", SimpleLayoutActivity.class.getName()));
+        list.add(TestDataBuilder.getTestBean("示例 - InterceptUrlActivity - html页面打开时，针对http劫持逻辑的处理", InterceptUrlActivity.class.getName()));
 
         return list;
     }

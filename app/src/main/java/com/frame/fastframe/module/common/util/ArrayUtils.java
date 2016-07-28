@@ -15,7 +15,7 @@
  */
 
 package com.frame.fastframe.module.common.util;
-import com.frame.fastframelibrary.utils.StringUtils;
+import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 import java.util.Stack;
 
 /**

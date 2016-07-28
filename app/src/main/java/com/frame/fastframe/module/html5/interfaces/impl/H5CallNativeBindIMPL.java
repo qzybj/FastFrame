@@ -1,19 +1,16 @@
 package com.frame.fastframe.module.html5.interfaces.impl;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.webkit.WebView;
-import com.frame.fastframe.R;
+
 import com.frame.fastframe.module.html5.bridgewebView.bean.JSBridgeBean;
 import com.frame.fastframe.module.html5.config.H5Constant;
 import com.frame.fastframe.module.html5.interfaces.IWebView4Activity;
 import com.frame.fastframe.module.html5.utils.H52NativeUtils;
 import com.frame.fastframe.module.html5.utils.TransfersLog;
-import com.frame.fastframelibrary.utils.GsonUtils;
+import com.frame.fastframelibrary.utils.json.GsonUtils;
 import com.frame.fastframelibrary.utils.LogUtils;
-import com.frame.fastframelibrary.utils.StringUtils;
-import com.frame.fastframelibrary.utils.ToastUtils;
-import java.util.HashMap;
+import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 
 /**
  * H5交互桥工具类<br/>

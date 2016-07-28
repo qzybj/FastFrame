@@ -13,8 +13,8 @@ import com.frame.fastframe.module.html5.bridgewebView.ProgressWebView;
 import com.frame.fastframe.module.html5.bridgewebView.interfaces.IJSBridgeBean;
 import com.frame.fastframe.module.html5.ui.base.BaseWebViewActivity;
 import com.frame.fastframe.utils.WebViewUtilPlus;
-import com.frame.fastframelibrary.utils.IntentUtils;
-import com.frame.fastframelibrary.utils.WebViewUtil;
+import com.frame.fastframelibrary.utils.dataprocess.IntentUtils;
+import com.frame.fastframelibrary.utils.view.WebViewUtil;
 import org.xutils.view.annotation.ViewInject;
 
 /**

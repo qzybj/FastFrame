@@ -1,7 +1,7 @@
 
 package com.frame.fastframe.module.html5.config;
 
-import com.frame.fastframelibrary.utils.MapUtils;
+import com.frame.fastframelibrary.utils.dataprocess.MapUtils;
 import java.util.HashMap;
 
 /**H5调用Native的方法名称*/

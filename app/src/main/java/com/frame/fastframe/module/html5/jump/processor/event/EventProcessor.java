@@ -13,9 +13,8 @@ import com.frame.fastframe.module.html5.jump.interfaces.IJumpProcessor;
 import com.frame.fastframe.module.html5.jump.processor.ConstantsJumpParam;
 import com.frame.fastframe.module.loign.ui.LoginActivity;
 import com.frame.fastframe.utils.AccountUtils;
-import com.frame.fastframelibrary.utils.StringUtils;
-import com.frame.fastframelibrary.utils.ToastUtils;
-import com.frame.fastframelibrary.utils.WebUrlUtils;
+import com.frame.fastframelibrary.utils.view.ToastUtils;
+
 import java.util.HashMap;
 
 /**

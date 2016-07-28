@@ -10,8 +10,8 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.frame.fastframelibrary.utils.StringUtils;
-import com.frame.fastframelibrary.utils.TextViewUtils;
+import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
+import com.frame.fastframelibrary.utils.view.TextViewUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

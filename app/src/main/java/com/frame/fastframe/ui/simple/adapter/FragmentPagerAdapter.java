@@ -88,7 +88,7 @@ public class FragmentPagerAdapter extends FragmentStatePagerAdapter {
      * @return
      */
     public View getTabView(int position){
-        mInflater=LayoutInflater.from(FastApplication.getInstance());
+        mInflater=LayoutInflater.from(FastApplication.instance());
         View view=mInflater.inflate(R.layout.tab_item_layout,null);
         TextView tv= (TextView) view.findViewById(R.id.textView);
         tv.setText(titles.get(position));

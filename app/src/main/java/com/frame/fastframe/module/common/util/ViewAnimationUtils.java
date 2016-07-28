@@ -21,6 +21,8 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
 
+import com.frame.fastframelibrary.utils.animation.AnimationUtils;
+
 /**
  * 视图动画工具箱，提供简单的控制视图的动画的工具方法
  *
@@ -58,8 +60,7 @@ public final class ViewAnimationUtils {
                                             final AnimationListener animationListener) {
         if (view.getVisibility() != View.INVISIBLE) {
             view.setVisibility(View.INVISIBLE);
-            AlphaAnimation hiddenAlphaAnimation = AnimationUtils
-                    .getHiddenAlphaAnimation(durationMillis);
+            AlphaAnimation hiddenAlphaAnimation = AnimationUtils.getHiddenAlphaAnimation(durationMillis,null);
             hiddenAlphaAnimation.setAnimationListener(new AnimationListener() {
                 @Override
                 public void onAnimationStart(Animation animation) {
@@ -188,8 +189,7 @@ public final class ViewAnimationUtils {
                                        final boolean isBanClick, final AnimationListener animationListener) {
         if (view.getVisibility() != View.GONE) {
             view.setVisibility(View.GONE);
-            AlphaAnimation hiddenAlphaAnimation = AnimationUtils
-                    .getHiddenAlphaAnimation(durationMillis);
+            AlphaAnimation hiddenAlphaAnimation = AnimationUtils.getHiddenAlphaAnimation(durationMillis,null);
             hiddenAlphaAnimation.setAnimationListener(new AnimationListener() {
                 @Override
                 public void onAnimationStart(Animation animation) {
@@ -318,8 +318,7 @@ public final class ViewAnimationUtils {
                                           final boolean isBanClick, final AnimationListener animationListener) {
         if (view.getVisibility() != View.VISIBLE) {
             view.setVisibility(View.VISIBLE);
-            AlphaAnimation showAlphaAnimation = AnimationUtils
-                    .getShowAlphaAnimation(durationMillis);
+            AlphaAnimation showAlphaAnimation = AnimationUtils.getShowAlphaAnimation(durationMillis,null);
             showAlphaAnimation.setAnimationListener(new AnimationListener() {
                 @Override
                 public void onAnimationStart(Animation animation) {

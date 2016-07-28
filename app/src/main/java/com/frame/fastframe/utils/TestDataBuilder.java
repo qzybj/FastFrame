@@ -62,7 +62,6 @@ public class TestDataBuilder {
         return list;
     }
 
-
      public  static  ArrayList<MultiTypeBean> getChatMessageList() {
          ArrayList<MultiTypeBean> list = new ArrayList<MultiTypeBean>();
          for (int i = 0; i < 10; i++) {

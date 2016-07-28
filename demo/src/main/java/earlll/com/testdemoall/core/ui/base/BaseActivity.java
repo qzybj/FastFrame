@@ -12,12 +12,12 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.frame.fastframelibrary.ui.base.FrameBaseActivity;
-import com.frame.fastframelibrary.utils.ActivityStack;
-import com.frame.fastframelibrary.utils.IntentUtils;
-import com.frame.fastframelibrary.utils.StringUtils;
-import com.frame.fastframelibrary.utils.TextViewUtils;
-import com.frame.fastframelibrary.utils.ToastUtils;
-import com.frame.fastframelibrary.utils.ViewUtils;
+import com.frame.fastframelibrary.utils.app.ActivityStack;
+import com.frame.fastframelibrary.utils.dataprocess.IntentUtils;
+import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
+import com.frame.fastframelibrary.utils.view.TextViewUtils;
+import com.frame.fastframelibrary.utils.view.ToastUtils;
+import com.frame.fastframelibrary.utils.view.ViewUtils;
 
 import earlll.com.testdemoall.core.config.DemoConstants;
 import earlll.com.testdemoall.R;

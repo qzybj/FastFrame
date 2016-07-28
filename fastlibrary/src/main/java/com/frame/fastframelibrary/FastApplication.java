@@ -3,8 +3,8 @@ package com.frame.fastframelibrary;
 import android.app.Application;
 
 public class FastApplication extends Application {
-    private static FastApplication instance;
-    public  static FastApplication getInstance(){
+    private static Application instance;
+    public  static Application instance(){
         return instance;
     }
     @Override

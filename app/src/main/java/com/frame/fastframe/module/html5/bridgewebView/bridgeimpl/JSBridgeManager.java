@@ -6,9 +6,9 @@ import android.os.Message;
 import com.frame.fastframe.module.html5.bridgewebView.JSBridgeConstants;
 import com.frame.fastframe.module.html5.bridgewebView.bean.JSBridgeBean;
 import com.frame.fastframe.module.html5.bridgewebView.interfaces.IJSBridgeBean;
-import com.frame.fastframelibrary.utils.GsonUtils;
+import com.frame.fastframelibrary.utils.json.GsonUtils;
 import com.frame.fastframelibrary.utils.LogUtils;
-import com.frame.fastframelibrary.utils.StringUtils;
+import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 import com.github.lzyzsd.jsbridge.BridgeWebView;
 import com.github.lzyzsd.jsbridge.CallBackFunction;
 

@@ -3,10 +3,10 @@ package com.frame.fastframe.module.html5.utils;
 import android.content.Context;
 import com.frame.fastframe.module.common.constant.AppConstants;
 import com.frame.fastframe.module.html5.bean.H5GetUserBean;
-import com.frame.fastframelibrary.utils.AppUtils;
-import com.frame.fastframelibrary.utils.DeviceUtils;
-import com.frame.fastframelibrary.utils.GsonUtils;
-import com.frame.fastframelibrary.utils.StringUtils;
+import com.frame.fastframelibrary.utils.app.AppUtils;
+import com.frame.fastframelibrary.utils.device.DeviceUtils;
+import com.frame.fastframelibrary.utils.json.GsonUtils;
+import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 
 /**
  * Created by ZhangYuanBo on 2016/6/12.<br/>

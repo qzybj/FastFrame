@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.frame.fastframelibrary.core.config.ConstantsCommonKey;
-import com.frame.fastframelibrary.utils.StringUtils;
-import com.frame.fastframelibrary.utils.WebViewUtil;
+import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
+import com.frame.fastframelibrary.utils.view.WebViewUtil;
 
 import earlll.com.testdemoall.R;
 import earlll.com.testdemoall.core.ui.base.BaseWebViewActivity;

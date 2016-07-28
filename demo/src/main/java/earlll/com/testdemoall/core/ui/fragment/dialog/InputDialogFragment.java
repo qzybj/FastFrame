@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import com.frame.fastframelibrary.utils.TextViewUtils;
+import com.frame.fastframelibrary.utils.view.TextViewUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

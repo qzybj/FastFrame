@@ -15,11 +15,11 @@ import com.frame.fastframe.R;
 import com.frame.fastframe.module.common.constant.AppConstants;
 import com.frame.fastframe.utils.AccountUtils;
 import com.frame.fastframelibrary.ui.base.FrameBaseActivity;
-import com.frame.fastframelibrary.utils.ActivityStack;
-import com.frame.fastframelibrary.utils.StringUtils;
-import com.frame.fastframelibrary.utils.TextViewUtils;
-import com.frame.fastframelibrary.utils.ToastUtils;
-import com.frame.fastframelibrary.utils.ViewUtils;
+import com.frame.fastframelibrary.utils.app.ActivityStack;
+import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
+import com.frame.fastframelibrary.utils.view.TextViewUtils;
+import com.frame.fastframelibrary.utils.view.ToastUtils;
+import com.frame.fastframelibrary.utils.view.ViewUtils;
 
 /**
  * Activity的base基类

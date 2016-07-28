@@ -10,8 +10,8 @@ import com.frame.fastframelibrary.net.core.listener.ResponseBean;
 import com.frame.fastframelibrary.net.volley.listener.VolleyResultListener;
 import com.frame.fastframelibrary.R;
 import com.frame.fastframelibrary.utils.LogUtils;
-import com.frame.fastframelibrary.utils.NetUtils;
-import com.frame.fastframelibrary.utils.StringUtils;
+import com.frame.fastframelibrary.utils.device.NetUtils;
+import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 
 /**请求数据封装类*/
 public class RequestDataServer {
@@ -103,13 +103,12 @@ public class RequestDataServer {
 		// 3.处理网络数据
 		// 4.如果处理成功，不抛异常， 则写入缓存
 		// 5.否则，读取缓存数据，加载缓存数据，并提示新数据获取失败
-		if (NetUtils.isNetConnected(FastApplication.getInstance())) {
+		if (NetUtils.isNetConnected(FastApplication.instance())) {
 			LogUtils.d("url = " + req.obtainUrlAddr());
 			try {
-				VolleyHttpUtils.getInstance(FastApplication.getInstance()).
-				requestDataByString(
-						req.obtainMethod(), 
-						req.obtainUrlAddr(), 
+				VolleyUtils.getInstance().requestDataByString(
+						req.obtainMethod(),
+						req.obtainUrlAddr(),
 						null,
 						new VolleyResultListener<String>() {
 							@Override
@@ -124,7 +123,7 @@ public class RequestDataServer {
 											if (!StringUtils.isEmpty(response.getMsg())) {
 												dataBean.errmsg = response.getMsg();
 											}else {
-												dataBean.errmsg = FastApplication.getInstance()
+												dataBean.errmsg = FastApplication.instance()
 														.getResources().getString(R.string.request_net_err);
 											}
 										}
@@ -132,15 +131,14 @@ public class RequestDataServer {
 									}
 								}
 							}
-						}, 
+						},
 						tag);
-				
-			} catch (Exception e1) {
-				LogUtils.e(e1.getMessage());
+			} catch (Exception e) {
+				LogUtils.e(e.getMessage());
 				if (listener!=null) {
 					RequestDataServerBean dataBean = new RequestDataServerBean();
 					dataBean.errcode = GET_DATA_CODE_NO_READ;
-					dataBean.errmsg = FastApplication.getInstance()
+					dataBean.errmsg = FastApplication.instance()
 							.getResources().getString(R.string.request_net_err);
 					listener.ResponseListener(dataBean);
 				}
@@ -149,12 +147,13 @@ public class RequestDataServer {
 			if (listener!=null) {
 				RequestDataServerBean dataBean = new RequestDataServerBean();
 				dataBean.errcode = GET_DATA_CODE_NO_NET;
-				dataBean.errmsg = FastApplication.getInstance()
+				dataBean.errmsg = FastApplication.instance()
 						.getResources().getString(R.string.not_net_connect_err);
 				listener.ResponseListener(dataBean);
 			}
 		}
 	}
+
 	/**
 	 * 用于解析JSON数据
 	 * @param json
@@ -180,7 +179,7 @@ public class RequestDataServer {
 			}
 			if (response == null) {//处理解析失败的情况
 				try {
-					response_p.setErrMsg(FastApplication.getInstance()
+					response_p.setErrMsg(FastApplication.instance()
 							.getString(R.string.parse_json_err));
 					response_p.setErrCode(GET_DATA_CODE_NO_JSON);
 					response = response_p;

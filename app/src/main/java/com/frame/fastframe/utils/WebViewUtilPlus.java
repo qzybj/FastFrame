@@ -2,12 +2,11 @@ package com.frame.fastframe.utils;
 
 import android.content.Context;
 import android.content.Intent;
-
 import com.frame.fastframe.R;
-import com.frame.fastframe.module.common.constant.ConstantsCommonKey;
 import com.frame.fastframe.module.html5.ui.base.BaseWebViewActivity;
-import com.frame.fastframelibrary.utils.StringUtils;
-import com.frame.fastframelibrary.utils.WebViewUtil;
+import com.frame.fastframelibrary.core.config.ConstantsCommonKey;
+import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
+import com.frame.fastframelibrary.utils.view.WebViewUtil;
 
 /**
  * 继承WebViewUtil并进行和项目有关的功能增强

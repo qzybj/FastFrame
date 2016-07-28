@@ -1,6 +1,6 @@
 package earlll.com.testdemoall.core.utils;
 
-import com.frame.fastframelibrary.utils.SharedPreferencesUtils;
+import com.frame.fastframelibrary.utils.cache.SharedPreferencesUtils;
 import com.google.gson.annotations.SerializedName;
 
 
@@ -25,8 +25,8 @@ public class AccountUtils {
     public static void setUserInfo(UserInfoBean userInfo, String account, String password) {
         userInfoBean = userInfo;
         // TODO 需要把用户名和密码进行存储，下次进入软件的时候，如果有用户名和密码，则提交用户登录，能登录成功则直接跳转到首页
-        SharedPreferencesUtils.getInstance().setStringValue("account", account);
-        SharedPreferencesUtils.getInstance().setStringValue("password", password);
+        SharedPreferencesUtils.instance().setString("account", account);
+        SharedPreferencesUtils.instance().setString("password", password);
     }
 
     public static void setUserType(int userType) {
@@ -62,8 +62,8 @@ public class AccountUtils {
      */
     public static AccountInfo getAccount() {
         AccountInfo accountInfo = new AccountInfo();
-        accountInfo.account = SharedPreferencesUtils.getInstance().getStringValue("account");
-        accountInfo.password = SharedPreferencesUtils.getInstance().getStringValue("password");
+        accountInfo.account = SharedPreferencesUtils.instance().getString("account");
+        accountInfo.password = SharedPreferencesUtils.instance().getString("password");
         return accountInfo;
     }
 
@@ -85,8 +85,8 @@ public class AccountUtils {
     public static void LoginOut() {
         userInfoBean = null;
         //清除记录的账号
-        SharedPreferencesUtils.getInstance().setStringValue("account", "");
-        SharedPreferencesUtils.getInstance().setStringValue("password", "");
+        SharedPreferencesUtils.instance().setString("account", "");
+        SharedPreferencesUtils.instance().setString("password", "");
     }
 
     public static class AccountInfo {

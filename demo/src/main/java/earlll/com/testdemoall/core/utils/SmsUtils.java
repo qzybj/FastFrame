@@ -5,7 +5,7 @@ import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.Message;
 import com.frame.fastframelibrary.utils.LogUtils;
-import com.frame.fastframelibrary.utils.StringUtils;
+import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 
 import earlll.com.testdemoall.module.smslisten.broadcastreceivers.InterceptSmsReceiver;
 

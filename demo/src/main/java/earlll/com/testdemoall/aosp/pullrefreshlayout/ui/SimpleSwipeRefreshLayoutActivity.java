@@ -11,17 +11,17 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import com.frame.fastframelibrary.core.config.ConstantsCommonKey;
-import com.frame.fastframelibrary.utils.IntentUtils;
+import com.frame.fastframelibrary.core.view.ObservableWebView;
+import com.frame.fastframelibrary.utils.dataprocess.IntentUtils;
 import com.frame.fastframelibrary.utils.LogUtils;
-import com.frame.fastframelibrary.utils.StringUtils;
-import com.frame.fastframelibrary.utils.WebViewUtil;
+import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
+import com.frame.fastframelibrary.utils.view.WebViewUtil;
 
 import org.xutils.view.annotation.ViewInject;
 
 import earlll.com.testdemoall.R;
 import earlll.com.testdemoall.core.ui.base.BaseActivity;
 import earlll.com.testdemoall.core.utils.WebViewUtilPlus;
-import earlll.com.testdemoall.core.view.ObservableWebView;
 import earlll.com.testdemoall.core.view.ScrollSwipeRefreshLayout;
 
 /**

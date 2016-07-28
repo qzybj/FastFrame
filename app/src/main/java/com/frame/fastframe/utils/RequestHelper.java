@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Environment;
 import com.frame.fastframelibrary.FastApplication;
 import com.frame.fastframelibrary.utils.LogUtils;
-import com.frame.fastframelibrary.utils.NetUtils;
+import com.frame.fastframelibrary.utils.device.NetUtils;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -99,7 +99,7 @@ public class RequestHelper {
 			return "[methodName=" + methodName
 					+ ", request_start_time=" + request_start_time
 					+ ", request_end_time=" + request_end_time + "]"
-					+ NetUtils.getCurrentNetworkType(FastApplication.getInstance())+
+					+ NetUtils.getCurrentNetworkType(FastApplication.instance())+
 					"下耗时 "+(request_end_time-request_start_time)+"毫秒|";
 		}
 	}
@@ -127,7 +127,7 @@ public class RequestHelper {
 	 */
     public static void writeJson2Disk(String method, String json){
 		if(isDevMode){
-			File cacheDir = getDiskCacheDir(FastApplication.getInstance(), FOLDER_JSON_NAME);
+			File cacheDir = getDiskCacheDir(FastApplication.instance(), FOLDER_JSON_NAME);
 	        if(!cacheDir.exists()){
 	            cacheDir.mkdirs();
 	        }
@@ -143,7 +143,7 @@ public class RequestHelper {
     
     
 	public static void write2Disk(RecordBean bean){
-		File cacheDir = getDiskCacheDir(FastApplication.getInstance(), FOLDER_NAME);
+		File cacheDir = getDiskCacheDir(FastApplication.instance(), FOLDER_NAME);
         if(!cacheDir.exists()){
             cacheDir.mkdirs();
         }

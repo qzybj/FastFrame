@@ -10,8 +10,8 @@ import com.frame.fastframe.module.html5.bridgewebView.interfaces.IBridgeCallBack
 import com.frame.fastframe.module.html5.bridgewebView.interfaces.IJSBridgeBean;
 import com.frame.fastframe.module.html5.interfaces.IWebView4Activity;
 import com.frame.fastframe.ui.base.BaseActivity;
-import com.frame.fastframelibrary.utils.StringUtils;
-import com.frame.fastframelibrary.utils.WebViewUtil;
+import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
+import com.frame.fastframelibrary.utils.view.WebViewUtil;
 
 import java.util.LinkedHashMap;
 

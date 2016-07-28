@@ -11,9 +11,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.frame.fastframelibrary.aosp.picasso.ImageLoadHelper;
-import com.frame.fastframelibrary.utils.ListUtils;
-import com.frame.fastframelibrary.utils.TextViewUtils;
-import com.frame.fastframelibrary.utils.ViewUtils;
+import com.frame.fastframelibrary.utils.dataprocess.ListUtils;
+import com.frame.fastframelibrary.utils.view.TextViewUtils;
+import com.frame.fastframelibrary.utils.view.ViewUtils;
 import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;

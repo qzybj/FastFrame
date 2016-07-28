@@ -23,7 +23,7 @@ import com.frame.fastframe.module.product.adapter.GridViewPictureAdapter;
 import com.frame.fastframe.module.product.moduleview.bean.BaseModuleViewBean;
 import com.frame.fastframe.view.dialog.CustomDialog;
 import com.frame.fastframe.R;
-import com.frame.fastframelibrary.utils.StringUtils;
+import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 import com.frame.fastframe.utils.TestDataBuilder;
 import com.frame.fastframe.view.dynamicgridview.DynamicGridView;
 import org.xutils.view.annotation.ViewInject;

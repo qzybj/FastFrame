@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.frame.fastframelibrary.utils.StringUtils;
-import com.frame.fastframelibrary.utils.TextViewUtils;
+import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
+import com.frame.fastframelibrary.utils.view.TextViewUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

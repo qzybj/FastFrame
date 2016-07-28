@@ -7,7 +7,7 @@ import android.support.v4.view.ViewPager;
 
 import com.frame.fastframe.R;
 import com.frame.fastframe.ui.simple.adapter.FragmentPagerAdapter;
-import com.frame.fastframelibrary.utils.StringUtils;
+import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;

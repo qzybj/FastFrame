@@ -2,24 +2,11 @@ package com.frame.fastframe.ui.simple.ui;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ListView;
 
 import com.frame.fastframe.R;
-import com.frame.fastframe.bean.SingleTypeBean;
 import com.frame.fastframe.ui.base.BaseActivity;
-import com.frame.fastframe.ui.simple.adapter.SingleTypeAdapter;
-import com.frame.fastframe.ui.simple.bean.GroupChildModel;
-import com.frame.fastframe.ui.simple.bean.GroupModel;
-import com.frame.fastframe.view.popwinimpl.PopWin4List;
-import com.frame.fastframe.view.popwinimpl.PopWin4SlideFromBottom;
-import com.frame.fastframe.view.popwinimpl.PopWin4SlideFromBottomPlus;
-import com.frame.fastframe.view.popwinimpl.adapter.GroupAdapter;
-import com.frame.fastframelibrary.utils.LogUtils;
-import com.frame.fastframelibrary.utils.ToastUtils;
 
 import org.xutils.view.annotation.Event;
-
-import java.util.ArrayList;
 
 /**Camera调用示例*/
 public class SimpleCameraActivity extends BaseActivity {

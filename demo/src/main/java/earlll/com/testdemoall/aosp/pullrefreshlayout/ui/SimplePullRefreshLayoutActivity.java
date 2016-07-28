@@ -7,7 +7,7 @@ import android.widget.ProgressBar;
 import com.baoyz.widget.PullRefreshLayout;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.BaseAdapterHelper;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.QuickAdapter;
-import com.frame.fastframelibrary.utils.ListUtils;
+import com.frame.fastframelibrary.utils.dataprocess.ListUtils;
 import org.xutils.view.annotation.ViewInject;
 import java.util.ArrayList;
 import java.util.List;

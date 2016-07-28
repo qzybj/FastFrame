@@ -51,7 +51,6 @@ public class GetWXUserInfoTask extends AsyncTask<Void, Void, WXUserInfoBean> {
             return result;
         }
         WXLogUtils.d(TAG, "json:" + content);
-//        result.parseFrom(content);
 
         try {
             result = WXGsonUtils.toObject(content, WXUserInfoBean.class);

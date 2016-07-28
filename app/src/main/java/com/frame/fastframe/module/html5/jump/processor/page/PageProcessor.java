@@ -14,8 +14,8 @@ import com.frame.fastframe.module.html5.jump.interfaces.IJumpProcessor;
 import com.frame.fastframe.module.previewimage.ui.PreviewImagesActivity;
 import com.frame.fastframe.module.product.ui.ProductListActivity;
 import com.frame.fastframe.module.search.ui.SearchActivity;
-import com.frame.fastframelibrary.utils.MapUtils;
-import com.frame.fastframelibrary.utils.StringUtils;
+import com.frame.fastframelibrary.utils.dataprocess.MapUtils;
+import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 import java.util.ArrayList;
 import java.util.HashMap;
 

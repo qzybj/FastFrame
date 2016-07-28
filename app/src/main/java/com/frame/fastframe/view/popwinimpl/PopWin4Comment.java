@@ -19,7 +19,7 @@ import android.widget.TextView;
 
 import com.frame.fastframe.R;
 import com.frame.fastframelibrary.aosp.basepopwindow.BasePopupWindow;
-import com.frame.fastframelibrary.utils.DimensUtil;
+import com.frame.fastframelibrary.utils.device.DimensUtil;
 
 /**
  * 微信朋友圈评论弹窗

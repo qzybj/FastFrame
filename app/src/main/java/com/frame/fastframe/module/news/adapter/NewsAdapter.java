@@ -9,7 +9,7 @@ import com.frame.fastframelibrary.aosp.baseadapterhelper.BaseAdapterHelper;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.MultiItemTypeSupport;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.QuickAdapter;
 import com.frame.fastframelibrary.core.view.InnerListView;
-import com.frame.fastframelibrary.utils.StringUtils;
+import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 
 import java.util.ArrayList;
 

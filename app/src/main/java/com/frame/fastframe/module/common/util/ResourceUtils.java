@@ -8,7 +8,7 @@ import java.util.List;
 
 import android.content.Context;
 
-import com.frame.fastframelibrary.utils.StringUtils;
+import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 
 /**
  * ResourceUtils

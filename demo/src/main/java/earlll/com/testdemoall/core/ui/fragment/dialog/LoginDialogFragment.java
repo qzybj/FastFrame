@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
-import com.frame.fastframelibrary.utils.TextViewUtils;
+import com.frame.fastframelibrary.utils.view.TextViewUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -1,9 +1,9 @@
 package com.frame.fastframe.module.html5.jump.bean;
 
 import com.frame.fastframe.module.html5.jump.JumpType;
-import com.frame.fastframelibrary.utils.ListUtils;
+import com.frame.fastframelibrary.utils.dataprocess.ListUtils;
 import com.frame.fastframelibrary.utils.LogUtils;
-import com.frame.fastframelibrary.utils.StringUtils;
+import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 import org.apache.http.NameValuePair;
 import java.io.Serializable;
 import java.util.HashMap;

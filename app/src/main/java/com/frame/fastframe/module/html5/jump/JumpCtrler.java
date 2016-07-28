@@ -3,7 +3,7 @@ package com.frame.fastframe.module.html5.jump;
 import android.app.Activity;
 import com.frame.fastframe.module.html5.jump.bean.JumpBean;
 import com.frame.fastframelibrary.utils.LogUtils;
-import com.frame.fastframelibrary.utils.StringUtils;
+import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.utils.URLEncodedUtils;
 import java.net.URI;
