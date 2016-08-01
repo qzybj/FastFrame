@@ -42,7 +42,7 @@ public class InterceptUrlActivity extends BaseWebViewActivity {
 
             @Override
             public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
-                if(H5HttpHijackUtils.isOnInterceptUrl){
+                if(H5HttpHijackUtils.isAllowInterceptUrl()){
                     WebResourceResponse hijackResponse = H5HttpHijackUtils.checkHijackUrl(url);
                     if(hijackResponse!=null){
                         return hijackResponse;
@@ -62,14 +62,12 @@ public class InterceptUrlActivity extends BaseWebViewActivity {
 
     private void initInterceptUrl() {
         H5HttpHijackUtils.clearWhiteList();
-        H5HttpHijackUtils.isOnInterceptUrl = true;
-        H5HttpHijackUtils.setHijackInterceptSwitch(H5HttpHijackUtils.VALUE_HIJACK_INTERCEPT_ALLOW);
         String whiteList[] = {
                 "http://blog.csdn.net",
                 "https://www.baidu.com/",
                 "http://my.oschina.net",
                 };
-        H5HttpHijackUtils.saveWhiteList(whiteList);
+        H5HttpHijackUtils.setResponse(true,H5HttpHijackUtils.VALUE_HIJACK_INTERCEPT_ALLOW,whiteList);
     }
 
     @Override

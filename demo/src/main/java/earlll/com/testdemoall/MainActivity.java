@@ -13,6 +13,7 @@ import org.xutils.view.annotation.ViewInject;
 import java.util.ArrayList;
 import java.util.List;
 
+import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.ui.ItemDragAndSwipeUseActivity;
 import earlll.com.testdemoall.module.annotationdemo.ui.SimpleAnnotationActivity;
 import earlll.com.testdemoall.module.demo.ui.SimpleBaseAdapterActivity;
 import earlll.com.testdemoall.module.demo.ui.MultiFragmentActivity;
@@ -24,6 +25,7 @@ import earlll.com.testdemoall.core.ui.base.BaseActivity;
 import earlll.com.testdemoall.core.utils.TestDataBuilder;
 import earlll.com.testdemoall.module.viewdemo.ui.SimpleLayoutActivity;
 import earlll.com.testdemoall.module.webviewdemo.ui.InterceptUrlActivity;
+import earlll.com.testdemoall.module.zxing.ui.ZXingActivity;
 
 public class MainActivity extends BaseActivity {
 
@@ -103,13 +105,13 @@ public class MainActivity extends BaseActivity {
 //                IntentUtils.setBundleStr(null, ConstantsCommonKey.KEY_URL,"http://m.yintai.com/category/miaoindex?")));
 //        list.add(TestDataBuilder.getTestBean("示例 - 下拉刷新 PullRefreshLayout",SimplePullRefreshLayoutActivity.class.getName()));
 
-        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerview - 收缩项部ToolBar",CollapsingToolbarActivity.class.getName()));
-        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerview - 多Hearder",MultiHeaderActivity.class.getName()));
-        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerview - 交错",StaggeredGridActivity.class.getName()));
+//        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerview - 收缩项部ToolBar",CollapsingToolbarActivity.class.getName()));
+//        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerview - 多Hearder",MultiHeaderActivity.class.getName()));
+//        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerview - 交错",StaggeredGridActivity.class.getName()));
 
 //        list.add(TestDataBuilder.getTestBean("示例 - recyclerviewAdatper - 动画",AnimationAdatperActivity.class.getName()));
 //        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - group分组",GroupStyleAdapterActivity.class.getName()));
-//        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - 拖拽ItemView",ItemDragAndSwipeUseActivity.class.getName()));
+        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - 拖拽ItemView",ItemDragAndSwipeUseActivity.class.getName()));
 //        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - 多类型",MultipleTypeAdapterActivity.class.getName()));
 //        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - 下拉刷新",PullToRefreshAdapterActivity.class.getName()));
 //        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - 项部收缩",CollapsingAdapterActivity.class.getName()));
@@ -119,6 +121,7 @@ public class MainActivity extends BaseActivity {
         list.add(TestDataBuilder.getTestBean("示例 - SimpleAnnotationActivity - 注解使用示例", SimpleAnnotationActivity.class.getName()));
         list.add(TestDataBuilder.getTestBean("示例 - SimpleAnnotationActivity - 各种布局 ViewStub，merge，include 使用示例", SimpleLayoutActivity.class.getName()));
         list.add(TestDataBuilder.getTestBean("示例 - InterceptUrlActivity - html页面打开时，针对http劫持逻辑的处理", InterceptUrlActivity.class.getName()));
+        list.add(TestDataBuilder.getTestBean("示例 - ZXingActivity - 二维码扫码处理", ZXingActivity.class.getName()));
 
         return list;
     }

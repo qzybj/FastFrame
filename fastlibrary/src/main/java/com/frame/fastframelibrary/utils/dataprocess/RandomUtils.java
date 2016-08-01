@@ -105,7 +105,6 @@ public class RandomUtils {
      * @return  返回一个随机的数值
      */
     public static int getRandom(int max) {
-
         return getRandom(0, max);
     }
 

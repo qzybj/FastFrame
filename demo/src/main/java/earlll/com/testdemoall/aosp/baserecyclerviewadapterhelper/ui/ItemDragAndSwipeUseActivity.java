@@ -42,6 +42,7 @@ public class ItemDragAndSwipeUseActivity extends Activity {
         mRecyclerView = (RecyclerView)findViewById(R.id.rv_list);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         mData = generateData(50);
+        //拖拽监听
         OnItemDragListener listener = new OnItemDragListener() {
             @Override
             public void onItemDragStart(RecyclerView.ViewHolder viewHolder, int pos) {
@@ -68,6 +69,7 @@ public class ItemDragAndSwipeUseActivity extends Activity {
         paint.setAntiAlias(true);
         paint.setTextSize(20);
         paint.setColor(Color.BLACK);
+        //滑动监听
         OnItemSwipeListener onItemSwipeListener = new OnItemSwipeListener() {
             @Override
             public void onItemSwipeStart(RecyclerView.ViewHolder viewHolder, int pos) {

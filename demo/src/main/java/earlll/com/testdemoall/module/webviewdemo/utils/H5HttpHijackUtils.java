@@ -38,10 +38,25 @@ public class H5HttpHijackUtils {
     private static final String CACHE_PATH = "intercepturl";
     private static final String CACHE_FILE = "intercepturlfile.txt";
     /**是否开启拦截Url开关*/
-    public static boolean isOnInterceptUrl = false;
+    private static boolean isAllowInterceptUrl = false;
 
     private static Context getContext(){
         return FastApplication.instance();
+    }
+
+    /**
+     * 是否开启拦截Url开关
+     * @return true 允许拦截Url false 不允许拦截Url
+     */
+    public static boolean isAllowInterceptUrl(){
+        return isAllowInterceptUrl;
+    }
+
+    /** SET - http劫持拦截开关*/
+    public static void setResponse(boolean isAllow,String flag,String[] array){
+        isAllowInterceptUrl =isAllow;
+        setHijackInterceptSwitch(flag);
+        saveWhiteList(array);
     }
 
     /** SET - http劫持拦截开关*/
@@ -60,10 +75,6 @@ public class H5HttpHijackUtils {
      * @return 返回 null 既为不拦截Url
      */
     public static WebResourceResponse checkHijackUrl(String url){
-            /* TODO: 2016/7/27  针对http劫持逻辑的处理
-            1.根据拦截清单判断是否拦截要加载的Url，
-            2.将拦截的url写入本地文件。
-            3.上传拦截记录日志。*/
         WebResourceResponse hijackResponse = null;
         if(StringUtils.isNotEmpty(url)){
             String flagType = getHijackInterceptSwitch();
@@ -175,11 +186,14 @@ public class H5HttpHijackUtils {
         saveWhiteList(ListUtils.toList(String.class,array));
     }
 
-    /**
-     * 清空http劫持白名单列表
-     */
+    /** 清空http劫持白名单列表*/
     public static void clearWhiteList(){
         SharedPreferencesUtils.instance().setString(KEY_HIJACK_WHITELIST, "");
+    }
+
+    /** 清空拦截的Url列表*/
+    public static void clearInterceptList(){
+        SharedPreferencesUtils.instance().setString(KEY_HIJACK_INTERCEPTLIST, "");
     }
 
     /**

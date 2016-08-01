@@ -101,7 +101,6 @@ public class WXLoginManager {
             WXLogUtils.d(TAG, mContext.getString(R.string.wxapp_no_Installed_warn));
             WXToastUtils.showToast(mContext,mContext.getString(R.string.wxapp_no_Installed_warn), false);
             mHandler.sendEmptyMessage(MSG_WHAT_DISMISS_PROGRESSDAILOG);
-            // TODO: 2016/7/11 maybe popa a dialog
         }
     }
 

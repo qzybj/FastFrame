@@ -25,4 +25,6 @@
     <string name="bar_bbs">bbs</string>
     <string name="bar_article">article</string>
     <string name="more">more</string>
+    <string name="turn_on_flashlight">Turn On Flashlight</string>
+    <string name="turn_off_flashlight">Turn Off Flashlight</string>
 </resources>
