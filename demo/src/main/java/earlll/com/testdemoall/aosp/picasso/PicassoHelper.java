@@ -1,4 +1,4 @@
-package com.frame.fastframelibrary.aosp.picasso;
+package earlll.com.testdemoall.aosp.picasso;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,28 +10,39 @@ import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
 import java.io.File;
 
+import earlll.com.testdemoall.module.loadimage.ImageLoadUtils;
+import earlll.com.testdemoall.module.loadimage.interfaces.IImageLoadCommon;
+
 /**
  * Created by ZhangYuanBo on 2016/6/16.
  */
-public class ImageLoadHelper {
+public class PicassoHelper implements IImageLoadCommon {
 
     /**
+     * 加载图片(Picasso)
      * @param con
      * @param iv
-     * @param imageUrl
+     * @param imageUrl  支持的格式： load(R.drawable.landing_screen); load("file:///android_asset/DvpvklR.png");load(new File(...))
      */
-    public static void loadImage(Context con, ImageView iv, Object imageUrl) {
-        loadImage(con,iv,imageUrl,-1,-1,-1,-1,null);
+    @Override
+    public void loadImage(Context con, ImageView iv, Object imageUrl) {
+        loadImage(con,iv,imageUrl,-1,-1,-1,-1,false,null);
     }
 
     /**
-     * Picasso.with(context).load(R.drawable.landing_screen).into(imageView1);<br/>
-     * Picasso.with(context).load("file:///android_asset/DvpvklR.png").into(imageView2);<br/>
-     * Picasso.with(context).load(new File(...)).into(imageView3);<br/>
-     * 加载图片(Picasso)
-     * @param imageUrl
+     *  加载图片(Picasso)
+     * @param con
+     * @param iv
+     * @param imageUrl     支持的格式： load(R.drawable.landing_screen); load("file:///android_asset/DvpvklR.png");load(new File(...))
+     * @param width     指定的图片宽
+     * @param height    指定的图片高
+     * @param loadImgResId 默认加载的图片
+     * @param errImgResId   加载错误时的图片
+     * @param isTransform   是否加载动画
+     * @param callback
      */
-    private static void loadImage(Context con, ImageView iv, Object imageUrl, int width, int height,int loadImgResId,int errImgResId,Callback callback) {
+    @Override
+    public void loadImage(Context con, ImageView iv, Object imageUrl, int width, int height,int loadImgResId,int errImgResId,boolean isTransform,final ImageLoadUtils.ImageLoadCallback callback) {
         if(con!=null&&iv!=null){
             RequestCreator requestCreator =null;
             if(imageUrl instanceof String){
@@ -56,13 +67,26 @@ public class ImageLoadHelper {
                 }
             }
             if(requestCreator!=null){
-                requestCreator.skipMemoryCache().config(Bitmap.Config.ARGB_8888);
+                //requestCreator.skipMemoryCache();
+                requestCreator.config(Bitmap.Config.ARGB_8888);
                 requestCreator.fit();
                 if(width!=-1&&height!=-1){
-                    requestCreator.transform(new ScaleTransformation(width, height));
+                    requestCreator.resize(width, height);
+                    if(isTransform){
+                        requestCreator.transform(new ScaleTransformation(width, height));
+                    }
                 }
                 if (callback != null) {
-                    requestCreator.fetch(callback);
+                    requestCreator.fetch(new Callback(){
+                        @Override
+                        public void onSuccess() {
+                            callback.onSuccess();
+                        }
+                        @Override
+                        public void onError() {
+                            callback.onError();
+                        }
+                    });
                 }
                 if (loadImgResId>0) {
                     requestCreator.placeholder(loadImgResId);//占位
@@ -75,15 +99,5 @@ public class ImageLoadHelper {
                 iv.setImageBitmap(null);
             }
         }
-    }
-
-
-
-
-    public static String getloadImgUrl(String sourceImageUrl) {
-        if(StringUtils.isNotEmpty(sourceImageUrl)){
-            sourceImageUrl="file://"+sourceImageUrl.replace("\\","/");
-        }
-        return sourceImageUrl;
     }
 }

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.ui.ItemDragAndSwipeUseActivity;
+import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.ui.ItemDragSmallIconActivity;
 import earlll.com.testdemoall.module.annotationdemo.ui.SimpleAnnotationActivity;
 import earlll.com.testdemoall.module.demo.ui.SimpleBaseAdapterActivity;
 import earlll.com.testdemoall.module.demo.ui.MultiFragmentActivity;
@@ -111,7 +112,8 @@ public class MainActivity extends BaseActivity {
 
 //        list.add(TestDataBuilder.getTestBean("示例 - recyclerviewAdatper - 动画",AnimationAdatperActivity.class.getName()));
 //        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - group分组",GroupStyleAdapterActivity.class.getName()));
-        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - 拖拽ItemView",ItemDragAndSwipeUseActivity.class.getName()));
+        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - 拖拽ItemView及滑动删除",ItemDragAndSwipeUseActivity.class.getName()));
+        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - 拖拽small Icon",ItemDragSmallIconActivity.class.getName()));
 //        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - 多类型",MultipleTypeAdapterActivity.class.getName()));
 //        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - 下拉刷新",PullToRefreshAdapterActivity.class.getName()));
 //        list.add(TestDataBuilder.getTestBean("示例 - xrecyclerviewAdatper - 项部收缩",CollapsingAdapterActivity.class.getName()));

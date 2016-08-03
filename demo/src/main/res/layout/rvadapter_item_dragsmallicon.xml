@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    style="@style/style_common"
+    android:layout_gravity="center"
+    android:background="@android:color/transparent"
+    android:foreground="@android:color/transparent"
+    card_view:cardBackgroundColor="@color/transparent"
+    card_view:cardCornerRadius="0dp"
+    card_view:cardElevation="0dp"
+    android:clickable="true"
+    card_view:cardUseCompatPadding="false">
+
+    <LinearLayout style="@style/style_common_matchparent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:background="@android:color/white">
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="@dimen/h150dip"
+            android:layout_height="@dimen/h90dip"
+            android:scaleType="center"
+            android:src="@mipmap/ic_launcher" />
+        <TextView
+            android:id="@+id/tv"
+            style="@style/style_text_common"
+            android:layout_marginTop="@dimen/h10dip"
+            android:layout_marginBottom="@dimen/h10dip"
+            android:text="item 1"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+</android.support.v7.widget.CardView>

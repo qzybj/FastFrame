@@ -22,8 +22,6 @@ public class ZXingActivity extends BaseFragmentActivity {
 
     public static final String TAG = "ZXing";
 
-    @BindView(R.id.btn_show)
-    Button btn_show;
 
     public int getLayoutResouceId() {
         return R.layout.activity_simple_zxing;
