@@ -11,12 +11,12 @@ import com.squareup.picasso.RequestCreator;
 import java.io.File;
 
 import earlll.com.testdemoall.module.loadimage.ImageLoadUtils;
-import earlll.com.testdemoall.module.loadimage.interfaces.IImageLoadCommon;
+import earlll.com.testdemoall.module.loadimage.interfaces.IImageLoad;
 
 /**
  * Created by ZhangYuanBo on 2016/6/16.
  */
-public class PicassoHelper implements IImageLoadCommon {
+public class PicassoHelper implements IImageLoad {
 
     /**
      * 加载图片(Picasso)
@@ -26,7 +26,17 @@ public class PicassoHelper implements IImageLoadCommon {
      */
     @Override
     public void loadImage(Context con, ImageView iv, Object imageUrl) {
-        loadImage(con,iv,imageUrl,-1,-1,-1,-1,false,null);
+        loadImage(con,iv,imageUrl, IImageLoad.NONE, IImageLoad.NONE, IImageLoad.NONE, IImageLoad.NONE,false,null);
+    }
+
+    @Override
+    public void loadImage(Context con, ImageView iv, Object imageUrl, int loadImgResId) {
+        loadImage(con,iv,imageUrl, IImageLoad.NONE, IImageLoad.NONE,loadImgResId, IImageLoad.NONE,false,null);
+    }
+
+    @Override
+    public void loadImage(Context con, ImageView iv, Object imageUrl, int loadImgResId, boolean isTransform) {
+        loadImage(con,iv,imageUrl, IImageLoad.NONE, IImageLoad.NONE,loadImgResId, IImageLoad.NONE,isTransform,null);
     }
 
     /**
@@ -70,7 +80,7 @@ public class PicassoHelper implements IImageLoadCommon {
                 //requestCreator.skipMemoryCache();
                 requestCreator.config(Bitmap.Config.ARGB_8888);
                 requestCreator.fit();
-                if(width!=-1&&height!=-1){
+                if(width!= IImageLoad.NONE&&height!= IImageLoad.NONE){
                     requestCreator.resize(width, height);
                     if(isTransform){
                         requestCreator.transform(new ScaleTransformation(width, height));
@@ -88,10 +98,10 @@ public class PicassoHelper implements IImageLoadCommon {
                         }
                     });
                 }
-                if (loadImgResId>0) {
+                if (loadImgResId!= IImageLoad.NONE&&loadImgResId>0) {
                     requestCreator.placeholder(loadImgResId);//占位
                 }
-                if (errImgResId>0) {
+                if (errImgResId!= IImageLoad.NONE&&errImgResId>0) {
                     requestCreator.error(errImgResId);//错误
                 }
                 requestCreator.into(iv);

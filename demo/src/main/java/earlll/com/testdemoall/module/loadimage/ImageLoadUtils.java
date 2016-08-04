@@ -5,7 +5,7 @@ import android.widget.ImageView;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 import earlll.com.testdemoall.MyApplication;
 import earlll.com.testdemoall.aosp.picasso.PicassoHelper;
-import earlll.com.testdemoall.module.loadimage.interfaces.IImageLoadCommon;
+import earlll.com.testdemoall.module.loadimage.interfaces.IImageLoad;
 
 /**
  * Created by ZhangYuanBo on 2016/8/3.
@@ -14,7 +14,7 @@ import earlll.com.testdemoall.module.loadimage.interfaces.IImageLoadCommon;
 public class ImageLoadUtils{
 
     private static ImageLoadUtils instance=null;
-    private static IImageLoadCommon loadImageInstance=null;
+    private static IImageLoad loadImageInstance=null;
 
     private ImageLoadUtils() {
         loadImageInstance = new PicassoHelper();
@@ -30,24 +30,27 @@ public class ImageLoadUtils{
         return MyApplication.instance();
     }
 
-    /**
-     *  加载图片
-     * @param iv
-     * @param imageUrl     支持的格式： load(R.drawable.landing_screen); load("file:///android_asset/DvpvklR.png");load(new File(...))
-     */
     public void loadImage(ImageView iv, Object imageUrl) {
-        loadImageInstance.loadImage(getApplication(),iv,imageUrl,-1,-1,-1,-1,false,null);
+        loadImageInstance.loadImage(getApplication(),iv,imageUrl);
+    }
+
+    public void loadImage(Context con, ImageView iv, Object imageUrl, int loadImgResId) {
+        loadImageInstance.loadImage(con,iv,imageUrl,loadImgResId);
+    }
+
+    public void loadImage(Context con, ImageView iv, Object imageUrl, int loadImgResId, boolean isTransform) {
+        loadImageInstance.loadImage(con,iv,imageUrl,loadImgResId,isTransform);
     }
 
     /**
      *  加载图片
      * @param iv
-     * @param imageUrl     支持的格式： load(R.drawable.landing_screen); load("file:///android_asset/DvpvklR.png");load(new File(...))
-     * @param width     指定的图片宽
-     * @param height    指定的图片高
-     * @param loadImgResId 默认加载的图片
+     * @param imageUrl      支持的格式： load(R.drawable.landing_screen); load("file:///android_asset/DvpvklR.png");load(new File(...))
+     * @param width         指定的图片宽
+     * @param height        指定的图片高
+     * @param loadImgResId  默认加载的图片
      * @param errImgResId   加载错误时的图片
-     * @param callback
+     * @param callback      因调接口
      */
     private void loadImage(ImageView iv, Object imageUrl, int width, int height,int loadImgResId,int errImgResId,final ImageLoadCallback callback) {
         loadImageInstance.loadImage(getApplication(),iv,imageUrl,width,height,loadImgResId,errImgResId,false,callback);
