@@ -10,13 +10,13 @@ import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
 import java.io.File;
 
-import earlll.com.testdemoall.module.loadimage.ImageLoadUtils;
-import earlll.com.testdemoall.module.loadimage.interfaces.IImageLoad;
+import earlll.com.testdemoall.module.loadimage.LoadImageUtils;
+import earlll.com.testdemoall.module.loadimage.interfaces.ILoadImage;
 
 /**
  * Created by ZhangYuanBo on 2016/6/16.
  */
-public class PicassoHelper implements IImageLoad {
+public class PicassoHelper implements ILoadImage {
 
     /**
      * 加载图片(Picasso)
@@ -26,24 +26,29 @@ public class PicassoHelper implements IImageLoad {
      */
     @Override
     public void loadImage(Context con, ImageView iv, Object imageUrl) {
-        loadImage(con,iv,imageUrl, IImageLoad.NONE, IImageLoad.NONE, IImageLoad.NONE, IImageLoad.NONE,false,null);
+        loadImage(con,iv,imageUrl, ILoadImage.NONE, ILoadImage.NONE, ILoadImage.NONE, ILoadImage.NONE,false,null);
     }
 
     @Override
     public void loadImage(Context con, ImageView iv, Object imageUrl, int loadImgResId) {
-        loadImage(con,iv,imageUrl, IImageLoad.NONE, IImageLoad.NONE,loadImgResId, IImageLoad.NONE,false,null);
+        loadImage(con,iv,imageUrl, ILoadImage.NONE, ILoadImage.NONE,loadImgResId, ILoadImage.NONE,false,null);
     }
 
     @Override
     public void loadImage(Context con, ImageView iv, Object imageUrl, int loadImgResId, boolean isTransform) {
-        loadImage(con,iv,imageUrl, IImageLoad.NONE, IImageLoad.NONE,loadImgResId, IImageLoad.NONE,isTransform,null);
+        loadImage(con,iv,imageUrl, ILoadImage.NONE, ILoadImage.NONE,loadImgResId, ILoadImage.NONE,isTransform,null);
+    }
+
+    @Override
+    public void loadImage(Context con, ImageView iv, Object imageUrl, int loadImgResId, boolean isTransform,LoadImageUtils.ImageLoadCallback callback) {
+        loadImage(con,iv,imageUrl, ILoadImage.NONE, ILoadImage.NONE,loadImgResId, ILoadImage.NONE,isTransform,callback);
     }
 
     /**
      *  加载图片(Picasso)
      * @param con
      * @param iv
-     * @param imageUrl     支持的格式： load(R.drawable.landing_screen); load("file:///android_asset/DvpvklR.png");load(new File(...))
+     * @param imageUrl   支持的格式： load(R.drawable.landing_screen); load("file:///android_asset/DvpvklR.png");load(new File(...))
      * @param width     指定的图片宽
      * @param height    指定的图片高
      * @param loadImgResId 默认加载的图片
@@ -52,7 +57,7 @@ public class PicassoHelper implements IImageLoad {
      * @param callback
      */
     @Override
-    public void loadImage(Context con, ImageView iv, Object imageUrl, int width, int height,int loadImgResId,int errImgResId,boolean isTransform,final ImageLoadUtils.ImageLoadCallback callback) {
+    public void loadImage(Context con, ImageView iv, Object imageUrl, int width, int height,int loadImgResId,int errImgResId,boolean isTransform,final LoadImageUtils.ImageLoadCallback callback) {
         if(con!=null&&iv!=null){
             RequestCreator requestCreator =null;
             if(imageUrl instanceof String){
@@ -77,13 +82,22 @@ public class PicassoHelper implements IImageLoad {
                 }
             }
             if(requestCreator!=null){
-                //requestCreator.skipMemoryCache();
+                //requestCreator.skipMemoryCache();//no cache
+                //requestCreator.noPlaceholder();//set no Placeholder default image
+                //requestCreator.priority(Priority priority);//set request priority
                 requestCreator.config(Bitmap.Config.ARGB_8888);
-                requestCreator.fit();
-                if(width!= IImageLoad.NONE&&height!= IImageLoad.NONE){
-                    requestCreator.resize(width, height);
-                    if(isTransform){
-                        requestCreator.transform(new ScaleTransformation(width, height));
+                //requestCreator.fit();//self adaptation (ps:Conflict with method fetch())
+                //requestCreator.centerCrop();//Set the ImageView ScaleType attribute,other method centerInside()
+                if(width!= ILoadImage.NONE&&height!= ILoadImage.NONE){
+                    requestCreator.resize(width, height);//set image display pixels number
+                    //requestCreator.resizeDimen(targetWidthResId,targetHeightResId);//set image display pixels by ResId
+                }
+                //requestCreator.rotate(float degrees);//set rotate degrees
+                //requestCreator.rotate(float degrees, float pivotX, float pivotY);//Set rotation degrees to a central point.
+                if(isTransform){
+                    //requestCreator.noFade();//No fade animation
+                    if(width!= ILoadImage.NONE&&height!= ILoadImage.NONE){
+                        requestCreator.transform(new ScaleTransformation(width, height));//set animation
                     }
                 }
                 if (callback != null) {
@@ -98,16 +112,32 @@ public class PicassoHelper implements IImageLoad {
                         }
                     });
                 }
-                if (loadImgResId!= IImageLoad.NONE&&loadImgResId>0) {
-                    requestCreator.placeholder(loadImgResId);//占位
+                if (loadImgResId!= ILoadImage.NONE&&loadImgResId>0) {
+                    requestCreator.placeholder(loadImgResId);//Placeholder default image
                 }
-                if (errImgResId!= IImageLoad.NONE&&errImgResId>0) {
-                    requestCreator.error(errImgResId);//错误
+                if (errImgResId!= ILoadImage.NONE&&errImgResId>0) {
+                    requestCreator.error(errImgResId);//error image
                 }
                 requestCreator.into(iv);
             }else{
                 iv.setImageBitmap(null);
             }
         }
+    }
+    @Override
+    public  boolean isSupportImageUrlType(Object imageUrl){
+        if(imageUrl instanceof String){
+            return true;
+        }
+        if(imageUrl instanceof Integer){
+            return true;
+        }
+        if(imageUrl instanceof File){
+            return true;
+        }
+        if(imageUrl instanceof Uri){
+            return true;
+        }
+        return false;
     }
 }

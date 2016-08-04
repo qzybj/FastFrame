@@ -17,7 +17,7 @@ import butterknife.OnClick;
 import earlll.com.testdemoall.R;
 import earlll.com.testdemoall.core.ui.fragment.interfaces.ITabBottomBarClickListener;
 import earlll.com.testdemoall.core.ui.fragment.interfaces.ITabItem;
-import earlll.com.testdemoall.module.loadimage.ImageLoadUtils;
+import earlll.com.testdemoall.module.loadimage.LoadImageUtils;
 
 
 /**
@@ -74,7 +74,7 @@ public class TabBottomBarFragment extends Fragment {
     }
     public void setTabItem(View view,ITabItem tabItem){
         if(view!=null&&tabItem!=null){
-            ImageLoadUtils.instance().loadImage((ImageView)view.findViewById(R.id.tab_item_iv),tabItem.getImageResId());
+            LoadImageUtils.instance().loadImage((ImageView)view.findViewById(R.id.tab_item_iv),tabItem.getImageResId());
             TextViewUtils.setTextViewValue((TextView)view.findViewById(R.id.tab_item_tv),tabItem.getText());
         }
     }

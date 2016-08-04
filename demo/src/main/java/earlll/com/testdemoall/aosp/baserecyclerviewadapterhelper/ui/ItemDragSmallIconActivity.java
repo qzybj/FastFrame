@@ -19,7 +19,7 @@ import java.util.List;
 import earlll.com.testdemoall.R;
 import earlll.com.testdemoall.core.utils.TestDataBuilder;
 import earlll.com.testdemoall.module.demo.bean.TestBean;
-import earlll.com.testdemoall.module.loadimage.ImageLoadUtils;
+import earlll.com.testdemoall.module.loadimage.LoadImageUtils;
 
 /**
  * 小Icon的拖拽的Adapter的使用示例样式
@@ -90,7 +90,7 @@ public class ItemDragSmallIconActivity extends Activity {
         protected void convert(BaseViewHolder helper, TestBean item) {
             helper.setText(R.id.tv, item.getName());
             ImageView iv = helper.getView(R.id.iv);
-            ImageLoadUtils.instance().loadImage(iv,item.getImageurl());
+            LoadImageUtils.instance().loadImage(iv,item.getImageurl());
         }
     }
 }

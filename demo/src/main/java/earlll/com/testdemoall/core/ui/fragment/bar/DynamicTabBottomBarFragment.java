@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 import earlll.com.testdemoall.R;
 import earlll.com.testdemoall.core.ui.fragment.interfaces.ITabBottomBarClickListener;
 import earlll.com.testdemoall.core.ui.fragment.interfaces.ITabItem;
-import earlll.com.testdemoall.module.loadimage.ImageLoadUtils;
+import earlll.com.testdemoall.module.loadimage.LoadImageUtils;
 
 
 /**
@@ -76,7 +76,7 @@ public class DynamicTabBottomBarFragment extends Fragment implements View.OnClic
             view.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT,1));
             view.setOnClickListener(this);
             view.setId(BASE_TAB_BOTTOM_ID + viewId);
-            ImageLoadUtils.instance().loadImage((ImageView) view.findViewById(R.id.tab_item_iv), tabItem.getImageResId());
+            LoadImageUtils.instance().loadImage((ImageView) view.findViewById(R.id.tab_item_iv), tabItem.getImageResId());
             TextViewUtils.setTextViewValue((TextView) view.findViewById(R.id.tab_item_tv), tabItem.getText());
         }
         return view;
