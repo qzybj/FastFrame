@@ -8,15 +8,27 @@ import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
+
 import java.io.File;
 
-import earlll.com.testdemoall.module.loadimage.LoadImageUtils;
 import earlll.com.testdemoall.module.loadimage.interfaces.ILoadImage;
+import earlll.com.testdemoall.module.loadimage.interfaces.ILoadImageCallback;
+import earlll.com.testdemoall.module.loadimage.interfaces.impl.LoadImageCallbackImpl;
 
 /**
  * Created by ZhangYuanBo on 2016/6/16.
  */
 public class PicassoHelper implements ILoadImage {
+
+    @Override
+    public <T extends LoadImageCallbackImpl> void downloadImage(Context con, Object imageUrl, T callback) {
+        if(con!=null&&callback instanceof PicassoCallback){
+            RequestCreator requestCreator = getRequestCreator(con,imageUrl);
+            if(requestCreator!=null){
+                requestCreator.into((PicassoCallback)callback);
+            }
+        }
+    }
 
     /**
      * 加载图片(Picasso)
@@ -40,7 +52,7 @@ public class PicassoHelper implements ILoadImage {
     }
 
     @Override
-    public void loadImage(Context con, ImageView iv, Object imageUrl, int loadImgResId, boolean isTransform,LoadImageUtils.ImageLoadCallback callback) {
+    public <T extends LoadImageCallbackImpl> void loadImage(Context con, ImageView iv, Object imageUrl, int loadImgResId, boolean isTransform,T callback) {
         loadImage(con,iv,imageUrl, ILoadImage.NONE, ILoadImage.NONE,loadImgResId, ILoadImage.NONE,isTransform,callback);
     }
 
@@ -57,30 +69,9 @@ public class PicassoHelper implements ILoadImage {
      * @param callback
      */
     @Override
-    public void loadImage(Context con, ImageView iv, Object imageUrl, int width, int height,int loadImgResId,int errImgResId,boolean isTransform,final LoadImageUtils.ImageLoadCallback callback) {
+    public <T extends LoadImageCallbackImpl> void loadImage(Context con, ImageView iv, Object imageUrl, int width, int height,int loadImgResId,int errImgResId,boolean isTransform,T callback) {
         if(con!=null&&iv!=null){
-            RequestCreator requestCreator =null;
-            if(imageUrl instanceof String){
-                String imageStr = (String)imageUrl;
-                if(StringUtils.isNotEmpty(imageStr)){
-                    requestCreator = Picasso.with(con).load(imageStr);
-                }
-            }else if(imageUrl instanceof Integer){
-                int imageInt = (int)imageUrl;
-                if(imageInt>0){
-                    requestCreator = Picasso.with(con).load(imageInt);
-                }
-            }else if(imageUrl instanceof File){
-                File file = (File)imageUrl;
-                if(file!=null&&file.exists()){
-                    requestCreator = Picasso.with(con).load(file);
-                }
-            }else if(imageUrl instanceof Uri){
-                Uri uri = (Uri)imageUrl;
-                if(uri!=null){
-                    requestCreator = Picasso.with(con).load(uri);
-                }
-            }
+            RequestCreator requestCreator =getRequestCreator(con,imageUrl);
             if(requestCreator!=null){
                 //requestCreator.skipMemoryCache();//no cache
                 //requestCreator.noPlaceholder();//set no Placeholder default image
@@ -100,17 +91,9 @@ public class PicassoHelper implements ILoadImage {
                         requestCreator.transform(new ScaleTransformation(width, height));//set animation
                     }
                 }
-                if (callback != null) {
-                    requestCreator.fetch(new Callback(){
-                        @Override
-                        public void onSuccess() {
-                            callback.onSuccess();
-                        }
-                        @Override
-                        public void onError() {
-                            callback.onError();
-                        }
-                    });
+                if (callback != null&&callback instanceof PicassoCallback) {
+                    PicassoCallback mCallback  = (PicassoCallback)callback;
+                    requestCreator.into(mCallback);
                 }
                 if (loadImgResId!= ILoadImage.NONE&&loadImgResId>0) {
                     requestCreator.placeholder(loadImgResId);//Placeholder default image
@@ -124,6 +107,7 @@ public class PicassoHelper implements ILoadImage {
             }
         }
     }
+
     @Override
     public  boolean isSupportImageUrlType(Object imageUrl){
         if(imageUrl instanceof String){
@@ -139,5 +123,31 @@ public class PicassoHelper implements ILoadImage {
             return true;
         }
         return false;
+    }
+
+    private RequestCreator getRequestCreator(Context con,Object imageUrl){
+        RequestCreator requestCreator = null;
+        if(imageUrl instanceof String){
+            String imageStr = (String)imageUrl;
+            if(StringUtils.isNotEmpty(imageStr)){
+                requestCreator = Picasso.with(con).load(imageStr);
+            }
+        }else if(imageUrl instanceof Integer){
+            int imageInt = (int)imageUrl;
+            if(imageInt>0){
+                requestCreator = Picasso.with(con).load(imageInt);
+            }
+        }else if(imageUrl instanceof File){
+            File file = (File)imageUrl;
+            if(file!=null&&file.exists()){
+                requestCreator = Picasso.with(con).load(file);
+            }
+        }else if(imageUrl instanceof Uri){
+            Uri uri = (Uri)imageUrl;
+            if(uri!=null){
+                requestCreator = Picasso.with(con).load(uri);
+            }
+        }
+        return requestCreator;
     }
 }

@@ -2,11 +2,26 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/style_common_matchparent"
-    android:orientation="vertical"
-    android:background="@color/color_ffffff">
+    android:background="@color/color_ffffff"
+    android:orientation="vertical">
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_list"
         style="@style/style_common_matchparent" />
 
+    <ImageView
+        android:id="@+id/iv_show"
+        android:layout_width="50dip"
+        android:layout_height="50dip"
+        android:src="@mipmap/ic_launcher"
+        android:layout_centerInParent="true"/>
+    <ImageView
+        android:id="@+id/iv_show1"
+        android:layout_width="50dip"
+        android:layout_height="50dip"
+        android:src="@mipmap/ic_launcher"
+        android:layout_centerInParent="true"
+        android:layout_above="@id/iv_show"
+        android:layout_marginTop="100dip"/>
 </RelativeLayout>

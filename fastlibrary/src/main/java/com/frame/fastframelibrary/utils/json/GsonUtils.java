@@ -1,14 +1,13 @@
 package com.frame.fastframelibrary.utils.json;
 
 import com.frame.fastframelibrary.utils.LogUtils;
+import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import java.io.StringReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -31,48 +30,37 @@ public class GsonUtils {
 		return gson.toJson(object);
 	}
 
-
 	public static <T> T toObject(String json, Class<T> type){
-		if(json == null){
-			return null;
+		if(StringUtils.isNotEmpty(json)&&type!=null){
+			try {
+				return gson.fromJson(json, TypeToken.get(type).getType());
+			} catch (Exception e) {
+				LogUtils.e(e);
+			}
 		}
-		T t = null;
-		try {
-			JsonReader reader = new JsonReader(new StringReader(json));
-			reader.setLenient(true);
-			t = (T) gson.fromJson(reader, TypeToken.get(type).getType());
-		} catch (JsonSyntaxException e) {
-			LogUtils.e(e);
-		}
-		return t;
+		return null;
 	}
 
-	public static JsonObject toJsonObject(String strJson){
-		try {
-			return new JsonParser().parse(strJson).getAsJsonObject();
-		} catch (JsonSyntaxException e) {
-			LogUtils.e(e);
+	public static <T> ArrayList<T> json2List(String json, Type type){
+		if(StringUtils.isNotEmpty(json)&&type!=null){
+			try {
+				return gson.fromJson(json, type);
+			} catch (Exception e) {
+				LogUtils.e(e);
+			}
 		}
-		return new JsonObject();
+		return null;
 	}
 
-	public static <T> ArrayList<T> toObjectList(String json){
-		if(json == null){
-			return null;
+	public <T> ArrayList<T> json2List(String json, Class<T> cls) {
+		if(StringUtils.isNotEmpty(json)&&cls!=null){
+			ArrayList<T> mList = new ArrayList<T>();
+			JsonArray array = new JsonParser().parse(json).getAsJsonArray();
+			for(JsonElement elem : array){
+				mList.add(gson.fromJson(elem, cls));
+			}
+			return mList;
 		}
-		JsonReader reader = new JsonReader(new StringReader(json));
-		reader.setLenient(true);
-		Type gsonType = new TypeToken<ArrayList<T>>() {}.getType();
-		return (ArrayList<T>)gson.fromJson(reader, gsonType);
+		return null;
 	}
-
-	public static  <T> T[] toObjectArray(String json,Class<T> type){
-		if(json == null){
-			return null;
-		}
-		JsonReader reader = new JsonReader(new StringReader(json));
-		reader.setLenient(true);
-		return (T[])gson.fromJson(reader, type);
-	}
-
 }

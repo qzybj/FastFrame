@@ -2,7 +2,9 @@ package earlll.com.testdemoall.module.loadimage.interfaces;
 
 import android.content.Context;
 import android.widget.ImageView;
-import earlll.com.testdemoall.module.loadimage.LoadImageUtils;
+
+import earlll.com.testdemoall.aosp.picasso.PicassoCallback;
+import earlll.com.testdemoall.module.loadimage.interfaces.impl.LoadImageCallbackImpl;
 
 
 /**
@@ -18,6 +20,14 @@ public interface ILoadImage {
      * @return
      */
     boolean isSupportImageUrlType(Object imageUrl);
+
+    /**
+     *  下载图片
+     * @param con
+     * @param imageUrl
+     * @return
+     */
+    <T extends LoadImageCallbackImpl> void downloadImage(Context con, Object imageUrl, T callback);
     /**
      *  加载图片
      * @param con
@@ -50,7 +60,7 @@ public interface ILoadImage {
      * @param imageUrl     支持的格式：除正常的imageurl字符串外， load(R.drawable.landing_screen); load("file:///android_asset/DvpvklR.png");load(new File(...))
      * @param callback
      */
-    void loadImage(Context con, ImageView iv, Object imageUrl,int loadImgResId,boolean isTransform,LoadImageUtils.ImageLoadCallback callback);
+    <T extends LoadImageCallbackImpl> void loadImage(Context con, ImageView iv, Object imageUrl,int loadImgResId,boolean isTransform,T callback);
 
     /**
      *  加载图片
@@ -64,5 +74,6 @@ public interface ILoadImage {
      * @param isTransform   是否加载动画
      * @param callback
      */
-    void loadImage(Context con, ImageView iv, Object imageUrl, int width, int height, int loadImgResId, int errImgResId,boolean isTransform,LoadImageUtils.ImageLoadCallback callback);
+    <T extends LoadImageCallbackImpl> void loadImage(Context con, ImageView iv, Object imageUrl, int width, int height, int loadImgResId, int errImgResId,boolean isTransform,T callback);
+
 }

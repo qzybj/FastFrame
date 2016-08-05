@@ -1,7 +1,9 @@
 package earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.ui;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
@@ -14,23 +16,29 @@ import com.chad.library.adapter.base.BaseItemDraggableAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.callback.ItemDragAndSwipeCallback;
 import com.chad.library.adapter.base.listener.OnItemDragListener;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.RequestCreator;
+import com.squareup.picasso.Target;
 import java.util.ArrayList;
 import java.util.List;
 import earlll.com.testdemoall.R;
 import earlll.com.testdemoall.core.utils.TestDataBuilder;
 import earlll.com.testdemoall.module.demo.bean.TestBean;
-import earlll.com.testdemoall.module.loadimage.LoadImageUtils;
+import earlll.com.testdemoall.module.loadimage.LoadImageManager;
 
 /**
  * 小Icon的拖拽的Adapter的使用示例样式
  */
-public class ItemDragSmallIconActivity extends Activity {
+public class ItemDragSmallIconActivity extends Activity implements Target{
     private static final String TAG = ItemDragSmallIconActivity.class.getSimpleName();
     private RecyclerView mRecyclerView;
+    private ImageView iv_show;
+    private ImageView iv_show1;
     private List<TestBean> mData;
     private ItemDragSmallIconAdapter mAdapter;
     private ItemTouchHelper mItemTouchHelper;
     private ItemDragAndSwipeCallback mItemDragAndSwipeCallback;
+    private Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +46,8 @@ public class ItemDragSmallIconActivity extends Activity {
         setContentView(R.layout.activity_rvadapter_common);
 
         mRecyclerView = (RecyclerView)findViewById(R.id.rv_list);
+        iv_show = (ImageView)findViewById(R.id.iv_show);
+        iv_show1 = (ImageView)findViewById(R.id.iv_show1);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 5));
         mData = generateData(50);
         //拖拽监听
@@ -72,6 +82,27 @@ public class ItemDragSmallIconActivity extends Activity {
         mAdapter.enableDragItem(mItemTouchHelper);
         mAdapter.setOnItemDragListener(listener);
         mRecyclerView.setAdapter(mAdapter);
+
+        RequestCreator rc = Picasso.with(this).load("http://yrs.yintai.com/rs/img/AppCMS/images/1186f052-21cb-4f0c-bd7d-4e379efedf37.png");
+        rc.into(iv_show);//监听图片下载完成
+        rc.into(this);//监听图片下载完成
+    }
+
+    @Override
+    public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+        if(bitmap!=null){
+            iv_show1.setImageBitmap(bitmap);
+        }
+    }
+
+    @Override
+    public void onBitmapFailed(Drawable errorDrawable) {
+
+    }
+
+    @Override
+    public void onPrepareLoad(Drawable placeHolderDrawable) {
+
     }
 
     private List<TestBean> generateData(int size) {
@@ -90,7 +121,7 @@ public class ItemDragSmallIconActivity extends Activity {
         protected void convert(BaseViewHolder helper, TestBean item) {
             helper.setText(R.id.tv, item.getName());
             ImageView iv = helper.getView(R.id.iv);
-            LoadImageUtils.instance().loadImage(iv,item.getImageurl());
+            LoadImageManager.instance().loadImage(iv,item.getImageurl());
         }
     }
 }

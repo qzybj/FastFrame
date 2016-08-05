@@ -1,39 +1,43 @@
 package earlll.com.testdemoall.module.loadimage;
 
 import android.content.Context;
-import android.net.Uri;
 import android.widget.ImageView;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
-
-import java.io.File;
-
 import earlll.com.testdemoall.MyApplication;
 import earlll.com.testdemoall.aosp.picasso.PicassoHelper;
 import earlll.com.testdemoall.module.loadimage.exception.LoadImageException;
 import earlll.com.testdemoall.module.loadimage.interfaces.ILoadImage;
+import earlll.com.testdemoall.module.loadimage.interfaces.ILoadImageCallback;
 
 /**
  * Created by ZhangYuanBo on 2016/8/3.
  * 图片加载统一控制类
  */
-public class LoadImageUtils {
+public class LoadImageManager{
+    enum LoadMode{
+        Picasso
+    }
     private final boolean isDebug = true;
-
-    private static LoadImageUtils instance = null;
+    private LoadMode curLoadMode = null;
+    private static LoadImageManager instance = null;
     private static ILoadImage loadImageInstance = null;
 
-    private LoadImageUtils() {
+    private LoadImageManager() {
         loadImageInstance = new PicassoHelper();
+        curLoadMode = LoadMode.Picasso;
     }
 
-    public static LoadImageUtils instance() {
+    public static LoadImageManager instance() {
         if (instance==null) {
-            instance = new LoadImageUtils();
+            instance = new LoadImageManager();
         }
         return instance;
     }
     private Context getApplication(){
         return MyApplication.instance();
+    }
+    public LoadMode getLoadMode(){
+        return curLoadMode;
     }
 
     public void loadImage(ImageView iv, Object imageUrl)  {
@@ -54,7 +58,7 @@ public class LoadImageUtils {
         }
     }
 
-    public void loadImage( ImageView iv, Object imageUrl, int loadImgResId, boolean isTransform,LoadImageUtils.ImageLoadCallback callback)  {
+    public void loadImage( ImageView iv, Object imageUrl, int loadImgResId, boolean isTransform,ILoadImageCallback callback)  {
         if(isSupportImageUrlType(imageUrl)){
             loadImageInstance.loadImage(getApplication(),iv,imageUrl,loadImgResId,isTransform,callback);
         }
@@ -70,7 +74,7 @@ public class LoadImageUtils {
      * @param errImgResId   加载错误时的图片
      * @param callback      因调接口
      */
-    private void loadImage(ImageView iv, Object imageUrl, int width, int height,int loadImgResId,int errImgResId,final ImageLoadCallback callback)   {
+    private void loadImage(ImageView iv, Object imageUrl, int width, int height,int loadImgResId,int errImgResId,final ILoadImageCallback callback)   {
         if(isSupportImageUrlType(imageUrl)){
             loadImageInstance.loadImage(getApplication(),iv,imageUrl,width,height,loadImgResId,errImgResId,false,callback);
         }
@@ -92,10 +96,5 @@ public class LoadImageUtils {
             sourceImageUrl="file://"+sourceImageUrl.replace("\\","/");
         }
         return sourceImageUrl;
-    }
-
-    public interface ImageLoadCallback {
-        void onSuccess();
-        void onError();
     }
 }

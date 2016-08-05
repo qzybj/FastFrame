@@ -10,6 +10,8 @@ import com.frame.fastframelibrary.utils.dataprocess.ListUtils;
 import com.frame.fastframelibrary.utils.LogUtils;
 import com.frame.fastframelibrary.utils.cache.SharedPreferencesUtils;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
+import com.google.gson.reflect.TypeToken;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -117,7 +119,7 @@ public class H5HttpHijackUtils {
             String jsonStr = SharedPreferencesUtils.instance().getString(KEY_HIJACK_WHITELIST);
             if (StringUtils.isNotEmpty(jsonStr)) {
                 try {
-                    return GsonUtils.toObjectList(jsonStr);
+                    return GsonUtils.json2List(jsonStr,new TypeToken<ArrayList<String>>(){}.getType());
                 } catch (Exception e) {
                     LogUtils.e(e);
                 }
@@ -133,7 +135,7 @@ public class H5HttpHijackUtils {
             ArrayList<String> list = null;
             if (StringUtils.isNotEmpty(jsonStr)) {
                 try {
-                    list = GsonUtils.toObjectList(jsonStr);
+                    list = GsonUtils.json2List(jsonStr,new TypeToken<ArrayList<String>>(){}.getType());
                 } catch (Exception e) {
                     LogUtils.e(e);
                 }
