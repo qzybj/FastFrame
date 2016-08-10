@@ -7,7 +7,6 @@ import com.frame.fastframe.module.html5.bridgewebView.bean.JSBridgeBean;
 import com.frame.fastframe.module.html5.config.H5Constant;
 import com.frame.fastframe.module.html5.interfaces.IWebView4Activity;
 import com.frame.fastframe.module.html5.utils.H52NativeUtils;
-import com.frame.fastframe.module.html5.utils.TransfersLog;
 import com.frame.fastframelibrary.utils.json.GsonUtils;
 import com.frame.fastframelibrary.utils.LogUtils;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
@@ -55,7 +54,7 @@ public class H5CallNativeBindIMPL {
 	 * WebView操作处理 - 重新加载
 	 */
 	public void reloadUrl() {
-		TransfersLog.d(TAG, "reload");
+		LogUtils.d(TAG, "reload");
 		if (isSupportWebCallNative()) {
 			getWebView().reload();
 		}
@@ -66,7 +65,7 @@ public class H5CallNativeBindIMPL {
 	 * @param url
 	 */
 	public void loadUrl(String url) {
-		TransfersLog.d(TAG, "toUrl= " + url);
+		LogUtils.d(TAG, "toUrl= " + url);
 		if (isSupportWebCallNative()) {
 			getWebView().loadUrl(url);
 		}
@@ -76,7 +75,7 @@ public class H5CallNativeBindIMPL {
 	 * WebView操作处理 - 回退
 	 */
 	public void goBack() {
-		TransfersLog.d(TAG, "goBack");
+		LogUtils.d(TAG, "goBack");
 		if (isSupportWebCallNative()) {
 			if (getWebView().canGoBack()) {
 				getWebView().goBack();
@@ -98,7 +97,7 @@ public class H5CallNativeBindIMPL {
 	 * @return
 	 */
 	public void h5CallNative(String json) {
-		TransfersLog.d(TAG, "h5CallNative " + json);
+		LogUtils.d(TAG, "h5CallNative " + json);
 		try {
 			JSBridgeBean bean  = GsonUtils.toObject(json,JSBridgeBean.class);
 		} catch (Exception e) {
@@ -112,7 +111,7 @@ public class H5CallNativeBindIMPL {
 	 * @param json
 	 */
 	public void sendHandlerMessage(int what, String json) {
-		TransfersLog.d(TAG, "sendHandlerMessage msg=%s" + what + ",json=%s" + json);
+		LogUtils.d(TAG, "sendHandlerMessage msg=%s" + what + ",json=%s" + json);
 		mIWebView4Activity.sendMessage(what, json);
 	}
 
@@ -120,7 +119,7 @@ public class H5CallNativeBindIMPL {
 	 * Native支持method - 弹出提示框展示信息
 	 */
 	public void showMsg(String msg) {
-		TransfersLog.d(TAG, "showMsg-->msg=" + msg);
+		LogUtils.d(TAG, "showMsg-->msg=" + msg);
 		mIWebView4Activity.sendMessage(H5Constant.H5CALLNATIVE_SHOWDIG_MSGID,msg);
 	}
 
@@ -129,7 +128,7 @@ public class H5CallNativeBindIMPL {
 	 */
 	
 	public void showProgress() {
-		TransfersLog.d(TAG, "showProgress");
+		LogUtils.d(TAG, "showProgress");
 		mIWebView4Activity.sendMessage(H5Constant.H5CALLNATIVE_SHOWPROGRESSDLG_MSGID);
 	}
 
@@ -138,14 +137,14 @@ public class H5CallNativeBindIMPL {
 	 */
 	
 	public void disProgress() {
-		TransfersLog.d(TAG, "disProgress");
+		LogUtils.d(TAG, "disProgress");
 		mIWebView4Activity.sendMessage(H5Constant.H5CALLNATIVE_DISSPROGRESSDLG_MSGID);
 	}
 
 	/**Native支持method - 刷新上一页面*/
 	
 	public void refreshPreviousPage(){
-		TransfersLog.d(TAG, "disProgress");
+		LogUtils.d(TAG, "disProgress");
 		mIWebView4Activity.sendMessage(H5Constant.H5CALLNATIVE_REFRESH_PREVIOUS_PAGE_MSGID);
 	}
 
@@ -164,13 +163,13 @@ public class H5CallNativeBindIMPL {
 	 */
 	
 	public void jumpself(int id, String params) {
-		TransfersLog.d(TAG, "jumpself " + id + " " + params);
+		LogUtils.d(TAG, "jumpself " + id + " " + params);
 		jumpProtocol(params);
 	}
 	
 	
 	public void jumpProtocol(String protocolStr) {
-		TransfersLog.d(TAG, "jumpProtocol " + protocolStr);
+		LogUtils.d(TAG, "jumpProtocol " + protocolStr);
 		if (!StringUtils.isEmpty(protocolStr)) {
 			mIWebView4Activity.sendMessage(H5Constant.H5CALLNATIVE_STARTACTIVITY_MSGID,protocolStr);
 		}

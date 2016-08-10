@@ -1,8 +1,11 @@
 package com.frame.fastframe.module.html5.utils;
 
 import android.content.Context;
+import android.util.Log;
+
 import com.frame.fastframe.module.common.constant.AppConstants;
 import com.frame.fastframe.module.html5.bean.H5GetUserBean;
+import com.frame.fastframelibrary.utils.LogUtils;
 import com.frame.fastframelibrary.utils.app.AppUtils;
 import com.frame.fastframelibrary.utils.device.DeviceUtils;
 import com.frame.fastframelibrary.utils.json.GsonUtils;
@@ -32,9 +35,9 @@ public class H52NativeUtils {
             returnBean.setScreenHeigh(DeviceUtils.getScreenHeight(con)+ "");
             returnBean.setApptype(AppConstants.PRODUCT_LINE);// 产品线
             returnJson = GsonUtils.toJson(returnBean);
-            TransfersLog.d(returnJson);
+            LogUtils.d(returnJson);
         } catch (Exception e) {
-            TransfersLog.e(e.getMessage());
+            LogUtils.e(e.getMessage());
         }
         return returnJson;
     }

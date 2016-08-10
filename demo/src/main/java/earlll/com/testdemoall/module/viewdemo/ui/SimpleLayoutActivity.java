@@ -1,9 +1,11 @@
 package earlll.com.testdemoall.module.viewdemo.ui;
 
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import butterknife.BindView;
@@ -25,6 +27,9 @@ public class SimpleLayoutActivity extends BaseFragmentActivity {
     @BindView(R.id.tv_show)
     TextView tvShow;
 
+    @BindView(R.id.et_test)
+    EditText et_test;
+
     @BindView(R.id.pb_download)
     ProgressBar pb_download;
 
@@ -36,7 +41,9 @@ public class SimpleLayoutActivity extends BaseFragmentActivity {
         return R.layout.activity_simple_layout;
     }
 
-    public void initContentView(View view) {}
+    public void initContentView(View view) {
+        et_test.setInputType(InputType.TYPE_NULL);
+    }
 
     public void initData(Bundle savedInstanceState) {
 
@@ -71,7 +78,7 @@ public class SimpleLayoutActivity extends BaseFragmentActivity {
     }
 
     private boolean isShowEmptyView;
-    @OnClick({R.id.btn_show,R.id.btn_show_viewstub,R.id.btn_progress})
+    @OnClick({R.id.btn_show,R.id.btn_show_viewstub,R.id.btn_progress,R.id.et_test})
     public void customClickEvent(View view) {
         switch (view.getId()){
             case R.id.btn_show:
@@ -82,8 +89,12 @@ public class SimpleLayoutActivity extends BaseFragmentActivity {
             case R.id.btn_show_viewstub:
                 showEmptyView(isShowEmptyView=!isShowEmptyView);
                 break;
+            case R.id.et_test:
+                et_test.setText(""+(i++));
+                break;
         }
     }
+    int i= 0;
 
 
     @Override
@@ -94,4 +105,6 @@ public class SimpleLayoutActivity extends BaseFragmentActivity {
     public void onTitleBarClick(View v) {
 
     }
+
+
 }

@@ -8,6 +8,7 @@ import earlll.com.testdemoall.aosp.picasso.PicassoHelper;
 import earlll.com.testdemoall.module.loadimage.exception.LoadImageException;
 import earlll.com.testdemoall.module.loadimage.interfaces.ILoadImage;
 import earlll.com.testdemoall.module.loadimage.interfaces.ILoadImageCallback;
+import earlll.com.testdemoall.module.loadimage.interfaces.impl.LoadImageCallbackImpl;
 
 /**
  * Created by ZhangYuanBo on 2016/8/3.
@@ -58,7 +59,7 @@ public class LoadImageManager{
         }
     }
 
-    public void loadImage( ImageView iv, Object imageUrl, int loadImgResId, boolean isTransform,ILoadImageCallback callback)  {
+    public void loadImage( ImageView iv, Object imageUrl, int loadImgResId, boolean isTransform,LoadImageCallbackImpl callback)  {
         if(isSupportImageUrlType(imageUrl)){
             loadImageInstance.loadImage(getApplication(),iv,imageUrl,loadImgResId,isTransform,callback);
         }
@@ -74,7 +75,7 @@ public class LoadImageManager{
      * @param errImgResId   加载错误时的图片
      * @param callback      因调接口
      */
-    private void loadImage(ImageView iv, Object imageUrl, int width, int height,int loadImgResId,int errImgResId,final ILoadImageCallback callback)   {
+    private void loadImage(ImageView iv, Object imageUrl, int width, int height,int loadImgResId,int errImgResId,LoadImageCallbackImpl callback)   {
         if(isSupportImageUrlType(imageUrl)){
             loadImageInstance.loadImage(getApplication(),iv,imageUrl,width,height,loadImgResId,errImgResId,false,callback);
         }

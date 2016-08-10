@@ -24,12 +24,20 @@
             android:id="@+id/btn_show_viewstub"
             style="@style/style_common"
             android:text="show ViewStub" />
+
         <Button
             android:id="@+id/btn_progress"
             style="@style/style_common"
             android:text="load progress" />
 
+        <EditText
+            android:id="@+id/et_test"
+            style="@style/style_common"
+            android:hint="EditText input"
+            android:inputType="none" />
+
         <include layout="@layout/merge_text" />
+
         <include layout="@layout/merge_progressbar" />
     </LinearLayout>
 

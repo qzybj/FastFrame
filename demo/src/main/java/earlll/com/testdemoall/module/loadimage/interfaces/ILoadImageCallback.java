@@ -18,7 +18,7 @@ public interface ILoadImageCallback {
      * 图片加载成功回调监听
      * @param iv
      * @param bitmap
-     * @param from 来源 LoadImageFrom
+     * @param from 来源 {@link LoadImageFrom}
      */
     void onLoadImageSuccess(ImageView iv,Bitmap bitmap, LoadImageFrom from);
     /**
