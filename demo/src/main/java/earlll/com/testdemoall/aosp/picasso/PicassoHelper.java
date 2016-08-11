@@ -5,14 +5,13 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.widget.ImageView;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
-import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
 
 import java.io.File;
 
+import earlll.com.testdemoall.aosp.picasso.transformation.ScaleTransformation;
 import earlll.com.testdemoall.module.loadimage.interfaces.ILoadImage;
-import earlll.com.testdemoall.module.loadimage.interfaces.ILoadImageCallback;
 import earlll.com.testdemoall.module.loadimage.interfaces.impl.LoadImageCallbackImpl;
 
 /**

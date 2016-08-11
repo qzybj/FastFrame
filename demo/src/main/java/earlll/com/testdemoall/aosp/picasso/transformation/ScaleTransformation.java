@@ -21,7 +21,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package earlll.com.testdemoall.aosp.picasso;
+package earlll.com.testdemoall.aosp.picasso.transformation;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;

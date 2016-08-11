@@ -3,7 +3,7 @@ package com.frame.fastframe.module.html5.interfaces.impl;
 import android.app.Activity;
 import android.webkit.WebView;
 
-import com.frame.fastframe.module.html5.bridgewebView.bean.JSBridgeBean;
+import com.frame.fastframelibrary.aosp.bridgewebview.bean.JSBridgeBean;
 import com.frame.fastframe.module.html5.config.H5Constant;
 import com.frame.fastframe.module.html5.interfaces.IWebView4Activity;
 import com.frame.fastframe.module.html5.utils.H52NativeUtils;

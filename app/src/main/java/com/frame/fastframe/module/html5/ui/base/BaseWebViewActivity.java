@@ -2,12 +2,11 @@ package com.frame.fastframe.module.html5.ui.base;
 
 import android.view.KeyEvent;
 import android.webkit.WebView;
-
-import com.frame.fastframe.module.html5.bridgewebView.JSBridgeConstants;
-import com.frame.fastframe.module.html5.bridgewebView.ProgressWebView;
-import com.frame.fastframe.module.html5.bridgewebView.bean.JSBridgeBean;
-import com.frame.fastframe.module.html5.bridgewebView.interfaces.IBridgeCallBack;
-import com.frame.fastframe.module.html5.bridgewebView.interfaces.IJSBridgeBean;
+import com.frame.fastframelibrary.aosp.bridgewebview.JSBridgeConstants;
+import com.frame.fastframelibrary.aosp.bridgewebview.ProgressWebView;
+import com.frame.fastframelibrary.aosp.bridgewebview.bean.JSBridgeBean;
+import com.frame.fastframelibrary.aosp.bridgewebview.interfaces.IBridgeCallBack;
+import com.frame.fastframelibrary.aosp.bridgewebview.interfaces.IJSBridgeBean;
 import com.frame.fastframe.module.html5.interfaces.IWebView4Activity;
 import com.frame.fastframe.ui.base.BaseActivity;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;

@@ -34,11 +34,9 @@ public class GridItemDecoration extends RecyclerView.ItemDecoration {
         if (dividerDrawable == null) {
             return;
         }
-
         if (parent.getChildLayoutPosition(view) < 1) {
             return;
         }
-
         if (orientation == LinearLayoutManager.VERTICAL) {
             outRect.top = dividerDrawable.getIntrinsicHeight();
         } else if (orientation == LinearLayoutManager.HORIZONTAL) {
@@ -77,6 +75,4 @@ public class GridItemDecoration extends RecyclerView.ItemDecoration {
             dividerDrawable.draw(c);
         }
     }
-
-
 }
