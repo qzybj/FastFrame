@@ -23,7 +23,7 @@ public class SimplePassWordViewActivity extends BaseActivity {
     ImageView iv_show1;
 
     @Override
-    public int getLayoutResouceId() {
+    public int getLayoutResId() {
         return R.layout.activity_simple_passwordview;
     }
 

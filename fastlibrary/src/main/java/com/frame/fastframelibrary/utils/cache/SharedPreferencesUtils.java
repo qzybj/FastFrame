@@ -46,12 +46,22 @@ public class SharedPreferencesUtils {
         }
         return 0;
     }
+    public void setLong(String key, long value) {
+        if (checkKey(key)) {
+            getEditor().putLong(key, value).commit();
+        }
+    }
 
     public String getString(String key) {
         if (checkKey(key)) {
             return getSharedPreferences().getString(key, null);
         }
         return null;
+    }
+    public void setString(String key, String value) {
+        if (checkKey(key)) {
+            getEditor().putString(key, value).commit();
+        }
     }
 
     public int getInt(String key) {
@@ -60,13 +70,22 @@ public class SharedPreferencesUtils {
         }
         return 0;
     }
-
+    public void setInt(String key, int value) {
+        if (checkKey(key)) {
+            getEditor().putInt(key, value).commit();
+        }
+    }
 
     public boolean getBoolean(String key) {
         if (checkKey(key)) {
             return getSharedPreferences().getBoolean(key, false);
         }
         return true;
+    }
+    public void setBoolean(String key, boolean value) {
+        if (checkKey(key)) {
+            getEditor().putBoolean(key, value).commit();
+        }
     }
 
     public float getFloat(String key) {
@@ -75,36 +94,12 @@ public class SharedPreferencesUtils {
         }
         return 0;
     }
-
-    public void setString(String key, String value) {
-        if (checkKey(key)) {
-            getEditor().putString(key, value).commit();
-        }
-    }
-
-    public void setInt(String key, int value) {
-        if (checkKey(key)) {
-            getEditor().putInt(key, value).commit();
-        }
-    }
-
-    public void setBoolean(String key, boolean value) {
-        if (checkKey(key)) {
-            getEditor().putBoolean(key, value).commit();
-        }
-    }
-
-    public void setLong(String key, long value) {
-        if (checkKey(key)) {
-            getEditor().putLong(key, value).commit();
-        }
-    }
-
     public void setFloat(String key, Float value) {
         if (checkKey(key)) {
             getEditor().putFloat(key, value).commit();
         }
     }
+
     public boolean checkKey(String key) {
         return StringUtils.isNotEmpty(key);
     }

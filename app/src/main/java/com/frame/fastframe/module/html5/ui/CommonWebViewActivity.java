@@ -39,7 +39,7 @@ public class CommonWebViewActivity extends BaseWebViewActivity{
 
 
     @Override
-    public int getLayoutResouceId() {
+    public int getLayoutResId() {
         return R.layout.activity_basewebview;
     }
 

@@ -5,11 +5,10 @@ import android.view.View;
 import android.widget.PopupWindow;
 
 import com.frame.fastframe.R;
-import com.frame.fastframe.ui.simple.bean.GroupChildModel;
 import com.frame.fastframe.view.popwinimpl.PopWin4SlideFromBottomPlus;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.BaseAdapterHelper;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.QuickAdapter;
-import com.frame.fastframelibrary.core.view.InnerGridView;
+import com.frame.fastframelibrary.view.InnerGridView;
 import java.util.ArrayList;
 
 /**Popwin - 用于分组展示数据*/

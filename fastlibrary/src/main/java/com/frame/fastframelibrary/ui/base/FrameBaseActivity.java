@@ -5,68 +5,42 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import com.frame.fastframelibrary.utils.view.ViewUtils;
-import org.xutils.x;
-
 import butterknife.ButterKnife;
 
 /**
- * 框架Activity的base基类
+ * 框架 - Activity的base基类，只包含最基本的
  */
-public abstract class FrameBaseActivity extends AppCompatActivity implements View.OnClickListener{
-	protected Activity mBaseActivity;
-	protected View mRootViewContainer ;
+public abstract class FrameBaseActivity extends AppCompatActivity implements View.OnClickListener,IBaseUI{
+	private Activity mBaseActivity;
+	private View mRootView;
 
 	@Override
 	protected final void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mBaseActivity= this;
-		int layoutResouceId = getLayoutResouceId();
-		if (layoutResouceId>0) {
-			mRootViewContainer  = ViewUtils.inflateView(getBaseActivity(),layoutResouceId);
-			if (mRootViewContainer != null) {
-				setContentView(mRootViewContainer);
-				x.view().inject(this);//view绑定
-				ButterKnife.bind(this);//view绑定
-				initTitleBar(mRootViewContainer);
-				initContentView(mRootViewContainer);
+		int layoutResId = getLayoutResId();
+		if (layoutResId>0) {
+			mRootView = ViewUtils.inflateView(getBaseActivity(),layoutResId);
+			if (mRootView != null) {
+				setContentView(mRootView);
+				ButterKnife.bind(this);
+				initTitleBar(mRootView);
+				initContentView(mRootView);
 			}
 		}
-		initSystemOperation(savedInstanceState);
+		initConstant(savedInstanceState);
 		initData(savedInstanceState);
 	}
-
-	protected Activity getBaseActivity(){
+	public Activity getBaseActivity(){
 		return mBaseActivity;
 	}
 
 	/**
-	 * 初始化系统变量操作，保留<BR>
-	 */
-	public abstract void initSystemOperation(Bundle savedInstanceState);
-
-	/**
-	 * 获取主界面布局资源id<BR>
-	 * sample: return R.layout.main<BR>
-	 * @return int
-	 */
-	public abstract int getLayoutResouceId();
-
-	/**
 	 * 初始化标题栏
 	 * @param view
-     */
-	public abstract void initTitleBar(View view);
-
-	/**
-	 *
-	 * 布局控件初始化相关操作<BR>
-	 * @param view
-     */
-	public abstract void initContentView(View view);
-	/**
-	 * 数据初始化相关操作<BR>
-	 * @param savedInstanceState
 	 */
-	public abstract void initData(Bundle savedInstanceState);
+	protected abstract void initTitleBar(View view);
 
+	@Override
+	public void initConstant(Bundle savedInstanceState) {}
 }

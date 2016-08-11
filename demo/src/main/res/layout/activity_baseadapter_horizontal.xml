@@ -25,7 +25,7 @@
 
         </android.support.design.widget.AppBarLayout>
 
-        <com.frame.fastframelibrary.core.view.HorizontalListView
+        <com.frame.fastframelibrary.view.HorizontalListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

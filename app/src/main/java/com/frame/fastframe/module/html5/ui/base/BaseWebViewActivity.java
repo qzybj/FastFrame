@@ -11,14 +11,12 @@ import com.frame.fastframe.module.html5.interfaces.IWebView4Activity;
 import com.frame.fastframe.ui.base.BaseActivity;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 import com.frame.fastframelibrary.utils.view.WebViewUtil;
-
 import java.util.LinkedHashMap;
 
 /**
  * BaseWebView基类,继承该类需要给 mWebView赋值
  */
 public abstract class BaseWebViewActivity extends BaseActivity implements IBridgeCallBack,IWebView4Activity{
-
     private final String TAG = this.getClass().getName();
     private ProgressWebView mWebView;
 
@@ -62,7 +60,7 @@ public abstract class BaseWebViewActivity extends BaseActivity implements IBridg
 
     public boolean goBack() {
         if(getWebView()!=null){
-            boolean res = mWebView.canGoBack();
+            boolean res = getWebView().canGoBack();
             if (res) {
                 mWebView.goBack();
             }
@@ -96,4 +94,5 @@ public abstract class BaseWebViewActivity extends BaseActivity implements IBridg
     public void paserOtherCallback(Object json) {
 
     }
+
 }

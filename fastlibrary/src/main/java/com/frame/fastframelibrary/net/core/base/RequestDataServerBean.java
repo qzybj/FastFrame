@@ -1,6 +1,6 @@
 package com.frame.fastframelibrary.net.core.base;
 
-import com.frame.fastframelibrary.net.volley.RequestDataServer;
+import com.frame.fastframelibrary.net.RequestDataServer;
 
 /**
  * 数据请求基本bean类

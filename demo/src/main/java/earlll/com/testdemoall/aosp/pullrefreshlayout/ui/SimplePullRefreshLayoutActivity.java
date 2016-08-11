@@ -33,7 +33,7 @@ public class SimplePullRefreshLayoutActivity extends BaseActivity {
     protected ProgressBar mProgressBar;
 
     @Override
-    public int getLayoutResouceId() {
+    public int getLayoutResId() {
         return R.layout.activity_pullrefreshlayout;
     }
 

@@ -48,7 +48,7 @@ public class MultiFragmentActivity extends BaseFragmentActivity implements IFrag
     private int mCurrentCounter = 0;
 
     @Override
-    public int getLayoutResouceId() {
+    public int getLayoutResId() {
         return R.layout.activity_multifragment;
     }
 

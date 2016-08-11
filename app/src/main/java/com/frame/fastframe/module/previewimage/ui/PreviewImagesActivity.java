@@ -15,7 +15,7 @@ import com.frame.fastframe.module.common.util.DensityUtil;
 import com.frame.fastframe.module.previewimage.view.HackyViewPager;
 import com.frame.fastframe.ui.base.BaseActivity;
 import com.frame.fastframe.utils.TestDataBuilder;
-import com.frame.fastframelibrary.core.config.ConstantsCommonKey;
+import com.frame.fastframelibrary.config.ConstantsCommonKey;
 import com.frame.fastframelibrary.utils.device.NetUtils;
 import com.squareup.picasso.Picasso;
 import org.xutils.view.annotation.ViewInject;
@@ -47,7 +47,7 @@ public class PreviewImagesActivity extends BaseActivity {
     private LinearLayout mLLDot;
 
     @Override
-    public int getLayoutResouceId() {
+    public int getLayoutResId() {
         return R.layout.activity_displayimage;
     }
 

@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
 import com.frame.fastframe.R;
 import com.frame.fastframe.ui.simple.adapter.FragmentPagerAdapter;
+import com.frame.fastframelibrary.config.ConstantsCommonKey;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 
 import org.xutils.view.annotation.ContentView;
@@ -18,7 +20,6 @@ import java.util.List;
 /**
  *  用于页面中Tab栏、ViewPager并且可以滑动切换的Fragment
  */
-@ContentView(R.layout.fragment_tabmain_layout)
 public class BaseTabMainFragment extends BaseFragment implements ViewPager.OnPageChangeListener{
 
     /*** 导航的Tab容器*/
@@ -37,16 +38,18 @@ public class BaseTabMainFragment extends BaseFragment implements ViewPager.OnPag
     private int mCurClassIndex=0;
 
     @Override
-    protected void initView() {
-        super.initView();
+    public int getLayoutResId() {
+        return R.layout.fragment_tabmain_layout;
+    }
+
+    @Override
+    public void initContentView(View view) {
         initFragment();
         initBodyView();
     }
 
     @Override
-    protected void initData(Bundle savedInstanceState) {
-        super.initData(savedInstanceState);
-    }
+    public void initData(Bundle savedInstanceState) {}
 
     /**添加显示的Fragment*/
     public void addFragment(String title,Fragment fragment) {
@@ -54,7 +57,7 @@ public class BaseTabMainFragment extends BaseFragment implements ViewPager.OnPag
             if (!StringUtils.isEmpty(title)&&fragment!=null) {
                 tabTitleList.add(title);
                 Bundle bundle=new Bundle();
-                bundle.putString(BaseFragment.KEY_TITLE, title);
+                bundle.putString(ConstantsCommonKey.KEY_TITLE, title);
                 fragment.setArguments(bundle);
                 fragments.add(fragment);
             }

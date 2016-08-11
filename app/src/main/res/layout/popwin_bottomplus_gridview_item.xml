@@ -11,7 +11,7 @@
         android:textSize="@dimen/text_size_24"
         android:padding="@dimen/h10dip"/>
 
-    <com.frame.fastframelibrary.core.view.InnerGridView
+    <com.frame.fastframelibrary.view.InnerGridView
         android:id="@+id/popup_igv"
         style="@style/style_listview_common"
         android:divider="@color/color_dcdcdc"

@@ -5,7 +5,7 @@ import com.frame.fastframe.module.communicate.bean.Communicate;
 import com.frame.fastframe.R;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.BaseAdapterHelper;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.QuickAdapter;
-import com.frame.fastframelibrary.core.view.InnerGridView;
+import com.frame.fastframelibrary.view.InnerGridView;
 import java.util.ArrayList;
 
 

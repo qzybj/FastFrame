@@ -18,9 +18,9 @@ public class JSBridgeConstants {
     public static final int HANDLE_MSGCODE_CALLBACK_CALLJS = BASECODE_HANDLE_CODE + 2;
 
 
-    /**JSBRIDGE供H5调用的原生方法名*/
+    /**JSBRIDGE供H5调用的通用句柄名*/
     public final static String JSBRIDGE_HANDLERNAME_JS2NATIVE ="jsbridge_handlername_js2native";
-    /**JSBRIDGE供原生调用的H5方法名*/
+    /**JSBRIDGE在H5中供原生调用的H5方法名*/
     public final static String JSBRIDGE_HANDLERNAME_NATIVEJS ="jsbridge_handlername_native2js";
 
     /**JSBRIDGE供原生调用的H5方法名*/

@@ -6,7 +6,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import com.frame.fastframelibrary.net.core.annotation.JSonParseAnn;
-import com.frame.fastframelibrary.net.volley.json.gson.GsonUtils;
+import com.frame.fastframelibrary.utils.json.GsonUtils;
 
 public class BasicResponse {
 	private int mErrCode = 0;

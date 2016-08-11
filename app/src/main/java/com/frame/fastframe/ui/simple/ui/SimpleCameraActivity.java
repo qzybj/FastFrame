@@ -20,7 +20,7 @@ public class SimpleCameraActivity extends BaseActivity {
     }
 
     @Override
-    public int getLayoutResouceId() {
+    public int getLayoutResId() {
         return R.layout.activity_simple_camera;
     }
 

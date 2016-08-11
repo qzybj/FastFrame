@@ -55,7 +55,7 @@ public abstract class BaseFragmentActivity extends FrameBaseActivity implements 
 	protected String userid ;
 
 	@Override
-	public final void initSystemOperation(Bundle savedInstanceState) {
+	public final void initConstant(Bundle savedInstanceState) {
 		userid = AccountUtils.getUid();
 		ActivityStack.getInstance().addActivity(this);
 	}

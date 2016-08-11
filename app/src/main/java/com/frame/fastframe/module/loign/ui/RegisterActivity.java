@@ -17,7 +17,7 @@ public class RegisterActivity extends BaseActivity {
 	private Button btn_login;
 
 	@Override
-	public int getLayoutResouceId() {
+	public int getLayoutResId() {
 		return R.layout.activity_product;
 	}
 

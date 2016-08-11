@@ -30,7 +30,7 @@ public class SimpleXRecyclerViewActivity extends BaseListViewActivity {
     private ArrayList<String> listData = new ArrayList<String>();
 
     @Override
-    public int getLayoutResouceId() {
+    public int getLayoutResId() {
         return R.layout.activity_simple_listview;
     }
 

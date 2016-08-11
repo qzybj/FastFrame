@@ -23,7 +23,7 @@ public class ZXingActivity extends BaseFragmentActivity {
     public static final String TAG = "ZXing";
 
 
-    public int getLayoutResouceId() {
+    public int getLayoutResId() {
         return R.layout.activity_simple_zxing;
     }
 

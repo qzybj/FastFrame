@@ -3,15 +3,18 @@ package com.frame.fastframe.ui;
 import android.os.Bundle;
 import com.frame.fastframe.ui.base.BaseTabMainFragment;
 import com.frame.fastframe.R;
-import org.xutils.view.annotation.ContentView;
 
 /**
  *  用于页面中Tab栏、ViewPager并且可以滑动切换的Fragment
  */
-@ContentView(R.layout.fragment_tabmain_layout)
 public class TabMainFragment extends BaseTabMainFragment {
     @Override
-    protected void initData(Bundle savedInstanceState) {
+    public int getLayoutResId() {
+        return R.layout.fragment_tabmain_layout;
+    }
+    @Override
+    public void initData(Bundle savedInstanceState) {
+
         super.initData(savedInstanceState);
     }
     protected void initFragment(){

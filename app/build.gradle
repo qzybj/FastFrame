@@ -55,4 +55,5 @@ dependencies {
     //compile 'cn.finalteam:galleryfinal:1.4.8.7'//图片裁剪，包含图片选择及照相等功能
     //compile project(':social_sdk_example')//放入第三方项目
     compile project(':fastlibrary')
+    compile 'org.xutils:xutils:3.3.36'
 }

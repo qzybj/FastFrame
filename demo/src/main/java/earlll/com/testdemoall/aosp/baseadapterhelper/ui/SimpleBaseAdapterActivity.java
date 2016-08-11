@@ -19,7 +19,7 @@ public class SimpleBaseAdapterActivity extends BaseActivity {
     private SingleTypeAdapter mAdapter;
 
     @Override
-    public int getLayoutResouceId() {
+    public int getLayoutResId() {
         return R.layout.activity_baseadapter;
     }
 

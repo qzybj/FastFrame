@@ -1,6 +1,7 @@
 package com.frame.fastframe.ui.simple.fragment;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.frame.fastframe.R;
 import com.frame.fastframe.ui.base.BaseFragment;
@@ -10,16 +11,20 @@ import org.xutils.view.annotation.ContentView;
 /**
  * Created by ZhangYuanBo on 2016/2/5.
  */
-@ContentView(R.layout.fragment_one)
 public class ContainerFragment extends BaseFragment {
+
     @Override
-    protected void initView() {
-        super.initView();
+    public int getLayoutResId() {
+        return R.layout.fragment_one;
     }
 
     @Override
-    protected void initData(Bundle savedInstanceState) {
-        super.initData(savedInstanceState);
+    public void initContentView(View view) {
+
+    }
+
+    @Override
+    public void initData(Bundle savedInstanceState) {
 
     }
 }

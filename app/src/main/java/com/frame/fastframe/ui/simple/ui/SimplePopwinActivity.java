@@ -42,7 +42,7 @@ public class SimplePopwinActivity extends BaseActivity {
     }
 
     @Override
-    public int getLayoutResouceId() {
+    public int getLayoutResId() {
         return R.layout.activity_simple_popwin;
     }
 

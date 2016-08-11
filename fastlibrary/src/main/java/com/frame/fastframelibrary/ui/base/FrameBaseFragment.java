@@ -2,48 +2,43 @@ package com.frame.fastframelibrary.ui.base;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import org.xutils.x;
+import butterknife.ButterKnife;
 
 /**
- * 框架Fragment的base基类
+ * 框架 - Fragment的base基类，只包含最基本的
  */
-public class FrameBaseFragment extends Fragment {
-    public final static String KEY_TITLE = "title";
-
-    protected boolean injected = false;
+public abstract class FrameBaseFragment extends Fragment implements IBaseUI{
     protected Activity mParentActivity;
+    private View mRootView ;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        injected = true;
-        return x.view().inject(this, inflater, container);
-    }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public final void onCreate(@Nullable Bundle savedInstanceState) {
         mParentActivity  = this.getActivity();
-        if (!injected) {
-            x.view().inject(this, this.getView());
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public final View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        int layoutResId = getLayoutResId();
+        if (layoutResId>0) {
+            mRootView  = inflater.inflate(layoutResId, container, false);
+            if (mRootView != null) {
+                ButterKnife.bind(this, mRootView);
+                initContentView(mRootView);
+                return mRootView;
+            }
         }
-        initView();
         initData(savedInstanceState);
+        return super.onCreateView(inflater,container,savedInstanceState);
     }
 
-    /**
-     * 初始化布局控件
-     */
-    protected void initView() {
-
+    public Activity getBaseActivity(){
+        return mParentActivity;
     }
 
-    /**
-     * 初始化界面数据
-     */
-    protected void initData(Bundle savedInstanceState) {
-    }
 }

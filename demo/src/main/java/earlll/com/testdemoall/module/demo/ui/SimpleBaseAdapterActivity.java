@@ -30,7 +30,7 @@ public class SimpleBaseAdapterActivity extends BaseListViewActivity {
     private List<Status> listData = new ArrayList<Status>();
 
     @Override
-    public int getLayoutResouceId() {
+    public int getLayoutResId() {
         return R.layout.activity_simple_listview;
     }
 

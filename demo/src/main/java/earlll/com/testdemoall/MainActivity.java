@@ -42,7 +42,7 @@ public class MainActivity extends BaseActivity {
     protected QuickAdapter<TestBean> adapter;
 
     @Override
-    public int getLayoutResouceId() {
+    public int getLayoutResId() {
         return R.layout.activity_main;
     }
 

@@ -37,7 +37,7 @@ public class SimpleLayoutActivity extends BaseFragmentActivity {
     ViewStub stub_empty;
 
 
-    public int getLayoutResouceId() {
+    public int getLayoutResId() {
         return R.layout.activity_simple_layout;
     }
 

@@ -7,12 +7,11 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.AbsoluteLayout;
 import android.widget.ProgressBar;
-
 import com.frame.fastframelibrary.R;
 import com.frame.fastframelibrary.aosp.bridgewebview.interfaces.IJSBridgeBean;
-import com.frame.fastframelibrary.aosp.bridgewebview.bridgeimpl.JSBridgeManager;
 import com.frame.fastframelibrary.aosp.bridgewebview.interfaces.IBridgeCallBack;
 import com.github.lzyzsd.jsbridge.BridgeWebView;
 
@@ -22,10 +21,13 @@ import com.github.lzyzsd.jsbridge.BridgeWebView;
  * */
 public class ProgressWebView extends BridgeWebView{
     private ProgressBar progressbar;
-    private JSBridgeManager mJSBridgeManager;
+    private WebChromeClient mWebChromeClient;
+    private CBridgeWebViewClient mCBridgeWebViewClient;
 
+    private JSBridgeManager mJSBridgeManager;
     private Handler bridgeHandler = new JSBridgeHandler();
     private IBridgeCallBack mIBridgeCallBack;
+
 
     public ProgressWebView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -36,13 +38,23 @@ public class ProgressWebView extends BridgeWebView{
         addView(progressbar);
         //setWebViewClient(new WebViewClient(){});//不能再设置webview的WebViewClient
         setWebChromeClient(new WebChromeClient());
-        getSettings().setSupportZoom(true);
-        getSettings().setBuiltInZoomControls(true);
         initJsBridge(context);
     }
+    @Override
+    protected CBridgeWebViewClient generateBridgeWebViewClient() {
+        mCBridgeWebViewClient = new CBridgeWebViewClient(this);
+        return mCBridgeWebViewClient;
+    }
 
-    private void initJsBridge(Context context) {
-        mJSBridgeManager = new JSBridgeManager(this,bridgeHandler);
+    /** Set Custom WebChromeClient*/
+    public void setCustomWebChromeClient(WebChromeClient webChromeClient){
+        this.mWebChromeClient = webChromeClient;
+    }
+    /** Set Custom WebViewClient*/
+    public void setCustomWebChromeClient(WebViewClient webViewClient){
+        if(mCBridgeWebViewClient!=null){
+            mCBridgeWebViewClient.setCustomWebChromeClient(webViewClient);
+        }
     }
 
     public class WebChromeClient extends android.webkit.WebChromeClient {
@@ -56,6 +68,9 @@ public class ProgressWebView extends BridgeWebView{
                 }
                 progressbar.setProgress(newProgress);
             }
+            if(mWebChromeClient!=null){
+                mWebChromeClient.onProgressChanged(view,newProgress);
+            }
             super.onProgressChanged(view, newProgress);
         }
     }
@@ -67,6 +82,11 @@ public class ProgressWebView extends BridgeWebView{
         lp.y = t;
         progressbar.setLayoutParams(lp);
         super.onScrollChanged(l, t, oldl, oldt);
+    }
+
+    /////////////////////////以下为JSBridge实现
+    private void initJsBridge(Context context) {
+        mJSBridgeManager = new JSBridgeManager(this,bridgeHandler);
     }
 
     /**

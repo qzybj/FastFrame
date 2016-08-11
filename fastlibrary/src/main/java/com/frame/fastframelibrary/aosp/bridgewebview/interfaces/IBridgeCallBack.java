@@ -24,6 +24,4 @@ public interface IBridgeCallBack {
      * @param json
      */
      void paserOtherCallback(Object json);
-
-
 }

@@ -33,7 +33,7 @@ public class SimpleFragmentActivity extends BaseFragmentActivity implements IFra
 
 
     @Override
-    public int getLayoutResouceId() {
+    public int getLayoutResId() {
         return R.layout.activity_fragment_simple;
     }
 

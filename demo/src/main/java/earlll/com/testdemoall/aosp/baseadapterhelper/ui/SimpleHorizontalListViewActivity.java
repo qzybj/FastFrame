@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.view.View;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.BaseAdapterHelper;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.QuickAdapter;
-import com.frame.fastframelibrary.core.config.ConstantsCommonKey;
-import com.frame.fastframelibrary.core.view.HorizontalListView;
+import com.frame.fastframelibrary.config.ConstantsCommonKey;
+import com.frame.fastframelibrary.view.HorizontalListView;
 import com.frame.fastframelibrary.utils.dataprocess.IntentUtils;
 import org.xutils.view.annotation.ViewInject;
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class SimpleHorizontalListViewActivity extends BaseActivity {
 
 
     @Override
-    public int getLayoutResouceId() {
+    public int getLayoutResId() {
         return R.layout.activity_baseadapter_horizontal;
     }
 

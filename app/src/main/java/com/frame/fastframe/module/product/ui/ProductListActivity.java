@@ -6,7 +6,7 @@ import android.widget.Button;
 
 import com.frame.fastframe.R;
 import com.frame.fastframe.ui.base.BaseActivity;
-import com.frame.fastframelibrary.core.config.ConstantsCommonKey;
+import com.frame.fastframelibrary.config.ConstantsCommonKey;
 
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
@@ -19,7 +19,7 @@ public class ProductListActivity extends BaseActivity {
 	private Button btn_login;
 
 	@Override
-	public int getLayoutResouceId() {
+	public int getLayoutResId() {
 		return R.layout.activity_product;
 	}
 

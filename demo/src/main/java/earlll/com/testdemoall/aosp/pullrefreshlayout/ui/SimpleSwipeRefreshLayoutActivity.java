@@ -10,8 +10,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
-import com.frame.fastframelibrary.core.config.ConstantsCommonKey;
-import com.frame.fastframelibrary.core.view.ObservableWebView;
+import com.frame.fastframelibrary.config.ConstantsCommonKey;
+import com.frame.fastframelibrary.view.ObservableWebView;
 import com.frame.fastframelibrary.utils.dataprocess.IntentUtils;
 import com.frame.fastframelibrary.utils.LogUtils;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
@@ -52,7 +52,7 @@ public class SimpleSwipeRefreshLayoutActivity extends BaseActivity implements Sw
     protected ProgressBar mProgressBar;
 
     @Override
-    public int getLayoutResouceId() {
+    public int getLayoutResId() {
         return R.layout.activity_basewebview_swiperefreshlayout;
     }
 

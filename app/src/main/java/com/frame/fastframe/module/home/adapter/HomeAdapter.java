@@ -7,7 +7,7 @@ import com.frame.fastframe.module.home.bean.ShowBean;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.BaseAdapterHelper;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.MultiItemTypeSupport;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.QuickAdapter;
-import com.frame.fastframelibrary.core.view.InnerGridView;
+import com.frame.fastframelibrary.view.InnerGridView;
 import java.util.ArrayList;
 
 

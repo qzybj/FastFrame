@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 import android.content.Context;
 import com.android.volley.Request.Method;
-import com.frame.fastframelibrary.net.volley.json.gson.GsonUtils;
+import com.frame.fastframelibrary.utils.json.GsonUtils;
 import com.google.gson.annotations.SerializedName;
 
 public class BasicRequest {
@@ -157,8 +157,7 @@ public class BasicRequest {
 					if(key==null||key.equals("")){
 						key = t_field.getName();
 					}
-					
-					value = t_field.get(this);					
+					value = t_field.get(this);
 					if (value != null) {
 						res.put(key, value.toString());
 					}
@@ -177,7 +176,6 @@ public class BasicRequest {
 		if (cnt == null) {
 			return null;
 		}
-
 		HashMap<String, String> headers = new HashMap<String, String>();
 //		headers.put("platform_n", "android");
 //		headers.put("uid", "");
@@ -187,27 +185,17 @@ public class BasicRequest {
 //		headers.put("imsi", (null == DeviceUtils.readSimSerialNum() || ""
 //				.equals(DeviceUtils.readSimSerialNum())) ? "NaN"
 //				: DeviceUtils.readSimSerialNum());
-//		headers.put(
-//				"imei",
-//				(null == DeviceUtils.readTelephoneSerialNum() || ""
-//						.equals(DeviceUtils.readTelephoneSerialNum())) ? "NaN"
-//						: DeviceUtils.readTelephoneSerialNum());
+//		headers.put("imei",(null == DeviceUtils.readTelephoneSerialNum() || ""
+//						.equals(DeviceUtils.readTelephoneSerialNum())) ? "NaN": DeviceUtils.readTelephoneSerialNum());
 //		headers.put("sourceid", FDFAppInfoConfig.SORUCEID); // 主渠道号
-//		headers.put(
-//				"language",
-//				(null == DeviceUtils.getSysLanguage() || "".equals(DeviceUtils
-//						.getSysLanguage())) ? "NaN" : DeviceUtils
-//						.getSysLanguage());
-//		headers.put(
-//				"cn_operator",
-//				(null == DeviceUtils.getCarrier() || "".equals(DeviceUtils
-//						.getCarrier())) ? "NaN" : DeviceUtils
-//						.getCarrier());
+//		headers.put("language",(null == DeviceUtils.getSysLanguage() || "".equals(DeviceUtils
+//						.getSysLanguage())) ? "NaN" : DeviceUtils.getSysLanguage());
+//		headers.put("cn_operator",(null == DeviceUtils.getCarrier() || "".equals(DeviceUtils
+//						.getCarrier())) ? "NaN" : DeviceUtils.getCarrier());
 //		headers.put("sms_center_number", "");
 //		headers.put("version", AppUtils.getVersionNameInManifest());
 //		headers.put("macid", (null == DeviceUtils.getLocalMacAddress() || ""
-//				.equals(DeviceUtils.getLocalMacAddress())) ? "NaN"
-//				: DeviceUtils.getLocalMacAddress());
+//				.equals(DeviceUtils.getLocalMacAddress())) ? "NaN": DeviceUtils.getLocalMacAddress());
 //		String userid = FDFAccountManager.getUserId();
 //		headers.put("userid", userid == null ? "NaN" : userid);
 //		String usersign = FDFAccountManager.getUserSign();

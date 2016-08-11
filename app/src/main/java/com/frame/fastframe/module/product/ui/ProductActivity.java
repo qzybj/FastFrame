@@ -4,14 +4,14 @@ import android.os.Bundle;
 import android.view.View;
 import com.frame.fastframe.R;
 import com.frame.fastframe.ui.base.BaseActivity;
-import com.frame.fastframelibrary.core.config.ConstantsCommonKey;
+import com.frame.fastframelibrary.config.ConstantsCommonKey;
 
 public class ProductActivity extends BaseActivity {
 
 	public static final String KEY_INDEX_ID = ConstantsCommonKey.KEY_INDEX_ID;
 
 	@Override
-	public int getLayoutResouceId() {
+	public int getLayoutResId() {
 		return R.layout.activity_product;
 	}
 
