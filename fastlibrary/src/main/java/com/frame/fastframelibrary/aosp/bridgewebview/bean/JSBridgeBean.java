@@ -1,6 +1,6 @@
-package com.frame.fastframe.module.html5.bridgewebView.bean;
+package com.frame.fastframelibrary.aosp.bridgewebview.bean;
 
-import com.frame.fastframe.module.html5.bridgewebView.interfaces.IJSBridgeBean;
+import com.frame.fastframelibrary.aosp.bridgewebview.interfaces.IJSBridgeBean;
 
 import java.util.LinkedHashMap;
 

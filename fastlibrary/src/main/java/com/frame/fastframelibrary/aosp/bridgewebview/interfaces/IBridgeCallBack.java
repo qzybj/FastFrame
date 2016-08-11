@@ -1,4 +1,4 @@
-package com.frame.fastframe.module.html5.bridgewebView.interfaces;
+package com.frame.fastframelibrary.aosp.bridgewebview.interfaces;
 
 
 /**

@@ -1,4 +1,4 @@
-package com.frame.fastframe.module.html5.bridgewebView;
+package com.frame.fastframelibrary.aosp.bridgewebview;
 /**
  * 
  * 功能模块 - 一个实现h5与原生端的交互WebView

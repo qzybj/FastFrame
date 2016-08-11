@@ -1,16 +1,19 @@
-package com.frame.fastframe.module.html5.bridgewebView;
+package com.frame.fastframelibrary.aosp.bridgewebview;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.view.View;
 import android.webkit.WebView;
+import android.widget.AbsoluteLayout;
 import android.widget.ProgressBar;
-import com.frame.fastframe.R;
-import com.frame.fastframe.module.html5.bridgewebView.interfaces.IJSBridgeBean;
-import com.frame.fastframe.module.html5.bridgewebView.bridgeimpl.JSBridgeManager;
-import com.frame.fastframe.module.html5.bridgewebView.interfaces.IBridgeCallBack;
+
+import com.frame.fastframelibrary.R;
+import com.frame.fastframelibrary.aosp.bridgewebview.interfaces.IJSBridgeBean;
+import com.frame.fastframelibrary.aosp.bridgewebview.bridgeimpl.JSBridgeManager;
+import com.frame.fastframelibrary.aosp.bridgewebview.interfaces.IBridgeCallBack;
 import com.github.lzyzsd.jsbridge.BridgeWebView;
 
 /**
@@ -27,8 +30,8 @@ public class ProgressWebView extends BridgeWebView{
     public ProgressWebView(Context context, AttributeSet attrs) {
         super(context, attrs);
         progressbar = new ProgressBar(context, null, android.R.attr.progressBarStyleHorizontal);
-        progressbar.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, 10, 0, 0));
-        Drawable drawable = context.getResources().getDrawable(R.drawable.progress_bar_states);
+        progressbar.setLayoutParams(new AbsoluteLayout.LayoutParams(AbsoluteLayout.LayoutParams.MATCH_PARENT, 10, 0, 0));
+        Drawable drawable = context.getResources().getDrawable(R.drawable.progresswebview_bar_states);
         progressbar.setProgressDrawable(drawable);
         addView(progressbar);
         //setWebViewClient(new WebViewClient(){});//不能再设置webview的WebViewClient
@@ -46,10 +49,10 @@ public class ProgressWebView extends BridgeWebView{
         @Override
         public void onProgressChanged(WebView view, int newProgress) {
             if (newProgress == 100) {
-                progressbar.setVisibility(GONE);
+                progressbar.setVisibility(View.GONE);
             } else {
-                if (progressbar.getVisibility() == GONE){
-                    progressbar.setVisibility(VISIBLE);
+                if (progressbar.getVisibility() == View.GONE){
+                    progressbar.setVisibility(View.VISIBLE);
                 }
                 progressbar.setProgress(newProgress);
             }
@@ -59,7 +62,7 @@ public class ProgressWebView extends BridgeWebView{
 
     @Override
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
-        LayoutParams lp = (LayoutParams) progressbar.getLayoutParams();
+        AbsoluteLayout.LayoutParams lp = (AbsoluteLayout.LayoutParams) progressbar.getLayoutParams();
         lp.x = l;
         lp.y = t;
         progressbar.setLayoutParams(lp);

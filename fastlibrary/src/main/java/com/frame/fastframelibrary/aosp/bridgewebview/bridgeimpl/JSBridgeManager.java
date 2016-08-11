@@ -1,11 +1,11 @@
-package com.frame.fastframe.module.html5.bridgewebView.bridgeimpl;
+package com.frame.fastframelibrary.aosp.bridgewebview.bridgeimpl;
 
 import android.os.Handler;
 import android.os.Message;
 
-import com.frame.fastframe.module.html5.bridgewebView.JSBridgeConstants;
-import com.frame.fastframe.module.html5.bridgewebView.bean.JSBridgeBean;
-import com.frame.fastframe.module.html5.bridgewebView.interfaces.IJSBridgeBean;
+import com.frame.fastframelibrary.aosp.bridgewebview.JSBridgeConstants;
+import com.frame.fastframelibrary.aosp.bridgewebview.bean.JSBridgeBean;
+import com.frame.fastframelibrary.aosp.bridgewebview.interfaces.IJSBridgeBean;
 import com.frame.fastframelibrary.utils.json.GsonUtils;
 import com.frame.fastframelibrary.utils.LogUtils;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
