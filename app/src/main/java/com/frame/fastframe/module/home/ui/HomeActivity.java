@@ -7,7 +7,7 @@ import android.widget.ListView;
 import com.frame.fastframe.R;
 import com.frame.fastframe.module.home.adapter.HomeAdapter;
 import com.frame.fastframe.module.home.bean.ShowBean;
-import com.frame.fastframe.utils.TestDataBuilder;
+import com.frame.fastframe.utils.TestData4App;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ public class HomeActivity extends Activity
 
 	private void initDatas()
 	{
-		mDatas = TestDataBuilder.getShowBeanList();
+		mDatas = TestData4App.getShowBeanList();
 	}
 
 }

@@ -15,8 +15,7 @@ public class ViewBuilder {
 
 	public static LinearLayout getLinearLayout(Context con) {
 		LinearLayout layout = new LinearLayout(con);
-		LayoutParams imgParams =
-				new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+		LayoutParams imgParams =new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		layout.setLayoutParams(imgParams);
 		layout.setBackgroundColor(con.getResources().getColor(android.R.color.transparent));
 		layout.setOrientation(LinearLayout.VERTICAL);
@@ -28,16 +27,13 @@ public class ViewBuilder {
 	 */
 	public static ImageView getViewByWeight(Context con) {
 		ImageView imageview = new ImageView(con);
-		LayoutParams imgParams = new LayoutParams(
-				LayoutParams.MATCH_PARENT,
-				LayoutParams.MATCH_PARENT,1);
+		LayoutParams imgParams = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT,1);
 		imageview.setLayoutParams(imgParams);
 		imageview.setAdjustViewBounds(true);
 		imageview.setScaleType(ScaleType.FIT_CENTER);//CENTER_CROP
 		imageview.setBackgroundColor(con.getResources().getColor(android.R.color.transparent));
 		return imageview;
 	}
-
 
 	/**
 	 *
@@ -69,8 +65,7 @@ public class ViewBuilder {
 	 */
 	public static LinearLayout getVLayoutByWeight(Context con, int weight) {
 		LinearLayout layout = new LinearLayout(con);
-		LayoutParams params = new LayoutParams(
-				0, LayoutParams.MATCH_PARENT,weight);
+		LayoutParams params = new LayoutParams(0, LayoutParams.MATCH_PARENT,weight);
 		layout.setLayoutParams(params);
 		layout.setGravity(Gravity.CENTER);
 		layout.setOrientation(LinearLayout.VERTICAL);
@@ -82,9 +77,7 @@ public class ViewBuilder {
 	 */
 	public static LinearLayout getBorderLayout(Context con) {
 		LinearLayout layout = new LinearLayout(con);
-		LayoutParams imgParams = new LayoutParams(
-				LayoutParams.WRAP_CONTENT,
-				LayoutParams.WRAP_CONTENT);
+		LayoutParams imgParams = new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
 		layout.setLayoutParams(imgParams);
 		layout.setOrientation(LinearLayout.VERTICAL);
 		return layout;

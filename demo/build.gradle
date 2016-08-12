@@ -30,14 +30,27 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:cardview-v7:23.4.0'
     compile 'com.android.support:design:23.4.0'
+    //view bind
     compile 'com.jakewharton:butterknife:8.2.1'
     apt 'com.jakewharton:butterknife-compiler:8.2.1'
-    compile 'org.greenrobot:eventbus:3.0.0'
-    compile 'com.baoyz.pullrefreshlayout:library:1.2.0'
-    compile(name:'xrecyclerview-release1.2.8', ext:'aar')//compile 'com.jcodecraeer:xrecyclerview:1.2.7'
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.9.2'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.jaredrummler:material-spinner:1.0.9'
-    compile 'com.journeyapps:zxing-android-embedded:3.3.0'
+    //add custom library project
     compile project(':fastlibrary')
+
+    //look like broadcast reciver
+    compile 'org.greenrobot:eventbus:3.0.0'
+
+    //a easy adapter for recycleview
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.9.2'
+
+    //load image
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    //pop a list UI
+    compile 'com.jaredrummler:material-spinner:1.0.9'
+    //qrcode
+    compile 'com.journeyapps:zxing-android-embedded:3.3.0'
+
+    //pull refresh layout
+    compile 'com.baoyz.pullrefreshlayout:library:1.2.0'
+    //recycleview plus
+    compile(name:'xrecyclerview-release1.2.8', ext:'aar')//compile 'com.jcodecraeer:xrecyclerview:1.2.7'
 }

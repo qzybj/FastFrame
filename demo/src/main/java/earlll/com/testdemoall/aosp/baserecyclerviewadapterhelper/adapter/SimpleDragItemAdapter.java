@@ -18,7 +18,7 @@ import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 import com.squareup.picasso.Picasso;
 import java.util.List;
 import earlll.com.testdemoall.R;
-import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.adapter.decoration.DividerGridItemDecoration;
+import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.decoration.DividerGridItemDecoration;
 import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.entity.HomeItem;
 import earlll.com.testdemoall.core.utils.WebViewUtilPlus;
 
@@ -34,7 +34,7 @@ public  class SimpleDragItemAdapter extends BaseItemDraggableAdapter<HomeItem> i
         super(layoutResId,data);
         this.mContext = con;
         recyclerView.setLayoutManager(new GridLayoutManager(mContext, 4));//设定样式
-        recyclerView.addItemDecoration(new DividerGridItemDecoration(mContext,DividerGridItemDecoration.STYLE_VERTICAL));//设定分隔线
+        recyclerView.addItemDecoration(new DividerGridItemDecoration(mContext, DividerGridItemDecoration.STYLE_VERTICAL));//设定分隔线
         ItemDragAndSwipeCallback mItemDragAndSwipeCallback = new ItemDragAndSwipeCallback(this);
         ItemTouchHelper mItemTouchHelper = new ItemTouchHelper(mItemDragAndSwipeCallback);
         mItemTouchHelper.attachToRecyclerView(recyclerView);

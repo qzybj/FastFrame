@@ -319,11 +319,11 @@ public abstract class BaseActivity extends FrameBaseActivity{
 
 	protected void  goActivity(TestBean data){
 		Intent intent = new Intent();
-		intent.setClassName(mBaseActivity,data.getText());
+		intent.setClassName(getBaseActivity(),data.getText());
 		if(!IntentUtils.isEmpty(data.getArgs())){
 			intent.putExtras(data.getArgs());
 		}
-		mBaseActivity.startActivity(intent);
+		getBaseActivity().startActivity(intent);
 	}
 
 	public  static TestBean getTestBean(String describe,String targetActivity) {

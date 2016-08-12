@@ -24,7 +24,7 @@ import com.frame.fastframe.module.product.moduleview.bean.BaseModuleViewBean;
 import com.frame.fastframe.view.dialog.CustomDialog;
 import com.frame.fastframe.R;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
-import com.frame.fastframe.utils.TestDataBuilder;
+import com.frame.fastframe.utils.TestData4App;
 import com.frame.fastframe.view.dynamicgridview.DynamicGridView;
 import org.xutils.view.annotation.ViewInject;
 
@@ -75,7 +75,7 @@ public class PictureModuleView extends BaseModuleView {
 	 */
 	private void initGridViewDatas()
 	{
-		mAdapter = new GridViewPictureAdapter(getModuleViewContext(), TestDataBuilder.getImageBeanList(),4);
+		mAdapter = new GridViewPictureAdapter(getModuleViewContext(), TestData4App.getImageBeanList(),4);
 //		mAdapter.showIndeterminateProgress(true);
 		dgv_picture.setAdapter(mAdapter);// 设置适配器
 		dgv_picture.setOnItemClickListener(

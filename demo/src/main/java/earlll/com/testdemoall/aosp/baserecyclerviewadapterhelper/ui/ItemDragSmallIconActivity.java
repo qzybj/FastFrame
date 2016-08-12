@@ -22,9 +22,9 @@ import com.squareup.picasso.Target;
 import java.util.ArrayList;
 import java.util.List;
 import earlll.com.testdemoall.R;
-import earlll.com.testdemoall.core.utils.TestDataBuilder;
+import earlll.com.testdemoall.core.utils.TestData4Demo;
 import earlll.com.testdemoall.module.demo.bean.TestBean;
-import earlll.com.testdemoall.module.loadimage.LoadImageManager;
+import com.frame.fastframelibrary.module.loadimage.LoadImageManager;
 
 /**
  * 小Icon的拖拽的Adapter的使用示例样式
@@ -108,7 +108,7 @@ public class ItemDragSmallIconActivity extends Activity implements Target{
     private List<TestBean> generateData(int size) {
         ArrayList<TestBean> data = new ArrayList(size);
         for (int i = 0; i < size; i++) {
-            data.add(TestDataBuilder.getTestBean("item " + i,"item " + i));
+            data.add(TestData4Demo.getTestBean("item " + i,"item " + i));
         }
         return data;
     }

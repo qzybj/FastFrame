@@ -7,10 +7,10 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import earlll.com.testdemoall.R;
+import earlll.com.testdemoall.core.utils.TestData4Demo;
 import earlll.com.testdemoall.module.demo.adapter.SingleTypeAdapter;
 import earlll.com.testdemoall.module.demo.bean.SingleTypeBean;
 import earlll.com.testdemoall.core.ui.base.BaseActivity;
-import earlll.com.testdemoall.core.utils.TestDataBuilder;
 
 public class SimpleBaseAdapterActivity extends BaseActivity {
 
@@ -30,7 +30,7 @@ public class SimpleBaseAdapterActivity extends BaseActivity {
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        mDatas = TestDataBuilder.getSingleTypeBeanList();
+        mDatas = TestData4Demo.getSingleTypeBeanList();
         mListView = (ListView) findViewById(R.id.listView);
         mAdapter = new SingleTypeAdapter(SimpleBaseAdapterActivity.this, R.layout.listview_item, mDatas);
 //		mAdapter.showIndeterminateProgress(true);

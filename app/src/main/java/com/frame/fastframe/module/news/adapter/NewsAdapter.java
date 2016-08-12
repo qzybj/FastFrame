@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.View;
 import com.frame.fastframe.R;
 import com.frame.fastframe.module.news.bean.News;
-import com.frame.fastframe.utils.TestDataBuilder;
+import com.frame.fastframe.utils.TestData4App;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.BaseAdapterHelper;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.MultiItemTypeSupport;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.QuickAdapter;
@@ -41,7 +41,7 @@ public class NewsAdapter extends QuickAdapter<News> implements MultiItemTypeSupp
                 helper.setText(R.id.tv_type, item.getTitle());
                 InnerListView adapterView = helper.getView(R.id.ilv_show);
                 if (adapterView != null) {
-                    NewsChildAdapter childAdapter = new NewsChildAdapter(context,R.layout.listview_item_news_child, TestDataBuilder.getNewsList());
+                    NewsChildAdapter childAdapter = new NewsChildAdapter(context,R.layout.listview_item_news_child, TestData4App.getNewsList());
                     adapterView.setAdapter(childAdapter);
                 }
                 break;

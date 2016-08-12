@@ -7,6 +7,7 @@ import android.widget.ListView;
 import com.frame.fastframe.bean.MultiTypeBean;
 import com.frame.fastframe.ui.simple.adapter.MultiTypeAdapter;
 import com.frame.fastframe.R;
+import com.frame.fastframe.utils.TestData4App;
 
 import java.util.ArrayList;
 
@@ -35,7 +36,7 @@ public class SimpleMultiBaseAdapterActivity extends Activity
 
 	private void initDatas()
 	{
-		mDatas = com.frame.fastframe.utils.TestDataBuilder.getChatMessageList();
+		mDatas = TestData4App.getChatMessageList();
 	}
 
 }

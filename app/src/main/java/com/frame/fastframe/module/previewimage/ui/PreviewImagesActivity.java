@@ -14,7 +14,7 @@ import com.frame.fastframe.R;
 import com.frame.fastframe.module.common.util.DensityUtil;
 import com.frame.fastframe.module.previewimage.view.HackyViewPager;
 import com.frame.fastframe.ui.base.BaseActivity;
-import com.frame.fastframe.utils.TestDataBuilder;
+import com.frame.fastframe.utils.TestData4App;
 import com.frame.fastframelibrary.config.ConstantsCommonKey;
 import com.frame.fastframelibrary.utils.device.NetUtils;
 import com.squareup.picasso.Picasso;
@@ -65,7 +65,7 @@ public class PreviewImagesActivity extends BaseActivity {
                 mItemIndex = extras.getInt(KEY_IMG_INDEX);
             }
         }
-        mBigUrlList = TestDataBuilder.imageList;//测试数据
+        mBigUrlList = TestData4App.imageList;//测试数据
         initPointToDo();
         initViewPager();
     }

@@ -6,7 +6,7 @@ import android.widget.ListView;
 import com.frame.fastframe.module.communicate.adapter.CommunicateAdapter;
 import com.frame.fastframe.module.communicate.bean.Communicate;
 import com.frame.fastframe.R;
-import com.frame.fastframe.utils.TestDataBuilder;
+import com.frame.fastframe.utils.TestData4App;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 import java.util.ArrayList;
@@ -35,7 +35,7 @@ public class CommunicateActivity extends Activity
 	 */
 	private void initListViewDatas()
 	{
-		mDatas = TestDataBuilder.getCommunicateList();
+		mDatas = TestData4App.getCommunicateList();
 		mAdapter = new CommunicateAdapter(this,R.layout.listview_item_communicate, mDatas);
 //		mAdapter.showIndeterminateProgress(true);
 		mListView.setAdapter(mAdapter);// 设置适配器

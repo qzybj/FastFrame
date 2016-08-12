@@ -8,28 +8,28 @@ import com.baoyz.widget.PullRefreshLayout;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.BaseAdapterHelper;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.QuickAdapter;
 import com.frame.fastframelibrary.utils.dataprocess.ListUtils;
-import org.xutils.view.annotation.ViewInject;
 import java.util.ArrayList;
 import java.util.List;
+import butterknife.BindView;
 import earlll.com.testdemoall.R;
+import earlll.com.testdemoall.core.utils.TestData4Demo;
 import earlll.com.testdemoall.module.demo.bean.TestBean;
 import earlll.com.testdemoall.core.ui.base.BaseActivity;
-import earlll.com.testdemoall.core.utils.TestDataBuilder;
 
 /**
  * 用于下拉刷新展示解决
  */
 public class SimplePullRefreshLayoutActivity extends BaseActivity {
 
-    @ViewInject(R.id.prlayout_refresh)
+    @BindView(R.id.prlayout_refresh)
     PullRefreshLayout prlayout_refresh;
 
-    @ViewInject(R.id.lv_show)
+    @BindView(R.id.lv_show)
     ListView lv_show;
 
     protected QuickAdapter<TestBean> adapter;
 
-    @ViewInject(R.id.progressbar)
+    @BindView(R.id.progressbar)
     protected ProgressBar mProgressBar;
 
     @Override
@@ -76,7 +76,7 @@ public class SimplePullRefreshLayoutActivity extends BaseActivity {
 
     private void initListView(){
         if (adapter == null){
-            adapter = new QuickAdapter<TestBean>(mBaseActivity, R.layout.listview_item) {
+            adapter = new QuickAdapter<TestBean>(getBaseActivity(), R.layout.listview_item) {
                 @Override
                 protected void convert(BaseAdapterHelper helper, final TestBean data) {
                     helper.setText(R.id.tv_title, data.getName());
@@ -110,13 +110,13 @@ public class SimplePullRefreshLayoutActivity extends BaseActivity {
 
     public static ArrayList<TestBean> getShowBeanList() {
         ArrayList<TestBean> list = new ArrayList<TestBean>();
-        list.add(TestDataBuilder.getTestBean("单个item展示",""));
-        list.add(TestDataBuilder.getTestBean("横向ListView",""));
-        list.add(TestDataBuilder.getTestBean("fragment使用示例",""));
-        list.add(TestDataBuilder.getTestBean("eventBus使用示例",""));
-        list.add(TestDataBuilder.getTestBean("使用示例1",""));
-        list.add(TestDataBuilder.getTestBean("使用示例2",""));
-        list.add(TestDataBuilder.getTestBean("使用示例3",""));
+        list.add(TestData4Demo.getTestBean("单个item展示",""));
+        list.add(TestData4Demo.getTestBean("横向ListView",""));
+        list.add(TestData4Demo.getTestBean("fragment使用示例",""));
+        list.add(TestData4Demo.getTestBean("eventBus使用示例",""));
+        list.add(TestData4Demo.getTestBean("使用示例1",""));
+        list.add(TestData4Demo.getTestBean("使用示例2",""));
+        list.add(TestData4Demo.getTestBean("使用示例3",""));
         return list;
     }
 

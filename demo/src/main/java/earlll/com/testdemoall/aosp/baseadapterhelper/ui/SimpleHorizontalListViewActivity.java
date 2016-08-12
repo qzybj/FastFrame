@@ -5,21 +5,22 @@ import android.view.View;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.BaseAdapterHelper;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.QuickAdapter;
 import com.frame.fastframelibrary.config.ConstantsCommonKey;
-import com.frame.fastframelibrary.view.HorizontalListView;
 import com.frame.fastframelibrary.utils.dataprocess.IntentUtils;
-import org.xutils.view.annotation.ViewInject;
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
 import earlll.com.testdemoall.R;
+import earlll.com.testdemoall.core.utils.TestData4Demo;
 import earlll.com.testdemoall.module.demo.bean.TestBean;
 import earlll.com.testdemoall.core.ui.base.BaseActivity;
 import earlll.com.testdemoall.aosp.pullrefreshlayout.ui.SimpleSwipeRefreshLayoutActivity;
-import earlll.com.testdemoall.core.utils.TestDataBuilder;
+import earlll.com.testdemoall.view.HorizontalListView;
 
 public class SimpleHorizontalListViewActivity extends BaseActivity {
 
-    @ViewInject(R.id.listView)
-    private HorizontalListView mListView;
+    @BindView(R.id.listView)
+    public HorizontalListView mListView;
 
     private ArrayList<TestBean> mDatas = new ArrayList<TestBean>();
 
@@ -33,7 +34,7 @@ public class SimpleHorizontalListViewActivity extends BaseActivity {
 
     @Override
     public void initContentView(View view) {
-        mAdapter = new QuickAdapter<TestBean>(mBaseActivity, R.layout.listview_horizontal_item,mDatas) {
+        mAdapter = new QuickAdapter<TestBean>(getBaseActivity(), R.layout.listview_horizontal_item,mDatas) {
             @Override
             protected void convert(BaseAdapterHelper helper, final TestBean data) {
                 helper.setImageUrl(R.id.iv_show, data.getImageurl());
@@ -68,14 +69,14 @@ public class SimpleHorizontalListViewActivity extends BaseActivity {
 
     public  static ArrayList<TestBean> getShowBeanList() {
         ArrayList<TestBean> list = new ArrayList<TestBean>();
-        list.add(TestDataBuilder.getTestBean("单个item展示",SimpleBaseAdapterActivity.class.getName()));
+        list.add(TestData4Demo.getTestBean("单个item展示",SimpleBaseAdapterActivity.class.getName()));
 //        TestBean webviewBean  = getJumpBean("下拉刷新WebView展示",SimpleWebViewPullrefreshActivity.class.getName());
 //        webviewBean.setArgs(IntentUtils.setBundleStr(null, WebViewUtilPlus.KEY_URL,"http://m.yintai.com/category/miaoindex?"));
 //        list.add(webviewBean);
-        TestBean webviewBean1  = TestDataBuilder.getTestBean("下拉刷新SwipeRefreshLayout中放置WebView展示",SimpleSwipeRefreshLayoutActivity.class.getName());
+        TestBean webviewBean1  = TestData4Demo.getTestBean("下拉刷新SwipeRefreshLayout中放置WebView展示",SimpleSwipeRefreshLayoutActivity.class.getName());
         webviewBean1.setArgs(IntentUtils.setBundleStr(null, ConstantsCommonKey.KEY_URL,"http://m.yintai.com/category/miaoindex?"));
         list.add(webviewBean1);
-        list.add(TestDataBuilder.getTestBean("横向ListView",SimpleHorizontalListViewActivity.class.getName()));
+        list.add(TestData4Demo.getTestBean("横向ListView",SimpleHorizontalListViewActivity.class.getName()));
 //        list.add(getJumpBean("样式2",NewsActivity.class.getName()));
 //        list.add(getJumpBean("添加信息通用样式",ProductActivity.class.getName()));
 //        list.add(getJumpBean("PopWin使用示例",SimplePopwinActivity.class.getName()));

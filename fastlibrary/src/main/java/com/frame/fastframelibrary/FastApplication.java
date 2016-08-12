@@ -8,7 +8,7 @@ public class FastApplication extends Application {
         return instance;
     }
     @Override
-    public final void onCreate() {
+    public void onCreate() {
         super.onCreate();
         instance = this;
     }

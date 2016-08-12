@@ -41,10 +41,10 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:design:23.4.0'
-    //H5与Native交互的封装
+
     compile 'com.baoyz.actionsheet:library:1.1.4'
     compile 'com.bm.photoview:library:1.4.0'
-    //底部弹出窗
+
     //compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'//图片加载
     //compile 'com.nineoldandroids:library:2.4.0'//向下兼容UI库
     //compile 'com.daimajia.slider:library:1.1.5@aar'//轮播图
@@ -53,7 +53,6 @@ dependencies {
     //compile 'cn.pedant.sweetalert:library:1.3'//dialog弹窗
     //compile 'com.yalantis:ucrop:1.3.2'  //图片裁剪，只有裁剪功能
     //compile 'cn.finalteam:galleryfinal:1.4.8.7'//图片裁剪，包含图片选择及照相等功能
-    //compile project(':social_sdk_example')//放入第三方项目
     compile project(':fastlibrary')
     compile 'org.xutils:xutils:3.3.36'
 }

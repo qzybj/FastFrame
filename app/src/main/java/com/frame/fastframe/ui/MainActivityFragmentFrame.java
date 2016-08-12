@@ -17,7 +17,7 @@ import com.frame.fastframe.ui.simple.ui.SimplePopwinActivity;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.BaseAdapterHelper;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.QuickAdapter;
 import com.frame.fastframelibrary.ui.base.FrameBaseFragment;
-import com.frame.fastframelibrary.view.ExtendedListView;
+import com.frame.fastframe.view.ExtendedListView;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -32,7 +32,6 @@ import static java.text.DateFormat.getDateInstance;
 /**
  * A placeholder fragment containing a simple view.
  */
-@ContentView(R.layout.fragment_one)
 public class MainActivityFragmentFrame extends FrameBaseFragment implements ExtendedListView.OnEndOfListListener<TestBean> {
     private static final DateFormat dateFormat = getDateInstance(SHORT);
 
@@ -43,8 +42,17 @@ public class MainActivityFragmentFrame extends FrameBaseFragment implements Exte
 
     public MainActivityFragmentFrame() {}
 
+
     @Override
-    protected void initView() {
+    public void initConstant(Bundle savedInstanceState) {}
+
+    @Override
+    public int getLayoutResId() {
+        return R.layout.fragment_one;
+    }
+
+    @Override
+    public void initContentView(View view) {
         listView.setOnEndOfListListener(this);
         if (adapter == null)
             adapter = new QuickAdapter<TestBean>(getActivity(), R.layout.listview_item_click) {
@@ -73,8 +81,7 @@ public class MainActivityFragmentFrame extends FrameBaseFragment implements Exte
     }
 
     @Override
-    protected void initData(Bundle savedInstanceState) {
-        super.initData(savedInstanceState);
+    public void initData(Bundle savedInstanceState) {
         loadData(getShowBeanList());
     }
 

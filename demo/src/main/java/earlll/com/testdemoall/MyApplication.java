@@ -15,8 +15,4 @@ public class MyApplication extends FastApplication {
 
 	public boolean isNotEmptyAccountBean() {return mAccountBean !=null;}
 
-	@Override
-	public void onCreate() {
-		super.onCreate();
-	}
 }

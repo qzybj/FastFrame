@@ -1,9 +1,6 @@
 package com.frame.fastframelibrary.utils.dataprocess;
 
-import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
-
 import java.util.Random;
-
 
 public class RandomUtils {
 
@@ -198,4 +195,17 @@ public class RandomUtils {
         }
         return out;
     }
+    public static boolean getRandomBoolean() {
+        Random random = new Random();
+        return random.nextBoolean();
+//        return Math.random() < 0.5;
+    }
+
+    public static Object getRandomObj(Object[] objects){
+        if(!ListUtils.isEmptyArray(objects)){
+            return objects[RandomUtils.getRandom(objects.length-1)];
+        }
+        return null;
+    }
+
 }

@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 import earlll.com.testdemoall.R;
 import earlll.com.testdemoall.core.ui.fragment.interfaces.ITabBottomBarClickListener;
 import earlll.com.testdemoall.core.ui.fragment.interfaces.ITabItem;
-import earlll.com.testdemoall.module.loadimage.LoadImageManager;
+import com.frame.fastframelibrary.module.loadimage.LoadImageManager;
 
 
 /**

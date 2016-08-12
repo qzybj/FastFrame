@@ -10,7 +10,7 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
 import earlll.com.testdemoall.R;
 import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.entity.Status;
-import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.transform.GlideCircleTransform;
+import earlll.com.testdemoall.aosp.glide.transform.GlideCircleTransform;
 import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.utils.DataServer;
 
 /**

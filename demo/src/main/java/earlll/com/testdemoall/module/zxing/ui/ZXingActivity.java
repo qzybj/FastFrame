@@ -3,13 +3,11 @@ package earlll.com.testdemoall.module.zxing.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 import earlll.com.testdemoall.R;
 import earlll.com.testdemoall.core.ui.base.BaseFragmentActivity;
@@ -60,7 +58,7 @@ public class ZXingActivity extends BaseFragmentActivity {
 
     /**自定义界面*/
     private void callZxingType3(){
-        new IntentIntegrator(this).setOrientationLocked(false).setCaptureActivity(CustomScannerActivity.class).initiateScan();
+        new IntentIntegrator(this).setOrientationLocked(false).setCaptureActivity(CustomUIActivity.class).initiateScan();
     }
 
     @Override

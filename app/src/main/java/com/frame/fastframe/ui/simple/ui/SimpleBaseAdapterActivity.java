@@ -7,7 +7,7 @@ import android.widget.ListView;
 import com.frame.fastframe.bean.SingleTypeBean;
 import com.frame.fastframe.ui.simple.adapter.SingleTypeAdapter;
 import com.frame.fastframe.R;
-import com.frame.fastframe.utils.TestDataBuilder;
+import com.frame.fastframe.utils.TestData4App;
 
 import java.util.ArrayList;
 
@@ -36,7 +36,7 @@ public class SimpleBaseAdapterActivity extends Activity
 
 	private void initDatas()
 	{
-		mDatas = TestDataBuilder.getSingleTypeBeanList();
+		mDatas = TestData4App.getSingleTypeBeanList();
 	}
 
 }

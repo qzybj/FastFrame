@@ -12,7 +12,8 @@ import com.frame.fastframelibrary.utils.dataprocess.IntentUtils;
 import com.frame.fastframelibrary.utils.LogUtils;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 import com.frame.fastframelibrary.utils.view.WebViewUtil;
-import org.xutils.view.annotation.ViewInject;
+
+import butterknife.BindView;
 import earlll.com.testdemoall.R;
 import earlll.com.testdemoall.core.utils.WebViewUtilPlus;
 
@@ -24,10 +25,10 @@ public class BaseWebViewActivity extends BaseActivity {
 
     protected String url = "";
 
-    @ViewInject(R.id.wv_show)
+    @BindView(R.id.wv_show)
     protected WebView mWebView;
 
-    @ViewInject(R.id.progressbar)
+    @BindView(R.id.progressbar)
     protected ProgressBar mProgressBar;
 
     @Override

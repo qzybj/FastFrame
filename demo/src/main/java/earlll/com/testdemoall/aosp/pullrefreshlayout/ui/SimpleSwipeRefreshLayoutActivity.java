@@ -9,16 +9,13 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
-
 import com.frame.fastframelibrary.config.ConstantsCommonKey;
-import com.frame.fastframelibrary.view.ObservableWebView;
+import earlll.com.testdemoall.view.ObservableWebView;
 import com.frame.fastframelibrary.utils.dataprocess.IntentUtils;
 import com.frame.fastframelibrary.utils.LogUtils;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 import com.frame.fastframelibrary.utils.view.WebViewUtil;
-
-import org.xutils.view.annotation.ViewInject;
-
+import butterknife.BindView;
 import earlll.com.testdemoall.R;
 import earlll.com.testdemoall.core.ui.base.BaseActivity;
 import earlll.com.testdemoall.core.utils.WebViewUtilPlus;
@@ -42,13 +39,13 @@ public class SimpleSwipeRefreshLayoutActivity extends BaseActivity implements Sw
         };
     };
 
-    @ViewInject(R.id.wv_show)
+    @BindView(R.id.wv_show)
     protected ObservableWebView mWebView;
 
-    @ViewInject(R.id.srlayout_show)
+    @BindView(R.id.srlayout_show)
     protected ScrollSwipeRefreshLayout mSwipeLayout;
 
-    @ViewInject(R.id.progressbar)
+    @BindView(R.id.progressbar)
     protected ProgressBar mProgressBar;
 
     @Override
