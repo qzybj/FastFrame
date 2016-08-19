@@ -10,6 +10,7 @@ public class ConstantsCommonKey {
     public static final String KEY_URL = "loadUrl";
     /**标题*/
     public static final String KEY_TITLE = "title";
+
     /**显示类型 - 用于控制通用界面的UI初始化的*/
     public final static String KEY_TYPE = "type";
 
@@ -22,5 +23,7 @@ public class ConstantsCommonKey {
     public static final String KEY_IMG_INDEX ="img_index";
     /** 检索用索引 */
     public static final String KEY_INDEX_ID ="indexid";
+    /** 下拉刷新状态类型 */
+    public static final String KEY_PULLREFRESH_TYPE ="refresh_type";
 
 }

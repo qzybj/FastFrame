@@ -1,8 +1,9 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion '23.0.2'
+    compileSdkVersion 24
+    buildToolsVersion "24.0.1"
     defaultConfig {
         applicationId "com.frame.fastframe"
         minSdkVersion 15
@@ -39,8 +40,10 @@ repositories {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:23.4.0'
-    compile 'com.android.support:design:23.4.0'
+    compile project(':fastlibrary')
+
+    //view bind
+    apt 'com.jakewharton:butterknife-compiler:8.2.1'
 
     compile 'com.baoyz.actionsheet:library:1.1.4'
     compile 'com.bm.photoview:library:1.4.0'
@@ -53,6 +56,6 @@ dependencies {
     //compile 'cn.pedant.sweetalert:library:1.3'//dialog弹窗
     //compile 'com.yalantis:ucrop:1.3.2'  //图片裁剪，只有裁剪功能
     //compile 'cn.finalteam:galleryfinal:1.4.8.7'//图片裁剪，包含图片选择及照相等功能
-    compile project(':fastlibrary')
+
     compile 'org.xutils:xutils:3.3.36'
 }

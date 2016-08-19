@@ -68,5 +68,4 @@ public class ActivityStack {
 	public Activity getTopActivity() {
 		return activityStack.get(activityStack.size() - 1);
 	}
-
 }

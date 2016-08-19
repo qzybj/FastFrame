@@ -53,7 +53,7 @@ public class HomeAdapter extends QuickAdapter<ShowBean> implements MultiItemType
                 break;
             case R.layout.listview_item_home_type2:
 //                helper.setText(R.id.chat_send_content, item.getContent());
-//                helper.setText(R.id.chat_send_name, item.getName());
+//                helper.setText(R.id.chat_send_name, item.getUserName());
 //                helper.setImageResource(R.id.chat_send_icon, item.getIcon());
                 break;
         }

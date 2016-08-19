@@ -7,6 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.frame.fastframelibrary.utils.LogUtils;
+
 import butterknife.ButterKnife;
 
 /**
@@ -26,15 +29,24 @@ public abstract class FrameBaseFragment extends Fragment implements IBaseUI{
     public final View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         int layoutResId = getLayoutResId();
         if (layoutResId>0) {
-            mRootView  = inflater.inflate(layoutResId, container, false);
+            try {
+                mRootView  = inflater.inflate(layoutResId, container, false);
+            } catch (Exception e) {
+                LogUtils.e(e);
+            }
             if (mRootView != null) {
                 ButterKnife.bind(this, mRootView);
                 initContentView(mRootView);
                 return mRootView;
             }
         }
-        initData(savedInstanceState);
         return super.onCreateView(inflater,container,savedInstanceState);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initData(savedInstanceState);
     }
 
     public Activity getBaseActivity(){

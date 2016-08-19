@@ -118,9 +118,9 @@ public class MainActivityFragmentFrame extends FrameBaseFragment implements Exte
         list.add(getTestBean("添加信息通用样式",ProductActivity.class.getName()));
         list.add(getTestBean("PopWin使用示例",SimplePopwinActivity.class.getName()));
         list.add(getTestBean("PassWordView使用示例",SimplePassWordViewActivity.class.getName()));
-//        list.add(getTestBean("Camera使用示例",SimpleCameraActivity.class.getName()));
+//        list.add(getTestBean("Camera使用示例",SimpleCameraActivity.class.getUserName()));
         list.add(getTestBean("图片浏览示例",PreviewImagesActivity.class.getName()));
-        //list.add(getTestBean("图片编辑",UCropSampleActivity.class.getName()));
+        //list.add(getTestBean("图片编辑",UCropSampleActivity.class.getUserName()));
         return list;
     }
     public  static TestBean getTestBean(String describe,String targetActivity) {

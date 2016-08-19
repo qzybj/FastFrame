@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.frame.fastframe.R;
 import com.frame.fastframe.module.common.constant.AppConstants;
-import com.frame.fastframe.utils.AccountUtils;
+import com.frame.fastframe.utils.UserManager;
 import com.frame.fastframelibrary.ui.base.FrameBaseActivity;
 import com.frame.fastframelibrary.utils.app.ActivityStack;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
@@ -57,7 +57,7 @@ public abstract class BaseActivity extends FrameBaseActivity{
 
 	@Override
 	public final void initConstant(Bundle savedInstanceState) {
-		userid = AccountUtils.getUid();
+		userid = UserManager.getUid();
 		ActivityStack.getInstance().addActivity(this);
 	}
 

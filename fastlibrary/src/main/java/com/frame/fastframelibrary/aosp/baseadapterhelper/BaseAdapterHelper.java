@@ -41,7 +41,7 @@ import com.squareup.picasso.RequestCreator;
  * 
  * <pre>
  * return BaseAdapterHelper.get(context, convertView, parent, R.layout.item)
- * 		.setText(R.id.tvName, contact.getName())
+ * 		.setText(R.id.tvName, contact.getUserName())
  * 		.setText(R.id.tvEmails, contact.getEmails().toString())
  * 		.setText(R.id.tvNumbers, contact.getNumbers().toString()).getRootView();
  * </pre>

@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import com.frame.fastframe.module.jump.bean.JumpCheckResult;
 import com.frame.fastframe.module.loign.ui.LoginActivity;
-import com.frame.fastframe.utils.AccountUtils;
+import com.frame.fastframe.utils.UserManager;
 import com.frame.fastframelibrary.utils.dataprocess.ListUtils;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 import java.util.HashMap;
@@ -86,7 +86,7 @@ public class JumpUtil {
 		}
 		if( checkResult.isNeedLogin() ){
 			//需要先跳登录页面,判断是否已登录
-			if (AccountUtils.hasLogin()) {
+			if (UserManager.hasLogin()) {
 				//未登录，需要登录
 				intent.setClass(activity, LoginActivity.class);
 				if( checkResult.getJumpType() != null ){

@@ -12,7 +12,7 @@ import com.frame.fastframe.module.jump.bean.JumpCheckResult;
 import com.frame.fastframe.module.jump.interfaces.IJumpProcessor;
 import com.frame.fastframe.module.jump.processor.ConstantsJumpParam;
 import com.frame.fastframe.module.loign.ui.LoginActivity;
-import com.frame.fastframe.utils.AccountUtils;
+import com.frame.fastframe.utils.UserManager;
 import com.frame.fastframelibrary.utils.view.ToastUtils;
 
 import java.util.HashMap;
@@ -51,7 +51,7 @@ public class EventProcessor implements IJumpProcessor {
 		}
 		if( checkResult.isNeedLogin() ){
 			//需要先跳登录页面,判断是否已登录
-			if (AccountUtils.hasLogin()) {
+			if (UserManager.hasLogin()) {
 				//未登录，需要跳转到登录页，并且给出提示
 				Intent intent = new Intent(context, LoginActivity.class);
 				ToastUtils.showToast(context, R.string.jump_tip_needlogin);

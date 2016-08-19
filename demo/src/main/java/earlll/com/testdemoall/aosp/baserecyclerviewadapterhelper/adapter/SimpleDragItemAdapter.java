@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
@@ -33,7 +34,7 @@ public  class SimpleDragItemAdapter extends BaseItemDraggableAdapter<HomeItem> i
     public SimpleDragItemAdapter(Context con,int layoutResId, RecyclerView recyclerView, List data) {
         super(layoutResId,data);
         this.mContext = con;
-        recyclerView.setLayoutManager(new GridLayoutManager(mContext, 4));//设定样式
+        recyclerView.setLayoutManager(new GridLayoutManager(mContext, 4));//设定样式 new LinearLayoutManager(mContext)
         recyclerView.addItemDecoration(new DividerGridItemDecoration(mContext, DividerGridItemDecoration.STYLE_VERTICAL));//设定分隔线
         ItemDragAndSwipeCallback mItemDragAndSwipeCallback = new ItemDragAndSwipeCallback(this);
         ItemTouchHelper mItemTouchHelper = new ItemTouchHelper(mItemDragAndSwipeCallback);
@@ -41,6 +42,9 @@ public  class SimpleDragItemAdapter extends BaseItemDraggableAdapter<HomeItem> i
         enableDragItem(mItemTouchHelper);
         setOnItemDragListener(this);
         setOnRecyclerViewItemClickListener(this);
+        //openLoadAnimation();
+        //setOnLoadMoreListener(this);
+        //openLoadMore(page_size, true);
     }
 
     @Override

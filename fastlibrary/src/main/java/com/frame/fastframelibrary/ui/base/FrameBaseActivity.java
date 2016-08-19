@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import com.frame.fastframelibrary.utils.LogUtils;
 import com.frame.fastframelibrary.utils.view.ViewUtils;
 import butterknife.ButterKnife;
 
@@ -20,7 +22,11 @@ public abstract class FrameBaseActivity extends AppCompatActivity implements Vie
 		mBaseActivity= this;
 		int layoutResId = getLayoutResId();
 		if (layoutResId>0) {
-			mRootView = ViewUtils.inflateView(getBaseActivity(),layoutResId);
+			try {
+				mRootView = ViewUtils.inflateView(getBaseActivity(),layoutResId);
+			} catch (Exception e) {
+				LogUtils.e(e);
+			}
 			if (mRootView != null) {
 				setContentView(mRootView);
 				ButterKnife.bind(this);

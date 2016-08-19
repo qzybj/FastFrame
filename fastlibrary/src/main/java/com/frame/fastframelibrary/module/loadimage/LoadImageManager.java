@@ -27,7 +27,7 @@ public class LoadImageManager{
         curLoadMode = LoadMode.Picasso;
     }
 
-    public static LoadImageManager instance() {
+    public synchronized static LoadImageManager instance() {
         if (instance==null) {
             instance = new LoadImageManager();
         }

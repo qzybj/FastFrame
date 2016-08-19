@@ -23,7 +23,7 @@ public abstract class TestDataBuilder {
      * @param cls
      * @return
      */
-    public  <T,S> S getClassInstance(Class<T> cls){
+    public static <T,S> S getClassInstance(Class<T> cls){
         WeakHashMap<Class<?>, Object> classWeakHashMap = new WeakHashMap<>();
         if(checkRandomValue()){
             classWeakHashMap.put(String.class,RandomUtils.getRandomObj(valueStringArray));
@@ -36,7 +36,7 @@ public abstract class TestDataBuilder {
     }
 
 
-    private boolean checkRandomValue(){
+    private static boolean checkRandomValue(){
         if(ListUtils.isEmptyArray(valueIntArray)||ListUtils.isEmptyArray(valueStringArray)||
                 ListUtils.isEmptyArray(valueDoubleArray)||ListUtils.isEmptyArray(valueDateArray)){
             return false;

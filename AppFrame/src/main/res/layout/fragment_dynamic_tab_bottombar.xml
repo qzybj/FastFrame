@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/style_common_matchparent"
+    android:layout_height="wrap_content"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+    <View
+        style="@style/style_common_matchparent"
+        android:layout_height="2px"
+        android:background="@color/color_00c2f2" />
+
+    <LinearLayout
+        android:id="@+id/tab_bottom_container"
+        style="@style/style_common_matchparent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/h90dip"
+        android:orientation="horizontal" />
+</LinearLayout>

@@ -168,6 +168,12 @@
             android:theme="@style/style_activty_custom"
             android:windowSoftInputMode="adjustPan" />
         <activity
+            android:name=".module.demo.ui.FileOperationSimpleActivity"
+            android:configChanges="keyboard|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/style_activty_custom"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name=".module.zxing.ui.ZXingActivity"
             android:configChanges="keyboard|keyboardHidden"
             android:screenOrientation="portrait"

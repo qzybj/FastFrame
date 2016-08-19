@@ -16,8 +16,8 @@ public interface IUserInfo {
 
      void setUserType(int userType);
 
-     String getName();
-     void setName(String userName);
+     String getUserName();
+     void setUserName(String userName);
 
      String getHeadImg();
      void setHeadImg(String headImg);

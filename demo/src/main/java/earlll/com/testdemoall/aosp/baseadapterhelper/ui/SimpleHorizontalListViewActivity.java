@@ -70,17 +70,17 @@ public class SimpleHorizontalListViewActivity extends BaseActivity {
     public  static ArrayList<TestBean> getShowBeanList() {
         ArrayList<TestBean> list = new ArrayList<TestBean>();
         list.add(TestData4Demo.getTestBean("单个item展示",SimpleBaseAdapterActivity.class.getName()));
-//        TestBean webviewBean  = getJumpBean("下拉刷新WebView展示",SimpleWebViewPullrefreshActivity.class.getName());
+//        TestBean webviewBean  = getJumpBean("下拉刷新WebView展示",SimpleWebViewPullrefreshActivity.class.getUserName());
 //        webviewBean.setArgs(IntentUtils.setBundleStr(null, WebViewUtilPlus.KEY_URL,"http://m.yintai.com/category/miaoindex?"));
 //        list.add(webviewBean);
         TestBean webviewBean1  = TestData4Demo.getTestBean("下拉刷新SwipeRefreshLayout中放置WebView展示",SimpleSwipeRefreshLayoutActivity.class.getName());
         webviewBean1.setArgs(IntentUtils.setBundleStr(null, ConstantsCommonKey.KEY_URL,"http://m.yintai.com/category/miaoindex?"));
         list.add(webviewBean1);
         list.add(TestData4Demo.getTestBean("横向ListView",SimpleHorizontalListViewActivity.class.getName()));
-//        list.add(getJumpBean("样式2",NewsActivity.class.getName()));
-//        list.add(getJumpBean("添加信息通用样式",ProductActivity.class.getName()));
-//        list.add(getJumpBean("PopWin使用示例",SimplePopwinActivity.class.getName()));
-        //list.add(getJumpBean("图片编辑",UCropSampleActivity.class.getName()));
+//        list.add(getJumpBean("样式2",NewsActivity.class.getUserName()));
+//        list.add(getJumpBean("添加信息通用样式",ProductActivity.class.getUserName()));
+//        list.add(getJumpBean("PopWin使用示例",SimplePopwinActivity.class.getUserName()));
+        //list.add(getJumpBean("图片编辑",UCropSampleActivity.class.getUserName()));
         return list;
     }
 

@@ -72,7 +72,7 @@ public class SimpleSensorActivity extends Activity {
 //        List<Sensor> listSensor = sm.getSensorList(Sensor.TYPE_ALL);
 //        int i = 1;
 //        for (Sensor sensor : listSensor) {
-//            Log.d("sensor " + i, sensor.getName());
+//            Log.d("sensor " + i, sensor.getUserName());
 //            i++;
 //        }
     }

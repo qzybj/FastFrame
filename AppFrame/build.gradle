@@ -1,0 +1,69 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.1"
+    defaultConfig {
+        applicationId "brady.com.appframe"
+        minSdkVersion 14
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+
+        //multiDexEnabled true // dex突破65535的限制
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE: "umeng"]  // 默认是umeng的渠道
+    }
+    signingConfigs {
+        debug {
+            // No debug config
+        }
+        release {
+            keyAlias 'android.keystore'
+            keyPassword '123654'
+            //keyPassword System.console().readLine("\n Key password: ")
+            storeFile file('gradlebuildapk.jks')
+            storePassword '123654'
+            //storePassword System.console().readLine("\n Keystore password: ")
+        }
+    }
+    buildTypes {
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true" // 显示Log
+            versionNameSuffix "-debug"
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
+        }
+        release {
+
+            buildConfigField "boolean", "LOG_DEBUG", "false" // 不显示Log
+            zipAlignEnabled true
+            shrinkResources true// 移除无用的resource文件
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+    productFlavors {
+        app {}
+        google {}
+    }
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    //custom core library
+    compile project(':fastlibrary')
+
+    //view bind
+    apt 'com.jakewharton:butterknife-compiler:8.2.1'
+
+    //a easy adapter for recycleview
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.9.2'
+}

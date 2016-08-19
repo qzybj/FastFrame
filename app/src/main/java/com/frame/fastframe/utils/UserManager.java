@@ -1,7 +1,7 @@
 package com.frame.fastframe.utils;
 
 import com.frame.fastframe.module.loign.bean.UserInfoBean;
-import com.frame.fastframelibrary.module.login.AbsAccountUtils;
+import com.frame.fastframelibrary.module.login.interfaces.IUserManager;
 import com.frame.fastframelibrary.utils.cache.SharedPreferencesUtils;
 
 
@@ -9,7 +9,7 @@ import com.frame.fastframelibrary.utils.cache.SharedPreferencesUtils;
  * 用户管理辅助类
  * Created by ZhangYuanBo on 2016/4/8.
  */
-public class AccountUtils extends AbsAccountUtils {
+public class UserManager implements IUserManager {
 
     private static UserInfoBean userInfoBean = null;
 

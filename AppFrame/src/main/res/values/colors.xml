@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--Main UI-->
+    <color name="main_blue_light">@color/color_33a6ff</color>
+    <color name="main_blue_dark">@color/color_313433</color>
+    <color name="main_white">@color/color_ffffff</color>
+    <color name="main_black">@color/color_000000</color>
+    <color name="main_black_grey">@color/color_6d6d6d</color>
+    <color name="main_fab_red">@color/color_ff0000</color>
+
+</resources>
