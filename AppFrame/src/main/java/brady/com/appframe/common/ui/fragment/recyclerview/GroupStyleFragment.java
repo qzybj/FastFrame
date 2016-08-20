@@ -3,28 +3,28 @@ package brady.com.appframe.common.ui.fragment.recyclerview;
 import android.os.Bundle;
 import android.os.Handler;
 import java.util.ArrayList;
-import brady.com.appframe.common.ui.fragment.recyclerview.adapter.GroupStyleQuickAdapter;
+import brady.com.appframe.common.ui.fragment.recyclerview.adapter.GroupAdapter;
 import brady.com.appframe.common.ui.fragment.recyclerview.adapter.bean.BaseSectionItem;
 import brady.com.appframe.common.ui.fragment.recyclerview.annotation.RecyclerViewStyle;
 import brady.com.appframe.common.ui.fragment.recyclerview.interfaces.IRecyclerViewOptions;
 import brady.com.appframe.common.ui.fragment.recyclerview.interfaces.impl.RecyclerViewCommon;
 
-public class RecyclerViewGroupStyleFragment extends BaseRecyclerViewFragment{
-    private GroupStyleQuickAdapter mAdapter;
-    protected final int SPAN_COUNT = 4;
+public class GroupStyleFragment extends BaseRecyclerViewFragment{
+    private GroupAdapter mAdapter;
+    protected final int SPAN_COUNT = 2;
 
     @Override
     protected IRecyclerViewOptions getOption() {
         RecyclerViewCommon option = new RecyclerViewCommon();
-        option.setStyle(RecyclerViewStyle.VERTICAL_GRID);
+        option.setStyle(RecyclerViewStyle.STAGGERED_GRID);
         option.setSpanCount(SPAN_COUNT);
         return option;
     }
 
     @Override
-    protected GroupStyleQuickAdapter getAdapter(){
+    protected GroupAdapter getAdapter(){
         if(mAdapter==null){
-            mAdapter = new GroupStyleQuickAdapter(getRecycleView(), getTestData());
+            mAdapter = new GroupAdapter(getRecycleView(), getTestData());
         }
         return mAdapter;
     }
@@ -58,8 +58,9 @@ public class RecyclerViewGroupStyleFragment extends BaseRecyclerViewFragment{
 
     private ArrayList<BaseSectionItem> getTestData(){
         ArrayList<BaseSectionItem> list = new ArrayList<>();
-        for (int i = 'A'; i <= 'z'; i++) {
-            BaseSectionItem item = new BaseSectionItem(true,"name"+(char)i,true);
+        for (int i = 0; i <= 50; i++) {
+            boolean ishead = i%5==0;
+            BaseSectionItem item = ishead?new BaseSectionItem(ishead,"group"+i,ishead):new BaseSectionItem("name"+i);
             list.add(item);
         }
         return list;

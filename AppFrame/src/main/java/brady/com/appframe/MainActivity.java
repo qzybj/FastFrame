@@ -15,12 +15,19 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.frame.fastframelibrary.utils.reflect.ClassReflectUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import brady.com.appframe.common.ui.base.BaseFragmentActivity;
 import brady.com.appframe.common.ui.fragment.adapter.CommonFragmentPagerAdapter;
 import brady.com.appframe.common.ui.fragment.recyclerview.BaseRecyclerViewFragment;
-import brady.com.appframe.common.ui.fragment.recyclerview.RecyclerViewDragStyleFragment;
+import brady.com.appframe.common.ui.fragment.recyclerview.DragStyleFragment;
+import brady.com.appframe.common.ui.fragment.recyclerview.GroupStyleFragment;
+import brady.com.appframe.common.ui.fragment.recyclerview.MultipleStyleFragment;
+import brady.com.appframe.common.ui.fragment.recyclerview.QuickFragment;
+import brady.com.appframe.common.ui.fragment.recyclerview.SwipeStyleFragment;
 import brady.com.appframe.common.ui.fragment.recyclerview.annotation.RecyclerViewStyle;
 import brady.com.appframe.common.utils.SnackbarUtils;
 import butterknife.BindView;
@@ -146,7 +153,7 @@ public class MainActivity extends BaseFragmentActivity implements
         mViewPager.addOnPageChangeListener(this);//Toolbar change title then ViewPager page is changed
         mTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         mTabLayout.setupWithViewPager(mViewPager);//Bind TabLayout to ViewPager with scroll
-        mTabLayout.setTabsFromPagerAdapter(mCommonFragmentPagerAdapter);//set Tablayout that tab item show title from ViewPager adatper method getPageTitle
+        //mTabLayout.setTabsFromPagerAdapter(mCommonFragmentPagerAdapter);//set Tablayout that tab item show title from ViewPager adatper method getPageTitle
     }
 
     @Override
@@ -161,19 +168,28 @@ public class MainActivity extends BaseFragmentActivity implements
     public void onPageScrollStateChanged(int state) {}
 
     private List<CommonFragmentPagerAdapter.FragmentBean> getTestData() {
-        String[] mTitles = getResources().getStringArray(R.array.tab_styles);
-        List<CommonFragmentPagerAdapter.FragmentBean> mFragments = new ArrayList<>();
+        ArrayList<Class<? extends BaseRecyclerViewFragment>> fragments = new ArrayList<>();
+        fragments.add(QuickFragment.class);
+        fragments.add(GroupStyleFragment.class);
+        fragments.add(MultipleStyleFragment.class);
+        fragments.add(SwipeStyleFragment.class);
+        fragments.add(DragStyleFragment.class);
+
         int[] styles = {RecyclerViewStyle.VERTICAL_LIST, RecyclerViewStyle.HORIZONTAL_LIST, RecyclerViewStyle.VERTICAL_GRID,
                 RecyclerViewStyle.HORIZONTAL_GRID, RecyclerViewStyle.STAGGERED_GRID};
-        for (int i = 0; i < mTitles.length; i++) {
+
+        List<CommonFragmentPagerAdapter.FragmentBean> mFragments = new ArrayList<>();
+        for (int i = 0; i < fragments.size(); i++) {
             CommonFragmentPagerAdapter.FragmentBean bean = new CommonFragmentPagerAdapter.FragmentBean();
             Bundle mBundle = new Bundle();
-            mBundle.putInt(BaseRecyclerViewFragment.STYLE, styles[i%5]);
-            RecyclerViewDragStyleFragment mFragment = new RecyclerViewDragStyleFragment();
-            mFragment.setArguments(mBundle);
-            bean.setTitle(mTitles[i]);
-            bean.setFragment(mFragment);
-            mFragments.add(bean);
+            //mBundle.putInt(BaseRecyclerViewFragment.STYLE, styles[2]);
+            BaseRecyclerViewFragment mFragment = ClassReflectUtils.getClassInstance(fragments.get(i));
+            if(mFragment!=null){
+                mFragment.setArguments(mBundle);
+                bean.setTitle(mFragment.getClass().getSimpleName());
+                bean.setFragment(mFragment);
+                mFragments.add(bean);
+            }
         }
         return mFragments;
     }

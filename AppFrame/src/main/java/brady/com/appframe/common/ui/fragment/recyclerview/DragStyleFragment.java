@@ -2,16 +2,16 @@ package brady.com.appframe.common.ui.fragment.recyclerview;
 
 import android.os.Bundle;
 import android.os.Handler;
+import com.chad.library.adapter.base.BaseItemDraggableAdapter;
 import java.util.ArrayList;
-import brady.com.appframe.common.ui.fragment.recyclerview.adapter.MultipleItemQuickAdapter;
-import brady.com.appframe.common.ui.fragment.recyclerview.adapter.bean.BaseSectionItem;
+import brady.com.appframe.common.ui.fragment.recyclerview.adapter.DragAdapter;
 import brady.com.appframe.common.ui.fragment.recyclerview.annotation.RecyclerViewStyle;
 import brady.com.appframe.common.ui.fragment.recyclerview.interfaces.IRecyclerViewOptions;
 import brady.com.appframe.common.ui.fragment.recyclerview.interfaces.impl.RecyclerViewCommon;
 
-public class RecyclerViewMultipleStyleFragment extends BaseRecyclerViewFragment{
-    private MultipleItemQuickAdapter mAdapter;
-    protected final int SPAN_COUNT = 4;
+public class DragStyleFragment extends BaseRecyclerViewFragment{
+    private BaseItemDraggableAdapter mAdapter;
+    protected final int SPAN_COUNT = 2;
 
     @Override
     protected IRecyclerViewOptions getOption() {
@@ -22,9 +22,9 @@ public class RecyclerViewMultipleStyleFragment extends BaseRecyclerViewFragment{
     }
 
     @Override
-    protected MultipleItemQuickAdapter getAdapter(){
+    protected BaseItemDraggableAdapter<String> getAdapter(){
         if(mAdapter==null){
-            mAdapter = new MultipleItemQuickAdapter(getRecycleView(), getTestData());
+            mAdapter = new DragAdapter(getRecycleView(), getTestData());
         }
         return mAdapter;
     }
@@ -56,11 +56,10 @@ public class RecyclerViewMultipleStyleFragment extends BaseRecyclerViewFragment{
 
     }
 
-    private ArrayList<BaseSectionItem> getTestData(){
-        ArrayList<BaseSectionItem> list = new ArrayList<>();
+    private ArrayList<String> getTestData(){
+        ArrayList<String> list = new ArrayList<>();
         for (int i = 'A'; i <= 'z'; i++) {
-            BaseSectionItem item = new BaseSectionItem(true,"name"+(char)i,true);
-            list.add(item);
+            list.add("name ="+(char) i);
         }
         return list;
     }

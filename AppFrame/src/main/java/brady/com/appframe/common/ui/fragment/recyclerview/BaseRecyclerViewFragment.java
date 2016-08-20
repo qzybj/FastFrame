@@ -3,10 +3,7 @@ package brady.com.appframe.common.ui.fragment.recyclerview;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.frame.fastframelibrary.config.ConstantsCommonKey;
@@ -14,8 +11,8 @@ import com.frame.fastframelibrary.ui.base.FrameBaseFragment;
 import brady.com.appframe.CApplication;
 import brady.com.appframe.R;
 import brady.com.appframe.common.ui.fragment.recyclerview.adapter.interfaces.IAdapterFragment;
+import brady.com.appframe.common.ui.fragment.recyclerview.adapter.utils.AdapterUtils;
 import brady.com.appframe.common.ui.fragment.recyclerview.annotation.PullrefreshType;
-import brady.com.appframe.common.ui.fragment.recyclerview.annotation.RecyclerViewStyle;
 import brady.com.appframe.common.ui.fragment.recyclerview.interfaces.IRecyclerViewOptions;
 import butterknife.BindView;
 
@@ -28,14 +25,12 @@ public abstract  class BaseRecyclerViewFragment<T extends BaseQuickAdapter> exte
     /**pullrefresh switch*/
     public static final String PULLREFRESH_TYPE = ConstantsCommonKey.KEY_PULLREFRESH_TYPE;
 
-    protected final int PAGE_SIZE = 10;
+    protected final int DEF_PAGE_SIZE = 10;
 
     @BindView(R.id.srlayout_common)
     public SwipeRefreshLayout mSwipeRefreshLayout;
     @BindView(R.id.rv_common)
     public RecyclerView mRecyclerView;
-
-    private RecyclerView.LayoutManager mLayoutManager;
 
     private int currStyle = -1;
     private int currpPullrefreshType = PullrefreshType.PULLREFRESH_OFF;
@@ -97,31 +92,9 @@ public abstract  class BaseRecyclerViewFragment<T extends BaseQuickAdapter> exte
         if(getAdapter()==null){
             return ;
         }
-        if(currStyle==-1){
-            currStyle = getOption().getStyle();
-        }
-        switch (currStyle) {
-            case RecyclerViewStyle.VERTICAL_LIST:
-                mLayoutManager = new LinearLayoutManager(getOptimizeContext(), LinearLayoutManager.VERTICAL, false);
-                break;
-            case RecyclerViewStyle.HORIZONTAL_LIST:
-                mLayoutManager = new LinearLayoutManager(getOptimizeContext(), LinearLayoutManager.HORIZONTAL, false);
-                break;
-            case RecyclerViewStyle.VERTICAL_GRID:
-                mLayoutManager = new GridLayoutManager(getOptimizeContext(), getOption().getSpanCount(), GridLayoutManager.VERTICAL, false);
-                break;
-            case RecyclerViewStyle.HORIZONTAL_GRID:
-                mLayoutManager = new GridLayoutManager(getOptimizeContext(), getOption().getSpanCount(), GridLayoutManager.HORIZONTAL, false);
-                break;
-            case RecyclerViewStyle.STAGGERED_GRID:
-                mLayoutManager = new StaggeredGridLayoutManager(getOption().getSpanCount(), StaggeredGridLayoutManager.VERTICAL);
-                break;
-            default:
-                mLayoutManager = new LinearLayoutManager(getOptimizeContext(), LinearLayoutManager.VERTICAL, false);
-                break;
-        }
-        mRecyclerView.setAdapter(getAdapter());
-        mRecyclerView.setLayoutManager(mLayoutManager);
+        currStyle = (currStyle<=0?getOption().getStyle():currStyle);
+        mRecyclerView.setLayoutManager(AdapterUtils.getRecyclerViewManager(currStyle,getOption().getSpanCount()));
+        mRecyclerView.setAdapter(getAdapter());//Some adapter must replace custom layoutmanager,so method setAdapter() after RecyclerView.setLayoutManager()
         initRecycleView();
     }
 }

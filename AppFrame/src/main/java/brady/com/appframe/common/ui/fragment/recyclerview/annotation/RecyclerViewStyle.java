@@ -13,13 +13,13 @@ import java.lang.annotation.RetentionPolicy;
 @Retention(RetentionPolicy.SOURCE)
 public @interface RecyclerViewStyle {
     /**UI style value - looks like a ListView*/
-    int VERTICAL_LIST = 0;
+    int VERTICAL_LIST = 1;
     /**UI style value - looks like a horizontal ListView*/
-    int HORIZONTAL_LIST = 1;
+    int HORIZONTAL_LIST = 2;
     /**UI style value - looks like a GridView*/
-    int VERTICAL_GRID = 2;
+    int VERTICAL_GRID = 3;
     /**UI style value - looks like a horizontal GridView*/
-    int HORIZONTAL_GRID = 3;
+    int HORIZONTAL_GRID = 4;
     /**UI style value - waterfall gridview */
-    int STAGGERED_GRID = 4;
+    int STAGGERED_GRID = 5;
 }

@@ -8,7 +8,6 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_common"
         style="@style/style_common_matchparent"
-        android:layout_height="wrap_content"
         android:foregroundGravity="center" />
 
 </android.support.v4.widget.SwipeRefreshLayout>

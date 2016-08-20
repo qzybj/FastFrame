@@ -2,16 +2,19 @@ package brady.com.appframe.common.ui.fragment.recyclerview;
 
 import android.os.Bundle;
 import android.os.Handler;
+
 import com.chad.library.adapter.base.BaseItemDraggableAdapter;
+
 import java.util.ArrayList;
-import brady.com.appframe.common.ui.fragment.recyclerview.adapter.DragItemQuickAdapter;
+
+import brady.com.appframe.common.ui.fragment.recyclerview.adapter.SwipeDeleteAdapter;
 import brady.com.appframe.common.ui.fragment.recyclerview.annotation.RecyclerViewStyle;
 import brady.com.appframe.common.ui.fragment.recyclerview.interfaces.IRecyclerViewOptions;
 import brady.com.appframe.common.ui.fragment.recyclerview.interfaces.impl.RecyclerViewCommon;
 
-public class RecyclerViewDragStyleFragment extends BaseRecyclerViewFragment{
+public class SwipeStyleFragment extends BaseRecyclerViewFragment{
     private BaseItemDraggableAdapter mAdapter;
-    protected final int SPAN_COUNT = 4;
+    protected final int SPAN_COUNT = 2;
 
     @Override
     protected IRecyclerViewOptions getOption() {
@@ -24,7 +27,7 @@ public class RecyclerViewDragStyleFragment extends BaseRecyclerViewFragment{
     @Override
     protected BaseItemDraggableAdapter<String> getAdapter(){
         if(mAdapter==null){
-            mAdapter = new DragItemQuickAdapter(getRecycleView(), getTestData());
+            mAdapter = new SwipeDeleteAdapter(getRecycleView(), getTestData());
         }
         return mAdapter;
     }

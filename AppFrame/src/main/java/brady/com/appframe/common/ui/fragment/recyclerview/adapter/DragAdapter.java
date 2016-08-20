@@ -23,10 +23,10 @@ import brady.com.appframe.common.ui.fragment.recyclerview.adapter.decoration.Gri
  * Created by ZhangYuanBo on 2016/7/30.
  * Item Draggable Adapter easy implement
  */
-public class DragItemQuickAdapter extends BaseItemDraggableAdapter<String> implements
+public class DragAdapter extends BaseItemDraggableAdapter<String> implements
         OnItemDragListener,BaseQuickAdapter.OnRecyclerViewItemClickListener {
 
-    public DragItemQuickAdapter(RecyclerView recyclerView,List data) {
+    public DragAdapter(RecyclerView recyclerView, List data) {
         super(R.layout.item_recycleview,data);
         initAdapter(recyclerView);
     }
@@ -39,7 +39,7 @@ public class DragItemQuickAdapter extends BaseItemDraggableAdapter<String> imple
 
     private void initAdapter(RecyclerView recyclerView){
         //recyclerView.setLayoutManager(new GridLayoutManager(CApplication.instance(), 4));//设定样式 new LinearLayoutManager(mContext)
-        recyclerView.addItemDecoration(new GridDecoration(CApplication.instance(), GridDecoration.STYLE_VERTICAL));//设定分隔线
+        recyclerView.addItemDecoration(new GridDecoration(getOptimizeContext(), GridDecoration.STYLE_VERTICAL));//设定分隔线
         ItemDragAndSwipeCallback mItemDragAndSwipeCallback = new ItemDragAndSwipeCallback(this);
         ItemTouchHelper mItemTouchHelper = new ItemTouchHelper(mItemDragAndSwipeCallback);
         mItemTouchHelper.attachToRecyclerView(recyclerView);

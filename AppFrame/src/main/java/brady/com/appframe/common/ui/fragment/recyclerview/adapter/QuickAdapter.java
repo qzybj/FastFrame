@@ -1,10 +1,13 @@
 package brady.com.appframe.common.ui.fragment.recyclerview.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import java.util.List;
+
+import brady.com.appframe.CApplication;
 import brady.com.appframe.R;
 import brady.com.appframe.common.ui.fragment.recyclerview.adapter.decoration.GridDecoration;
 
@@ -36,9 +39,12 @@ public class QuickAdapter extends BaseQuickAdapter<String> implements
 
     private void initAdapter(RecyclerView recyclerView){
         //recyclerView.setLayoutManager(new GridLayoutManager(CApplication.instance(), 4));//设定样式 new LinearLayoutManager(mContext)
-        recyclerView.addItemDecoration(new GridDecoration(mContext, GridDecoration.STYLE_VERTICAL));//设定分隔线
+        recyclerView.addItemDecoration(new GridDecoration(getOptimizeContext(), GridDecoration.STYLE_VERTICAL));//设定分隔线
         setOnRecyclerViewItemClickListener(this);
         setOnRecyclerViewItemChildClickListener(this);
         //openLoadAnimation();
+    }
+    private Context getOptimizeContext(){
+        return CApplication.instance();
     }
 }

@@ -3,14 +3,15 @@ package brady.com.appframe.common.ui.fragment.recyclerview;
 import android.os.Bundle;
 import android.os.Handler;
 import java.util.ArrayList;
-import brady.com.appframe.common.ui.fragment.recyclerview.adapter.QuickAdapter;
+import brady.com.appframe.common.ui.fragment.recyclerview.adapter.MultipleTypeAdapter;
+import brady.com.appframe.common.ui.fragment.recyclerview.adapter.bean.BaseMultipleItem;
 import brady.com.appframe.common.ui.fragment.recyclerview.annotation.RecyclerViewStyle;
 import brady.com.appframe.common.ui.fragment.recyclerview.interfaces.IRecyclerViewOptions;
 import brady.com.appframe.common.ui.fragment.recyclerview.interfaces.impl.RecyclerViewCommon;
 
-public class RecyclerViewQuickFragment extends BaseRecyclerViewFragment{
-    private QuickAdapter mAdapter;
-    protected final int SPAN_COUNT = 4;
+public class MultipleStyleFragment extends BaseRecyclerViewFragment{
+    private MultipleTypeAdapter mAdapter;
+    protected final int SPAN_COUNT = 2;
 
     @Override
     protected IRecyclerViewOptions getOption() {
@@ -21,9 +22,9 @@ public class RecyclerViewQuickFragment extends BaseRecyclerViewFragment{
     }
 
     @Override
-    protected QuickAdapter getAdapter(){
+    protected MultipleTypeAdapter getAdapter(){
         if(mAdapter==null){
-            mAdapter = new QuickAdapter(getRecycleView(), getTestData());
+            mAdapter = new MultipleTypeAdapter(getRecycleView(), getTestData());
         }
         return mAdapter;
     }
@@ -55,10 +56,15 @@ public class RecyclerViewQuickFragment extends BaseRecyclerViewFragment{
 
     }
 
-    private ArrayList<String> getTestData(){
-        ArrayList<String> list = new ArrayList<>();
+    private ArrayList<BaseMultipleItem> getTestData(){
+        ArrayList<BaseMultipleItem> list = new ArrayList<>();
+        boolean styleFlag = false;
         for (int i = 'A'; i <= 'z'; i++) {
-            list.add("name ="+(char) i);
+            BaseMultipleItem item = new BaseMultipleItem();
+            item.setName((char)i+"");
+            item.setItemType(styleFlag?BaseMultipleItem.STYLE_1:BaseMultipleItem.STYLE_2);
+            styleFlag=!styleFlag;
+            list.add(item);
         }
         return list;
     }

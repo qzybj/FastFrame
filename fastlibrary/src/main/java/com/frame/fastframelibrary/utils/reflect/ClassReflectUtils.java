@@ -200,18 +200,9 @@ public class ClassReflectUtils {
      * @param map
      * @return
      */
-    public static <T,S> S getClassInstance(Class<T> cls, WeakHashMap<Class<?>, Object> map) {
+    public static <T,S> S getClassInstance4Value(Class<T> cls, WeakHashMap<Class<?>, Object> map) {
         try{
-            Constructor<?>[] constructors = cls.getDeclaredConstructors();
-            Constructor<?> constructor = null;
-            for (int i = 0; i < constructors.length; i++) {
-                constructor = constructors[i];
-                if (constructor.getGenericParameterTypes().length == 0)
-                    break;
-            }
-            constructor.setAccessible(true);
-            Object instance = constructor.newInstance();//实例化对象
-
+            Object instance = getClassInstance(cls);
             if(MapUtils.isNotEmpty(map)){
                 Field[] fields = cls.getDeclaredFields();
                 for (Field field : fields) {
@@ -230,4 +221,28 @@ public class ClassReflectUtils {
         }
         return null;
     }
+
+    /**
+     * 根据传入的参数，进行类的实例化,并赋值
+     * @param cls
+     * @return
+     */
+    public static <T,S> S getClassInstance(Class<T> cls) {
+        try{
+            Constructor<?>[] constructors = cls.getDeclaredConstructors();
+            Constructor<?> constructor = null;
+            for (int i = 0; i < constructors.length; i++) {
+                constructor = constructors[i];
+                if (constructor.getGenericParameterTypes().length == 0)
+                    break;
+            }
+            constructor.setAccessible(true);
+            Object instance = constructor.newInstance();//实例化对象
+            return (S)instance;
+        }catch(Exception e){
+            LogUtils.e(e);
+        }
+        return null;
+    }
+
 }

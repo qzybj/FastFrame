@@ -32,7 +32,7 @@ public abstract class TestDataBuilder {
             classWeakHashMap.put(Date.class,RandomUtils.getRandomObj(valueDateArray));
             classWeakHashMap.put(Boolean.class,RandomUtils.getRandomBoolean());
         }
-        return ClassReflectUtils.getClassInstance(cls,classWeakHashMap);
+        return ClassReflectUtils.getClassInstance4Value(cls,classWeakHashMap);
     }
 
 

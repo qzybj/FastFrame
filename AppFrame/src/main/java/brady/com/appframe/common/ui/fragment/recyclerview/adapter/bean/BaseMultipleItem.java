@@ -5,10 +5,20 @@ import com.chad.library.adapter.base.entity.MultiItemEntity;
 /**
  * https://github.com/CymChad/BaseRecyclerViewAdapterHelper
  */
-public abstract class BaseMultipleItem extends MultiItemEntity {
+public class BaseMultipleItem extends MultiItemEntity {
     public static final int STYLE_1 = 1;
     public static final int STYLE_2 = 2;
-    public static final int STYLE_3 = 3;
-    public static final int STYLE_4 = 4;
 
+    private String name;
+    public BaseMultipleItem(){
+        super();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
