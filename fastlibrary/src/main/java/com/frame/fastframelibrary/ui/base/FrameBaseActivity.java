@@ -17,7 +17,7 @@ public abstract class FrameBaseActivity extends AppCompatActivity implements Vie
 	private View mRootView;
 
 	@Override
-	protected final void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mBaseActivity= this;
 		int layoutResId = getLayoutResId();

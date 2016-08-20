@@ -11,7 +11,7 @@ import com.frame.fastframelibrary.ui.base.FrameBaseFragment;
 import brady.com.appframe.CApplication;
 import brady.com.appframe.R;
 import brady.com.appframe.common.ui.fragment.recyclerview.adapter.interfaces.IAdapterFragment;
-import brady.com.appframe.common.ui.fragment.recyclerview.adapter.utils.AdapterUtils;
+import brady.com.appframe.common.ui.fragment.recyclerview.adapter.utils.RecyclerViewUtils;
 import brady.com.appframe.common.ui.fragment.recyclerview.annotation.PullrefreshType;
 import brady.com.appframe.common.ui.fragment.recyclerview.interfaces.IRecyclerViewOptions;
 import butterknife.BindView;
@@ -93,7 +93,7 @@ public abstract  class BaseRecyclerViewFragment<T extends BaseQuickAdapter> exte
             return ;
         }
         currStyle = (currStyle<=0?getOption().getStyle():currStyle);
-        mRecyclerView.setLayoutManager(AdapterUtils.getRecyclerViewManager(currStyle,getOption().getSpanCount()));
+        mRecyclerView.setLayoutManager(RecyclerViewUtils.getRecyclerViewManager(currStyle,getOption().getSpanCount()));
         mRecyclerView.setAdapter(getAdapter());//Some adapter must replace custom layoutmanager,so method setAdapter() after RecyclerView.setLayoutManager()
         initRecycleView();
     }

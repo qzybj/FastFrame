@@ -15,7 +15,7 @@ import brady.com.appframe.common.ui.fragment.recyclerview.annotation.RecyclerVie
 /**
  * Created by ZhangYuanBo on 2016/8/17.
  */
-public class AdapterUtils {
+public class RecyclerViewUtils {
 
     public static void loadImage(ImageView iv, Object imageUrl)  {
         LoadImageManager.instance().loadImage(iv, imageUrl);

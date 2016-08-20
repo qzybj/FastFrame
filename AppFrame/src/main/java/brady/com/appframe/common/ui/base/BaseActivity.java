@@ -1,7 +1,6 @@
 package brady.com.appframe.common.ui.base;
 
 import android.app.AlertDialog;
-import android.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -9,10 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import com.frame.fastframelibrary.config.ConstantsBase;
-import com.frame.fastframelibrary.ui.base.FrameBaseActivity;
-import com.frame.fastframelibrary.utils.app.ActivityStack;
 import com.frame.fastframelibrary.utils.jump.JumpUtils;
-import com.frame.fastframelibrary.utils.view.ToastUtils;
 import com.frame.fastframelibrary.utils.view.ViewUtils;
 import brady.com.appframe.common.ui.fragment.bar.TitleBarFragment;
 import brady.com.appframe.common.ui.fragment.dialog.AlertDialogFragment;
@@ -23,7 +19,7 @@ import brady.com.appframe.common.utils.UserManager;
 /**
  * Activity的base基类
  */
-public abstract class BaseFragmentActivity extends FrameBaseActivity implements ITitleBarClickListener {
+public abstract class  BaseActivity extends AbstractBaseActivity implements ITitleBarClickListener{
 
 	//-------------控制开关 --------------
 	/**是否弹出dialog加载进度条(屏蔽界面操作)	 */
@@ -46,9 +42,7 @@ public abstract class BaseFragmentActivity extends FrameBaseActivity implements 
 	public AlertDialogFragment mExitDialog;
 
 	protected View mLoadingProgressBar;
-	//-------------控制器 --------------
-	/**负责触发消息传递: 进度框显示 提醒框显示等*/
-	public Handler basicHandler = new BasicHandler();
+
 
 	//-------------通用变量 --------------
 	/**用户ID*/
@@ -57,9 +51,7 @@ public abstract class BaseFragmentActivity extends FrameBaseActivity implements 
 	@Override
 	public final void initConstant(Bundle savedInstanceState) {
 		userToken = UserManager.instance().getUserToken();
-		ActivityStack.getInstance().addActivity(this);
 	}
-
 	/**
 	 * 当调用了网络请求后返回的数据会执行该方法，在该方法内可以把数据设置到view上。<BR>
 	 * @param obj
@@ -156,15 +148,9 @@ public abstract class BaseFragmentActivity extends FrameBaseActivity implements 
 		showDialogFragment(mExitDialog);
 	}
 
-	public final void showToast(int res) {
-		showToast(getString(res));
-	}
-
-	public final void showToast(final String msg) {
-		ToastUtils.showToast(BaseFragmentActivity.this, msg, false);
-	}
-
 	//------------- 消息传递控制机制实现 --------------
+	/**负责触发消息传递: 进度框显示 提醒框显示等*/
+	public Handler basicHandler = new BasicHandler();
 	public void sendMessage(int what) {
 		sendMessage(what, 0, 0, null);
 	}
@@ -214,36 +200,13 @@ public abstract class BaseFragmentActivity extends FrameBaseActivity implements 
 	}
 
 	//------------- Activity界面操作监听 --------------
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-		ActivityStack.getInstance().removeActivity(this);
-	}
+
 	@Override
 	public void onBackPressed() {
 		if(ViewUtils.isVisibleView(mLoadingProgressBar)){
 			dismissProgress();//如果是加载，取消加载
 		}else {
 			super.onBackPressed();
-		}
-	}
-
-	/**
-	 * 展示Fragment
-	 * @param targetFragment 目标fragment
-     */
-	protected void showDialogFragment(DialogFragment targetFragment){
-		showDialogFragment(targetFragment,targetFragment.getTag());
-	}
-
-	/**
-	 * 展示Fragment
-	 * @param targetFragment 目标fragment
-	 * @param tag
-     */
-	protected void showDialogFragment(DialogFragment targetFragment,String tag){
-		if(!isFinishing()&&targetFragment!=null){
-			targetFragment.show(getFragmentManager(), tag);
 		}
 	}
 

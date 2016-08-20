@@ -20,7 +20,7 @@ import com.frame.fastframelibrary.utils.reflect.ClassReflectUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import brady.com.appframe.common.ui.base.BaseFragmentActivity;
+import brady.com.appframe.common.ui.base.AbstractBaseActivity;
 import brady.com.appframe.common.ui.fragment.adapter.CommonFragmentPagerAdapter;
 import brady.com.appframe.common.ui.fragment.recyclerview.BaseRecyclerViewFragment;
 import brady.com.appframe.common.ui.fragment.recyclerview.DragStyleFragment;
@@ -34,7 +34,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 
-public class MainActivity extends BaseFragmentActivity implements
+public class MainActivity extends AbstractBaseActivity implements
         NavigationView.OnNavigationItemSelectedListener, ViewPager.OnPageChangeListener {
 
     @BindView(R.id.toolbar)
