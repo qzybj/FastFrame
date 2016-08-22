@@ -2,6 +2,8 @@ package brady.com.appframe.common.ui.base;
 
 import android.app.DialogFragment;
 import android.os.Bundle;
+import android.view.View;
+
 import com.frame.fastframelibrary.ui.base.FrameBaseActivity;
 import com.frame.fastframelibrary.utils.app.ActivityStack;
 import com.frame.fastframelibrary.utils.view.ToastUtils;
@@ -12,7 +14,7 @@ import com.frame.fastframelibrary.utils.view.ToastUtils;
  */
 public abstract class AbstractBaseActivity extends FrameBaseActivity {
 	@Override
-	protected final void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		ActivityStack.getInstance().addActivity(this);
 	}
@@ -21,6 +23,17 @@ public abstract class AbstractBaseActivity extends FrameBaseActivity {
 	protected void onDestroy() {
 		super.onDestroy();
 		ActivityStack.getInstance().removeActivity(this);
+	}
+
+	/**
+	 * 点击事件处理<BR>
+	 * @param v
+	 */
+	abstract void clickEvent(View v);
+
+	@Override
+	final public void onClick(View v) {
+		clickEvent(v);
 	}
 
 	/**

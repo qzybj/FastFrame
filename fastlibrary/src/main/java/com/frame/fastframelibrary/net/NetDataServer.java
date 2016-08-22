@@ -15,18 +15,18 @@ import com.frame.fastframelibrary.utils.device.NetUtils;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 
 /**请求数据封装类*/
-public class RequestDataServer {
+public class NetDataServer {
 	/**请求网络数据 - 开始*/
-	public static final int MSG_WHAT_DATA_START = 0x7f00;// 32512
+	public static final int MSG_WHAT_DATA_START = 32512;// 32512
 	/**请求网络数据 - 成功*/
-	public static final int MSG_WHAT_DATA_DONE = 0x7f01;
+	public static final int MSG_WHAT_DATA_DONE = 32513;
 	/**请求网络数据 - 取消*/
-	public static final int MSG_WHAT_DATA_CANCEL = 0x7f02;
+	public static final int MSG_WHAT_DATA_CANCEL = 32514;
 
 	/**
 	 * 获取数据错误码：无错误 字段或域定义：<code>GET_DATA_CODE_SUC</code>
 	 */
-	public static final int GET_DATA_CODE_SUC = 32544;// 32544
+	public static final int GET_DATA_CODE_SUC = 32544;
 	/**
 	 * 获取数据错误码：无网络连接 字段或域定义：<code>GET_DATA_CODE_NO_NET</code>
 	 */
@@ -51,17 +51,18 @@ public class RequestDataServer {
 	 */
 	public static final int GET_DATA_CODE_JSON_SUCCESS = 32551;
 
-	private static RequestDataServer mDataServer = null;
+	private static NetDataServer mDataServer = null;
 
 	/**
 	 * 它在Application 进行初始化,只能够初始化一次 构造函数
 	 */
-	private RequestDataServer() {
+	private NetDataServer() {
+		//init
 	}
 
-	public static RequestDataServer getInstance(){
+	public synchronized static NetDataServer instance(){
 		if (mDataServer == null) {
-			mDataServer = new RequestDataServer();
+			mDataServer = new NetDataServer();
 		}
 		return mDataServer;
 	}
@@ -74,9 +75,7 @@ public class RequestDataServer {
 	 * @param clazz
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
-	public <T extends BasicResponse> void getData(BasicRequest req,
-			RequestResultListener<String> listener,Class<T> clazz,String tag) {
+	public <T extends BasicResponse> void getData(BasicRequest req,RequestResultListener<String> listener,Class<T> clazz,String tag) {
 
 		RequestDataServerBean dataBean = null;
 		String data = null;
@@ -88,8 +87,8 @@ public class RequestDataServer {
 //			dataBean = new RequestDataServerBean();
 //			dataBean.data = data;
 //			if (!NetUtils.isNetConnected(FDFApplication.getContext())) {
-//				if (dataBean.errcode == RequestDataServer.GET_DATA_CODE_SUC) {
-//					dataBean.errcode = RequestDataServer.GET_DATA_CODE_NO_NET;
+//				if (dataBean.errcode == NetDataServer.GET_DATA_CODE_SUC) {
+//					dataBean.errcode = NetDataServer.GET_DATA_CODE_NO_NET;
 //					dataBean.errmsg = "not net connect error";
 //				}
 //			}
@@ -109,7 +108,7 @@ public class RequestDataServer {
 				VolleyUtils.getInstance().requestDataByString(
 						req.obtainMethod(),
 						req.obtainUrlAddr(),
-						null,
+						req.obtainPostData(),
 						new VolleyResultListener<String>() {
 							@Override
 							public void responseSuccessed(ResponseBean<String> response) {
@@ -171,7 +170,6 @@ public class RequestDataServer {
 	 * @param clazz
 	 * @return
 	 */
-	@SuppressWarnings({ "unchecked" })
 	public <T extends BasicResponse> T parseJson(String json,Class<T> clazz){
 		T response = null;
 		T response_p = null;

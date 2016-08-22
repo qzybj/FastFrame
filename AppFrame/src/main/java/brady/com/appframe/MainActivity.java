@@ -5,7 +5,6 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -15,26 +14,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
-import com.frame.fastframelibrary.utils.reflect.ClassReflectUtils;
-
-import java.util.ArrayList;
-import java.util.List;
-import brady.com.appframe.common.ui.base.AbstractBaseActivity;
+import brady.com.appframe.common.ui.base.BaseActivity;
 import brady.com.appframe.common.ui.fragment.adapter.CommonFragmentPagerAdapter;
-import brady.com.appframe.common.ui.fragment.recyclerview.BaseRecyclerViewFragment;
-import brady.com.appframe.common.ui.fragment.recyclerview.DragStyleFragment;
-import brady.com.appframe.common.ui.fragment.recyclerview.GroupStyleFragment;
-import brady.com.appframe.common.ui.fragment.recyclerview.MultipleStyleFragment;
-import brady.com.appframe.common.ui.fragment.recyclerview.QuickFragment;
-import brady.com.appframe.common.ui.fragment.recyclerview.SwipeStyleFragment;
-import brady.com.appframe.common.ui.fragment.recyclerview.annotation.RecyclerViewStyle;
+import brady.com.appframe.common.utils.CustomTestDataBuilder;
 import brady.com.appframe.common.utils.SnackbarUtils;
 import butterknife.BindView;
 import butterknife.OnClick;
 
 
-public class MainActivity extends AbstractBaseActivity implements
+public class MainActivity extends BaseActivity implements
         NavigationView.OnNavigationItemSelectedListener, ViewPager.OnPageChangeListener {
 
     @BindView(R.id.toolbar)
@@ -86,9 +74,8 @@ public class MainActivity extends AbstractBaseActivity implements
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
@@ -135,19 +122,20 @@ public class MainActivity extends AbstractBaseActivity implements
 
     @Override
     @OnClick({R.id.fab})
-    protected void customClickEvent(View v) {
+    protected void clickEvent(View v) {
         switch (v.getId()) {
             case R.id.fab:
-                Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                SnackbarUtils.show(v, "Replace with your own action", getString(R.string.cancel), false);
                 break;
             default:
-                super.customClickEvent(v);
+                super.clickEvent(v);
                 break;
         }
     }
 
     private void initViewPager() {
-        mCommonFragmentPagerAdapter = new CommonFragmentPagerAdapter(getSupportFragmentManager(),getTestData());
+        mCommonFragmentPagerAdapter =
+                new CommonFragmentPagerAdapter(getSupportFragmentManager(), CustomTestDataBuilder.getMainFragmentBeans());
         mViewPager.setAdapter(mCommonFragmentPagerAdapter);
         mViewPager.setOffscreenPageLimit(5);//Set ViewPager max cache page number
         mViewPager.addOnPageChangeListener(this);//Toolbar change title then ViewPager page is changed
@@ -166,31 +154,4 @@ public class MainActivity extends AbstractBaseActivity implements
 
     @Override
     public void onPageScrollStateChanged(int state) {}
-
-    private List<CommonFragmentPagerAdapter.FragmentBean> getTestData() {
-        ArrayList<Class<? extends BaseRecyclerViewFragment>> fragments = new ArrayList<>();
-        fragments.add(QuickFragment.class);
-        fragments.add(GroupStyleFragment.class);
-        fragments.add(MultipleStyleFragment.class);
-        fragments.add(SwipeStyleFragment.class);
-        fragments.add(DragStyleFragment.class);
-
-        int[] styles = {RecyclerViewStyle.VERTICAL_LIST, RecyclerViewStyle.HORIZONTAL_LIST, RecyclerViewStyle.VERTICAL_GRID,
-                RecyclerViewStyle.HORIZONTAL_GRID, RecyclerViewStyle.STAGGERED_GRID};
-
-        List<CommonFragmentPagerAdapter.FragmentBean> mFragments = new ArrayList<>();
-        for (int i = 0; i < fragments.size(); i++) {
-            CommonFragmentPagerAdapter.FragmentBean bean = new CommonFragmentPagerAdapter.FragmentBean();
-            Bundle mBundle = new Bundle();
-            //mBundle.putInt(BaseRecyclerViewFragment.STYLE, styles[2]);
-            BaseRecyclerViewFragment mFragment = ClassReflectUtils.getClassInstance(fragments.get(i));
-            if(mFragment!=null){
-                mFragment.setArguments(mBundle);
-                bean.setTitle(mFragment.getClass().getSimpleName());
-                bean.setFragment(mFragment);
-                mFragments.add(bean);
-            }
-        }
-        return mFragments;
-    }
 }

@@ -10,10 +10,13 @@ import android.view.View;
 import com.frame.fastframelibrary.config.ConstantsBase;
 import com.frame.fastframelibrary.utils.jump.JumpUtils;
 import com.frame.fastframelibrary.utils.view.ViewUtils;
+
+import brady.com.appframe.R;
 import brady.com.appframe.common.ui.fragment.bar.TitleBarFragment;
 import brady.com.appframe.common.ui.fragment.dialog.AlertDialogFragment;
 import brady.com.appframe.common.ui.fragment.interfaces.ITitleBarClickListener;
 import brady.com.appframe.common.utils.UserManager;
+import butterknife.OnClick;
 
 
 /**
@@ -80,16 +83,7 @@ public abstract class  BaseActivity extends AbstractBaseActivity implements ITit
 	/**标题栏   -  右边按钮触发事件*/
 	public void onClickTitleRight(View v) {	}
 
-	/**
-	 * 点击事件处理<BR>
-	 * @param v
-	 */
-	protected void customClickEvent(View v){}
 
-	@Override
-	final public void onClick(View v) {
-		customClickEvent(v);
-	}
 //------------- 界面弹出框，提示信息等实现 --------------
 
 	/**加载效果(界面单独实现)*/
@@ -200,7 +194,10 @@ public abstract class  BaseActivity extends AbstractBaseActivity implements ITit
 	}
 
 	//------------- Activity界面操作监听 --------------
+	@Override
+	protected void clickEvent(View v) {
 
+	}
 	@Override
 	public void onBackPressed() {
 		if(ViewUtils.isVisibleView(mLoadingProgressBar)){
@@ -218,4 +215,6 @@ public abstract class  BaseActivity extends AbstractBaseActivity implements ITit
 	protected void goActivity(String describe,String targetActivityName){
 		JumpUtils.goActivity(this, JumpUtils.getJumpBean(describe,targetActivityName));
 	}
+
+
 }
