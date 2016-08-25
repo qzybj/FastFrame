@@ -1,6 +1,7 @@
 package com.frame.fastframe.utils;
 
 import com.frame.fastframe.module.loign.bean.UserInfoBean;
+import com.frame.fastframelibrary.module.login.interfaces.IUserInfo;
 import com.frame.fastframelibrary.module.login.interfaces.IUserManager;
 import com.frame.fastframelibrary.utils.cache.SharedPreferencesUtils;
 
@@ -88,6 +89,11 @@ public class UserManager implements IUserManager {
         //清除记录的账号
         SharedPreferencesUtils.instance().setString("account", "");
         SharedPreferencesUtils.instance().setString("password", "");
+    }
+
+    @Override
+    public IUserInfo convert2Bean(Object obj) {
+        return null;
     }
 
     public static class AccountInfo {

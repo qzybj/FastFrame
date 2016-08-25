@@ -8,6 +8,8 @@ import com.frame.fastframelibrary.ui.base.FrameBaseActivity;
 import com.frame.fastframelibrary.utils.app.ActivityStack;
 import com.frame.fastframelibrary.utils.view.ToastUtils;
 
+import brady.com.appframe.common.utils.ViewServer;
+
 
 /**
  * Activity的base基类
@@ -16,12 +18,20 @@ public abstract class AbstractBaseActivity extends FrameBaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//ViewServer.get(this).addWindow(this);
 		ActivityStack.getInstance().addActivity(this);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		//ViewServer.get(this).setFocusedWindow(this);
 	}
 
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
+		//ViewServer.get(this).removeWindow(this);
 		ActivityStack.getInstance().removeActivity(this);
 	}
 

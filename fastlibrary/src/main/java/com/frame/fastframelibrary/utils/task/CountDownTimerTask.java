@@ -6,6 +6,7 @@ import android.os.CountDownTimer;
  * 倒计时类 - 用于验证码计时
  */
 public class CountDownTimerTask extends CountDownTimer {
+    public final int SECOND = 1000;
     private CountDownTimerCallback mCallBack;
 
     /**

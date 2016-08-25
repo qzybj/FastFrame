@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_bookshelf_context_rl"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF" >
+
+    <RelativeLayout
+        android:id="@+id/dialog_layout_title_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="362dp"
+        android:layout_marginTop="18dip"
+        android:background="#FFFFFF" >
+
+        <TextView
+            android:id="@+id/dialog_top_menu_add_class"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dip"
+            android:drawablePadding="5dp"
+            android:gravity="center_vertical"
+            android:paddingBottom="5dip"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:paddingTop="5dip"
+            android:textSize="14sp"
+            android:text="效果如何，有没有错认为是Dialog？^O^..或许你们发现了，变暗效果会微微晃眼，这就需要自己根据实际情况设置自己的初始透明色值了，也就是在这里，建议Android3.0开发环境的朋友们，使用属性动画的原因，那个是不会存在这样的问题的。" />
+    </RelativeLayout>
+
+</RelativeLayout>

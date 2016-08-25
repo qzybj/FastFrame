@@ -3,7 +3,7 @@ package brady.com.appframe.common.utils;
 import com.frame.fastframelibrary.module.login.interfaces.IUserManager;
 import com.frame.fastframelibrary.utils.cache.SharedPreferencesUtils;
 import brady.com.appframe.common.bean.AccountBean;
-
+import brady.com.appframe.net.models.passport.UserinfoBean;
 
 /**
  * 用户管理辅助类
@@ -104,11 +104,24 @@ public class UserManager implements IUserManager {
      * @param account
      * @param password
      */
-    public void setUserInfo(String account, String password) {
+    public void setAutoLoginInfo(String account, String password) {
         SharedPreferencesUtils.instance().setString(USER_NAME, account);
         SharedPreferencesUtils.instance().setString(USER_PASSWORD, password);
     }
 
+    @Override
+    public AccountBean convert2Bean(Object obj) {
+        UserinfoBean bean = (UserinfoBean)obj;
+        AccountBean user = new AccountBean();
+        user.setUserToken(bean.userToken);
+        user.setUserToken(bean.userCode);
+        user.setUserToken(bean.headImg);
+        user.setUserToken(bean.nickName);
+        user.setUserType(bean.userType);
+        return user;
+    }
+
+    /**用于用户自动登录*/
     public static class AutoLoginInfo {
         private String account;
         private String password;

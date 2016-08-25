@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="cid_login_tv_name" type="id"/>
+    <item name="cid_login_tv_password" type="id"/>
+    <item name="cid_login_tv_hint" type="id"/>
+    <item name="cid_login_btn_submit" type="id"/>
+
+</resources>

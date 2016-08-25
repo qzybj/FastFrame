@@ -22,8 +22,8 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 
-public class MainActivity extends BaseActivity implements
-        NavigationView.OnNavigationItemSelectedListener, ViewPager.OnPageChangeListener {
+public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,
+        TabLayout.OnTabSelectedListener {
 
     @BindView(R.id.toolbar)
     public Toolbar mToolbar;
@@ -138,20 +138,25 @@ public class MainActivity extends BaseActivity implements
                 new CommonFragmentPagerAdapter(getSupportFragmentManager(), CustomTestDataBuilder.getMainFragmentBeans());
         mViewPager.setAdapter(mCommonFragmentPagerAdapter);
         mViewPager.setOffscreenPageLimit(5);//Set ViewPager max cache page number
-        mViewPager.addOnPageChangeListener(this);//Toolbar change title then ViewPager page is changed
+        mTabLayout.addOnTabSelectedListener(this);;//Toolbar change title then ViewPager page is changed
         mTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         mTabLayout.setupWithViewPager(mViewPager);//Bind TabLayout to ViewPager with scroll
         //mTabLayout.setTabsFromPagerAdapter(mCommonFragmentPagerAdapter);//set Tablayout that tab item show title from ViewPager adatper method getPageTitle
     }
 
+
     @Override
-    public void onPageSelected(int position) {
-        mToolbar.setTitle(mCommonFragmentPagerAdapter.getPageTitle(position));
+    public void onTabSelected(TabLayout.Tab tab) {
+        mToolbar.setTitle(tab.getText());
     }
 
     @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+    public void onTabUnselected(TabLayout.Tab tab) {
+
+    }
 
     @Override
-    public void onPageScrollStateChanged(int state) {}
+    public void onTabReselected(TabLayout.Tab tab) {
+
+    }
 }

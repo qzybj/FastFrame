@@ -5,6 +5,5 @@ package com.frame.fastframelibrary.module.login.interfaces;
  * User manager util class:includes user info manage(save,get)
  */
 public interface IUserManager {
-
-
+     IUserInfo convert2Bean(Object obj);
 }

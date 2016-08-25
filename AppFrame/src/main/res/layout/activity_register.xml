@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/style_common_matchparent"
+    android:orientation="vertical"
+    >
+
+    <include
+        layout="@layout/titlebar_base"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        style="@style/style_common_matchparent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/h50dip"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/w30dip">
+
+        <LinearLayout
+            style="@style/style_common_matchparent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/h28dip"
+            android:paddingTop="@dimen/h28dip">
+
+            <TextView
+                style="@style/style_reg_item_lefttext"
+                android:text="昵称" />
+
+            <EditText
+                android:id="@+id/et_name"
+                style="@style/style_reg_item_right_edittext"
+                android:layout_marginLeft="@dimen/w103dip"
+                android:hint="6-20个字符" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px"
+            android:background="@color/line_register" />
+
+
+        <LinearLayout
+            style="@style/style_common_matchparent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/h28dip"
+            android:paddingTop="@dimen/h28dip">
+
+            <TextView
+                style="@style/style_reg_item_lefttext"
+                android:text="手机号码" />
+
+            <EditText
+                android:id="@+id/et_phone"
+                style="@style/style_reg_item_right_edittext"
+                android:layout_marginLeft="@dimen/w48dip"
+                android:hint="请输入您的手机号" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px"
+            android:background="@color/line_register"></View>
+
+        <LinearLayout
+            style="@style/style_common_matchparent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/h28dip"
+            android:paddingTop="@dimen/h28dip">
+
+            <TextView
+                style="@style/style_reg_item_lefttext"
+                android:text="设置密码" />
+
+            <EditText
+                android:id="@+id/et_password"
+                style="@style/style_reg_item_right_edittext"
+                android:layout_marginLeft="@dimen/w48dip"
+                android:inputType="textPassword"
+                android:hint="请输入6到12位数字与字母组合" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px"
+            android:background="@color/line_register"></View>
+
+        <LinearLayout
+            style="@style/style_common_matchparent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/h28dip"
+            android:paddingTop="@dimen/h28dip">
+
+            <TextView
+                style="@style/style_reg_item_lefttext"
+                android:text="短信验证码" />
+
+            <EditText
+                android:id="@+id/et_captcha"
+                style="@style/style_reg_item_right_edittext"
+                android:layout_width="@dimen/h300dip"
+                android:layout_marginLeft="@dimen/w20dip"
+                android:hint="请输入短信验证码"
+                />
+
+            <TextView
+                android:id="@+id/tv_hint"
+                style="@style/style_text_common"
+                android:textSize="@dimen/text_size_24"
+                android:textColor="@color/color_52b3ff"
+                android:layout_marginLeft="@dimen/w40dip"
+                android:text="获取短信验证码" />
+        </LinearLayout>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_next"
+        style="@style/style_button_common"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/h49dip"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="@dimen/w40dip"
+        android:layout_marginRight="@dimen/w40dip"
+        android:layout_height="@dimen/h70dip"
+        android:text="下一步" />
+</LinearLayout>

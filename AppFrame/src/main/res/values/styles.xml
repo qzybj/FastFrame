@@ -52,4 +52,30 @@
         <item name="android:layout_height">@dimen/common_up_shadow_height</item>
         <item name="android:background">@color/color_b2b2b2</item>
     </style>
+
+
+    <!-- 注册界面item左显示文字-->
+    <style name="style_reg_item_lefttext" parent="style_common">
+        <item name="android:textSize">@dimen/text_size_28</item>
+        <item name="android:textColor">@color/color_343434</item>
+    </style>
+
+    <!-- 注册界面item右边EditText-->
+    <style name="style_reg_item_right_edittext" parent="style_common">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:textSize">@dimen/text_size_24</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+
+    <!--添加商品- 按钮-->
+    <style name="style_button_common" parent="style_text_common">
+        <item name="android:layout_width">@dimen/h280dip</item>
+        <item name="android:layout_height">@dimen/h68dip</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:background">@color/color_33a6ff</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_size_28</item>
+    </style>
 </resources>
