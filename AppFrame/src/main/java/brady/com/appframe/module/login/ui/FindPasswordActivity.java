@@ -35,7 +35,7 @@ public class FindPasswordActivity extends BaseActivity implements MyApiDelegate{
     TextView tv_hint;
 
     @BindView(R.id.btn_submit)
-    private Button btn_next;
+    Button btn_next;
 
 
     @Override
