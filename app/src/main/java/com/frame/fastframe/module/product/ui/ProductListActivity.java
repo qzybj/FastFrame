@@ -5,15 +5,15 @@ import android.view.View;
 import android.widget.Button;
 
 import com.frame.fastframe.R;
+import com.frame.fastframe.module.common.constant.ConstantsKey;
 import com.frame.fastframe.ui.base.BaseActivity;
-import com.frame.fastframelibrary.config.ConstantsCommonKey;
 
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 
 public class ProductListActivity extends BaseActivity {
 
-	public static final String KEY_INDEX_ID = ConstantsCommonKey.KEY_INDEX_ID;
+	public static final String KEY_INDEX_ID = ConstantsKey.KEY_INDEX_ID;
 
 	@ViewInject(R.id.banner_dotlayout)
 	private Button btn_login;

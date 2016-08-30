@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
-import com.frame.fastframelibrary.config.ConstantsBase;
 import com.frame.fastframelibrary.utils.jump.JumpUtils;
 import com.frame.fastframelibrary.utils.view.ViewUtils;
 
@@ -16,6 +15,7 @@ import brady.com.appframe.common.ui.fragment.bar.TitleBarFragment;
 import brady.com.appframe.common.ui.fragment.dialog.AlertDialogFragment;
 import brady.com.appframe.common.ui.fragment.interfaces.ITitleBarClickListener;
 import brady.com.appframe.common.utils.UserManager;
+import brady.com.appframe.config.Constants;
 import butterknife.OnClick;
 
 
@@ -168,23 +168,23 @@ public abstract class  BaseActivity extends AbstractBaseActivity implements ITit
 		@Override
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
-				case ConstantsBase.MSG_WHAT_DATA_START:
+				case Constants.MSG_WHAT_DATA_START:
 					if (isLoadProgress) {
 						showProgress();
 					}
 					break;
-				case ConstantsBase.MSG_WHAT_DATA_CANCEL:
+				case Constants.MSG_WHAT_DATA_CANCEL:
 					if (isLoadProgress) {
 						dismissProgress();
 					}
 					break;
-				case ConstantsBase.MSG_WHAT_DATA_DONE:
+				case Constants.MSG_WHAT_DATA_DONE:
 					if (isLoadProgress) {
 						dismissProgress();
 					}
 					dispatchData(msg.obj);
 					break;
-				case ConstantsBase.MSG_WHAT_SHOWTOAST:
+				case Constants.MSG_WHAT_SHOWTOAST:
 					showToast((String)msg.obj);
 				default:
 					baseHandleMessage(msg);

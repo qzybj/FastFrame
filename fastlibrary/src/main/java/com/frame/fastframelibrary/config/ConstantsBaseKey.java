@@ -4,7 +4,7 @@ package com.frame.fastframelibrary.config;
 /**
  *  定义常量 - 界面传递key相关
  */
-public class ConstantsCommonKey {
+public class ConstantsBaseKey {
 
     /**显示网址*/
     public static final String KEY_URL = "loadUrl";

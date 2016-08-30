@@ -1,9 +1,8 @@
 package com.frame.fastframe.module.html5.utils;
 
 import android.content.Context;
-import android.util.Log;
 
-import com.frame.fastframe.module.common.constant.AppConstants;
+import com.frame.fastframe.module.common.constant.Constants;
 import com.frame.fastframe.module.html5.bean.H5GetUserBean;
 import com.frame.fastframelibrary.utils.LogUtils;
 import com.frame.fastframelibrary.utils.app.AppUtils;
@@ -26,14 +25,14 @@ public class H52NativeUtils {
             String userid ="";
             returnBean.setUserid(userid);// 用户id
             returnBean.setUserstate(StringUtils.isNotEmpty(userid)? false : true);// 用户登录状态
-            returnBean.setPlatform(AppConstants.PLATFORM);
+            returnBean.setPlatform(Constants.PLATFORM);
             returnBean.setAppversion(AppUtils.getVersionName());
             returnBean.setOsversion(DeviceUtils.getAndroidSDKVersion());
             returnBean.setDevicename(DeviceUtils.getPhoneModel());
             returnBean.setImei(DeviceUtils.getIMEI());
             returnBean.setScreenWidth(DeviceUtils.getScreenWidth(con)+ "");
             returnBean.setScreenHeigh(DeviceUtils.getScreenHeight(con)+ "");
-            returnBean.setApptype(AppConstants.PRODUCT_LINE);// 产品线
+            returnBean.setApptype(Constants.PRODUCT_LINE);// 产品线
             returnJson = GsonUtils.toJson(returnBean);
             LogUtils.d(returnJson);
         } catch (Exception e) {

@@ -5,13 +5,11 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-
 import com.frame.fastframe.R;
+import com.frame.fastframe.module.common.constant.ConstantsKey;
 import com.frame.fastframe.ui.simple.adapter.FragmentPagerAdapter;
-import com.frame.fastframelibrary.config.ConstantsCommonKey;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 
-import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 
 import java.util.ArrayList;
@@ -57,7 +55,7 @@ public class BaseTabMainFragment extends BaseFragment implements ViewPager.OnPag
             if (!StringUtils.isEmpty(title)&&fragment!=null) {
                 tabTitleList.add(title);
                 Bundle bundle=new Bundle();
-                bundle.putString(ConstantsCommonKey.KEY_TITLE, title);
+                bundle.putString(ConstantsKey.KEY_TITLE, title);
                 fragment.setArguments(bundle);
                 fragments.add(fragment);
             }

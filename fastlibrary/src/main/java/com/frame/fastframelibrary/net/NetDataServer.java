@@ -17,7 +17,7 @@ import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 /**请求数据封装类*/
 public class NetDataServer {
 	/**请求网络数据 - 开始*/
-	public static final int MSG_WHAT_DATA_START = 32512;// 32512
+	public static final int MSG_WHAT_DATA_START = 32512;
 	/**请求网络数据 - 成功*/
 	public static final int MSG_WHAT_DATA_DONE = 32513;
 	/**请求网络数据 - 取消*/

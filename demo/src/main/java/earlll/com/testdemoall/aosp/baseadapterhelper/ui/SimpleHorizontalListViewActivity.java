@@ -4,13 +4,12 @@ import android.os.Bundle;
 import android.view.View;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.BaseAdapterHelper;
 import com.frame.fastframelibrary.aosp.baseadapterhelper.QuickAdapter;
-import com.frame.fastframelibrary.config.ConstantsCommonKey;
 import com.frame.fastframelibrary.utils.dataprocess.IntentUtils;
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
 import earlll.com.testdemoall.R;
+import earlll.com.testdemoall.config.ConstantsKey;
 import earlll.com.testdemoall.core.utils.TestData4Demo;
 import earlll.com.testdemoall.module.demo.bean.TestBean;
 import earlll.com.testdemoall.core.ui.base.BaseActivity;
@@ -74,7 +73,7 @@ public class SimpleHorizontalListViewActivity extends BaseActivity {
 //        webviewBean.setArgs(IntentUtils.setBundleStr(null, WebViewUtilPlus.KEY_URL,"http://m.yintai.com/category/miaoindex?"));
 //        list.add(webviewBean);
         TestBean webviewBean1  = TestData4Demo.getTestBean("下拉刷新SwipeRefreshLayout中放置WebView展示",SimpleSwipeRefreshLayoutActivity.class.getName());
-        webviewBean1.setArgs(IntentUtils.setBundleStr(null, ConstantsCommonKey.KEY_URL,"http://m.yintai.com/category/miaoindex?"));
+        webviewBean1.setArgs(IntentUtils.setBundleStr(null, ConstantsKey.KEY_URL,"http://m.yintai.com/category/miaoindex?"));
         list.add(webviewBean1);
         list.add(TestData4Demo.getTestBean("横向ListView",SimpleHorizontalListViewActivity.class.getName()));
 //        list.add(getJumpBean("样式2",NewsActivity.class.getUserName()));

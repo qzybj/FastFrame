@@ -28,6 +28,7 @@ android {
         }
     }
     buildTypes {
+        //以下为一些特殊设置，不要随便开启，否则crash了，后果自负
 //        debug {
 //            buildConfigField "boolean", "LOG_DEBUG", "true" // 显示Log
 //            versionNameSuffix "-debug"

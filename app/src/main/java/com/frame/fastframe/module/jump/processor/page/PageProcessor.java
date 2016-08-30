@@ -13,7 +13,7 @@ import com.frame.fastframe.module.jump.interfaces.IJumpProcessor;
 import com.frame.fastframe.module.previewimage.ui.PreviewImagesActivity;
 import com.frame.fastframe.module.product.ui.ProductListActivity;
 import com.frame.fastframe.module.search.ui.SearchActivity;
-import com.frame.fastframelibrary.config.ConstantsCommonKey;
+import com.frame.fastframelibrary.config.ConstantsKey;
 import com.frame.fastframelibrary.utils.dataprocess.MapUtils;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 import java.util.ArrayList;
@@ -79,17 +79,17 @@ public class PageProcessor implements IJumpProcessor {
 		if( JumpType.ProductList == jumpType){
 			//商品列表
 			if(isNotEmpty){
-				String title = jumpUri.getParamMap().get(ConstantsCommonKey.KEY_TITLE);
+				String title = jumpUri.getParamMap().get(ConstantsKey.KEY_TITLE);
 				if(StringUtils.isNotEmpty(title)){
-					jumpIntent.putExtra(ConstantsCommonKey.KEY_TITLE, title);
+					jumpIntent.putExtra(ConstantsKey.KEY_TITLE, title);
 				}
 			}
 		}else if( JumpType.InnerH5 == jumpType ){
 			//内嵌H5不显示底部栏
 			if(isNotEmpty){
-				String title = jumpUri.getParamMap().get(ConstantsCommonKey.KEY_TITLE);
+				String title = jumpUri.getParamMap().get(ConstantsKey.KEY_TITLE);
 				if(StringUtils.isNotEmpty(title)){
-					jumpIntent.putExtra(ConstantsCommonKey.KEY_TITLE, title);
+					jumpIntent.putExtra(ConstantsKey.KEY_TITLE, title);
 				}
 			}
 		}else if( JumpType.ViewLargerImage == jumpType ){
@@ -136,9 +136,9 @@ public class PageProcessor implements IJumpProcessor {
 			//打开外部浏览器
 			Intent jumpIntent = new Intent();
 			jumpIntent.setAction(Intent.ACTION_VIEW);
-			if(JumpUtil.paramExist(jumpUri.getParamMap(), ConstantsCommonKey.KEY_URL)){
+			if(JumpUtil.paramExist(jumpUri.getParamMap(), ConstantsKey.KEY_URL)){
 				//设置外部浏览器打开参数
-				String url = StringUtils.format(jumpUri.getParamMap().get(ConstantsCommonKey.KEY_URL));
+				String url = StringUtils.format(jumpUri.getParamMap().get(ConstantsKey.KEY_URL));
 				if(!url.toLowerCase().startsWith("http://") &&
 						!url.toLowerCase().startsWith("https://")){
 					//当url不是以http或者https开头时，默认加上http，防止调用浏览器崩溃
@@ -190,7 +190,7 @@ public class PageProcessor implements IJumpProcessor {
 		boolean isExist = true ;
 		if( JumpType.InnerH5 == jumpType){
 			//内嵌h5页面
-			isExist = JumpUtil.paramExist(paramsMap, ConstantsCommonKey.KEY_TITLE,ConstantsCommonKey.KEY_URL);
+			isExist = JumpUtil.paramExist(paramsMap, ConstantsKey.KEY_TITLE, ConstantsKey.KEY_URL);
 		}else if( JumpType.ProductList == jumpType){
 			//商品列表
 			isExist = JumpUtil.paramExist(paramsMap,ProductListActivity.KEY_INDEX_ID);

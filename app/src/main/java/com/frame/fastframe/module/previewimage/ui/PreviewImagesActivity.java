@@ -11,11 +11,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.bm.library.PhotoView;
 import com.frame.fastframe.R;
+import com.frame.fastframe.module.common.constant.ConstantsKey;
 import com.frame.fastframe.module.common.util.DensityUtil;
 import com.frame.fastframe.module.previewimage.view.HackyViewPager;
 import com.frame.fastframe.ui.base.BaseActivity;
 import com.frame.fastframe.utils.TestData4App;
-import com.frame.fastframelibrary.config.ConstantsCommonKey;
 import com.frame.fastframelibrary.utils.device.NetUtils;
 import com.squareup.picasso.Picasso;
 import org.xutils.view.annotation.ViewInject;
@@ -27,9 +27,9 @@ public class PreviewImagesActivity extends BaseActivity {
     private final int MARGIN_DOT_DP = 6 ;
 
     /** 图片集合 */
-    public static final String KEY_IMGURLS = ConstantsCommonKey.KEY_IMGURLS;
+    public static final String KEY_IMGURLS = ConstantsKey.KEY_IMGURLS;
     /** 当前图片索引 */
-    public static final String KEY_IMG_INDEX = ConstantsCommonKey.KEY_IMG_INDEX;
+    public static final String KEY_IMG_INDEX = ConstantsKey.KEY_IMG_INDEX;
 
 	/** 当前显示的图片索引值 */
 	private int mItemIndex=0;

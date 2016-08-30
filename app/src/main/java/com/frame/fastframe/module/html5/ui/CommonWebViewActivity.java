@@ -8,11 +8,11 @@ import android.view.View;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import com.frame.fastframe.R;
+import com.frame.fastframe.module.common.constant.ConstantsKey;
 import com.frame.fastframelibrary.aosp.bridgewebview.ProgressWebView;
 import com.frame.fastframelibrary.aosp.bridgewebview.interfaces.IJSBridgeBean;
 import com.frame.fastframe.module.html5.ui.base.BaseWebViewActivity;
 import com.frame.fastframe.utils.WebViewUtilPlus;
-import com.frame.fastframelibrary.config.ConstantsCommonKey;
 import com.frame.fastframelibrary.utils.dataprocess.IntentUtils;
 import com.frame.fastframelibrary.utils.view.WebViewUtil;
 import org.xutils.view.annotation.ViewInject;
@@ -56,9 +56,9 @@ public class CommonWebViewActivity extends BaseWebViewActivity{
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        setTitlebarContent(IntentUtils.getIntentStr(getIntent(), ConstantsCommonKey.KEY_TITLE));//设置title
-        initCustomUI(IntentUtils.getIntentStr(getIntent(), ConstantsCommonKey.KEY_TYPE)); //设置展示特殊类型UI
-        loadUrl(IntentUtils.getIntentStr(getIntent(), ConstantsCommonKey.KEY_URL)); //设置加载Url
+        setTitlebarContent(IntentUtils.getIntentStr(getIntent(), ConstantsKey.KEY_TITLE));//设置title
+        initCustomUI(IntentUtils.getIntentStr(getIntent(), ConstantsKey.KEY_TYPE)); //设置展示特殊类型UI
+        loadUrl(IntentUtils.getIntentStr(getIntent(), ConstantsKey.KEY_URL)); //设置加载Url
     }
 
     /**

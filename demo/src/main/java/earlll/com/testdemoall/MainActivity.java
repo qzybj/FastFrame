@@ -103,7 +103,7 @@ public class MainActivity extends BaseActivity {
 //        list.add(TestData4Demo.getTestBean("示例 - fragment使用示例",SimpleFragmentActivity.class.getName()));
 //        list.add(TestData4Demo.getTestBean("示例 - eventBus使用示例",EventBusReciveActivity.class.getName()));
 //        list.add(TestData4Demo.getTestBean("示例 - 下拉刷新SwipeRefreshLayout中放置WebView展示",SimpleSwipeRefreshLayoutActivity.class.getSimpleName(),
-//                IntentUtils.setBundleStr(null, ConstantsCommonKey.KEY_URL,"http://m.yintai.com/category/miaoindex?")));
+//                IntentUtils.setBundleStr(null, ConstantsBaseKey.KEY_URL,"http://m.yintai.com/category/miaoindex?")));
 //        list.add(TestData4Demo.getTestBean("示例 - 下拉刷新 PullRefreshLayout",SimplePullRefreshLayoutActivity.class.getName()));
 //        list.add(TestData4Demo.getTestBean("示例 - TestDataSimple - 测试数据生成器使用示例",TestDataSimpleActivity.class.getName()));
         list.add(TestData4Demo.getTestBean("示例 - PopwindowSimple - 测试Popwindow",PopwindowSimpleActivity.class.getName()));

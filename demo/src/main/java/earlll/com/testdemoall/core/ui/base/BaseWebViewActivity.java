@@ -7,14 +7,13 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
-import com.frame.fastframelibrary.config.ConstantsCommonKey;
 import com.frame.fastframelibrary.utils.dataprocess.IntentUtils;
 import com.frame.fastframelibrary.utils.LogUtils;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 import com.frame.fastframelibrary.utils.view.WebViewUtil;
-
 import butterknife.BindView;
 import earlll.com.testdemoall.R;
+import earlll.com.testdemoall.config.ConstantsKey;
 import earlll.com.testdemoall.core.utils.WebViewUtilPlus;
 
 /**
@@ -54,7 +53,7 @@ public class BaseWebViewActivity extends BaseActivity {
             mWebView.loadUrl(url);
         }
         //设置title
-        String title = IntentUtils.getIntentStr(getIntent(), ConstantsCommonKey.KEY_TITLE);
+        String title = IntentUtils.getIntentStr(getIntent(), ConstantsKey.KEY_TITLE);
         if (StringUtils.isNotEmpty(title)) {
             setTitlebarContent(title);
         }
@@ -65,7 +64,7 @@ public class BaseWebViewActivity extends BaseActivity {
 
         }
         //设置加载Url
-        url = IntentUtils.getIntentStr(getIntent(), ConstantsCommonKey.KEY_URL);
+        url = IntentUtils.getIntentStr(getIntent(), ConstantsKey.KEY_URL);
         if(StringUtils.isEmpty(url)) {
             url = WebViewUtilPlus.COMMON_LOADURL;
         }

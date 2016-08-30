@@ -5,12 +5,13 @@ import android.view.View;
 import android.widget.Button;
 import com.frame.fastframe.R;
 import com.frame.fastframe.ui.base.BaseActivity;
-import com.frame.fastframelibrary.config.ConstantsCommonKey;
+import com.frame.fastframelibrary.config.ConstantsKey;
+
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 
 public class SearchActivity extends BaseActivity {
-	public static final String KEY_KEYWORD = ConstantsCommonKey.KEY_KEYWORD;
+	public static final String KEY_KEYWORD = ConstantsKey.KEY_KEYWORD;
 
 	@ViewInject(R.id.banner_dotlayout)
 	private Button btn_login;

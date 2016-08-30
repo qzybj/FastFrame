@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import com.frame.fastframe.R;
 import com.frame.fastframe.module.html5.ui.base.BaseWebViewActivity;
-import com.frame.fastframelibrary.config.ConstantsCommonKey;
+import com.frame.fastframelibrary.config.ConstantsKey;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 import com.frame.fastframelibrary.utils.view.WebViewUtil;
 
@@ -30,9 +30,9 @@ public class WebViewUtilPlus extends WebViewUtil {
             if(StringUtils.isEmpty(title)) {
                 title = con.getString(R.string.app_name);
             }
-            intent.putExtra(ConstantsCommonKey.KEY_TITLE,title);
+            intent.putExtra(ConstantsKey.KEY_TITLE,title);
             if(StringUtils.isNotEmpty(loadUrl)) {
-                intent.putExtra(ConstantsCommonKey.KEY_URL,loadUrl);
+                intent.putExtra(ConstantsKey.KEY_URL,loadUrl);
             }
             con.startActivity(intent);
         }

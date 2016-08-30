@@ -52,11 +52,7 @@ public class GsonRequest<T> extends Request<T> {
      * @param url URL of the request to make
      * @param clazz Relevant class object, for Gson's reflection
      */
-    public GsonRequest(int method,
-                       String url,
-                       Class<T> clazz,
-                       Listener<T> listener,
-                       ErrorListener errorListener) {
+    public GsonRequest(int method,String url,Class<T> clazz,Listener<T> listener,ErrorListener errorListener) {
         super(method, url, errorListener);
         this.clazz = clazz;
         this.listener = listener;
@@ -69,12 +65,8 @@ public class GsonRequest<T> extends Request<T> {
      * @param url URL of the request to make
      * @param clazz Relevant class object, for Gson's reflection
      */
-    public GsonRequest(int method,
-                       String url,
-                       Class<T> clazz,
-                       Map<String, String> params,
-                       Listener<T> listener,
-                       ErrorListener errorListener) {
+    public GsonRequest(int method,String url,Class<T> clazz,Map<String, String> params,
+                       Listener<T> listener,ErrorListener errorListener) {
 
         super(method, url, errorListener);
         this.clazz = clazz;

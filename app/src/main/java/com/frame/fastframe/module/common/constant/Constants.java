@@ -1,11 +1,12 @@
 package com.frame.fastframe.module.common.constant;
 
+import com.frame.fastframelibrary.config.ConstantsBase;
 import com.frame.fastframelibrary.utils.app.AppUtils;
 
 /**
  *  定义常量：界面传递key相关，及 requestcode,resultcode 值等
  */
-public class AppConstants {
+public class Constants extends ConstantsBase {
     /**秒*/
     public static final long KEY_SECOND = 1000L;
     /**分钟*/

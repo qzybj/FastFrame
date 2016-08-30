@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.frame.fastframe.R;
-import com.frame.fastframe.module.common.constant.AppConstants;
+import com.frame.fastframe.module.common.constant.Constants;
 import com.frame.fastframe.utils.UserManager;
 import com.frame.fastframelibrary.ui.base.FrameBaseActivity;
 import com.frame.fastframelibrary.utils.app.ActivityStack;
@@ -330,23 +330,23 @@ public abstract class BaseActivity extends FrameBaseActivity{
 		}
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
-				case AppConstants.MSG_WHAT_DATA_START:
+				case Constants.MSG_WHAT_DATA_START:
 					if (isLoadProgress) {
 						showProgress();
 					}
 					break;
-				case AppConstants.MSG_WHAT_DATA_CANCEL:
+				case Constants.MSG_WHAT_DATA_CANCEL:
 					if (isLoadProgress) {
 						dismissProgress();
 					}
 					break;
-				case AppConstants.MSG_WHAT_DATA_DONE:
+				case Constants.MSG_WHAT_DATA_DONE:
 					if (isLoadProgress) {
 						dismissProgress();
 					}
 					dispatchData(msg.obj);
 					break;
-				case AppConstants.MSG_WHAT_SHOWTOAST:
+				case Constants.MSG_WHAT_SHOWTOAST:
 					showToast((String)msg.obj);
 				default:
 					baseHandleMessage(msg);

@@ -6,7 +6,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.frame.fastframelibrary.config.ConstantsCommonKey;
 import com.frame.fastframelibrary.ui.base.FrameBaseFragment;
 import brady.com.appframe.CApplication;
 import brady.com.appframe.R;
@@ -14,6 +13,7 @@ import brady.com.appframe.common.ui.fragment.recyclerview.adapter.interfaces.IAd
 import brady.com.appframe.common.ui.fragment.recyclerview.adapter.utils.RecyclerViewUtils;
 import brady.com.appframe.common.ui.fragment.recyclerview.annotation.PullrefreshType;
 import brady.com.appframe.common.ui.fragment.recyclerview.interfaces.IRecyclerViewOptions;
+import brady.com.appframe.config.ConstantsKey;
 import butterknife.BindView;
 
 /**Base RecycleView fragment*/
@@ -21,9 +21,9 @@ public abstract  class BaseRecyclerViewFragment<T extends BaseQuickAdapter> exte
         IAdapterFragment,SwipeRefreshLayout.OnRefreshListener,BaseQuickAdapter.RequestLoadMoreListener {
 
     /**UI style key*/
-    public static final String STYLE = ConstantsCommonKey.KEY_TYPE;
+    public static final String STYLE = ConstantsKey.KEY_TYPE;
     /**pullrefresh switch*/
-    public static final String PULLREFRESH_TYPE = ConstantsCommonKey.KEY_PULLREFRESH_TYPE;
+    public static final String PULLREFRESH_TYPE = ConstantsKey.KEY_PULLREFRESH_TYPE;
 
     protected final int DEF_PAGE_SIZE = 10;
 
