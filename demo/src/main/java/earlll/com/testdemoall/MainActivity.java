@@ -24,6 +24,7 @@ import earlll.com.testdemoall.module.demo.bean.TestBean;
 import earlll.com.testdemoall.core.ui.base.BaseActivity;
 import earlll.com.testdemoall.core.utils.TestData4Demo;
 import earlll.com.testdemoall.module.demo.ui.TestDataSimpleActivity;
+import earlll.com.testdemoall.module.testnetframe.ui.TestNetActivity;
 import earlll.com.testdemoall.module.viewdemo.ui.SimpleLayoutActivity;
 import earlll.com.testdemoall.module.webviewdemo.ui.InterceptUrlActivity;
 import earlll.com.testdemoall.module.zxing.ui.ZXingActivity;
@@ -106,6 +107,7 @@ public class MainActivity extends BaseActivity {
 //                IntentUtils.setBundleStr(null, ConstantsBaseKey.KEY_URL,"http://m.yintai.com/category/miaoindex?")));
 //        list.add(TestData4Demo.getTestBean("示例 - 下拉刷新 PullRefreshLayout",SimplePullRefreshLayoutActivity.class.getName()));
 //        list.add(TestData4Demo.getTestBean("示例 - TestDataSimple - 测试数据生成器使用示例",TestDataSimpleActivity.class.getName()));
+        list.add(TestData4Demo.getTestBean("示例 - TestNetActivity - 测试网络框架",TestNetActivity.class.getName()));
         list.add(TestData4Demo.getTestBean("示例 - PopwindowSimple - 测试Popwindow",PopwindowSimpleActivity.class.getName()));
         list.add(TestData4Demo.getTestBean("示例 - AnimationSimple - 测试动画",AnimationSimpleActivity.class.getName()));
 //        list.add(TestData4Demo.getTestBean("示例 - FileOperationSimple - File操作使用示例",FileOperationSimpleActivity.class.getName()));

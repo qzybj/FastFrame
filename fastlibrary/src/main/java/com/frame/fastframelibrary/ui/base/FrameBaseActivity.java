@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-
 import com.frame.fastframelibrary.utils.LogUtils;
 import com.frame.fastframelibrary.utils.view.ViewUtils;
 import butterknife.ButterKnife;

@@ -162,6 +162,12 @@
             android:theme="@style/style_activty_custom"
             android:windowSoftInputMode="adjustPan" />
         <activity
+            android:name=".module.testnetframe.ui.TestNetActivity"
+            android:configChanges="keyboard|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@style/style_activty_custom"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name=".module.viewdemo.ui.SimpleLayoutActivity"
             android:configChanges="keyboard|keyboardHidden"
             android:screenOrientation="portrait"

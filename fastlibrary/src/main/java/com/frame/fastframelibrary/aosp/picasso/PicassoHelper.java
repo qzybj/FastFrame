@@ -4,16 +4,13 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.widget.ImageView;
-
 import com.frame.fastframelibrary.aosp.picasso.transformation.ScaleTransformation;
+import com.frame.fastframelibrary.module.loadimage.interfaces.ILoadImageCallback;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.RequestCreator;
-
 import java.io.File;
-
 import com.frame.fastframelibrary.module.loadimage.interfaces.ILoadImage;
-import com.frame.fastframelibrary.module.loadimage.interfaces.impl.LoadImageCallbackImpl;
 
 /**
  * Created by ZhangYuanBo on 2016/6/16.
@@ -21,39 +18,13 @@ import com.frame.fastframelibrary.module.loadimage.interfaces.impl.LoadImageCall
 public class PicassoHelper implements ILoadImage {
 
     @Override
-    public <T extends LoadImageCallbackImpl> void downloadImage(Context con, Object imageUrl, T callback) {
+    public <T extends ILoadImageCallback> void downloadImage(Context con, Object imageUrl, T callback) {
         if(con!=null&&callback instanceof PicassoCallback){
             RequestCreator requestCreator = getRequestCreator(con,imageUrl);
             if(requestCreator!=null){
                 requestCreator.into((PicassoCallback)callback);
             }
         }
-    }
-
-    /**
-     * 加载图片(Picasso)
-     * @param con
-     * @param iv
-     * @param imageUrl  支持的格式： load(R.drawable.landing_screen); load("file:///android_asset/DvpvklR.png");load(new File(...))
-     */
-    @Override
-    public void loadImage(Context con, ImageView iv, Object imageUrl) {
-        loadImage(con,iv,imageUrl, ILoadImage.NONE, ILoadImage.NONE, ILoadImage.NONE, ILoadImage.NONE,false,null);
-    }
-
-    @Override
-    public void loadImage(Context con, ImageView iv, Object imageUrl, int loadImgResId) {
-        loadImage(con,iv,imageUrl, ILoadImage.NONE, ILoadImage.NONE,loadImgResId, ILoadImage.NONE,false,null);
-    }
-
-    @Override
-    public void loadImage(Context con, ImageView iv, Object imageUrl, int loadImgResId, boolean isTransform) {
-        loadImage(con,iv,imageUrl, ILoadImage.NONE, ILoadImage.NONE,loadImgResId, ILoadImage.NONE,isTransform,null);
-    }
-
-    @Override
-    public <T extends LoadImageCallbackImpl> void loadImage(Context con, ImageView iv, Object imageUrl, int loadImgResId, boolean isTransform,T callback) {
-        loadImage(con,iv,imageUrl, ILoadImage.NONE, ILoadImage.NONE,loadImgResId, ILoadImage.NONE,isTransform,callback);
     }
 
     /**
@@ -69,7 +40,7 @@ public class PicassoHelper implements ILoadImage {
      * @param callback
      */
     @Override
-    public <T extends LoadImageCallbackImpl> void loadImage(Context con, ImageView iv, Object imageUrl, int width, int height,int loadImgResId,int errImgResId,boolean isTransform,T callback) {
+    public <T extends ILoadImageCallback> void loadImage(Context con, ImageView iv, Object imageUrl, int width, int height, int loadImgResId, int errImgResId, boolean isTransform, T callback) {
         if(con!=null&&iv!=null){
             RequestCreator requestCreator =getRequestCreator(con,imageUrl);
             if(requestCreator!=null){

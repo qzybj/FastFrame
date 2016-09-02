@@ -2,16 +2,15 @@ package com.frame.fastframelibrary.aosp.picasso;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
+import com.frame.fastframelibrary.module.loadimage.interfaces.ILoadImageCallback;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
-import com.frame.fastframelibrary.module.loadimage.interfaces.impl.LoadImageCallbackImpl;
 
-public abstract class PicassoCallback extends LoadImageCallbackImpl implements Target {
-    public PicassoCallback(ImageView iv) {
-        super(iv);
+public abstract class PicassoCallback implements ILoadImageCallback,Target {
+    @Override
+    public final void onPrepareLoad(Drawable placeHolderDrawable) {
+        onPrepareLoadImage(placeHolderDrawable);
     }
-
     @Override
     public final void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
         LoadImageFrom curType = LoadImageFrom.UNKNOWN;
@@ -26,16 +25,11 @@ public abstract class PicassoCallback extends LoadImageCallbackImpl implements T
                 curType = LoadImageFrom.NETWORK;
                 break;
         }
-        onLoadImageSuccess(mImageView,bitmap,curType);
+        onLoadImageSuccess(bitmap,curType);
     }
 
     @Override
     public final void onBitmapFailed(Drawable errorDrawable) {
-        onLoadImageFailed(mImageView);
-    }
-
-    @Override
-    public final void onPrepareLoad(Drawable placeHolderDrawable) {
-
+        onLoadImageFailed(errorDrawable);
     }
 }

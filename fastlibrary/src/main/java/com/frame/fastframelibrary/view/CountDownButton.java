@@ -8,9 +8,7 @@ import android.widget.Button;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 
 
-/**
- *  倒计时Button
- */
+/**  Count Down Button */
 public class CountDownButton extends Button {
     private int SECOND = 1000;
 

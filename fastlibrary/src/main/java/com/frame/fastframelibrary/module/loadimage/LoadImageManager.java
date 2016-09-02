@@ -6,8 +6,8 @@ import com.frame.fastframelibrary.FastApplication;
 import com.frame.fastframelibrary.aosp.picasso.PicassoHelper;
 import com.frame.fastframelibrary.module.loadimage.exception.LoadImageException;
 import com.frame.fastframelibrary.module.loadimage.interfaces.ILoadImage;
+import com.frame.fastframelibrary.module.loadimage.interfaces.ILoadImageCallback;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
-import com.frame.fastframelibrary.module.loadimage.interfaces.impl.LoadImageCallbackImpl;
 
 /**
  * Created by ZhangYuanBo on 2016/8/3.
@@ -46,27 +46,19 @@ public class LoadImageManager{
     }
 
     public void loadImage(ImageView iv, Object imageUrl)  {
-        if(isSupportImageUrlType(imageUrl)){
-            loadImageInstance.loadImage(getApplication(),iv,imageUrl);
-        }
+        loadImage(iv,imageUrl,ILoadImage.NONE,ILoadImage.NONE,ILoadImage.NONE,ILoadImage.NONE,false,null);
     }
 
     public void loadImage( ImageView iv, Object imageUrl, int loadImgResId)  {
-        if(isSupportImageUrlType(imageUrl)){
-            loadImageInstance.loadImage(getApplication(),iv,imageUrl,loadImgResId);
-        }
+        loadImage(iv,imageUrl,ILoadImage.NONE,ILoadImage.NONE,loadImgResId,ILoadImage.NONE,false,null);
     }
 
     public void loadImage( ImageView iv, Object imageUrl, int loadImgResId, boolean isTransform)  {
-        if(isSupportImageUrlType(imageUrl)){
-            loadImageInstance.loadImage(getApplication(),iv,imageUrl,loadImgResId,isTransform);
-        }
+        loadImage(iv,imageUrl,ILoadImage.NONE,ILoadImage.NONE,loadImgResId,ILoadImage.NONE,isTransform,null);
     }
 
-    public void loadImage( ImageView iv, Object imageUrl, int loadImgResId, boolean isTransform,LoadImageCallbackImpl callback)  {
-        if(isSupportImageUrlType(imageUrl)){
-            loadImageInstance.loadImage(getApplication(),iv,imageUrl,loadImgResId,isTransform,callback);
-        }
+    public void loadImage( ImageView iv, Object imageUrl, int loadImgResId, boolean isTransform,ILoadImageCallback callback)  {
+        loadImage(iv,imageUrl,ILoadImage.NONE,ILoadImage.NONE,loadImgResId,ILoadImage.NONE,isTransform,callback);
     }
 
     /**
@@ -77,14 +69,20 @@ public class LoadImageManager{
      * @param height        指定的图片高
      * @param loadImgResId  默认加载的图片
      * @param errImgResId   加载错误时的图片
+     * @param isTransform   是否显示加载动画
      * @param callback      因调接口
      */
-    private void loadImage(ImageView iv, Object imageUrl, int width, int height,int loadImgResId,int errImgResId,LoadImageCallbackImpl callback)   {
+    public void loadImage(ImageView iv, Object imageUrl, int width, int height, int loadImgResId, int errImgResId,boolean isTransform,ILoadImageCallback callback){
         if(isSupportImageUrlType(imageUrl)){
-            loadImageInstance.loadImage(getApplication(),iv,imageUrl,width,height,loadImgResId,errImgResId,false,callback);
+            loadImageInstance.loadImage(getApplication(),iv,imageUrl,width,height,loadImgResId,errImgResId,isTransform,callback);
         }
     }
 
+    /**
+     * Check support image url type
+     * @param imageUrl
+     * @return
+     */
     public boolean isSupportImageUrlType(Object imageUrl){
         if(loadImageInstance.isSupportImageUrlType(imageUrl)){
             return true;

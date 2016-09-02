@@ -134,11 +134,7 @@ public class H5HttpHijackUtils {
         if (StringUtils.isNotEmpty(url)) {
             ArrayList<String> list = null;
             if (StringUtils.isNotEmpty(jsonStr)) {
-                try {
-                    list = GsonUtils.json2List(jsonStr,new TypeToken<ArrayList<String>>(){}.getType());
-                } catch (Exception e) {
-                    LogUtils.e(e);
-                }
+                list = GsonUtils.json2List(jsonStr,new TypeToken<ArrayList<String>>(){}.getType());
             }
             if (ListUtils.isEmpty(list)) {
                 list = new ArrayList<String>();

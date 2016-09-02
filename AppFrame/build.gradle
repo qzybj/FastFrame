@@ -74,7 +74,7 @@ dependencies {
     //custom core library
     compile project(':fastlibrary')
     //view bind
-    apt 'com.jakewharton:butterknife-compiler:8.2.1'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
 
     //a easy adapter for recycleview
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.9.2'

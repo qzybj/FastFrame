@@ -43,7 +43,7 @@ dependencies {
     compile project(':fastlibrary')
 
     //view bind
-    apt 'com.jakewharton:butterknife-compiler:8.2.1'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
 
     compile 'com.baoyz.actionsheet:library:1.1.4'
     compile 'com.bm.photoview:library:1.4.0'

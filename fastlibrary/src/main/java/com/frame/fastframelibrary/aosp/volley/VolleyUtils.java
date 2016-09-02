@@ -1,32 +1,27 @@
 package com.frame.fastframelibrary.aosp.volley;
 
-import java.io.UnsupportedEncodingException;
-import java.util.Map;
-import java.util.Map.Entry;
-import org.json.JSONException;
-import org.json.JSONObject;
 import android.app.Application;
 import android.net.Uri;
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
-import com.android.volley.NetworkResponse;
-import com.android.volley.NoConnectionError;
 import com.android.volley.ParseError;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.HttpHeaderParser;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.frame.fastframelibrary.FastApplication;
-import com.frame.fastframelibrary.aosp.volley.listener.VolleyResultListener;
 import com.frame.fastframelibrary.aosp.volley.requestimpl.GsonRequest;
-import com.frame.fastframelibrary.net.core.base.ResponseBean;
+import com.frame.fastframelibrary.net.core.bean.NetResponse;
+import com.frame.fastframelibrary.net.core.config.NetConstants;
+import com.frame.fastframelibrary.net.core.interfaces.IErrorInfo;
 import com.frame.fastframelibrary.utils.LogUtils;
-
+import com.frame.fastframelibrary.utils.dataprocess.MapUtils;
+import java.util.Map;
+import java.util.Map.Entry;
 
 
 /**Volley工具类*/
@@ -37,10 +32,10 @@ public class VolleyUtils {
 	private final boolean SHOWLOG = true;
 
 	private VolleyUtils() {
-		instance.init(FastApplication.instance());
+		init(FastApplication.instance());
 	}
 
-	public static VolleyUtils getInstance() {
+	public static VolleyUtils instance() {
 		if (instance==null) {
 			instance = new VolleyUtils();
 			return instance;
@@ -58,219 +53,93 @@ public class VolleyUtils {
 	}
 
 	/**
-	 *
 	 * (class)request net data ,parse json to class
-	 * @param method	Request.Method.GET  Request.Method.POST
+	 * @param method			Request.Method.GET  Request.Method.POST
 	 * @param url
-	 * @param QueryParameter 请求参数
-	 * @param listener   JSON请求结果监听
-	 * @param clazz		解析用类
-	 * @param tag	用于全部取消,请求分组
+	 * @param params 	请求参数
+	 * @param clazz				解析用类
+	 * @param tag				用于全部取消,请求分组
+	 * @param listener   		请求成功回调监听
+	 * @param errorListener   	请求失败回调监听
 	 */
 	@SuppressWarnings("unused")
-	public <T> void requestDataByGson(int method, String url, Map<String, String> QueryParameter,
-									  final VolleyResultListener<T> listener, Class<T> clazz, String tag){
-		Uri.Builder builder = Uri.parse(url).buildUpon();
-		if (QueryParameter!=null&&QueryParameter.size()>0) {
-			for (Entry<String, String> element : QueryParameter.entrySet()) {
-				builder.appendQueryParameter(element.getKey(),element.getValue());
-			}
-		}
-		GsonRequest<T> gsonObjRequest =
-				new GsonRequest<T>(
-						method,
-						builder.toString(),
-						clazz,
-						null,
-						new Response.Listener<T>() {
-							@Override
-							public void onResponse(T response) {
-								if (listener!=null) {
-									ResponseBean<T> bean = new ResponseBean<T>();
-									bean.setCode(VolleyResultListener.REQUEST_DATA_SUCCESS);
-									bean.setData(response);
-									listener.responseSuccessed(bean);
-								}
-							}
-						},
-						new Response.ErrorListener() {
-							@Override
-							public void onErrorResponse(VolleyError error) {
-								if (listener!=null) {
-									ResponseBean<T> bean = new ResponseBean<T>();
-									bean.setCode(VolleyResultListener.REQUEST_DATA_FAIL);
-									bean.setMsg(error.getLocalizedMessage());
-									listener.responseFailed(bean);
-
-									if (error instanceof NetworkError) {
-									} else if (error instanceof ServerError) {
-									} else if (error instanceof AuthFailureError) {
-									} else if (error instanceof ParseError) {
-									} else if (error instanceof NoConnectionError) {
-									} else if (error instanceof TimeoutError) {
-									}
-								}
-								showLog(error.getMessage());
-							}
-						}
-				){
-
+	public <T> void request4Gson(int method, String url, Map<String, String> headers, Map<String, String> params, Class<T> clazz, String tag,
+								 final NetResponse.Listener<T> listener, final NetResponse.ErrorListener errorListener){
+		int methodTmp = getMethod(method);
+		String requestUrl = methodTmp==Request.Method.GET?getUrl(url,params):url;
+		GsonRequest<T> request = new GsonRequest<T>(
+				getMethod(method),
+				requestUrl,
+				clazz,
+				null,
+				new Response.Listener<T>() {
 					@Override
-					protected Response parseNetworkResponse(NetworkResponse response) {
-						try {
-							String jsonString = new String(response.data, "UTF-8");
-							return Response.success(jsonString,HttpHeaderParser.parseCacheHeaders(response));
-						} catch (UnsupportedEncodingException e) {
-							return Response.error(new ParseError(e));
-						} catch (Exception je) {
-							return Response.error(new ParseError(je));
+					public void onResponse(T response) {
+						if (listener!=null) {
+							listener.onResponse(response);
 						}
 					}
-
-				};
-		gsonObjRequest.setTag(tag);
-		mVolleyQueue.add(gsonObjRequest);
+				},
+				new Response.ErrorListener() {
+					@Override
+					public void onErrorResponse(VolleyError error) {
+						if (errorListener!=null) {
+							errorListener.onErrorResponse(getErrorInfo(error));
+						}
+					}
+				}
+		);
+		if(MapUtils.isNotEmpty(headers)){
+			try {
+				request.setHeaders(headers);
+			} catch (AuthFailureError authFailureError) {
+				LogUtils.e(authFailureError);
+			}
+		}
+		if(methodTmp == Request.Method.GET&&MapUtils.isNotEmpty(params)){
+			try {
+				request.setParams(params);
+			} catch (AuthFailureError authFailureError) {
+				LogUtils.e(authFailureError);
+			}
+		}
+		request.setTag(tag);
+		mVolleyQueue.add(request);
 		mVolleyQueue.start();
 	}
+
 
 	/**
 	 * (string)request net data ,get json string
 	 * @param method	Request.Method.GET  Request.Method.POST
 	 * @param url
 	 * @param QueryParameter 请求参数
-	 * @param listener   json请求结果监听
 	 * @param tag	用于全部取消,请求分组
+	 * @param listener   		请求成功回调监听
+	 * @param errorListener   	请求失败回调监听
 	 */
-	public void requestDataByString(int method,String url,Map<String, String> QueryParameter,
-									final VolleyResultListener<String> listener,String tag){
-		Uri.Builder builder = Uri.parse(url).buildUpon();
-		if (QueryParameter!=null&&QueryParameter.size()>0) {
-			for (Entry<String, String> element : QueryParameter.entrySet()) {
-				builder.appendQueryParameter(element.getKey(),element.getValue());
-			}
-		}
+	public void requestDataByString(int method,String url,Map<String, String> QueryParameter,String tag,
+									final NetResponse.Listener<String> listener, final NetResponse.ErrorListener errorListener){
 		StringRequest stringRequest = new StringRequest(
 				method,
-				builder.toString(),
+				getUrl(url,QueryParameter),
 				new Response.Listener<String>() {
 					@Override
 					public void onResponse(String response) {
 						if (listener!=null) {
-							ResponseBean<String> bean = new ResponseBean<String>();
-							bean.setCode(VolleyResultListener.REQUEST_DATA_SUCCESS);
-							bean.setData(response);
-							listener.responseSuccessed(bean);
+							listener.onResponse(response);
 						}
 					}
 				},
 				new Response.ErrorListener() {
 					@Override
 					public void onErrorResponse(VolleyError error) {
-						if (listener!=null) {
-							ResponseBean<String> bean = new ResponseBean<String>();
-							bean.setCode(VolleyResultListener.REQUEST_DATA_FAIL);
-							bean.setMsg(error.getLocalizedMessage());
-							listener.responseFailed(bean);
-
-							if (error instanceof NetworkError) {
-							} else if (error instanceof ServerError) {
-							} else if (error instanceof AuthFailureError) {
-							} else if (error instanceof ParseError) {
-							} else if (error instanceof NoConnectionError) {
-							} else if (error instanceof TimeoutError) {
-							}
-						}
-						showLog(error.getMessage());
-					}
-				}
-		){
-			@Override
-			protected Response<String> parseNetworkResponse(NetworkResponse response) {
-				try {
-					String jsonString = new String(response.data, "UTF-8");
-					return Response.success(jsonString,
-							HttpHeaderParser.parseCacheHeaders(response));
-				} catch (UnsupportedEncodingException e) {
-					return Response.error(new ParseError(e));
-				} catch (Exception je) {
-					return Response.error(new ParseError(je));
-				}
-			}
-		};
-		stringRequest.setTag(tag);
-		mVolleyQueue.add(stringRequest);
-		mVolleyQueue.start();
-	}
-	/**
-	 * (jsonOjbect)request net data ,get jsonOjbect
-	 * @param method	Request.Method.GET  Request.Method.POST
-	 * @param url
-	 * @param QueryParameter 请求参数
-	 * @param listener   json请求结果监听
-	 * @param tag	用于全部取消
-	 */
-	@SuppressWarnings("unused")
-	public void requestDataByJsonObj(int method,String url,Map<String, String> QueryParameter,
-									 final VolleyResultListener<JSONObject> listener,String tag){
-		Uri.Builder builder = Uri.parse(url).buildUpon();
-		if (QueryParameter!=null&&QueryParameter.size()>0) {
-			for (Entry<String, String> element : QueryParameter.entrySet()) {
-				builder.appendQueryParameter(element.getKey(),element.getValue());
-			}
-		}
-		JsonObjectRequest stringRequest = new JsonObjectRequest(
-				method,
-				builder.toString(),
-				null,
-				new Response.Listener<JSONObject>() {
-					@Override
-					public void onResponse(JSONObject response) {
-						if (listener!=null) {
-							ResponseBean<JSONObject> bean = new ResponseBean<JSONObject>();
-							bean.setCode(VolleyResultListener.REQUEST_DATA_SUCCESS);
-							bean.setData(response);
-							listener.responseSuccessed(bean);
+						if (errorListener!=null) {
+							errorListener.onErrorResponse(getErrorInfo(error));
 						}
 					}
-				},
-				new Response.ErrorListener() {
-					@Override
-					public void onErrorResponse(VolleyError error) {
-						if (listener!=null) {
-							ResponseBean<JSONObject> bean = new ResponseBean<JSONObject>();
-							bean.setCode(VolleyResultListener.REQUEST_DATA_FAIL);
-							bean.setMsg(error.getLocalizedMessage());
-							listener.responseFailed(bean);
-
-							if (error instanceof NetworkError) {
-							} else if (error instanceof ServerError) {
-							} else if (error instanceof AuthFailureError) {
-							} else if (error instanceof ParseError) {
-							} else if (error instanceof NoConnectionError) {
-							} else if (error instanceof TimeoutError) {
-
-							}
-						}
-						showLog(error.getMessage());
-					}
 				}
-		){
-			@Override
-			protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
-				try {
-					// solution 1:
-					String jsonString = new String(response.data, "UTF-8");
-					// solution 2:
-					response.headers.put("Content-Type",response.headers.get("content-type"));
-					String tmp = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
-					return Response.success(new JSONObject(tmp),HttpHeaderParser.parseCacheHeaders(response));
-				} catch (UnsupportedEncodingException e) {
-					return Response.error(new ParseError(e));
-				} catch (JSONException je) {
-					return Response.error(new ParseError(je));
-				}
-			}
-		};
+		);
 		stringRequest.setTag(tag);
 		mVolleyQueue.add(stringRequest);
 		mVolleyQueue.start();
@@ -289,6 +158,41 @@ public class VolleyUtils {
 	private void showLog(String msg) {
 		if (SHOWLOG) {
 			LogUtils.e(TAG,msg);
+		}
+	}
+
+	private int getMethod(int method){
+		switch (method){
+			case NetConstants.Method.GET:
+				return Request.Method.GET;
+			case NetConstants.Method.POST:
+				return Request.Method.POST;
+			default:
+				return Request.Method.POST;
+		}
+	}
+	private String getUrl(String url, Map<String, String> QueryParameter){
+		Uri.Builder builder = Uri.parse(url).buildUpon();
+		if (QueryParameter!=null&&QueryParameter.size()>0) {
+			for (Entry<String, String> element : QueryParameter.entrySet()) {
+				builder.appendQueryParameter(element.getKey(),element.getValue());
+			}
+		}
+		return builder.toString();
+	}
+	public IErrorInfo getErrorInfo(VolleyError error){
+		if (error instanceof ParseError) {
+			return NetResponse.errorInfo(NetConstants.NetStatusCode.CODE_NO_JSON,error.getMessage());
+		}else if (error instanceof NetworkError) {
+			return NetResponse.errorInfo(NetConstants.NetStatusCode.CODE_NO_NET,error.getMessage());
+		} else if (error instanceof ServerError) {
+			return NetResponse.errorInfo(NetConstants.NetStatusCode.CODE_NO_NET,error.getMessage());
+		} else if (error instanceof AuthFailureError) {
+			return NetResponse.errorInfo(NetConstants.NetStatusCode.CODE_NO_NET,error.getMessage());
+		} else if (error instanceof TimeoutError) {
+			return NetResponse.errorInfo(NetConstants.NetStatusCode.CODE_NO_NET,error.getMessage());
+		}else{
+			return NetResponse.errorInfo(NetConstants.NetStatusCode.CODE_NO_READ,error.getMessage());
 		}
 	}
 }

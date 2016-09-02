@@ -41,6 +41,13 @@ public class GsonUtils {
 		return null;
 	}
 
+	/**
+	 * Simple:GsonUtils.json2List(jsonStr,new TypeToken<ArrayList<String>>(){}.getType());
+	 * @param json
+	 * @param type
+	 * @param <T>
+     * @return
+     */
 	public static <T> ArrayList<T> json2List(String json, Type type){
 		if(StringUtils.isNotEmpty(json)&&type!=null){
 			try {
