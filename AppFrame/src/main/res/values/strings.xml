@@ -7,12 +7,6 @@
     <string name="action_settings">Settings</string>
     <string name="toolbar_title">@string/app_name</string>
 
-    <string name="loading_prompt">请稍后...</string>
-    <string name="tip_param_error">参数错误，无法打开页面</string>
-    <string name="reminder">温馨提示</string>
-    <string name="no_net_temp">您现在没有网络连接</string>
-    <string name="sure">确定</string>
-    <string name="cancel">取消</string>
 
     <string-array name="tab_styles">
         <item>Vertical List</item>

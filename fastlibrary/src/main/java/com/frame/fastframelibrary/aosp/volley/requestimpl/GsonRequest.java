@@ -25,10 +25,14 @@ import com.android.volley.Response.Listener;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.frame.fastframelibrary.net.core.bean.NetResponse;
+import com.frame.fastframelibrary.net.core.bean.ResultBean;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+import com.google.gson.internal.$Gson$Types;
 import com.google.gson.reflect.TypeToken;
+
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,7 +43,7 @@ import java.util.Map;
  * @author Mani Selvaraj
  */
 
-public class GsonRequest<T> extends Request<T>{
+public  class GsonRequest<T extends ResultBean> extends Request<T>{
 
     /** Charset for request. */
     private static final String PROTOCOL_CHARSET = "utf-8";
@@ -57,12 +61,12 @@ public class GsonRequest<T> extends Request<T>{
     private Map<String, String> headers ;
     private Map<String, String> params;
 
-    public GsonRequest(int method, String url, Class<T> cls,String requestBody, Listener<T> listener,ErrorListener errorListener) {
+    public GsonRequest(int method, String url, Class<T> cls,String requestBody, Listener<T> listener, ErrorListener errorListener) {
         super(method, url, errorListener);
-        mGson = new Gson();
-        mJavaClass = cls;
-        mListener = listener;
-        mRequestBody = requestBody;
+        this.mGson = new Gson();
+        this.mJavaClass = cls;
+        this.mListener = listener;
+        this.mRequestBody = requestBody;
     }
 
     @Override
@@ -96,13 +100,17 @@ public class GsonRequest<T> extends Request<T>{
     protected Response<T> parseNetworkResponse(NetworkResponse response) {
         try {
             String jsonString = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
-            NetResponse<T> parsedParentGSON = mGson.fromJson(jsonString, new TypeToken<NetResponse<T>>() {}.getType());
+            Type type = mJavaClass.newInstance().getType();//new TypeToken<NetResponse<T>>() {}.getType()
+            NetResponse<T> parsedParentGSON = mGson.fromJson(jsonString,type);
             return Response.success(parsedParentGSON.result,HttpHeaderParser.parseCacheHeaders(response));
         } catch (UnsupportedEncodingException e) {
             return Response.error(new ParseError(e));
         } catch (JsonSyntaxException je) {
             return Response.error(new ParseError(je));
+        } catch (Exception e) {
+            return Response.error(new ParseError(e));
         }
+
     }
 
     @Override

@@ -1,19 +1,22 @@
 package com.frame.fastframelibrary.net.core;
 
+import com.frame.fastframelibrary.FastApplication;
+import com.frame.fastframelibrary.R;
 import com.frame.fastframelibrary.net.core.annotation.NoRequestArgs;
 import com.frame.fastframelibrary.net.core.annotation.RequestArgs;
+import com.frame.fastframelibrary.net.core.bean.NetResponse;
 import com.frame.fastframelibrary.net.core.config.NetConstants;
+import com.frame.fastframelibrary.net.core.interfaces.IErrorInfo;
 import com.frame.fastframelibrary.utils.LogUtils;
 import com.frame.fastframelibrary.utils.dataprocess.MapUtils;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 import com.frame.fastframelibrary.utils.reflect.ClassReflectUtils;
-
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class NetUtils {
+public class NetDataServerUtils {
     private static HashMap<String, String> headers;
     private static HashMap<String, String> params;
 
@@ -66,7 +69,6 @@ public class NetUtils {
                 t_field = fields[i];
                 key = null;
                 value = null;
-
                 noJsonProperty = t_field.getAnnotation(NoRequestArgs.class);
                 if(noJsonProperty!=null){
                     continue;
@@ -121,5 +123,33 @@ public class NetUtils {
             params.put("sign", StringUtils.md5(mAppSecret + str.toString() + mAppSecret).toUpperCase());
         }
         return params;
+    }
+
+    public static IErrorInfo getErrorInfo(int code){
+        String message;
+        switch (code){
+            case NetConstants.NetStatusCode.CODE_NO_JSON:
+                message = FastApplication.instance().getResources().getString(R.string.parse_json_err);
+                break;
+            case NetConstants.NetStatusCode.CODE_NO_NET:
+                message = FastApplication.instance().getResources().getString(R.string.not_net_connect_err);
+                break;
+            case NetConstants.NetStatusCode.CODE_NO_READ:
+            default:
+                message = FastApplication.instance().getResources().getString(R.string.request_net_err);
+        }
+        return getErrorInfo(code,message);
+    }
+
+    public static IErrorInfo getErrorInfo(int code,String message){
+        switch (code){
+            case NetConstants.NetStatusCode.CODE_NO_JSON:
+                return NetResponse.errorInfo(code,message);
+            case NetConstants.NetStatusCode.CODE_NO_NET:
+                return NetResponse.errorInfo(code,message);
+            case NetConstants.NetStatusCode.CODE_NO_READ:
+            default:
+                return NetResponse.errorInfo(code,message);
+        }
     }
 }

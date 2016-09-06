@@ -1,6 +1,6 @@
-package com.frame.fastframelibrary.net.core.base;
+package com.frame.fastframelibrary.net.core.bean;
 
-import com.frame.fastframelibrary.net.core.NetUtils;
+import com.frame.fastframelibrary.net.core.NetDataServerUtils;
 import com.frame.fastframelibrary.net.core.annotation.NoRequestArgs;
 import com.frame.fastframelibrary.net.core.annotation.RequestArgs;
 import com.frame.fastframelibrary.net.core.config.NetConstants;
@@ -9,6 +9,9 @@ import java.util.HashMap;
 
 public class BasicRequest {
 
+	@RequestArgs("method")
+	private String methodName;
+
 	@NoRequestArgs
 	private String mUrlAddr;
 
@@ -16,12 +19,13 @@ public class BasicRequest {
 	@NoRequestArgs
 	private int mMethod;
 
-	@RequestArgs("method")
-	private String methodName;
+	@NoRequestArgs
+	private int requestCode;
 
 	/** True if this response was a soft-expired one and a second one MAY be coming. */
 	@NetConstants.LoadingType
-	public int loadType = NetConstants.LoadingType.LOADING_NORMAL;
+	@NoRequestArgs
+	private int loadType = NetConstants.LoadingType.LOADING_NORMAL;
 
 	public BasicRequest(){
 		this.mUrlAddr = NetConstants.API_BASE_URL;
@@ -42,12 +46,29 @@ public class BasicRequest {
 		this.methodName = methodName;
 	}
 
-	public int obtainMethod() {
+	public void setLoadType(int loadType) {
+		this.loadType = loadType;
+	}
+
+	public void setRequestCode(int requestCode) {
+		this.requestCode = requestCode;
+	}
+
+	public int getMethod() {
 		return mMethod;
 	}
 
-	public String obtainUrlAddr() {
+	public String getUrlAddr() {
 		return mUrlAddr;
+	}
+
+	@NetConstants.LoadingType
+	public int getLoadType() {
+		return loadType;
+	}
+
+	public int getRequestCode() {
+		return requestCode;
 	}
 
 	public String toJson() {
@@ -55,15 +76,14 @@ public class BasicRequest {
 	}
 	
 	public HashMap<String, String> obtainPostData() {
-		HashMap<String, String> res = NetUtils.getParams();
-		res.putAll(NetUtils.getFieldsMap(this));
-		//res.put("method", methodName);
-		res = NetUtils.encodeReqParams(res,NetConstants.APP_SECRET);
+		HashMap<String, String> res = NetDataServerUtils.getParams();
+		res.putAll(NetDataServerUtils.getFieldsMap(this));
+		res = NetDataServerUtils.encodeReqParams(res,NetConstants.APP_SECRET);
 		return res;
 	}
 	
 	public HashMap<String, String> obtainHeader() {
-		HashMap<String, String> headers = NetUtils.getNetHeader();
+		HashMap<String, String> headers = NetDataServerUtils.getNetHeader();
 		return headers;
 	}
 }

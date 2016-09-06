@@ -1,6 +1,6 @@
 package earlll.com.testdemoall.module.testnetframe.request;
 
-import com.frame.fastframelibrary.net.core.base.BasicRequest;
+import com.frame.fastframelibrary.net.core.bean.BasicRequest;
 import com.frame.fastframelibrary.net.core.config.NetConstants;
 
 public class TestRequest extends BasicRequest {

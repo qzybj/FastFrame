@@ -1,6 +1,5 @@
 package com.frame.fastframelibrary.net.core.bean;
 
-
 import com.frame.fastframelibrary.net.core.interfaces.IErrorInfo;
 import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
@@ -13,17 +12,17 @@ public class NetResponse<T> implements Serializable {
 
     private static final long serialVersionUID = -3440061414071692254L;
 
+    @SerializedName("code")
+    private int code = 0;
+    @SerializedName("message")
+    private String message=null;
+
     /** Parsed response, or null in the case of error. */
     @SerializedName("data")
     public  T result;
 
     /** Detailed error information if <code>errorCode != OK</code>. */
     public IErrorInfo error;
-
-    @SerializedName("code")
-    private int code = 0;
-    @SerializedName("message")
-    private String message=null;
 
     private NetResponse(T result) {
         this.result = result;
@@ -51,26 +50,16 @@ public class NetResponse<T> implements Serializable {
     public static  IErrorInfo errorInfo(int errorCode,String message) {
         return new ErrorInfo(errorCode,message);
     }
-    public IErrorInfo errorInfo() {
-        return new ErrorInfo(code,message);
-    }
 
-
-    /**
-     * Returns whether this response is considered successful.
-     */
+    /** Returns whether this response is considered successful.*/
     public boolean isSuccess() {
         return error == null;
     }
 
-    /** Callback interface for delivering parsed responses. */
+    /** Callback interface for delivering parsed、error responses. */
     public interface Listener<T> {
         /** Called when a response is received. */
         void onResponse(T response);
-    }
-
-    /** Callback interface for delivering error responses. */
-    public interface ErrorListener {
         /**
          * Callback method that an error has been occurred with the
          * provided error code and optional user-readable message.

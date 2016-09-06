@@ -33,7 +33,7 @@ import com.google.gson.JsonSyntaxException;
 
 /**
  * MultipartRequest - To handle the large file uploads.
- * Extended from JSONRequest. You might want to change to StringRequest based on your response type.
+ * Extended from JSONRequest. You might want to change to StringRequestC based on your response type.
  */
 public class MultiPartGsonRequest<T> extends Request<T> implements MultiPartRequest {
 
