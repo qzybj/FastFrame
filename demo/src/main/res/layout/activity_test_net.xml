@@ -21,6 +21,15 @@
         android:layout_below="@id/tv_click"
         android:text="requestall"
         android:textColor="@android:color/white"/>
+    <TextView
+        android:id="@+id/tv_clicksync"
+        style="@style/style_text_common"
+        android:background="@android:color/darker_gray"
+        android:padding="15dp"
+        android:layout_margin="10dp"
+        android:layout_below="@id/tv_clickall"
+        android:text="requestsync"
+        android:textColor="@android:color/white"/>
 
     <TextView
         android:id="@+id/tv_log"

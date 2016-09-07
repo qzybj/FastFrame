@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 24
@@ -18,7 +19,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
+
 repositories {
     flatDir {
         dirs 'libs'
@@ -31,6 +37,12 @@ dependencies {
     compile project(':fastlibrary')
     //view bind
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
+
+    compile 'com.google.dagger:dagger:2.6.1'
+    apt 'com.google.dagger:dagger-compiler:2.6.1'
+
+    //retrolambda:support java5、6、7 by lambda
+    retrolambdaConfig 'net.orfjackal.retrolambda:retrolambda:2.1.0'
 
     //a easy adapter for recycleview
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.9.2'

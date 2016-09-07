@@ -4,7 +4,6 @@ import com.frame.fastframelibrary.FastApplication;
 import com.frame.fastframelibrary.aosp.volley.VolleyProcess;
 import com.frame.fastframelibrary.net.core.bean.BasicRequest;
 import com.frame.fastframelibrary.net.core.bean.NetResponse;
-import com.frame.fastframelibrary.net.core.bean.ResultBean;
 import com.frame.fastframelibrary.net.core.bean.TagBean;
 import com.frame.fastframelibrary.net.core.config.NetConstants;
 import com.frame.fastframelibrary.net.core.interfaces.IErrorInfo;
@@ -31,7 +30,7 @@ public class NetDataServer {
 		}
 		return mDataServer;
 	}
-	public  <T extends ResultBean> void request(BasicRequest req, Class<T> cls, IRequestListener listener) {
+	public  <T> void request(BasicRequest req, Class<T> cls, IRequestListener listener) {
 		TagBean tag  = new TagBean(req);
 		startRequest(tag);
 		if (!NetUtils.isNetConnected(FastApplication.instance())) {
@@ -41,7 +40,7 @@ public class NetDataServer {
 		requestData(req,cls,listener,tag);
 	}
 
-	private  <T extends ResultBean> void requestData(BasicRequest req, Class<T> cls,final IRequestListener listener, final TagBean tag) {
+	private  <T> void requestData(BasicRequest req, Class<T> cls,final IRequestListener listener, final TagBean tag) {
 		try {
 			VolleyProcess.instance().request4Gson(req.getMethod(),req.getUrlAddr(),req.obtainHeader(),
 					req.obtainPostData(),cls,DEFAULT_REQUEST_TAG,

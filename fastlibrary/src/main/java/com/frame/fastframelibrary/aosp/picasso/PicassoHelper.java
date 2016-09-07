@@ -79,6 +79,7 @@ public class PicassoHelper implements ILoadImage {
         }
     }
 
+
     @Override
     public  boolean isSupportImageUrlType(Object imageUrl){
         if(imageUrl instanceof String){

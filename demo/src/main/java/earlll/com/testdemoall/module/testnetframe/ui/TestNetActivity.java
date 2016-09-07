@@ -1,8 +1,16 @@
 package earlll.com.testdemoall.module.testnetframe.ui;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import com.android.volley.toolbox.RequestFuture;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.frame.fastframelibrary.aosp.volley.VolleyProcess;
 import com.frame.fastframelibrary.net.core.NetDataServer;
 import com.frame.fastframelibrary.net.core.config.NetConstants;
 import com.frame.fastframelibrary.net.core.interfaces.IErrorInfo;
@@ -10,9 +18,16 @@ import com.frame.fastframelibrary.net.core.interfaces.IRequestListener;
 import com.frame.fastframelibrary.utils.LogUtils;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 import com.frame.fastframelibrary.utils.view.TextViewUtils;
+
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+
 import butterknife.BindView;
 import butterknife.OnClick;
+import earlll.com.testdemoall.MainActivity;
 import earlll.com.testdemoall.R;
+import earlll.com.testdemoall.core.config.DemoConstants;
 import earlll.com.testdemoall.core.ui.base.BaseActivity;
 import earlll.com.testdemoall.module.testnetframe.bean.UserinfoBean;
 import earlll.com.testdemoall.module.testnetframe.net.load.NetProgressLoad;
@@ -45,11 +60,14 @@ public class TestNetActivity extends BaseActivity implements IRequestListener {
     public void initData(Bundle savedInstanceState) {}
 
     @Override
-    @OnClick({R.id.tv_click,R.id.tv_clickall})
+    @OnClick({R.id.tv_click,R.id.tv_clickall,R.id.tv_clicksync})
     protected void clickEvent(View v) {
         switch(v.getId()){
             case R.id.tv_click:
                 request();
+                break;
+            case R.id.tv_clicksync:
+                new Thread(() -> {requestSync();}).start();
                 break;
             case R.id.tv_clickall:
                 request();
@@ -59,6 +77,33 @@ public class TestNetActivity extends BaseActivity implements IRequestListener {
                 break;
             default:
                 super.clickEvent(v);
+                break;
+        }
+    }
+
+    private void requestSync() {
+        RequestFuture future = RequestFuture.newFuture();
+        StringRequest request = new StringRequest("http://vjson.com", future, future);
+        VolleyProcess.instance().addRequest(request);
+        try {
+            String result = (String)future.get();
+            future.get(3000, TimeUnit.MILLISECONDS);
+            sendMessage(1111,result);
+            Log.d(MainActivity.class.getSimpleName(), result);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+        }catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void baseHandleMessage(Message msg) {
+        switch (msg.what) {
+            case 1111:
+                TextViewUtils.setTextViewValue(tv_log,msg.obj.toString());
                 break;
         }
     }

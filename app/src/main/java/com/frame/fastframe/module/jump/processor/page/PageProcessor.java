@@ -3,6 +3,8 @@ package com.frame.fastframe.module.jump.processor.page;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+
+import com.frame.fastframe.module.common.constant.ConstantsKey;
 import com.frame.fastframe.module.jump.JumpCtrler;
 import com.frame.fastframe.module.jump.JumpDispatcher;
 import com.frame.fastframe.module.jump.JumpType;
@@ -13,7 +15,6 @@ import com.frame.fastframe.module.jump.interfaces.IJumpProcessor;
 import com.frame.fastframe.module.previewimage.ui.PreviewImagesActivity;
 import com.frame.fastframe.module.product.ui.ProductListActivity;
 import com.frame.fastframe.module.search.ui.SearchActivity;
-import com.frame.fastframelibrary.config.ConstantsKey;
 import com.frame.fastframelibrary.utils.dataprocess.MapUtils;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 import java.util.ArrayList;

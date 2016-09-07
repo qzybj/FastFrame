@@ -3,8 +3,8 @@ package com.frame.fastframe.utils;
 import android.content.Context;
 import android.content.Intent;
 import com.frame.fastframe.R;
+import com.frame.fastframe.module.common.constant.ConstantsKey;
 import com.frame.fastframe.module.html5.ui.base.BaseWebViewActivity;
-import com.frame.fastframelibrary.config.ConstantsKey;
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 import com.frame.fastframelibrary.utils.view.WebViewUtil;
 

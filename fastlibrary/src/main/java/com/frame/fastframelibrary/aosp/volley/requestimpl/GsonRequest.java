@@ -15,6 +15,7 @@
  */
 
 package com.frame.fastframelibrary.aosp.volley.requestimpl;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
@@ -25,10 +26,9 @@ import com.android.volley.Response.Listener;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.frame.fastframelibrary.net.core.bean.NetResponse;
-import com.frame.fastframelibrary.net.core.bean.ResultBean;
+import com.frame.fastframelibrary.utils.json.GsonUtils;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import com.google.gson.internal.$Gson$Types;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.UnsupportedEncodingException;
@@ -43,7 +43,7 @@ import java.util.Map;
  * @author Mani Selvaraj
  */
 
-public  class GsonRequest<T extends ResultBean> extends Request<T>{
+public  class GsonRequest<T> extends Request<T>{
 
     /** Charset for request. */
     private static final String PROTOCOL_CHARSET = "utf-8";
@@ -100,8 +100,8 @@ public  class GsonRequest<T extends ResultBean> extends Request<T>{
     protected Response<T> parseNetworkResponse(NetworkResponse response) {
         try {
             String jsonString = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
-            Type type = mJavaClass.newInstance().getType();//new TypeToken<NetResponse<T>>() {}.getType()
-            NetResponse<T> parsedParentGSON = mGson.fromJson(jsonString,type);
+            Type type = TypeToken.get(mJavaClass).getType();
+            NetResponse<T> parsedParentGSON = mGson.fromJson(jsonString, GsonUtils.getType(NetResponse.class,type));
             return Response.success(parsedParentGSON.result,HttpHeaderParser.parseCacheHeaders(response));
         } catch (UnsupportedEncodingException e) {
             return Response.error(new ParseError(e));
@@ -110,8 +110,8 @@ public  class GsonRequest<T extends ResultBean> extends Request<T>{
         } catch (Exception e) {
             return Response.error(new ParseError(e));
         }
-
     }
+
 
     @Override
     public String getBodyContentType() {

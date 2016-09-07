@@ -8,6 +8,7 @@ import com.frame.fastframelibrary.utils.test.TestDataBuilder;
 import java.util.ArrayList;
 import earlll.com.testdemoall.module.demo.bean.SingleTypeBean;
 import earlll.com.testdemoall.module.demo.bean.TestBean;
+import earlll.com.testdemoall.module.dragger2.ui.DraggerActivity;
 
 
 public class TestData4Demo {
@@ -51,6 +52,8 @@ public class TestData4Demo {
         return list;
     }
 
+
+
     public static TestBean getTestBean(String describe, String targetActivity) {
         return getTestBean(describe,targetActivity,null);
     }
@@ -63,5 +66,52 @@ public class TestData4Demo {
         bean.setImageurl(imageUrls[RandomUtils.getRandom(imageUrls.length-1)]);
         bean.setArgs(bundle);
         return bean;
+    }
+
+    public static TestBeanImpl build(Class cls, String describe, Bundle args) {
+        return new TestBeanImpl(cls,describe,args);
+    }
+    public static TestBean getTestBean(ITestBean testBeanImpl) {
+        String describe = testBeanImpl.getDescribe()+" 示例 - "+testBeanImpl.getTargetClass().getSimpleName();
+        TestBean bean = new TestBean();
+        bean.setName(describe);
+        bean.setText(testBeanImpl.getTargetClass().getName());
+        bean.setDate("2016-8-1");
+        bean.setImageurl(imageUrls[RandomUtils.getRandom(imageUrls.length-1)]);
+        bean.setArgs(bean.getArgs());
+        return bean;
+    }
+
+    public interface ITestBean{
+        Class getTargetClass();
+        String getDescribe();
+        Bundle getArgs();
+    }
+
+    public static class TestBeanImpl implements ITestBean{
+        private Class cls;
+        private String describe;
+        private Bundle args;
+
+        public TestBeanImpl(Class cls, String describe, Bundle args) {
+            this.cls = cls;
+            this.describe = describe;
+            this.args = args;
+        }
+
+        @Override
+        public Class getTargetClass() {
+            return cls;
+        }
+
+        @Override
+        public String getDescribe() {
+            return describe;
+        }
+
+        @Override
+        public Bundle getArgs() {
+            return args;
+        }
     }
 }

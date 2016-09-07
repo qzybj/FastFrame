@@ -1,6 +1,7 @@
 package com.frame.fastframelibrary.aosp.volley;
 
 import android.net.Uri;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
 import com.android.volley.ParseError;
@@ -16,15 +17,12 @@ import com.frame.fastframelibrary.aosp.volley.requestimpl.GsonRequest;
 import com.frame.fastframelibrary.aosp.volley.requestimpl.StringRequestC;
 import com.frame.fastframelibrary.net.core.NetDataServerUtils;
 import com.frame.fastframelibrary.net.core.bean.NetResponse;
-import com.frame.fastframelibrary.net.core.bean.ResultBean;
 import com.frame.fastframelibrary.net.core.config.NetConstants;
 import com.frame.fastframelibrary.net.core.interfaces.IErrorInfo;
 import com.frame.fastframelibrary.net.core.interfaces.INetProcess;
-import com.frame.fastframelibrary.net.core.interfaces.IResultBean;
 import com.frame.fastframelibrary.utils.LogUtils;
 import com.frame.fastframelibrary.utils.dataprocess.MapUtils;
 
-import java.lang.reflect.Type;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -75,7 +73,7 @@ public class VolleyProcess implements INetProcess{
 	 * @param listener   		请求成功、失败回调监听
 	 */
 	@Override
-	public <T extends ResultBean> void request4Gson(int method, String url, Map<String, String> headers, Map<String, String> params,
+	public <T> void request4Gson(int method, String url, Map<String, String> headers, Map<String, String> params,
 													Class<T> cls, Object tag, final NetResponse.Listener<T> listener) {
 		int methodTmp = getMethod(method);
 		String requestUrl = methodTmp==Request.Method.GET?getUrl(url,params):url;
@@ -166,8 +164,14 @@ public class VolleyProcess implements INetProcess{
 		getRequestQueue().add(request);
 		startQueue();
 	}
+	public void addRequest(Request request){
+		request.setTag(1);
+		getRequestQueue().add(request);
+		startQueue();
+	}
 
-	/**开始任务队列*/
+
+		/**开始任务队列*/
 	private void startQueue(){
 		getRequestQueue().start();
 	}

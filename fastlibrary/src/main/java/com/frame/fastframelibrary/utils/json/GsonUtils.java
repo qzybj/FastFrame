@@ -8,6 +8,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -69,5 +71,21 @@ public class GsonUtils {
 			return mList;
 		}
 		return null;
+	}
+
+	public static ParameterizedType getType(final Class raw, final Type... args) {
+		return new ParameterizedType() {
+			public Type getRawType() {
+				return raw;
+			}
+
+			public Type[] getActualTypeArguments() {
+				return args;
+			}
+
+			public Type getOwnerType() {
+				return null;
+			}
+		};
 	}
 }

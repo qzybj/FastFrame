@@ -1,15 +1,11 @@
 package earlll.com.testdemoall.module.testnetframe.bean;
 
-import com.frame.fastframelibrary.net.core.bean.NetResponse;
-import com.frame.fastframelibrary.net.core.bean.ResultBean;
 import com.google.gson.annotations.SerializedName;
-import com.google.gson.reflect.TypeToken;
-import java.lang.reflect.Type;
 
 /**
  * Created by tongdesheng on 16/1/8.
  */
-public class UserinfoBean extends ResultBean {
+public class UserinfoBean {
 
     @SerializedName("user_code")
     public String userCode;
@@ -47,10 +43,5 @@ public class UserinfoBean extends ResultBean {
                 ", userToken='" + userToken + '\'' +
                 ", imToken='" + imToken + '\'' +
                 '}';
-    }
-
-    @Override
-    public Type getType() {
-        return new TypeToken<NetResponse<UserinfoBean>>() {}.getType();
     }
 }

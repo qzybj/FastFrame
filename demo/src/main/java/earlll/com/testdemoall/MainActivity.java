@@ -24,6 +24,7 @@ import earlll.com.testdemoall.module.demo.bean.TestBean;
 import earlll.com.testdemoall.core.ui.base.BaseActivity;
 import earlll.com.testdemoall.core.utils.TestData4Demo;
 import earlll.com.testdemoall.module.demo.ui.TestDataSimpleActivity;
+import earlll.com.testdemoall.module.dragger2.ui.DraggerActivity;
 import earlll.com.testdemoall.module.testnetframe.ui.TestNetActivity;
 import earlll.com.testdemoall.module.viewdemo.ui.SimpleLayoutActivity;
 import earlll.com.testdemoall.module.webviewdemo.ui.InterceptUrlActivity;
@@ -99,6 +100,7 @@ public class MainActivity extends BaseActivity {
 
     public static ArrayList<TestBean> getShowBeanList() {
         ArrayList<TestBean> list = new ArrayList<>();
+        list.add(TestData4Demo.getTestBean(TestData4Demo.build(DraggerActivity.class,"测试Dragger2",null)));
 //        list.add(TestData4Demo.getTestBean("示例 - 单个item展示",SimpleBaseAdapterActivity.class.getName()));
 //        list.add(TestData4Demo.getTestBean("示例 - 横向ListView",SimpleHorizontalListViewActivity.class.getName()));
 //        list.add(TestData4Demo.getTestBean("示例 - fragment使用示例",SimpleFragmentActivity.class.getName()));

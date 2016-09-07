@@ -3,7 +3,6 @@ package com.frame.fastframelibrary.module.loadimage;
 import android.content.Context;
 import android.widget.ImageView;
 import com.frame.fastframelibrary.FastApplication;
-import com.frame.fastframelibrary.aosp.picasso.PicassoHelper;
 import com.frame.fastframelibrary.module.loadimage.exception.LoadImageException;
 import com.frame.fastframelibrary.module.loadimage.interfaces.ILoadImage;
 import com.frame.fastframelibrary.module.loadimage.interfaces.ILoadImageCallback;
@@ -14,20 +13,21 @@ import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
  * 图片加载统一控制类
  */
 public class LoadImageManager{
-    enum LoadMode{
-        Picasso
-    }
+
     private boolean isDebug = false;
-    private LoadMode curLoadMode = null;
     private static LoadImageManager instance = null;
     private static ILoadImage loadImageInstance = null;
 
-    private LoadImageManager() {
-        loadImageInstance = new PicassoHelper();
-        curLoadMode = LoadMode.Picasso;
+    private LoadImageManager() {}
+
+    public static void init(ILoadImage loadImageImpl) {
+        loadImageInstance = loadImageImpl;
     }
 
     public synchronized static LoadImageManager instance() {
+        if(loadImageInstance==null){
+            throw new LoadImageException("Is't init.");
+        }
         if (instance==null) {
             instance = new LoadImageManager();
         }
@@ -39,10 +39,6 @@ public class LoadImageManager{
 
     public void setDebug(boolean debug) {
         isDebug = debug;
-    }
-
-    public LoadMode getLoadMode(){
-        return curLoadMode;
     }
 
     public void loadImage(ImageView iv, Object imageUrl)  {
