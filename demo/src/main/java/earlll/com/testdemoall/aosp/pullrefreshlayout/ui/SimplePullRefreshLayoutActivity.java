@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import butterknife.BindView;
 import earlll.com.testdemoall.R;
-import earlll.com.testdemoall.core.utils.TestData4Demo;
+import earlll.com.testdemoall.module.dataserver.TestData4Demo;
 import earlll.com.testdemoall.module.demo.bean.TestBean;
 import earlll.com.testdemoall.core.ui.base.BaseActivity;
 
@@ -81,9 +81,9 @@ public class SimplePullRefreshLayoutActivity extends BaseActivity {
                 protected void convert(BaseAdapterHelper helper, final TestBean data) {
                     helper.setText(R.id.tv_title, data.getName());
                     helper.setText(R.id.tv_content, data.getText().substring(data.getText().lastIndexOf(".")+1));
-                    helper.setVisible(R.id.iv_icon_show,false);
-                    helper.setVisible(R.id.tweetDate,false);
-                    helper.setVisible(R.id.tv_right_date,false);
+                    helper.setVisible(R.id.iv_icon,false);
+                    helper.setVisible(R.id.tv_date,false);
+                    helper.setVisible(R.id.iv_right,false);
 //                    helper.setOnClickListener(R.id.layout,
 //                            new View.OnClickListener() {
 //                                @Override
@@ -93,7 +93,7 @@ public class SimplePullRefreshLayoutActivity extends BaseActivity {
 //                            });
                     //helper.setRootVisible(R.id.tweetRT, data.isShowFlag());
                     //helper.setText(R.id.tweetDate, data.getDate());
-                    //helper.setImageUrl(R.id.tweetAvatar, data.getImageurl());
+                    //helper.setImageUrl(R.id.tweetAvatar, data.getImageUrl());
                     //helper.linkify(R.id.tweetText);
                 }
             };

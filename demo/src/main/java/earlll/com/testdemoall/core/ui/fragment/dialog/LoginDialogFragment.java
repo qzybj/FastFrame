@@ -8,14 +8,12 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
-
 import com.frame.fastframelibrary.utils.view.TextViewUtils;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import earlll.com.testdemoall.R;
 import earlll.com.testdemoall.module.demo.bean.LoginBean;
-import earlll.com.testdemoall.core.ui.fragment.interfaces.IFragmentDataPass;
+import earlll.com.testdemoall.core.ui.fragment.interfaces.ISendData;
 
 
 /**
@@ -45,12 +43,12 @@ public class LoginDialogFragment extends DialogFragment {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int id) {
-                                if (getActivity() instanceof IFragmentDataPass) {
-                                    IFragmentDataPass listener = (IFragmentDataPass) getActivity();
+                                if (getActivity() instanceof ISendData) {
+                                    ISendData listener = (ISendData) getActivity();
                                     LoginBean bean = new LoginBean();
                                     bean.setUserName(TextViewUtils.getTextViewValue(tv_userName));
                                     bean.setPassWord(TextViewUtils.getTextViewValue(tv_password));
-                                    listener.receiveFragmentSendData(getTag(),bean);
+                                    listener.receive(getTag(),bean);
                                 }
                             }
                         })

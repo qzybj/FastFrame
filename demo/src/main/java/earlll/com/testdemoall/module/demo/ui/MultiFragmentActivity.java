@@ -15,14 +15,14 @@ import com.frame.fastframelibrary.utils.dataprocess.ListUtils;
 import butterknife.BindView;
 import earlll.com.testdemoall.R;
 import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.adapter.QuickAdapter;
-import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.utils.DataServer;
+import earlll.com.testdemoall.module.dataserver.DataServer;
 import earlll.com.testdemoall.module.demo.bean.LoginBean;
 import earlll.com.testdemoall.core.ui.base.BaseFragmentActivity;
 import earlll.com.testdemoall.module.demo.ui.fragment.HomeTopFragment;
-import earlll.com.testdemoall.core.ui.fragment.interfaces.IFragmentDataPass;
+import earlll.com.testdemoall.core.ui.fragment.interfaces.ISendData;
 
 
-public class MultiFragmentActivity extends BaseFragmentActivity implements IFragmentDataPass,
+public class MultiFragmentActivity extends BaseFragmentActivity implements ISendData,
         BaseQuickAdapter.RequestLoadMoreListener, SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.recyclerview)
@@ -124,7 +124,7 @@ public class MultiFragmentActivity extends BaseFragmentActivity implements IFrag
         }
     }
     @Override
-    public void receiveFragmentSendData(String tag, Object obj) {
+    public void receive(String tag, Object obj) {
         if(obj instanceof LoginBean){
             LoginBean bean= (LoginBean)obj;
             showToast(bean.getUserName()+bean.getPassWord());

@@ -15,7 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import earlll.com.testdemoall.R;
-import earlll.com.testdemoall.core.ui.fragment.interfaces.ITabBottomBarClickListener;
+import earlll.com.testdemoall.core.ui.fragment.interfaces.ITabBarClickListener;
 import earlll.com.testdemoall.core.ui.fragment.interfaces.ITabItem;
 
 
@@ -88,9 +88,9 @@ public class HomeTopFragment extends Fragment implements View.OnClickListener {
                 tvFuncareaManagegoods.setText(tvFuncareaConsult.getText()+"4");
                 break;
             default:
-                if (getActivity() instanceof ITabBottomBarClickListener) {//将点击事件传递到主界面处理
-                    ITabBottomBarClickListener listener = (ITabBottomBarClickListener) getActivity();
-                    listener.onTabBottomBarClick(view);
+                if (getActivity() instanceof ITabBarClickListener) {//将点击事件传递到主界面处理
+                    ITabBarClickListener listener = (ITabBarClickListener) getActivity();
+                    listener.onTabClick(view);
                 }
                 break;
         }

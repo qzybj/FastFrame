@@ -18,10 +18,10 @@ public class SingleTypeAdapter extends QuickAdapter<SingleTypeBean> {
     @Override
     protected void convert(BaseAdapterHelper helper, SingleTypeBean item){
         helper.setText(R.id.tv_content, item.getDesc());
-        helper.setVisible(R.id.tv_right_date, false);
+        helper.setVisible(R.id.iv_right, false);
         helper.setText(R.id.tv_title, item.getTitle());
-        helper.setText(R.id.tweetDate, item.getTime());
-        //helper.setImageUrl(R.id.tweetAvatar, data.getImageurl());
+        helper.setText(R.id.tv_date, item.getTime());
+        //helper.setImageUrl(R.id.tweetAvatar, data.getImageUrl());
         helper.linkify(R.id.tv_content);
     }
 }

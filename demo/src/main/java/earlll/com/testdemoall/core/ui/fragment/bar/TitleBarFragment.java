@@ -160,6 +160,7 @@ public class TitleBarFragment extends Fragment {
         if (tv_right != null && drawableResid > 0) {
             Drawable drawable = getResources().getDrawable(drawableResid);
             if (drawable != null) {
+                setRightVisibility(true);
                 TextViewUtils.setTextViewDrawable(tv_right, drawable, padding);
             }
         }

@@ -7,16 +7,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
-import com.frame.fastframelibrary.utils.jump.JumpUtils;
+import com.frame.fastframelibrary.utils.jump.JumpBaseUtils;
 import com.frame.fastframelibrary.utils.view.ViewUtils;
 
-import brady.com.appframe.R;
 import brady.com.appframe.common.ui.fragment.bar.TitleBarFragment;
 import brady.com.appframe.common.ui.fragment.dialog.AlertDialogFragment;
 import brady.com.appframe.common.ui.fragment.interfaces.ITitleBarClickListener;
+import brady.com.appframe.common.utils.JumpUtils;
 import brady.com.appframe.common.utils.UserManager;
 import brady.com.appframe.config.Constants;
-import butterknife.OnClick;
 
 
 /**
@@ -209,12 +208,11 @@ public abstract class  BaseActivity extends AbstractBaseActivity implements ITit
 
 	/**
 	 *
-	 * @param describe
-	 * @param targetActivityName
+	 * @param cls
+	 * @param title
+	 * @param args
      */
-	protected void goActivity(String describe,String targetActivityName){
-		JumpUtils.goActivity(this, JumpUtils.getJumpBean(describe,targetActivityName));
+	protected void goActivity(Class cls,String title,Bundle args){
+		JumpBaseUtils.goActivity(this, JumpUtils.getJumpBean(cls,title,args));
 	}
-
-
 }

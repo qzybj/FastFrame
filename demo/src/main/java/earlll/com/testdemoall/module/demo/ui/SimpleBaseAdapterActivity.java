@@ -14,7 +14,7 @@ import java.util.List;
 import butterknife.BindView;
 import earlll.com.testdemoall.R;
 import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.entity.Status;
-import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.utils.DataServer;
+import earlll.com.testdemoall.module.dataserver.DataServer;
 import earlll.com.testdemoall.module.demo.ui.adapter.SimpleBaseAdapter;
 import earlll.com.testdemoall.core.ui.base.BaseListViewActivity;
 

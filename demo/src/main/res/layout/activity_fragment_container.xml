@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
+    style="@style/style_common_matchparent">
+
+    <fragment
+        android:id="@+id/fragment_title"
+        android:name="earlll.com.testdemoall.core.ui.fragment.bar.TitleBarFragment"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentTop="true" />
+
+    <fragment
+        android:id="@+id/fragment_tabbar"
+        android:name="earlll.com.testdemoall.core.ui.fragment.bar.TabBarFragment"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true" />
+
+    <FrameLayout
+        android:id="@+id/fragment_content"
+        style="@style/style_common_matchparent"
+        android:layout_above="@id/fragment_tabbar"
+        android:layout_below="@id/fragment_title" />
+</RelativeLayout>

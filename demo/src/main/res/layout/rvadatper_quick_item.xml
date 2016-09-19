@@ -20,7 +20,7 @@
         android:padding="10dp">
 
         <ImageView
-            android:id="@+id/tweetAvatar"
+            android:id="@+id/iv_icon"
             android:layout_width="@dimen/avatarSize"
             android:layout_height="@dimen/avatarSize"
             android:layout_alignParentLeft="true"
@@ -29,33 +29,33 @@
             android:src="@mipmap/def_head" />
 
         <ImageView
-            android:id="@+id/tweetRT"
+            android:id="@+id/iv_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/tweetDate"
-            android:layout_toLeftOf="@+id/tweetDate"
+            android:layout_alignBottom="@+id/tv_date"
+            android:layout_toLeftOf="@+id/tv_date"
             android:src="@mipmap/ic_launcher" />
 
         <TextView
-            android:id="@+id/tweetName"
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
-            android:layout_toRightOf="@+id/tweetAvatar"
+            android:layout_toRightOf="@+id/iv_icon"
             android:text="Chad" />
 
         <TextView
-            android:id="@+id/tweetText"
+            android:id="@+id/tv_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tweetName"
+            android:layout_below="@+id/tv_title"
             android:layout_marginTop="5dp"
-            android:layout_toRightOf="@+id/tweetAvatar"
+            android:layout_toRightOf="@+id/iv_icon"
             android:text="Hello world!"
             android:textColor="@android:color/darker_gray" />
 
         <TextView
-            android:id="@+id/tweetDate"
+            android:id="@+id/tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

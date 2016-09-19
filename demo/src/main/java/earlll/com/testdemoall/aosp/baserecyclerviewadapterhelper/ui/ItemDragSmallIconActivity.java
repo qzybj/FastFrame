@@ -22,7 +22,7 @@ import com.squareup.picasso.Target;
 import java.util.ArrayList;
 import java.util.List;
 import earlll.com.testdemoall.R;
-import earlll.com.testdemoall.core.utils.TestData4Demo;
+import earlll.com.testdemoall.module.dataserver.TestData4Demo;
 import earlll.com.testdemoall.module.demo.bean.TestBean;
 import com.frame.fastframelibrary.module.loadimage.LoadImageManager;
 

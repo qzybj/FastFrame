@@ -15,14 +15,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import earlll.com.testdemoall.R;
-import earlll.com.testdemoall.core.ui.fragment.interfaces.ITabBottomBarClickListener;
+import earlll.com.testdemoall.core.ui.fragment.interfaces.ITabBarClickListener;
 import earlll.com.testdemoall.core.ui.fragment.interfaces.ITabItem;
 import com.frame.fastframelibrary.module.loadimage.LoadImageManager;
 
 
 /**
  * Created by ZhangYuanBo on 2016/5/27.
- * TabBottomBar 模块：底部页面选择栏的实现，该方法为布局写死实现的
+ * TabBottomBar 模块：底部页面选择栏的实现，该方法为布局实现，非动态的。
  */
 public class TabBottomBarFragment extends Fragment {
 
@@ -47,9 +47,9 @@ public class TabBottomBarFragment extends Fragment {
 
     @OnClick({R.id.tab_bottom_layout_home, R.id.tab_bottom_layout_biz, R.id.tab_bottom_layout_bbs, R.id.tab_bottom_layout_article, R.id.tab_bottom_layout_more})
     public void onClick(View view) {//将点击事件传递到主界面处理
-        if (getActivity() instanceof ITabBottomBarClickListener) {
-            ITabBottomBarClickListener listener = (ITabBottomBarClickListener) getActivity();
-            listener.onTabBottomBarClick(view);
+        if (getActivity() instanceof ITabBarClickListener) {
+            ITabBarClickListener listener = (ITabBarClickListener) getActivity();
+            listener.onTabClick(view);
         }
     }
 

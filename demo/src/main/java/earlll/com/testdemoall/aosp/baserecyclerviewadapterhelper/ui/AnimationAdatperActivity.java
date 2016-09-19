@@ -43,10 +43,10 @@ public class AnimationAdatperActivity extends Activity {
                         String content = null;
                         Status status = (Status) adapter.getItem(position);
                         switch (view.getId()) {
-                            case R.id.tweetAvatar:
+                            case R.id.iv_icon:
                                 content = "img:" + status.getUserAvatar();
                                 break;
-                            case R.id.tweetName:
+                            case R.id.tv_title:
                                 content = "name:" + status.getUserName();
                                 break;
                         }

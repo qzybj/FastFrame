@@ -61,4 +61,5 @@ dependencies {
     compile 'com.baoyz.pullrefreshlayout:library:1.2.0'
     //recycleview plus
     compile(name:'xrecyclerview-release1.2.8', ext:'aar')//compile 'com.jcodecraeer:xrecyclerview:1.2.7'
+
 }

@@ -17,19 +17,19 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import earlll.com.testdemoall.R;
-import earlll.com.testdemoall.core.ui.fragment.interfaces.ITabBottomBarClickListener;
+import earlll.com.testdemoall.core.ui.fragment.interfaces.ITabBarClickListener;
 import earlll.com.testdemoall.core.ui.fragment.interfaces.ITabItem;
 import com.frame.fastframelibrary.module.loadimage.LoadImageManager;
 
 
 /**
  * Created by ZhangYuanBo on 2016/5/27.<br/>
- * TabBottomBar 模块：底部页面选择栏的实现(该Fragment为动态实现的)<br/>
+ * TabBottomBar 模块：底部页面选择栏的实现(该Fragment为动态实现TabItem的)<br/>
  * 集成的activity要实现tabBottomBarClickListener接口，接收点击处理回调<br/>
  */
-public class DynamicTabBottomBarFragment extends Fragment implements View.OnClickListener {
+public class TabBarFragment extends Fragment implements View.OnClickListener {
 
-    public static final int BASE_TAB_BOTTOM_ID = 31000;
+    public static final int ID_TAB_BASECODE = 31000;
 
     @BindView(R.id.tab_bottom_container)
     LinearLayout tabLayout_container;
@@ -75,7 +75,7 @@ public class DynamicTabBottomBarFragment extends Fragment implements View.OnClic
         if (view != null && tabItem != null) {
             view.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT,1));
             view.setOnClickListener(this);
-            view.setId(BASE_TAB_BOTTOM_ID + viewId);
+            view.setId(ID_TAB_BASECODE + viewId);
             LoadImageManager.instance().loadImage((ImageView) view.findViewById(R.id.tab_item_iv), tabItem.getImageResId());
             TextViewUtils.setTextViewValue((TextView) view.findViewById(R.id.tab_item_tv), tabItem.getText());
         }
@@ -100,9 +100,9 @@ public class DynamicTabBottomBarFragment extends Fragment implements View.OnClic
         }
         setSelectTabView(view,true);
         lastSelectViewId = view.getId();
-        if (getActivity() instanceof ITabBottomBarClickListener) {//将点击事件传递到主界面处理
-            ITabBottomBarClickListener listener = (ITabBottomBarClickListener) getActivity();
-            listener.onTabBottomBarClick(view);
+        if (getActivity() instanceof ITabBarClickListener) {//将点击事件传递到主界面处理
+            ITabBarClickListener listener = (ITabBarClickListener) getActivity();
+            listener.onTabClick(view);
         }
     }
 }

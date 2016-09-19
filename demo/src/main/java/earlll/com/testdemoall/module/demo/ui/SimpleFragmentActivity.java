@@ -8,28 +8,28 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import butterknife.ButterKnife;
 import earlll.com.testdemoall.R;
+import earlll.com.testdemoall.core.ui.fragment.bar.TabBarFragment;
 import earlll.com.testdemoall.module.demo.bean.LoginBean;
 import earlll.com.testdemoall.aosp.eventbus.bean.MessageEvent;
 import earlll.com.testdemoall.module.demo.ui.fragment.FriendFragment;
 import earlll.com.testdemoall.module.demo.ui.fragment.HomeFragment;
-import earlll.com.testdemoall.core.ui.fragment.interfaces.ITabBottomBarClickListener;
+import earlll.com.testdemoall.core.ui.fragment.interfaces.ITabBarClickListener;
 import earlll.com.testdemoall.core.ui.fragment.utils.TabBottomBarUtils;
 import earlll.com.testdemoall.core.ui.base.BaseFragmentActivity;
-import earlll.com.testdemoall.core.ui.fragment.bar.DynamicTabBottomBarFragment;
 import earlll.com.testdemoall.core.ui.fragment.dialog.AlertDialogFragment;
 import earlll.com.testdemoall.core.ui.fragment.interfaces.IDialogCallBack;
-import earlll.com.testdemoall.core.ui.fragment.interfaces.IFragmentDataPass;
+import earlll.com.testdemoall.core.ui.fragment.interfaces.ISendData;
 
 /**
  * Fragment 使用示例:<br>
  *  包含底部动态栏的使用
  */
-public class SimpleFragmentActivity extends BaseFragmentActivity implements IFragmentDataPass,ITabBottomBarClickListener,IDialogCallBack {
+public class SimpleFragmentActivity extends BaseFragmentActivity implements ISendData,ITabBarClickListener,IDialogCallBack {
 
     private HomeFragment mWeixin;
     private FriendFragment mFriend;
 
-    private DynamicTabBottomBarFragment tabBottomBarFragment;
+    private TabBarFragment tabBottomBarFragment;
 
 
     @Override
@@ -47,12 +47,12 @@ public class SimpleFragmentActivity extends BaseFragmentActivity implements IFra
     }
 
     private void initFragmentTitleBar() {
-        if(titleBarFragment!=null){
-            titleBarFragment.setRightVisibility(true);
-            titleBarFragment.setRightDrawable(R.mipmap.ic_launcher,0);
+        if(titleBar !=null){
+            titleBar.setRightVisibility(true);
+            titleBar.setRightDrawable(R.mipmap.ic_launcher,0);
         }
 
-        tabBottomBarFragment =  (DynamicTabBottomBarFragment)getFragmentManager().findFragmentById(R.id.fragment_bottombar);
+        tabBottomBarFragment =  (TabBarFragment)getFragmentManager().findFragmentById(R.id.fragment_tabbar);
         if(tabBottomBarFragment!=null){
             tabBottomBarFragment.initTabView(TabBottomBarUtils.getTestTabItemList());
         }
@@ -84,29 +84,29 @@ public class SimpleFragmentActivity extends BaseFragmentActivity implements IFra
         }
     }
 
-    public void onTabBottomBarClick(View view) {
+    public void onTabClick(View view) {
         switch (view.getId()) {
-            case DynamicTabBottomBarFragment.BASE_TAB_BOTTOM_ID:
+            case TabBarFragment.ID_TAB_BASECODE:
                 if(mWeixin==null){
                     mWeixin = new HomeFragment();
                 }
                 setTargetFragment(mWeixin);
                 break;
-            case DynamicTabBottomBarFragment.BASE_TAB_BOTTOM_ID+1:
+            case TabBarFragment.ID_TAB_BASECODE +1:
                 if(mFriend==null){
                     mFriend = new FriendFragment();
                 }
                 setTargetFragment(mFriend);
                 break;
-            case DynamicTabBottomBarFragment.BASE_TAB_BOTTOM_ID+2:
+            case TabBarFragment.ID_TAB_BASECODE +2:
                 //showToast("tab_bottom_layout_bbs");
                 showExitAlert();
                 break;
-            case DynamicTabBottomBarFragment.BASE_TAB_BOTTOM_ID+3:
+            case TabBarFragment.ID_TAB_BASECODE +3:
                 //showToast("tab_bottom_layout_article");
                 showAlert();
                 break;
-            case DynamicTabBottomBarFragment.BASE_TAB_BOTTOM_ID+4:
+            case TabBarFragment.ID_TAB_BASECODE +4:
                 showToast("tab_bottom_layout_more");
                 break;
         }
@@ -153,7 +153,7 @@ public class SimpleFragmentActivity extends BaseFragmentActivity implements IFra
     }
 
     @Override
-    public void receiveFragmentSendData(String tag,Object obj) {
+    public void receive(String tag, Object obj) {
         if(obj instanceof LoginBean){
             LoginBean bean= (LoginBean)obj;
             showToast(bean.getUserName()+bean.getPassWord());

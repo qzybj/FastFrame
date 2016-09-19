@@ -1,69 +1,40 @@
 package earlll.com.testdemoall.core.utils;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import com.frame.fastframelibrary.utils.dataprocess.IntentUtils;
+import com.frame.fastframelibrary.utils.jump.JumpBaseUtils;
 
 /**
- * Created by ZhangYuanBo on 2016/6/2.
+ * Created by ZhangYuanBo on 2016/9/8.
  */
-public class JumpUtils {
+public class JumpUtils extends JumpBaseUtils {
 
-    public static void goActivity(Context con,JumpBean bean){
-        if(con!=null&&bean!=null){
-            Intent intent = new Intent();
-            intent.setClassName(con,bean.getClassName());
-            if(!IntentUtils.isEmpty(bean.getArgs())){
-                intent.putExtras(bean.getArgs());
-            }
-            con.startActivity(intent);
-        }
-    }
-
-    public static JumpBean getJumpBean(String targetActivityName,String title) {
-        JumpBean bean = new JumpBean();
-        bean.setTitle(title);
-        bean.setClassName(targetActivityName);
-        bean.setImgUrls(new String[]{"http://p10.ytrss.com/product/20/647/7390/ViewImage/3490.jpg"});
-        return bean;
-    }
-
-    public static class JumpBean {
+    public static class JumpInfo implements JumpBaseUtils.IJumpInfo {
+        private Class cls;
         private String title;
-        private String className;
-        private String[] imgUrls;
         private Bundle args;
 
-        public String getTitle() {
-            return title;
-        }
-        public void setTitle(String title) {
+        public JumpInfo(Class cls, String title, Bundle args) {
+            this.cls = cls;
             this.title = title;
-        }
-        public String getClassName() {
-            return className;
-        }
-
-        public void setClassName(String className) {
-            this.className = className;
-        }
-        public String[] getImgUrls() {
-            return imgUrls;
-        }
-
-        public void setImgUrls(String[] imgUrls) {
-            this.imgUrls = imgUrls;
-        }
-
-        public Bundle getArgs() {
-            return args;
-        }
-
-        public void setArgs(Bundle args) {
             this.args = args;
         }
 
+        @Override
+        public Class getTarget() {
+            return cls;
+        }
 
+        @Override
+        public String getTitle() {
+            return title;
+        }
+
+        @Override
+        public Bundle getArgs() {
+            return args;
+        }
+    }
+    public static IJumpInfo getJumpBean(Class cls,String title,Bundle args) {
+        return new JumpInfo(cls,title,args);
     }
 }

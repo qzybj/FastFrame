@@ -10,13 +10,15 @@ import android.os.Message;
 import android.view.View;
 import com.frame.fastframelibrary.ui.base.FrameBaseActivity;
 import com.frame.fastframelibrary.utils.app.ActivityStack;
+import com.frame.fastframelibrary.utils.jump.JumpBaseUtils;
 import com.frame.fastframelibrary.utils.view.ToastUtils;
 import com.frame.fastframelibrary.utils.view.ViewUtils;
-import earlll.com.testdemoall.core.config.DemoConstants;
 import earlll.com.testdemoall.R;
+import earlll.com.testdemoall.config.Constants;
+import earlll.com.testdemoall.core.ui.fragment.bar.TabBarFragment;
 import earlll.com.testdemoall.core.ui.fragment.bar.TitleBarFragment;
-import earlll.com.testdemoall.core.ui.fragment.interfaces.ITitleBarClickListener;
 import earlll.com.testdemoall.core.ui.fragment.dialog.AlertDialogFragment;
+import earlll.com.testdemoall.core.ui.fragment.interfaces.ITitleBarClickListener;
 import earlll.com.testdemoall.core.utils.AccountUtils;
 import earlll.com.testdemoall.core.utils.JumpUtils;
 
@@ -26,13 +28,15 @@ import earlll.com.testdemoall.core.utils.JumpUtils;
 public abstract class BaseFragmentActivity extends FrameBaseActivity implements ITitleBarClickListener {
 
 	//-------------控制开关 --------------
-	/**是否弹出dialog加载进度条(屏蔽界面操作)	 */
+	/**是否弹出dialog加载进度条(屏蔽界面操作) */
 	public boolean isLoadProgress = true;
 	/**是否弹出dialog错误信息框 */
 	public boolean isNetShowDialog = true;
 
 	//-------------通用标题 --------------
-	protected TitleBarFragment titleBarFragment;
+	protected TitleBarFragment titleBar;
+	//------------- Tab栏 --------------
+	protected TabBarFragment tabBar;
 
 	//-------------加载提示 --------------
 	/**数据加载进度条*/
@@ -78,7 +82,7 @@ public abstract class BaseFragmentActivity extends FrameBaseActivity implements 
 	//------------- 标题栏修改实现 --------------
 
 	public void initTitleBar(View mainView) {
-		titleBarFragment =  (TitleBarFragment)getFragmentManager().findFragmentById(R.id.fragment_title);
+		titleBar =  (TitleBarFragment)getFragmentManager().findFragmentById(R.id.fragment_title);
 	}
 
 	/**标题栏   -  左边按钮触发事件*/
@@ -146,6 +150,7 @@ public abstract class BaseFragmentActivity extends FrameBaseActivity implements 
 			mErrorDialog.dismiss();
 		}
 	}
+
 	protected void showExitAlert() {
 		if (mExitDialog==null) {
 			mExitDialog = new AlertDialogFragment();
@@ -188,23 +193,23 @@ public abstract class BaseFragmentActivity extends FrameBaseActivity implements 
 		@Override
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
-				case DemoConstants.MSG_WHAT_DATA_START:
+				case Constants.MSG_WHAT_DATA_START:
 					if (isLoadProgress) {
 						showProgress();
 					}
 					break;
-				case DemoConstants.MSG_WHAT_DATA_CANCEL:
+				case Constants.MSG_WHAT_DATA_CANCEL:
 					if (isLoadProgress) {
 						dismissProgress();
 					}
 					break;
-				case DemoConstants.MSG_WHAT_DATA_DONE:
+				case Constants.MSG_WHAT_DATA_DONE:
 					if (isLoadProgress) {
 						dismissProgress();
 					}
 					dispatchData(msg.obj);
 					break;
-				case DemoConstants.MSG_WHAT_SHOWTOAST:
+				case Constants.MSG_WHAT_SHOWTOAST:
 					showToast((String)msg.obj);
 				default:
 					baseHandleMessage(msg);
@@ -249,10 +254,25 @@ public abstract class BaseFragmentActivity extends FrameBaseActivity implements 
 
 	/**
 	 *
-	 * @param describe
-	 * @param targetActivityName
+	 * @param cls
+	 * @param title
+	 * @param args
      */
-	protected void goActivity(String describe,String targetActivityName){
-		JumpUtils.goActivity(this,JumpUtils.getJumpBean(describe,targetActivityName));
+	protected void goActivity(Class cls,String title,Bundle args){
+		JumpBaseUtils.goActivity(this, JumpUtils.getJumpBean(cls,title,args));
+	}
+
+	protected boolean isSupportTitleBar(){
+		return titleBar !=null;
+	}
+	protected boolean isSupportTabBar(){
+		getTabBar();
+		return tabBar !=null;
+	}
+	protected TabBarFragment getTabBar(){
+		if(tabBar==null){
+			tabBar = (TabBarFragment)getFragmentManager().findFragmentById(R.id.fragment_tabbar);
+		}
+		return tabBar;
 	}
 }

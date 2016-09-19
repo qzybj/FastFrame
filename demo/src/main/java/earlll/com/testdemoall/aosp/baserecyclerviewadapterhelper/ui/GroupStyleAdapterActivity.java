@@ -11,7 +11,7 @@ import java.util.List;
 import earlll.com.testdemoall.R;
 import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.adapter.GroupStyleAdapter;
 import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.entity.MySection;
-import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.utils.DataServer;
+import earlll.com.testdemoall.module.dataserver.DataServer;
 
 /**
  * 分组样式，一个groupView,其它的为ItemView

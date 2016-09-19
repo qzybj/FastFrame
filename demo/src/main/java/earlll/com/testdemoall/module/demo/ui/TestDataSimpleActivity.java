@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 import earlll.com.testdemoall.R;
-import earlll.com.testdemoall.core.utils.TestData4Demo;
+import earlll.com.testdemoall.module.dataserver.TestData4Demo;
 import earlll.com.testdemoall.module.demo.bean.TestBean;
 
 /**

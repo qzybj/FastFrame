@@ -11,8 +11,8 @@
         android:layout_alignParentTop="true" />
 
     <fragment
-        android:id="@+id/fragment_bottombar"
-        android:name="earlll.com.testdemoall.core.ui.fragment.bar.DynamicTabBottomBarFragment"
+        android:id="@+id/fragment_tabbar"
+        android:name="earlll.com.testdemoall.core.ui.fragment.bar.TabBarFragment"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_alignParentBottom="true" />
@@ -20,6 +20,6 @@
     <FrameLayout
         android:id="@+id/fragment_content"
         style="@style/style_common_matchparent"
-        android:layout_above="@id/fragment_bottombar"
+        android:layout_above="@id/fragment_tabbar"
         android:layout_below="@id/fragment_title" />
 </RelativeLayout>

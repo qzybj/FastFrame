@@ -8,22 +8,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.jcodecraeer.xrecyclerview.ProgressStyle;
-import com.jcodecraeer.xrecyclerview.XRecyclerView;
-
-import java.util.ArrayList;
 
 import earlll.com.testdemoall.R;
 import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.adapter.QuickAdapter;
-import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.utils.DataServer;
-import earlll.com.testdemoall.aosp.xrecyclerview.adapter.CXecyclerViewAdapter;
+import earlll.com.testdemoall.module.dataserver.DataServer;
 
 
 public class CollapsingAdapterActivity extends AppCompatActivity implements

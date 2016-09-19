@@ -1,39 +1,31 @@
 package earlll.com.testdemoall;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ListView;
-import com.frame.fastframelibrary.aosp.baseadapterhelper.BaseAdapterHelper;
-import com.frame.fastframelibrary.aosp.baseadapterhelper.QuickAdapter;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.frame.fastframelibrary.utils.dataprocess.ListUtils;
+import com.frame.fastframelibrary.utils.jump.JumpBaseUtils;
 import java.util.ArrayList;
-import java.util.List;
 import butterknife.BindView;
-import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.ui.GroupStyleAdapterActivity;
-import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.ui.ItemDragAndSwipeUseActivity;
-import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.ui.ItemDragSmallIconActivity;
-import earlll.com.testdemoall.module.annotationdemo.ui.SimpleAnnotationActivity;
-import earlll.com.testdemoall.module.demo.ui.AnimationSimpleActivity;
-import earlll.com.testdemoall.module.demo.ui.FileOperationSimpleActivity;
-import earlll.com.testdemoall.module.demo.ui.PopwindowSimpleActivity;
-import earlll.com.testdemoall.module.demo.ui.SimpleBaseAdapterActivity;
-import earlll.com.testdemoall.module.demo.ui.MultiFragmentActivity;
-import earlll.com.testdemoall.module.demo.bean.TestBean;
+import earlll.com.testdemoall.module.dataserver.DataServer;
 import earlll.com.testdemoall.core.ui.base.BaseActivity;
-import earlll.com.testdemoall.core.utils.TestData4Demo;
-import earlll.com.testdemoall.module.demo.ui.TestDataSimpleActivity;
-import earlll.com.testdemoall.module.dragger2.ui.DraggerActivity;
-import earlll.com.testdemoall.module.testnetframe.ui.TestNetActivity;
-import earlll.com.testdemoall.module.viewdemo.ui.SimpleLayoutActivity;
-import earlll.com.testdemoall.module.webviewdemo.ui.InterceptUrlActivity;
-import earlll.com.testdemoall.module.zxing.ui.ZXingActivity;
+import earlll.com.testdemoall.core.ui.reciverui.bean.MainItemBean;
+import earlll.com.testdemoall.core.ui.reciverui.adapter.MainAdapter;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener,
+        BaseQuickAdapter.RequestLoadMoreListener,BaseQuickAdapter.OnRecyclerViewItemClickListener{
 
-    @BindView(R.id.listView)
-    public ListView listView;
+    @BindView(R.id.srlayout_common)
+    public SwipeRefreshLayout mSwipeRefreshLayout;
+
+    @BindView(R.id.rv_common)
+    public RecyclerView mRecyclerView;
 
     @BindView(R.id.toolbar)
     public Toolbar mToolbar;
@@ -41,7 +33,7 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.fab)
     public FloatingActionButton mFab;
 
-    protected QuickAdapter<TestBean> adapter;
+    protected MainAdapter adapter;
 
     @Override
     public int getLayoutResId() {
@@ -50,89 +42,58 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void initContentView(View view) {
-        //setSupportActionBar(mToolbar);
-        mFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        if (adapter == null){
-            adapter = new QuickAdapter<TestBean>(getBaseActivity(), R.layout.listview_item) {
-                @Override
-                protected void convert(BaseAdapterHelper helper, final TestBean data) {
-                    helper.setText(R.id.tv_title, data.getName());
-                    helper.setText(R.id.tv_content, data.getText().substring(data.getText().lastIndexOf(".")+1));
-                    helper.setOnClickListener(R.id.layout,
-                            new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    goActivity(data);
-                                }
-                            });
-                    helper.setVisible(R.id.iv_icon_show,false);
-                    helper.setVisible(R.id.tweetDate,false);
-                    helper.setVisible(R.id.tv_right_date,false);
-                    //helper.setRootVisible(R.id.tweetRT, data.isShowFlag());
-                    //helper.setText(R.id.tweetDate, data.getDate());
-                    //helper.setImageUrl(R.id.tweetAvatar, data.getImageurl());
-                    //helper.linkify(R.id.tweetText);
-                }
-            };
-        }
-        listView.setAdapter(adapter);
+        setSupportActionBar(mToolbar);
+        initSwipeRefreshLayout();
+        initRecyclerViewStyle();
+        mFab.setVisibility(View.GONE);
     }
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        loadData(getShowBeanList());
+        loadData(DataServer.getMainData());
     }
-    /***/
-    protected void loadData(List<TestBean> tweets) {
-        // Problem with connection, retry
-        if (tweets == null) {
-            adapter.notifyDataSetChanged();
-            return;
+
+    protected void loadData(ArrayList<MainItemBean> list) {
+        if(ListUtils.isNotEmpty(list)){
+            adapter.addData(list);
         }
-        adapter.addAll(tweets);
+        adapter.notifyDataSetChanged();
     }
 
-    public static ArrayList<TestBean> getShowBeanList() {
-        ArrayList<TestBean> list = new ArrayList<>();
-        list.add(TestData4Demo.getTestBean(TestData4Demo.build(DraggerActivity.class,"测试Dragger2",null)));
-//        list.add(TestData4Demo.getTestBean("示例 - 单个item展示",SimpleBaseAdapterActivity.class.getName()));
-//        list.add(TestData4Demo.getTestBean("示例 - 横向ListView",SimpleHorizontalListViewActivity.class.getName()));
-//        list.add(TestData4Demo.getTestBean("示例 - fragment使用示例",SimpleFragmentActivity.class.getName()));
-//        list.add(TestData4Demo.getTestBean("示例 - eventBus使用示例",EventBusReciveActivity.class.getName()));
-//        list.add(TestData4Demo.getTestBean("示例 - 下拉刷新SwipeRefreshLayout中放置WebView展示",SimpleSwipeRefreshLayoutActivity.class.getSimpleName(),
-//                IntentUtils.setBundleStr(null, ConstantsBaseKey.KEY_URL,"http://m.yintai.com/category/miaoindex?")));
-//        list.add(TestData4Demo.getTestBean("示例 - 下拉刷新 PullRefreshLayout",SimplePullRefreshLayoutActivity.class.getName()));
-//        list.add(TestData4Demo.getTestBean("示例 - TestDataSimple - 测试数据生成器使用示例",TestDataSimpleActivity.class.getName()));
-        list.add(TestData4Demo.getTestBean("示例 - TestNetActivity - 测试网络框架",TestNetActivity.class.getName()));
-        list.add(TestData4Demo.getTestBean("示例 - PopwindowSimple - 测试Popwindow",PopwindowSimpleActivity.class.getName()));
-        list.add(TestData4Demo.getTestBean("示例 - AnimationSimple - 测试动画",AnimationSimpleActivity.class.getName()));
-//        list.add(TestData4Demo.getTestBean("示例 - FileOperationSimple - File操作使用示例",FileOperationSimpleActivity.class.getName()));
+    private void initSwipeRefreshLayout() {
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.color_ffffff, R.color.color_33a6ff,R.color.color_ff0000);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
+        mSwipeRefreshLayout.setEnabled(true);
+    }
 
-//        list.add(TestData4Demo.getTestBean("示例 - xrecyclerview - 收缩项部ToolBar",CollapsingToolbarActivity.class.getName()));
-//        list.add(TestData4Demo.getTestBean("示例 - xrecyclerview - 多Hearder",MultiHeaderActivity.class.getName()));
-//        list.add(TestData4Demo.getTestBean("示例 - xrecyclerview - 交错",StaggeredGridActivity.class.getName()));
+    /**init RecyclerView:get show UI type,and generate the corresponding adapter */
+    private void initRecyclerViewStyle() {
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(MyApplication.instance(), LinearLayoutManager.VERTICAL, false));
+        adapter = new MainAdapter(new ArrayList<>());
+        adapter.setOnRecyclerViewItemClickListener(this);
+        mRecyclerView.setAdapter(adapter);
+    }
 
-//        list.add(TestData4Demo.getTestBean("示例 - recyclerviewAdatper - 动画",AnimationAdatperActivity.class.getName()));
-        list.add(TestData4Demo.getTestBean("示例 - xrecyclerviewAdatper - group分组",GroupStyleAdapterActivity.class.getName()));
-        list.add(TestData4Demo.getTestBean("示例 - xrecyclerviewAdatper - 拖拽ItemView及滑动删除",ItemDragAndSwipeUseActivity.class.getName()));
-        list.add(TestData4Demo.getTestBean("示例 - xrecyclerviewAdatper - 拖拽small Icon",ItemDragSmallIconActivity.class.getName()));
-//        list.add(TestData4Demo.getTestBean("示例 - xrecyclerviewAdatper - 多类型",MultipleTypeAdapterActivity.class.getName()));
-//        list.add(TestData4Demo.getTestBean("示例 - xrecyclerviewAdatper - 下拉刷新",PullToRefreshAdapterActivity.class.getName()));
-//        list.add(TestData4Demo.getTestBean("示例 - xrecyclerviewAdatper - 项部收缩",CollapsingAdapterActivity.class.getName()));
+    @Override
+    public void onRefresh() {
+        new Handler().postDelayed(() -> {
+            mSwipeRefreshLayout.setRefreshing(false);
+            onRefreshData();
+        }, 1000);
+    }
+    public void onRefreshData() {
+        //adapter.setNewData(getTestData());
+        //adapter.notifyDataSetChanged();
+    }
+    @Override
+    public void onLoadMoreRequested() {
 
-//        list.add(TestData4Demo.getTestBean("示例 - BaseListViewActivity - 展示示例", SimpleBaseAdapterActivity.class.getName()));
-        list.add(TestData4Demo.getTestBean("示例 - MultiFragmentActivity - 多个Fragment界面的展示示例", MultiFragmentActivity.class.getName()));
-        list.add(TestData4Demo.getTestBean("示例 - SimpleAnnotationActivity - 注解使用示例", SimpleAnnotationActivity.class.getName()));
-        list.add(TestData4Demo.getTestBean("示例 - SimpleAnnotationActivity - 各种布局 ViewStub，merge，include 使用示例", SimpleLayoutActivity.class.getName()));
-        list.add(TestData4Demo.getTestBean("示例 - InterceptUrlActivity - html页面打开时，针对http劫持逻辑的处理", InterceptUrlActivity.class.getName()));
-//        list.add(TestData4Demo.getTestBean("示例 - ZXingActivity - 二维码扫码处理", ZXingActivity.class.getName()));
-
-        return list;
+    }
+    @Override
+    public void onItemClick(View view, int position) {
+        if(adapter!=null){
+            MainItemBean item = adapter.getItem(position);
+            JumpBaseUtils.goActivity(this,item.getJumpInfo());
+        }
     }
 }

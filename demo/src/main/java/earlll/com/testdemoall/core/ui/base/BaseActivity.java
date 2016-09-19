@@ -19,7 +19,7 @@ import com.frame.fastframelibrary.utils.view.TextViewUtils;
 import com.frame.fastframelibrary.utils.view.ToastUtils;
 import com.frame.fastframelibrary.utils.view.ViewUtils;
 
-import earlll.com.testdemoall.core.config.DemoConstants;
+import earlll.com.testdemoall.config.Constants;
 import earlll.com.testdemoall.R;
 import earlll.com.testdemoall.module.demo.bean.TestBean;
 import earlll.com.testdemoall.core.utils.AccountUtils;
@@ -358,23 +358,23 @@ public abstract class BaseActivity extends FrameBaseActivity{
 		}
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
-				case DemoConstants.MSG_WHAT_DATA_START:
+				case Constants.MSG_WHAT_DATA_START:
 					if (isLoadProgress) {
 						showProgress();
 					}
 					break;
-				case DemoConstants.MSG_WHAT_DATA_CANCEL:
+				case Constants.MSG_WHAT_DATA_CANCEL:
 					if (isLoadProgress) {
 						dismissProgress();
 					}
 					break;
-				case DemoConstants.MSG_WHAT_DATA_DONE:
+				case Constants.MSG_WHAT_DATA_DONE:
 					if (isLoadProgress) {
 						dismissProgress();
 					}
 					dispatchData(msg.obj);
 					break;
-				case DemoConstants.MSG_WHAT_SHOWTOAST:
+				case Constants.MSG_WHAT_SHOWTOAST:
 					showToast((String)msg.obj);
 				default:
 					baseHandleMessage(msg);

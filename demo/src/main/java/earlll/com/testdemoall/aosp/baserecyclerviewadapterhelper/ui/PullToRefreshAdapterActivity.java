@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import earlll.com.testdemoall.R;
 import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.adapter.QuickAdapter;
-import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.utils.DataServer;
+import earlll.com.testdemoall.module.dataserver.DataServer;
 
 
 /**
@@ -79,8 +79,6 @@ public class PullToRefreshAdapterActivity extends Activity implements BaseQuickA
                     }, delayMillis);
                 }
             }
-
-
         });
     }
 

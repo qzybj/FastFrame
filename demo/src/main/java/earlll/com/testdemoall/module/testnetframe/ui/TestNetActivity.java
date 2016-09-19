@@ -1,7 +1,6 @@
 package earlll.com.testdemoall.module.testnetframe.ui;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
@@ -9,7 +8,6 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.RequestFuture;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.frame.fastframelibrary.aosp.volley.VolleyProcess;
 import com.frame.fastframelibrary.net.core.NetDataServer;
 import com.frame.fastframelibrary.net.core.config.NetConstants;
@@ -27,7 +25,6 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import earlll.com.testdemoall.MainActivity;
 import earlll.com.testdemoall.R;
-import earlll.com.testdemoall.core.config.DemoConstants;
 import earlll.com.testdemoall.core.ui.base.BaseActivity;
 import earlll.com.testdemoall.module.testnetframe.bean.UserinfoBean;
 import earlll.com.testdemoall.module.testnetframe.net.load.NetProgressLoad;

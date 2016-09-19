@@ -13,7 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import earlll.com.testdemoall.R;
-import earlll.com.testdemoall.core.ui.fragment.interfaces.IFragmentDataPass;
+import earlll.com.testdemoall.core.ui.fragment.interfaces.ISendData;
 
 /**
  * Created by ZhangYuanBo on 2016/5/27.<br/>
@@ -36,9 +36,9 @@ public class InputDialogFragment extends DialogFragment {
 
     @OnClick(R.id.btn_surename)
     public void onClick() {
-        if (getActivity() instanceof IFragmentDataPass) {
-            IFragmentDataPass listener = (IFragmentDataPass) getActivity();
-            listener.receiveFragmentSendData(getTag(),TextViewUtils.getTextViewValue(et_name));
+        if (getActivity() instanceof ISendData) {
+            ISendData listener = (ISendData) getActivity();
+            listener.receive(getTag(),TextViewUtils.getTextViewValue(et_name));
             dismiss();
         }
     }

@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import earlll.com.testdemoall.R;
 import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.adapter.MultipleItemQuickAdapter;
-import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.utils.DataServer;
+import earlll.com.testdemoall.module.dataserver.DataServer;
 
 /**
  * https://github.com/CymChad/BaseRecyclerViewAdapterHelper

@@ -3,8 +3,8 @@ package com.frame.fastframelibrary.utils.dataprocess;
 import android.content.Intent;
 import android.os.Bundle;
 
-public class IntentUtils {
 
+public class IntentUtils {
 
 	public static boolean isNotEmpty(Intent intent){
 		return !isEmpty(intent);
@@ -26,8 +26,6 @@ public class IntentUtils {
 		return true;
 	}
 
-	
-	
 	public static Bundle getBundle(Intent intent){
 		if(!isEmpty(intent)){
 			return intent.getExtras();
@@ -35,15 +33,15 @@ public class IntentUtils {
 		return null;
 	}
 
-	public static Intent setIntentStr(Intent intent,String key,String value){
+	public static Intent setIString(Intent intent, String key, String value){
 		if(intent==null){
 			intent = new Intent();
 		}
-		intent.putExtras(setBundleStr(intent.getExtras(), key,value));
+		intent.putExtras(setBString(intent.getExtras(), key,value));
 		return intent;
 	}
 
-	public static Bundle setBundleStr(Bundle extras, String key, String value){
+	public static Bundle setBString(Bundle extras, String key, String value){
 		if (extras==null) {
 			extras = new Bundle();
 		}
@@ -51,52 +49,52 @@ public class IntentUtils {
 		return extras;
 	}
 	
-	public static String getIntentStr(Intent intent,String key){
+	public static String getString(Intent intent, String key){
 		if(!isEmpty(intent)){
-			return getBundleStr(intent.getExtras(), key);
+			return getString(intent.getExtras(), key);
 		}
 		return null;
 	}
-	public static int getIntentInt(Intent intent,String key,int defValue){
+	public static int getInt(Intent intent,String key,int defValue){
 		if(!isEmpty(intent)){
-			return getBundleInt(intent.getExtras(), key,defValue);
+			return getInt(intent.getExtras(), key,defValue);
 		}
 		return defValue;
 	}
 	
-	public static boolean getIntentBoolean(Intent intent,String key,boolean defValue){
+	public static boolean getBoolean(Intent intent,String key,boolean defValue){
 		if(!isEmpty(intent)){
-			return getBundleBoolean(intent.getExtras(), key,defValue);
+			return getBoolean(intent.getExtras(), key,defValue);
 		}
 		return defValue;
 	}
 	
-	public static String[] getIntentStrArray(Intent intent,String key){
+	public static String[] getStringArray(Intent intent, String key){
 		if(!isEmpty(intent)){
-			return getBundleStringArray(intent.getExtras(), key);
+			return getStringArray(intent.getExtras(), key);
 		}
 		return null;
 	}
 	
-	public static String getBundleStr(Bundle extras,String key){
+	public static String getString(Bundle extras, String key){
 		if (containsKey(extras,key)) {
 			return extras.getString(key);
 		}
 		return null;
 	}
-	public static int getBundleInt(Bundle extras,String key,int defValue){
+	public static int getInt(Bundle extras, String key, int defValue){
 		if (containsKey(extras,key)) {
 			return extras.getInt(key,defValue);
 		}
 		return defValue;
 	}
-	public static boolean getBundleBoolean(Bundle extras,String key,boolean defValue){
+	public static boolean getBoolean(Bundle extras, String key, boolean defValue){
 		if (containsKey(extras,key)) {
 			return extras.getBoolean(key,defValue);
 		}
 		return defValue;
 	}
-	public static String[] getBundleStringArray(Bundle extras,String key){
+	public static String[] getStringArray(Bundle extras, String key){
 		if (containsKey(extras,key)) {
 			return extras.getStringArray(key);
 		}
@@ -110,12 +108,12 @@ public class IntentUtils {
 		return false;
 	}
 	
-	public static void removeIntentStr(Intent intent,String key){
+	public static void removeString(Intent intent, String key){
 		if(!isEmpty(intent)){
-			removeBundleStr(intent.getExtras(), key);
+			removeString(intent.getExtras(), key);
 		}
 	}
-	public static void removeBundleStr(Bundle extras,String key){
+	public static void removeString(Bundle extras, String key){
 		if (containsKey(extras,key)) {
 			extras.remove(key);
 		}

@@ -8,7 +8,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import earlll.com.testdemoall.R;
 import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.entity.Status;
 import earlll.com.testdemoall.aosp.glide.transform.GlideCircleTransform;
-import earlll.com.testdemoall.aosp.baserecyclerviewadapterhelper.utils.DataServer;
+import earlll.com.testdemoall.module.dataserver.DataServer;
 
 /**
  * https://github.com/CymChad/BaseRecyclerViewAdapterHelper
@@ -30,15 +30,15 @@ public class QuickAdapter extends BaseQuickAdapter<Status> {
 
     @Override
     protected void convert(BaseViewHolder helper, Status item) {
-        helper.setText(R.id.tweetName, item.getUserName())
-                .setText(R.id.tweetText, item.getText())
-                .setText(R.id.tweetDate, item.getCreatedAt())
-                .setVisible(R.id.tweetRT, item.isRetweet())
-                .setOnClickListener(R.id.tweetAvatar, new OnItemChildClickListener())
-                .setOnClickListener(R.id.tweetName, new OnItemChildClickListener())
-                .linkify(R.id.tweetText);
+        helper.setText(R.id.tv_title, item.getUserName())
+                .setText(R.id.tv_content, item.getText())
+                .setText(R.id.tv_date, item.getCreatedAt())
+                .setVisible(R.id.iv_right, item.isRetweet())
+                .setOnClickListener(R.id.iv_icon, new OnItemChildClickListener())
+                .setOnClickListener(R.id.tv_title, new OnItemChildClickListener())
+                .linkify(R.id.tv_content);
 
         Glide.with(mContext).load(item.getUserAvatar()).crossFade().placeholder(R.mipmap.def_head).
-                transform(new GlideCircleTransform(mContext)).into((ImageView) helper.getView(R.id.tweetAvatar));
+                transform(new GlideCircleTransform(mContext)).into((ImageView) helper.getView(R.id.iv_icon));
     }
 }

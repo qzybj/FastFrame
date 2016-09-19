@@ -7,7 +7,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import earlll.com.testdemoall.R;
-import earlll.com.testdemoall.core.utils.TestData4Demo;
+import earlll.com.testdemoall.module.dataserver.TestData4Demo;
 import earlll.com.testdemoall.module.demo.adapter.SingleTypeAdapter;
 import earlll.com.testdemoall.module.demo.bean.SingleTypeBean;
 import earlll.com.testdemoall.core.ui.base.BaseActivity;

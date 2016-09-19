@@ -56,9 +56,9 @@ public class CommonWebViewActivity extends BaseWebViewActivity{
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        setTitlebarContent(IntentUtils.getIntentStr(getIntent(), ConstantsKey.KEY_TITLE));//设置title
-        initCustomUI(IntentUtils.getIntentStr(getIntent(), ConstantsKey.KEY_TYPE)); //设置展示特殊类型UI
-        loadUrl(IntentUtils.getIntentStr(getIntent(), ConstantsKey.KEY_URL)); //设置加载Url
+        setTitlebarContent(IntentUtils.getString(getIntent(), ConstantsKey.KEY_TITLE));//设置title
+        initCustomUI(IntentUtils.getString(getIntent(), ConstantsKey.KEY_TYPE)); //设置展示特殊类型UI
+        loadUrl(IntentUtils.getString(getIntent(), ConstantsKey.KEY_URL)); //设置加载Url
     }
 
     /**

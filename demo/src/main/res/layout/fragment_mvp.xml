@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/style_common_matchparent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/et_id"
+        style="@style/style_common"
+        android:minWidth="100dp"
+        android:inputType="number"
+        android:hint="show" />
+    <EditText
+        android:id="@+id/et_name"
+        style="@style/style_common"
+        android:minWidth="100dp"
+        android:hint="name" />
+    <EditText
+        android:id="@+id/et_nickname"
+        style="@style/style_common"
+        android:minWidth="100dp"
+        android:hint="nickname" />
+
+
+    <LinearLayout
+        style="@style/style_common_matchparent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_save"
+            style="@style/style_common"
+            android:text="save" />
+
+        <Button
+            android:id="@+id/btn_load"
+            style="@style/style_common"
+            android:text="load" />
+        <Button
+            android:id="@+id/btn_clear"
+            style="@style/style_common"
+            android:text="clear" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_show"
+        style="@style/style_common"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+</LinearLayout>

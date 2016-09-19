@@ -53,18 +53,18 @@ public class BaseWebViewActivity extends BaseActivity {
             mWebView.loadUrl(url);
         }
         //设置title
-        String title = IntentUtils.getIntentStr(getIntent(), ConstantsKey.KEY_TITLE);
+        String title = IntentUtils.getString(getIntent(), ConstantsKey.KEY_TITLE);
         if (StringUtils.isNotEmpty(title)) {
             setTitlebarContent(title);
         }
 
         //设置展示特殊类型UI
-        String type = IntentUtils.getIntentStr(getIntent(), WebViewUtilPlus.KEY_TYPE);
+        String type = IntentUtils.getString(getIntent(), WebViewUtilPlus.KEY_TYPE);
         if (StringUtils.isNotEmpty(type)) {
 
         }
         //设置加载Url
-        url = IntentUtils.getIntentStr(getIntent(), ConstantsKey.KEY_URL);
+        url = IntentUtils.getString(getIntent(), ConstantsKey.KEY_URL);
         if(StringUtils.isEmpty(url)) {
             url = WebViewUtilPlus.COMMON_LOADURL;
         }

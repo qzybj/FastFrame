@@ -1,15 +1,17 @@
-package earlll.com.testdemoall.core.utils;
+package earlll.com.testdemoall.module.dataserver;
 
 
 import android.os.Bundle;
+import com.frame.fastframelibrary.utils.dataprocess.IntentUtils;
 import com.frame.fastframelibrary.utils.dataprocess.RandomUtils;
-import com.frame.fastframelibrary.utils.test.TestDataBuilder;
-
+import com.frame.fastframelibrary.utils.jump.JumpBaseUtils;
 import java.util.ArrayList;
+import java.util.Date;
+import earlll.com.testdemoall.core.ui.reciverui.bean.MainItemBean;
+import earlll.com.testdemoall.core.ui.reciverui.ui.ContainerActivity;
+import earlll.com.testdemoall.core.utils.JumpUtils;
 import earlll.com.testdemoall.module.demo.bean.SingleTypeBean;
 import earlll.com.testdemoall.module.demo.bean.TestBean;
-import earlll.com.testdemoall.module.dragger2.ui.DraggerActivity;
-
 
 public class TestData4Demo {
 
@@ -52,13 +54,10 @@ public class TestData4Demo {
         return list;
     }
 
-
-
     public static TestBean getTestBean(String describe, String targetActivity) {
         return getTestBean(describe,targetActivity,null);
     }
-
-    public static TestBean getTestBean(String describe,String targetActivity,Bundle bundle) {
+    private static TestBean getTestBean(String describe, String targetActivity, Bundle bundle) {
         TestBean bean = new TestBean();
         bean.setName(describe);
         bean.setText(targetActivity);
@@ -68,50 +67,27 @@ public class TestData4Demo {
         return bean;
     }
 
-    public static TestBeanImpl build(Class cls, String describe, Bundle args) {
-        return new TestBeanImpl(cls,describe,args);
+    /**以Fragment展示的界面*/
+    public static MainItemBean getJumpBeanF(Class cls, String describe, Class fragment) {
+        Bundle args = IntentUtils.setBString(null, ContainerActivity.KEY_FRAGMENT, fragment.getName());
+        return buildJumpBean(new JumpUtils.JumpInfo(cls,describe,args));
     }
-    public static TestBean getTestBean(ITestBean testBeanImpl) {
-        String describe = testBeanImpl.getDescribe()+" 示例 - "+testBeanImpl.getTargetClass().getSimpleName();
-        TestBean bean = new TestBean();
-        bean.setName(describe);
-        bean.setText(testBeanImpl.getTargetClass().getName());
-        bean.setDate("2016-8-1");
-        bean.setImageurl(imageUrls[RandomUtils.getRandom(imageUrls.length-1)]);
-        bean.setArgs(bean.getArgs());
+    /**以指定Activity展示的界面*/
+    public static MainItemBean getJumpBean(Class cls, String describe, Bundle args) {
+        return buildJumpBean(new JumpUtils.JumpInfo(cls,describe,args));
+    }
+    /**以指定Activity展示的界面*/
+    public static MainItemBean getJumpBean(String describe,Class cls, Bundle args) {
+        return buildJumpBean(new JumpUtils.JumpInfo(cls,describe,args));
+    }
+
+    public static MainItemBean buildJumpBean(JumpBaseUtils.IJumpInfo jumpInfo) {
+        MainItemBean bean = new MainItemBean();
+        bean.setTitle(jumpInfo.getTitle());
+        bean.setContent(jumpInfo.getTarget().getSimpleName());
+        bean.setDate(new Date().toString());
+        bean.setImageUrl(imageUrls[RandomUtils.getRandom(imageUrls.length-1)]);
+        bean.setJumpInfo(jumpInfo);
         return bean;
-    }
-
-    public interface ITestBean{
-        Class getTargetClass();
-        String getDescribe();
-        Bundle getArgs();
-    }
-
-    public static class TestBeanImpl implements ITestBean{
-        private Class cls;
-        private String describe;
-        private Bundle args;
-
-        public TestBeanImpl(Class cls, String describe, Bundle args) {
-            this.cls = cls;
-            this.describe = describe;
-            this.args = args;
-        }
-
-        @Override
-        public Class getTargetClass() {
-            return cls;
-        }
-
-        @Override
-        public String getDescribe() {
-            return describe;
-        }
-
-        @Override
-        public Bundle getArgs() {
-            return args;
-        }
     }
 }
