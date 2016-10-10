@@ -57,6 +57,9 @@ public class ListUtils {
 		}
 		return false;
 	}
+	public static boolean isNotEmpty(Object... objList){
+		return !isEmpty(objList);
+	}
 
 	public static boolean isEmptySet(HashSet target){
 		if( target == null ||

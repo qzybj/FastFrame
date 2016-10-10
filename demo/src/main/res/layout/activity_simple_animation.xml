@@ -2,14 +2,42 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/tv_click"
         style="@style/style_text_common"
-        android:background="@android:color/darker_gray"
         android:layout_centerInParent="true"
+        android:background="@android:color/darker_gray"
         android:padding="50dp"
         android:text="click me"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/tv_header"
+        style="@style/style_text_common"
+        android:layout_width="match_parent"
+        android:background="@android:color/darker_gray"
+        android:padding="50dp"
+        android:text="缩放"
+        android:textColor="@android:color/white" />
+
+    <LinearLayout
+        style="@style/style_common_matchparent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_header"
+            style="@style/style_text_common"
+            android:padding="@dimen/h5dip"
+            android:text="test header" />
+
+        <Button
+            android:id="@+id/btn_header1"
+            style="@style/style_text_common"
+            android:padding="@dimen/h5dip"
+            android:text="test header1" />
+    </LinearLayout>
 </RelativeLayout>

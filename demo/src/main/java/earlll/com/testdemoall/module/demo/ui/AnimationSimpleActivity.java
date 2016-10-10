@@ -11,14 +11,21 @@ import butterknife.OnClick;
 import earlll.com.testdemoall.R;
 import earlll.com.testdemoall.core.ui.base.BaseActivity;
 
+
 /**
  * 测试数据生成器，使用示例
  */
 public class AnimationSimpleActivity extends BaseActivity {
     private static final String TAG = AnimationSimpleActivity.class.getSimpleName();
+    private int i=0;
 
     @BindView(R.id.tv_click)
     public TextView tv_click;
+
+    @BindView(R.id.tv_header)
+    public TextView tv_header;
+
+    boolean isScaleHide = false;
 
     @Override
     public int getLayoutResId() {
@@ -35,18 +42,57 @@ public class AnimationSimpleActivity extends BaseActivity {
     }
 
     @Override
-    @OnClick({R.id.tv_click})
+    @OnClick({R.id.tv_click,R.id.btn_header,R.id.btn_header1})
     protected void clickEvent(View v) {
         switch(v.getId()){
             case R.id.tv_click:
                 startAnimation(v);
+                break;
+            case R.id.btn_header:
+                startScaleAnimation(tv_header);
+                break;
+            case R.id.btn_header1:
+                startScaleAnimation1(tv_header);
                 break;
             default:
                 super.clickEvent(v);
                 break;
         }
     }
-    private int i=0;
+
+    private void startScaleAnimation(View view) {
+        view.setPivotY(0);
+        PropertyValuesHolder pvhZ ;
+        if(isScaleHide){
+            pvhZ = PropertyValuesHolder.ofFloat("scaleY",0,1f);
+        }else{
+            pvhZ = PropertyValuesHolder.ofFloat("scaleY",1f,0);
+        }
+        ObjectAnimator anim = ObjectAnimator.ofPropertyValuesHolder(view, pvhZ).setDuration(2000);
+        anim.addUpdateListener(animation -> {
+            float cVal = (Float) animation.getAnimatedValue();
+            view.setScaleY(cVal);
+        });
+        anim.start();
+        isScaleHide = !isScaleHide;
+    }
+
+    private void startScaleAnimation1(View view) {
+        view.setPivotY(0);
+        ObjectAnimator anim ;
+        if(isScaleHide){
+            anim = ObjectAnimator.ofFloat(view, "y", 1.0F,0.0F);
+        }else{
+            anim = ObjectAnimator.ofFloat(view, "y", 0.0F,1.0F);
+        }
+        anim.setDuration(2000);
+        anim.start();
+        anim.addUpdateListener(animation -> {
+            float cVal = (Float) animation.getAnimatedValue();
+            view.setScaleY(cVal);
+        });
+        isScaleHide = !isScaleHide;
+    }
 
     private void startAnimation(View v) {
         if(v!=null){
@@ -70,12 +116,7 @@ public class AnimationSimpleActivity extends BaseActivity {
         anim.start();
     }
 
-    public void propertyValuesHolder(View view){
-        PropertyValuesHolder pvhX = PropertyValuesHolder.ofFloat("alpha", 1f,0f, 1f);
-        PropertyValuesHolder pvhY = PropertyValuesHolder.ofFloat("scaleX",1f,0, 1f);
-        PropertyValuesHolder pvhZ = PropertyValuesHolder.ofFloat("scaleY",1f,0, 1f);
-        ObjectAnimator.ofPropertyValuesHolder(view, pvhX, pvhY,pvhZ).setDuration(1000).start();
-    }
+
     public void rotateyZhyAnimRun(final View view){
         ObjectAnimator anim = ObjectAnimator.ofFloat(view, "zhy", 1.0F,0.0F,1.0F).setDuration(2000);
         anim.start();
@@ -89,5 +130,12 @@ public class AnimationSimpleActivity extends BaseActivity {
                 view.setScaleY(cVal);
             }
         });
+    }
+
+    public void propertyValuesHolder(View view){
+        PropertyValuesHolder pvhX = PropertyValuesHolder.ofFloat("alpha", 1f,0f, 1f);
+        PropertyValuesHolder pvhY = PropertyValuesHolder.ofFloat("scaleX",1f,0, 1f);
+        PropertyValuesHolder pvhZ = PropertyValuesHolder.ofFloat("scaleY",1f,0, 1f);
+        ObjectAnimator.ofPropertyValuesHolder(view, pvhX, pvhY,pvhZ).setDuration(1000).start();
     }
 }
