@@ -64,7 +64,7 @@ public class StringUtils {
 	 */
 	public static String format(String str){
 		if(isEmpty(str)){
-			return "" ;
+			return EMPTY_STRING ;
 		}
 		return str.trim();
 	}
@@ -106,7 +106,7 @@ public class StringUtils {
      * @return 如果为空, 则返回<code>true</code>
      */
     public static boolean isEmpty(String str) {
-        return ((str == null) || (str.length() == 0)||str.trim().equals(""));
+        return ((str == null) || (str.length() == 0)||EMPTY_STRING.equals(str.trim()));
     }
 
     /**
