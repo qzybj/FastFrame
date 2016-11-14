@@ -3,13 +3,10 @@ package brady.com.appframe.common.bean;
 import com.frame.fastframelibrary.module.login.interfaces.IUserInfo;
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-
 /**
  * 账号信息实体
  */
-public class AccountBean implements IUserInfo {
+public class UserBean implements IUserInfo {
     @SerializedName("uid")
     private String uid = "";
     @SerializedName("user_token")
@@ -18,8 +15,6 @@ public class AccountBean implements IUserInfo {
     private int userType = -1;
     @SerializedName("username")
     private String userName = "";
-
-
     @SerializedName("nickname")
     private String nickName = "";
     @SerializedName("head_img")

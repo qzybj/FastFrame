@@ -8,7 +8,6 @@ import com.frame.fastframelibrary.utils.cache.SharedPreferencesUtils;
 
 /**
  * 用户管理辅助类
- * Created by ZhangYuanBo on 2016/4/8.
  */
 public class UserManager implements IUserManager {
 
@@ -89,6 +88,31 @@ public class UserManager implements IUserManager {
         //清除记录的账号
         SharedPreferencesUtils.instance().setString("account", "");
         SharedPreferencesUtils.instance().setString("password", "");
+    }
+
+    @Override
+    public IUserInfo getUser() {
+        return null;
+    }
+
+    @Override
+    public int getUserType() {
+        return 0;
+    }
+
+    @Override
+    public String getUserId() {
+        return null;
+    }
+
+    @Override
+    public boolean saveUser() {
+        return false;
+    }
+
+    @Override
+    public void loginOut() {
+
     }
 
     @Override

@@ -1,6 +1,9 @@
-package com.frame.fastframelibrary.utils.dataprocess;
+package com.frame.fastframelibrary.utils.verify;
 
 import android.widget.TextView;
+
+import com.frame.fastframelibrary.utils.dataprocess.ListUtils;
+import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
 import com.frame.fastframelibrary.utils.view.TextViewUtils;
 
 /**
@@ -38,7 +41,7 @@ public class VerifyUtils {
      * @param strings
      * @return
      */
-    public static boolean isContainEmpty(String... strings) {
+    public static boolean isContainEmpty(String[] strings) {
         if(ListUtils.isNotEmpty(strings)){
             for (String string:strings) {
                 if (verifyEmpty(string)) {

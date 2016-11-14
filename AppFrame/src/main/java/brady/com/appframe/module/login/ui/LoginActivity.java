@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import brady.com.appframe.MainActivity;
 import brady.com.appframe.R;
-import brady.com.appframe.common.bean.AccountBean;
+import brady.com.appframe.common.bean.UserBean;
 import brady.com.appframe.common.ui.base.BaseActivity;
 import brady.com.appframe.common.utils.UserManager;
 import brady.com.appframe.net.apiwrap.MyApiDelegate;
@@ -93,7 +93,7 @@ public class LoginActivity extends BaseActivity {
 
     /**登录成功*/
     private void loginSuccess(UserinfoBean bean,String account, String password)  {
-        AccountBean accountBean = UserManager.instance().convert2Bean(bean);
+        UserBean accountBean = UserManager.instance().convert2Bean(bean);
         UserManager.instance().setUserInfo(accountBean);
         UserManager.instance().setAutoLoginInfo(account, password);
 

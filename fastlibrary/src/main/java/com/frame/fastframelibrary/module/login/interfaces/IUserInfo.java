@@ -9,11 +9,9 @@ public interface IUserInfo {
     void setUid(String uid);
 
      String getUserToken();
-
      void setUserToken(String userToken);
 
      int getUserType();
-
      void setUserType(int userType);
 
      String getUserName();

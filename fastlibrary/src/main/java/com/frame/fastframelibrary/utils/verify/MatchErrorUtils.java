@@ -1,6 +1,7 @@
-package brady.com.appframe.common.utils;
+package com.frame.fastframelibrary.utils.verify;
 
 import com.frame.fastframelibrary.utils.dataprocess.StringUtils;
+
 import java.util.HashMap;
 
 
