@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 public class ListUtils {
+
 	public static boolean isEmpty(List<?> list){
 		if (list!=null&&list.size()>0) {
 			return false;
@@ -22,7 +23,7 @@ public class ListUtils {
 
 	public static <T> T getData(List<T> list,int index){
 		if (!isEmpty(list)) {
-			if (list.size()>index) {
+			if (index>=0&&index<list.size()) {
 				return list.get(index);
 			}
 		}
@@ -51,13 +52,13 @@ public class ListUtils {
 	 * @param objList
 	 * @return
 	 */
-	public static boolean isEmpty(Object... objList){
+	public static boolean isEmpty(Object[] objList){
 		if(objList == null ||objList.length == 0){
 			return true ;
 		}
 		return false;
 	}
-	public static boolean isNotEmpty(Object... objList){
+	public static boolean isNotEmpty(Object[] objList){
 		return !isEmpty(objList);
 	}
 
@@ -92,7 +93,7 @@ public class ListUtils {
 	/**
 	 * 泛型数组转ArrayList
 	 */
-	public static  <T> ArrayList<T> toList(Class<?> cls,T[] array){
+	public static <T> ArrayList<T> toList(Class<?> cls,T[] array){
 		if(isEmptyArray(array)){
 			return new ArrayList<T>();
 		}

@@ -117,8 +117,7 @@ public class RegisterActivity extends BaseActivity {
     /**登录成功*/
     private void loginSuccess(UserinfoBean bean, String account, String password)  {
         UserBean accountBean = UserManager.instance().convert2Bean(bean);
-        UserManager.instance().setUserInfo(accountBean);
-        UserManager.instance().setAutoLoginInfo(account, password);
+        UserManager.instance().setUser(accountBean);
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

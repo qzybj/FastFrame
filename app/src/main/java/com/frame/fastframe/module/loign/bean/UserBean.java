@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by ZhangYuanBo on 2016/5/3.
  * 用户信息类
  */
-public class UserInfoBean implements IUserInfo {
+public class UserBean implements IUserInfo {
     @SerializedName("uid")
     private String uid="";
     @SerializedName("user_token")

@@ -6,7 +6,6 @@ import com.frame.fastframelibrary.utils.LogUtils;
 import com.frame.fastframelibrary.utils.cache.SharedPreferencesUtils;
 import com.frame.fastframelibrary.utils.json.GsonUtils;
 import brady.com.appframe.common.bean.UserBean;
-import brady.com.appframe.net.models.passport.UserinfoBean;
 
 /** 用户管理辅助类*/
 public class UserManager implements IUserManager {
@@ -89,14 +88,8 @@ public class UserManager implements IUserManager {
 
     @Override
     public UserBean convert2Bean(Object obj) {
-        if(obj instanceof UserinfoBean){
-            UserinfoBean bean = (UserinfoBean)obj;
-            UserBean user = new UserBean();
-            user.setUserToken(bean.userToken);
-            user.setUserToken(bean.userCode);
-            user.setUserToken(bean.headImg);
-            user.setUserToken(bean.nickName);
-            user.setUserType(bean.userType);
+        if(obj instanceof UserBean){
+            UserBean user = (UserBean)obj;
             return user;
         }
         return null;

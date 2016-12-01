@@ -1,143 +1,97 @@
 package com.frame.fastframe.utils;
 
-import com.frame.fastframe.module.loign.bean.UserInfoBean;
+import com.frame.fastframe.module.loign.bean.UserBean;
 import com.frame.fastframelibrary.module.login.interfaces.IUserInfo;
 import com.frame.fastframelibrary.module.login.interfaces.IUserManager;
+import com.frame.fastframelibrary.utils.LogUtils;
 import com.frame.fastframelibrary.utils.cache.SharedPreferencesUtils;
+import com.frame.fastframelibrary.utils.json.GsonUtils;
 
-
-/**
- * 用户管理辅助类
- */
+/** 用户管理辅助类*/
 public class UserManager implements IUserManager {
 
-    private static UserInfoBean userInfoBean = null;
+    private static UserManager instance = null;
+    private static IUserInfo accountBean = null;
 
-    public static UserInfoBean getUserInfo() {
-        return userInfoBean;
+    private UserManager() {}
+
+    public synchronized static UserManager instance() {
+        if (instance==null) {
+            instance = new UserManager();
+        }
+        return instance;
+    }
+
+    public IUserInfo getUser() {
+        if(accountBean == null) {
+            try {
+                String userJson = SharedPreferencesUtils.instance().getString(KEY_USER_MANAGER);
+                accountBean = GsonUtils.toObject(userJson,UserBean.class);
+            } catch (Exception e) {
+                LogUtils.e(e);
+            }
+        }
+        return accountBean;
     }
 
     /**
-     * 设为登录状态，并记下来账号密码
+     * 更新用户信息
      * @param userInfo
-     * @param account
-     * @param password
      */
-    public static void setUserInfo(UserInfoBean userInfo, String account, String password) {
-        userInfoBean = userInfo;
-        // TODO 需要把用户名和密码进行存储，下次进入软件的时候，如果有用户名和密码，则提交用户登录，能登录成功则直接跳转到首页
-        SharedPreferencesUtils.instance().setString("account", account);
-        SharedPreferencesUtils.instance().setString("password", password);
-    }
-
-    public static void setUserType(int userType) {
-        if (userInfoBean != null) {
-            userInfoBean.setUserType(userType);
+    public boolean setUser(IUserInfo userInfo) {
+        if(userInfo!=null){
+            accountBean = userInfo;
+            String userJson = GsonUtils.toJson(userInfo);
+            SharedPreferencesUtils.instance().setString(KEY_USER_MANAGER,userJson);
+            return true;
         }
-    }
-
-    /**
-     * 获取user token
-     * @return
-     */
-    public static String getUserToken() {
-        if (userInfoBean != null) {
-            return userInfoBean == null ? "" : userInfoBean.getUserToken();
-        }
-        return "";
-    }
-    /**
-     * 获取user token
-     * @return
-     */
-    public static String getUid() {
-        if (userInfoBean != null) {
-            return userInfoBean == null ? "" : userInfoBean.getUid();
-        }
-        return "";
-    }
-
-    /**
-     * 获取用户的账号密码
-     * @return
-     */
-    public static AccountInfo getAccount() {
-        AccountInfo accountInfo = new AccountInfo();
-        accountInfo.account = SharedPreferencesUtils.instance().getString("account");
-        accountInfo.password = SharedPreferencesUtils.instance().getString("password");
-        return accountInfo;
+        return false;
     }
 
     /**
      * 检测是否登陆
-     *
      * @return
      */
-    public static boolean hasLogin() {
-        if(userInfoBean == null) {
+    public boolean isLogin() {
+        if(accountBean == null) {
             return false;
         }
         return true;
     }
 
-    /**
-     * 注销登陆，清除用户信息
-     */
-    public static void LoginOut() {
-        userInfoBean = null;
-        //清除记录的账号
-        SharedPreferencesUtils.instance().setString("account", "");
-        SharedPreferencesUtils.instance().setString("password", "");
+    @Override
+    public String getUserId() {
+        return accountBean == null ? VALUE_NONE : accountBean.getUid();
     }
 
-    @Override
-    public IUserInfo getUser() {
-        return null;
+    /**
+     * 获取user token
+     * @return
+     */
+    public String getUserToken() {
+        return accountBean == null ? VALUE_NONE : accountBean.getUserToken();
     }
 
     @Override
     public int getUserType() {
-        return 0;
+        return accountBean == null ? VALUE_NONE_INT: accountBean.getUserType();
     }
 
-    @Override
-    public String getUserId() {
-        return null;
-    }
-
-    @Override
-    public boolean saveUser() {
-        return false;
-    }
-
-    @Override
+    /**
+     * 注销登陆，清除用户信息
+     */
     public void loginOut() {
-
+        accountBean = new UserBean();
+        setUser(accountBean);
+        accountBean = null;
     }
 
     @Override
-    public IUserInfo convert2Bean(Object obj) {
+    public UserBean convert2Bean(Object obj) {
+        if(obj instanceof UserBean){
+            UserBean user = (UserBean)obj;
+            return user;
+        }
         return null;
-    }
-
-    public static class AccountInfo {
-        private String account;
-        private String password;
-
-        public String getAccount() {
-            return account;
-        }
-
-        public void setAccount(String account) {
-            this.account = account;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public void setPassword(String password) {
-            this.password = password;
-        }
     }
 }
